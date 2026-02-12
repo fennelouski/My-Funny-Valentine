@@ -43,8 +43,23 @@ struct My_Funny_ValentineApp: App {
             CommandGroup(replacing: .newItem) {
                 Button("New Card") {
                     // Handle new card creation
+                    NotificationCenter.default.post(name: NSNotification.Name("NewCard"), object: nil)
                 }
                 .keyboardShortcut("n", modifiers: .command)
+            }
+            
+            CommandGroup(after: .toolbar) {
+                Button("Export Card...") {
+                    NotificationCenter.default.post(name: NSNotification.Name("ExportCard"), object: nil)
+                }
+                .keyboardShortcut("e", modifiers: [.command, .shift])
+                
+                Divider()
+                
+                Button("Preferences...") {
+                    NotificationCenter.default.post(name: NSNotification.Name("ShowPreferences"), object: nil)
+                }
+                .keyboardShortcut(",", modifiers: .command)
             }
         }
         #endif
