@@ -7,14 +7,24 @@
 
 import SwiftUI
 import SwiftData
+import CloudKit
 
 @main
 struct My_Funny_ValentineApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Card.self,
+            FaceImage.self,
+            CardImage.self,
+            StickerReference.self,
+            UserPreferences.self,
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        
+        let modelConfiguration = ModelConfiguration(
+            schema: schema,
+            isStoredInMemoryOnly: false,
+            cloudKitDatabase: .automatic
+        )
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
