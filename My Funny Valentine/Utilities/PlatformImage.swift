@@ -75,55 +75,5 @@ struct PlatformImageUtils {
     }
 }
 
-#if os(macOS)
-// MARK: - UIImage to NSImage Conversion (for compatibility)
-extension NSImage {
-    /// Create NSImage from UIImage (for cross-platform compatibility)
-    convenience init?(uiImage: UIImage) {
-        guard let cgImage = uiImage.cgImage else { return nil }
-        let size = CGSize(width: cgImage.width, height: cgImage.height)
-        self.init(size: size)
-        self.lockFocus()
-        NSGraphicsContext.current?.imageInterpolation = .high
-        NSGraphicsContext.current?.cgContext.draw(cgImage, in: CGRect(origin: .zero, size: size))
-        self.unlockFocus()
-    }
-    
-    /// Convert NSImage to UIImage (for cross-platform compatibility)
-    var uiImage: UIImage? {
-        guard let tiffData = self.tiffRepresentation,
-              let bitmapImage = NSBitmapImageRep(data: tiffData),
-              let cgImage = bitmapImage.cgImage else {
-            return nil
-        }
-        return UIImage(cgImage: cgImage)
-    }
-}
-#endif
-
-#if os(iOS) || os(visionOS)
-// MARK: - NSImage to UIImage Conversion (for compatibility)
-extension UIImage {
-    /// Create UIImage from NSImage (for cross-platform compatibility)
-    convenience init?(nsImage: NSImage) {
-        guard let tiffData = nsImage.tiffRepresentation,
-              let bitmapImage = NSBitmapImageRep(data: tiffData),
-              let cgImage = bitmapImage.cgImage else {
-            return nil
-        }
-        self.init(cgImage: cgImage)
-    }
-    
-    /// Convert UIImage to NSImage (for cross-platform compatibility)
-    var nsImage: NSImage? {
-        guard let cgImage = self.cgImage else { return nil }
-        let size = CGSize(width: cgImage.width, height: cgImage.height)
-        let nsImage = NSImage(size: size)
-        nsImage.lockFocus()
-        NSGraphicsContext.current?.imageInterpolation = .high
-        NSGraphicsContext.current?.cgContext.draw(cgImage, in: CGRect(origin: .zero, size: size))
-        nsImage.unlockFocus()
-        return nsImage
-    }
-}
-#endif
+// Note: Cross-platform conversions can be added here if needed
+// For now, we use PlatformImage typealias which handles platform differences
