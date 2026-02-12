@@ -38,6 +38,10 @@ struct My_Funny_ValentineApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        #if os(visionOS)
+        .windowResizability(.contentSize)
+        .defaultSize(width: 1200, height: 800)
+        #endif
         #if os(macOS)
         .commands {
             CommandGroup(replacing: .newItem) {
