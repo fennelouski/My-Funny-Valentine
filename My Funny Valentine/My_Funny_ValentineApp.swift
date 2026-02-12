@@ -38,5 +38,15 @@ struct My_Funny_ValentineApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        #if os(macOS)
+        .commands {
+            CommandGroup(replacing: .newItem) {
+                Button("New Card") {
+                    // Handle new card creation
+                }
+                .keyboardShortcut("n", modifiers: .command)
+            }
+        }
+        #endif
     }
 }
