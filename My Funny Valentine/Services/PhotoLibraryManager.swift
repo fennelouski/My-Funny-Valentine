@@ -6,8 +6,11 @@
 //
 
 import Foundation
+
+#if os(iOS) || os(visionOS)
 import Photos
 import UIKit
+#endif
 
 enum PhotoLibraryError: LocalizedError {
     case permissionDenied
@@ -26,87 +29,58 @@ enum PhotoLibraryError: LocalizedError {
     }
 }
 
+/// Platform-agnostic photo library manager
 class PhotoLibraryManager {
     static let shared = PhotoLibraryManager()
     
-    private init() {}
+    private let platformService: PlatformPhotoLibraryProtocol
     
-    /// Request photo library authorization
+    private init() {
+        self.platformService = PlatformPhotoLibraryFactory.createPhotoLibraryService()
+    }
+    
+    #if os(iOS) || os(visionOS)
+    /// Request photo library authorization (iOS/visionOS only)
     func requestAuthorization() async -> PHAuthorizationStatus {
         let status = await PHPhotoLibrary.requestAuthorization(for: .addOnly)
         return status
     }
     
-    /// Check current authorization status
+    /// Check current authorization status (iOS/visionOS only)
     var authorizationStatus: PHAuthorizationStatus {
         PHPhotoLibrary.authorizationStatus(for: .addOnly)
     }
+    #endif
     
-    /// Save image to Photos library
-    func saveImage(_ image: UIImage) async throws {
-        let status = authorizationStatus
-        
-        guard status == .authorized || status == .limited else {
-            // Request authorization if not granted
-            let newStatus = await requestAuthorization()
-            guard newStatus == .authorized || newStatus == .limited else {
-                throw PhotoLibraryError.permissionDenied
-            }
-        }
-        
-        do {
-            try await PHPhotoLibrary.shared().performChanges {
-                PHAssetChangeRequest.creationRequestForAsset(from: image)
-            }
-        } catch {
-            throw PhotoLibraryError.unknown(error)
-        }
+    /// Save image to Photos library (platform-agnostic)
+    func saveImage(_ image: PlatformImage) async throws {
+        try await platformService.saveImage(image)
     }
     
-    /// Save image data to Photos library
+    /// Save image data to Photos library (platform-agnostic)
     func saveImageData(_ imageData: Data) async throws {
-        guard let image = UIImage(data: imageData) else {
+        guard let image = PlatformImageUtils.image(from: imageData) else {
             throw PhotoLibraryError.saveFailed
         }
         try await saveImage(image)
     }
     
-    /// Save image to a specific album (creates album if it doesn't exist)
-    func saveImageToAlbum(_ image: UIImage, albumName: String = "My Funny Valentine") async throws {
-        let status = authorizationStatus
-        
-        guard status == .authorized || status == .limited else {
-            let newStatus = await requestAuthorization()
-            guard newStatus == .authorized || newStatus == .limited else {
-                throw PhotoLibraryError.permissionDenied
-            }
-        }
-        
-        do {
-            var albumPlaceholder: PHObjectPlaceholder?
-            
-            // Find or create album
-            try await PHPhotoLibrary.shared().performChanges {
-                let fetchOptions = PHFetchOptions()
-                fetchOptions.predicate = NSPredicate(format: "title = %@", albumName)
-                let collection = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
-                
-                if let existingAlbum = collection.firstObject {
-                    // Album exists, add to it
-                    let assetRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
-                    let albumChangeRequest = PHAssetCollectionChangeRequest(for: existingAlbum)
-                    albumChangeRequest?.addAssets([assetRequest.placeholderForCreatedAsset!] as NSArray)
-                } else {
-                    // Create new album
-                    let albumChangeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: albumName)
-                    albumPlaceholder = albumChangeRequest.placeholderForCreatedAssetCollection
-                    
-                    let assetRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
-                    albumChangeRequest.addAssets([assetRequest.placeholderForCreatedAsset!] as NSArray)
-                }
-            }
-        } catch {
-            throw PhotoLibraryError.unknown(error)
-        }
+    /// Save image to a specific album (creates album if it doesn't exist) (platform-agnostic)
+    func saveImageToAlbum(_ image: PlatformImage, albumName: String = "My Funny Valentine") async throws {
+        try await platformService.saveImageToAlbum(image, albumName: albumName)
     }
+    
+    #if os(iOS) || os(visionOS)
+    /// Legacy method for UIImage compatibility (iOS/visionOS only)
+    @available(*, deprecated, message: "Use saveImage(_:) with PlatformImage instead")
+    func saveImage(_ image: UIImage) async throws {
+        try await saveImage(image as PlatformImage)
+    }
+    
+    /// Legacy method for UIImage compatibility (iOS/visionOS only)
+    @available(*, deprecated, message: "Use saveImageToAlbum(_:albumName:) with PlatformImage instead")
+    func saveImageToAlbum(_ image: UIImage, albumName: String = "My Funny Valentine") async throws {
+        try await saveImageToAlbum(image as PlatformImage, albumName: albumName)
+    }
+    #endif
 }
