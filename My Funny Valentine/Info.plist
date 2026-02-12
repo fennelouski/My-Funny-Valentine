@@ -2,15 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<!-- iOS/visionOS: Photo library access -->
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need access to your photos to create personalized Valentine's cards.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>We need permission to save your Valentine's cards to your photo library.</string>
+	<!-- iOS only: Camera access -->
 	<key>NSCameraUsageDescription</key>
 	<string>We need camera access to take photos for your cards.</string>
+	<!-- iOS/visionOS: Background modes -->
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<!-- macOS: App configuration -->
+	<key>LSMinimumSystemVersion</key>
+	<string>26.2</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2026 Nathan Fennel. All rights reserved.</string>
 </dict>
 </plist>
