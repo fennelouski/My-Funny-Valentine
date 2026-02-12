@@ -6,14 +6,20 @@
 //
 
 import Foundation
-import UIKit
 import SwiftUI
 import UniformTypeIdentifiers
+
+#if os(iOS)
+import UIKit
+#elseif os(macOS)
+import AppKit
+#endif
 
 enum ShareError: LocalizedError {
     case imageGenerationFailed
     case appNotInstalled(String)
     case shareFailed(Error)
+    case platformNotSupported
     
     var errorDescription: String? {
         switch self {
@@ -23,6 +29,8 @@ enum ShareError: LocalizedError {
             return "\(appName) is not installed. Please install it from the App Store."
         case .shareFailed(let error):
             return "Share failed: \(error.localizedDescription)"
+        case .platformNotSupported:
+            return "This sharing method is not supported on this platform."
         }
     }
 }
@@ -32,15 +40,33 @@ class ShareService {
     
     private init() {}
     
-    /// Check if an app is installed via URL scheme
+    #if os(iOS)
+    /// Check if an app is installed via URL scheme (iOS only)
     func isAppInstalled(urlScheme: String) -> Bool {
         guard let url = URL(string: "\(urlScheme)://") else { return false }
         return UIApplication.shared.canOpenURL(url)
     }
+    #endif
     
-    /// Share image using iOS Share Sheet
-    func shareImage(_ image: UIImage, from viewController: UIViewController, completion: ((Bool, Error?) -> Void)? = nil) {
-        guard let imageData = image.jpegData(compressionQuality: 0.9) else {
+    /// Share image using platform-appropriate sharing mechanism
+    func shareImage(_ image: PlatformImage, completion: ((Bool, Error?) -> Void)? = nil) {
+        #if os(iOS)
+        // iOS sharing requires a view controller, so this method signature is kept for compatibility
+        // But we'll use the platform abstraction internally
+        completion?(false, ShareError.platformNotSupported)
+        #elseif os(macOS)
+        // macOS sharing requires a view
+        completion?(false, ShareError.platformNotSupported)
+        #elseif os(visionOS)
+        // visionOS uses SwiftUI ShareLink
+        completion?(false, ShareError.platformNotSupported)
+        #endif
+    }
+    
+    #if os(iOS)
+    /// Share image using iOS Share Sheet (iOS-specific)
+    func shareImage(_ image: PlatformImage, from viewController: UIViewController, completion: ((Bool, Error?) -> Void)? = nil) {
+        guard let imageData = PlatformImageUtils.jpegData(from: image, compressionQuality: 0.9) else {
             completion?(false, ShareError.imageGenerationFailed)
             return
         }
@@ -68,14 +94,18 @@ class ShareService {
         
         viewController.present(activityViewController, animated: true)
     }
+    #endif
     
-    /// Share image optimized for Instagram
-    func shareToInstagram(_ image: UIImage, from viewController: UIViewController, isPortrait: Bool = false) throws {
+    #if os(iOS)
+    /// Share image optimized for Instagram (iOS only)
+    func shareToInstagram(_ image: PlatformImage, from viewController: UIViewController, isPortrait: Bool = false) throws {
         guard isAppInstalled(urlScheme: "instagram") else {
             throw ShareError.appNotInstalled("Instagram")
         }
         
-        guard let optimizedData = ImageOptimizer.shared.optimizeForInstagram(image, isPortrait: isPortrait) else {
+        // Convert PlatformImage to UIImage for ImageOptimizer (iOS-specific)
+        guard let uiImage = image as? UIImage,
+              let optimizedData = ImageOptimizer.shared.optimizeForInstagram(uiImage, isPortrait: isPortrait) else {
             throw ShareError.imageGenerationFailed
         }
         
@@ -88,33 +118,32 @@ class ShareService {
         let documentController = UIDocumentInteractionController(url: tempURL)
         documentController.uti = UTType.jpeg.identifier
         
-        if let popover = documentController.popoverPresentationController {
-            popover.sourceView = viewController.view
-            popover.sourceRect = CGRect(x: viewController.view.bounds.midX, y: viewController.view.bounds.midY, width: 0, height: 0)
-        }
-        
+        // Note: UIDocumentInteractionController doesn't have popoverPresentationController
+        // It uses presentOpenInMenu which handles its own presentation
         documentController.presentOpenInMenu(from: .zero, in: viewController.view, animated: true)
     }
     
-    /// Share image optimized for Facebook
-    func shareToFacebook(_ image: UIImage, from viewController: UIViewController) throws {
+    /// Share image optimized for Facebook (iOS only)
+    func shareToFacebook(_ image: PlatformImage, from viewController: UIViewController) throws {
         // Facebook sharing is typically done through the standard share sheet
         // But we can optimize the image first
-        guard let optimizedData = ImageOptimizer.shared.optimize(image, for: .facebook),
-              let optimizedImage = UIImage(data: optimizedData) else {
+        guard let uiImage = image as? UIImage,
+              let optimizedData = ImageOptimizer.shared.optimize(uiImage, for: .facebook),
+              let optimizedImage = PlatformImageUtils.image(from: optimizedData) else {
             throw ShareError.imageGenerationFailed
         }
         
         shareImage(optimizedImage, from: viewController)
     }
     
-    /// Share image optimized for TikTok
-    func shareToTikTok(_ image: UIImage, from viewController: UIViewController) throws {
+    /// Share image optimized for TikTok (iOS only)
+    func shareToTikTok(_ image: PlatformImage, from viewController: UIViewController) throws {
         guard isAppInstalled(urlScheme: "snssdk1233") else {
             throw ShareError.appNotInstalled("TikTok")
         }
         
-        guard let optimizedData = ImageOptimizer.shared.optimizeForTikTok(image) else {
+        guard let uiImage = image as? UIImage,
+              let optimizedData = ImageOptimizer.shared.optimizeForTikTok(uiImage) else {
             throw ShareError.imageGenerationFailed
         }
         
@@ -127,18 +156,14 @@ class ShareService {
         let documentController = UIDocumentInteractionController(url: tempURL)
         documentController.uti = UTType.jpeg.identifier
         
-        if let popover = documentController.popoverPresentationController {
-            popover.sourceView = viewController.view
-            popover.sourceRect = CGRect(x: viewController.view.bounds.midX, y: viewController.view.bounds.midY, width: 0, height: 0)
-        }
-        
         documentController.presentOpenInMenu(from: .zero, in: viewController.view, animated: true)
     }
     
-    /// Share image optimized for email
-    func shareToEmail(_ image: UIImage, from viewController: UIViewController) {
-        guard let optimizedData = ImageOptimizer.shared.optimize(image, for: .email),
-              let optimizedImage = UIImage(data: optimizedData) else {
+    /// Share image optimized for email (iOS only)
+    func shareToEmail(_ image: PlatformImage, from viewController: UIViewController) {
+        guard let uiImage = image as? UIImage,
+              let optimizedData = ImageOptimizer.shared.optimize(uiImage, for: .email),
+              let optimizedImage = PlatformImageUtils.image(from: optimizedData) else {
             // Fallback to regular share if optimization fails
             shareImage(image, from: viewController)
             return
@@ -147,24 +172,28 @@ class ShareService {
         shareImage(optimizedImage, from: viewController)
     }
     
-    /// Share image optimized for Messages
-    func shareToMessages(_ image: UIImage, from viewController: UIViewController) {
-        guard let optimizedData = ImageOptimizer.shared.optimize(image, for: .messages),
-              let optimizedImage = UIImage(data: optimizedData) else {
+    /// Share image optimized for Messages (iOS only)
+    func shareToMessages(_ image: PlatformImage, from viewController: UIViewController) {
+        guard let uiImage = image as? UIImage,
+              let optimizedData = ImageOptimizer.shared.optimize(uiImage, for: .messages),
+              let optimizedImage = PlatformImageUtils.image(from: optimizedData) else {
             shareImage(image, from: viewController)
             return
         }
         
         shareImage(optimizedImage, from: viewController)
     }
+    #endif
     
-    /// Save image to Photos library
-    func saveToPhotos(_ image: UIImage) async throws {
-        try await PhotoLibraryManager.shared.saveImage(image)
+    /// Save image to Photos library (platform-agnostic)
+    func saveToPhotos(_ image: PlatformImage) async throws {
+        let photoLibraryService = PlatformPhotoLibraryFactory.createPhotoLibraryService()
+        try await photoLibraryService.saveImage(image)
     }
     
-    /// Save image to Photos library in album
-    func saveToPhotosAlbum(_ image: UIImage, albumName: String = "My Funny Valentine") async throws {
-        try await PhotoLibraryManager.shared.saveImageToAlbum(image, albumName: albumName)
+    /// Save image to Photos library in album (platform-agnostic)
+    func saveToPhotosAlbum(_ image: PlatformImage, albumName: String = "My Funny Valentine") async throws {
+        let photoLibraryService = PlatformPhotoLibraryFactory.createPhotoLibraryService()
+        try await photoLibraryService.saveImageToAlbum(image, albumName: albumName)
     }
 }
