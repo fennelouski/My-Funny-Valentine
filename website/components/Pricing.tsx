@@ -2,7 +2,7 @@
 
 export default function Pricing() {
   return (
-    <section className="pricing section">
+    <section id="pricing" className="pricing section">
       <div className="container">
         <h2 className="section-title">Simple Pricing</h2>
         <div className="pricing-grid">

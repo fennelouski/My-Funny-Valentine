@@ -23,15 +23,14 @@ jobs:
     
     - name: List available simulators
       run: xcrun simctl list devices available
-    
+
     - name: Build and test
       run: |
         xcodebuild test \
           -project "My Funny Valentine.xcodeproj" \
           -scheme "My Funny Valentine" \
           -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
-          -enableCodeCoverage YES \
-          -quiet
+          -enableCodeCoverage YES
     
     - name: Generate code coverage report
       run: |

@@ -35,7 +35,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="features section">
+    <section id="features" className="features section">
       <div className="container">
         <h2 className="section-title">Powerful Features</h2>
         <div className="features-grid">

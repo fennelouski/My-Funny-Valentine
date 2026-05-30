@@ -61,15 +61,14 @@ class UsageTracker: ObservableObject {
         
         if prefs.isPremium {
             // Monthly reset for premium users
-            if let lastReset = prefs.lastResetDate,
-               let nextReset = calendar.date(byAdding: .month, value: 1, to: lastReset),
+            let lastReset = prefs.lastResetDate
+            if let nextReset = calendar.date(byAdding: .month, value: 1, to: lastReset),
                now >= nextReset {
                 resetUsage()
             }
         } else {
             // Daily reset for free users
-            if let lastReset = prefs.lastResetDate,
-               !calendar.isDateInToday(lastReset) {
+            if !calendar.isDateInToday(prefs.lastResetDate) {
                 resetUsage()
             }
         }

@@ -40,7 +40,7 @@ export default function Screenshots() {
 
   return (
     <>
-      <section className="screenshots section">
+      <section id="screenshots" className="screenshots section">
         <div className="container">
           <h2 className="section-title">See It In Action</h2>
           <div className="screenshots-grid">

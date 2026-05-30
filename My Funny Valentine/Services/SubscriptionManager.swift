@@ -70,9 +70,6 @@ class SubscriptionManager: ObservableObject {
             
             // No active subscription found
             await updateSubscriptionStatus(.free, expiresAt: nil)
-        } catch {
-            print("Error checking subscription status: \(error)")
-            errorMessage = "Failed to check subscription status"
         }
     }
     
@@ -104,7 +101,7 @@ class SubscriptionManager: ObservableObject {
                 modelContext.insert(userPrefs)
             }
             
-            userPrefs.status = status
+            userPrefs.subscriptionStatus = status
             userPrefs.subscriptionExpiresAt = expiresAt
             
             try modelContext.save()
