@@ -134,14 +134,12 @@ export async function generateImage(
   const fullPrompt = `${description}. Style: ${stylePrompt[style]}`;
 
   try {
-    // Use dall-e-3 for image generation (supports quality and style parameters)
+    // Use gpt-image-1.5 for image generation (dall-e-3 was shut down May 12, 2026)
     const response = await openai.images.generate({
-      model: 'dall-e-3',
+      model: 'gpt-image-1.5',
       prompt: fullPrompt,
       n: 1,
       size: '1024x1024',
-      quality: 'standard', // Use 'standard' for cost optimization, 'hd' for higher quality
-      style: 'vivid', // 'vivid' or 'natural'
     });
 
     const imageUrl = response.data[0]?.url;
