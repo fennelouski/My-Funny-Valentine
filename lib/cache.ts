@@ -1,5 +1,21 @@
 import { kv } from '@vercel/kv';
 import { hashString } from './utils';
+import { buildImagePublicUrl } from './image-host';
+
+const IMAGE_CACHE_TTL_SECONDS = 30 * 24 * 60 * 60;
+
+export interface CachedImageData {
+  b64: string;
+  contentType: string;
+}
+
+function imageDataKey(cacheKey: string): string {
+  return `image-data:${cacheKey}`;
+}
+
+export function getImageCacheKey(description: string, style: string): string {
+  return hashString(`${description.toLowerCase().trim()}:${style}`);
+}
 
 /**
  * Cache sayings response
@@ -9,7 +25,7 @@ export async function cacheSayings(
   sayings: string[]
 ): Promise<void> {
   const cacheKey = `sayings:${hashString(inspiration.toLowerCase().trim())}`;
-  await kv.set(cacheKey, sayings, { ex: 7 * 24 * 60 * 60 }); // 7 days
+  await kv.set(cacheKey, sayings, { ex: 7 * 24 * 60 * 60 });
 }
 
 /**
@@ -23,28 +39,41 @@ export async function getCachedSayings(
 }
 
 /**
- * Cache image URL
+ * Cache generated image bytes and return a stable public URL.
  */
 export async function cacheImage(
   description: string,
   style: string,
-  imageUrl: string
-): Promise<void> {
-  const cacheKey = `images:${hashString(
-    `${description.toLowerCase().trim()}:${style}`
-  )}`;
-  await kv.set(cacheKey, imageUrl, { ex: 30 * 24 * 60 * 60 }); // 30 days
+  imageData: CachedImageData
+): Promise<string> {
+  const cacheKey = getImageCacheKey(description, style);
+  await kv.set(imageDataKey(cacheKey), imageData, {
+    ex: IMAGE_CACHE_TTL_SECONDS,
+  });
+  return buildImagePublicUrl(cacheKey);
 }
 
 /**
- * Get cached image URL
+ * Get cached image public URL if image data exists.
  */
 export async function getCachedImage(
   description: string,
   style: string
 ): Promise<string | null> {
-  const cacheKey = `images:${hashString(
-    `${description.toLowerCase().trim()}:${style}`
-  )}`;
-  return await kv.get<string>(cacheKey);
+  const cacheKey = getImageCacheKey(description, style);
+  const cached = await kv.get<CachedImageData>(imageDataKey(cacheKey));
+  if (!cached) {
+    return null;
+  }
+
+  return buildImagePublicUrl(cacheKey);
+}
+
+/**
+ * Load cached image bytes for serving via the image endpoint.
+ */
+export async function getCachedImageData(
+  cacheKey: string
+): Promise<CachedImageData | null> {
+  return kv.get<CachedImageData>(imageDataKey(cacheKey));
 }

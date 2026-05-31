@@ -1,13 +1,50 @@
 import OpenAI from 'openai';
+import {
+  GeneratedImageData,
+  ImageOutputFormat,
+  parseGeneratedImageResponse,
+} from './image-host';
+import { buildChatCompletionParams } from './openai-chat';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-// Use gpt-oss-20b as primary (cheapest at $0.03/1M tokens)
-// Fallback to gpt-5-nano if gpt-oss-20b unavailable
-const MODEL = process.env.OPENAI_MODEL || 'gpt-oss-20b';
-const FALLBACK_MODEL = 'gpt-5-nano';
+// GPT-5.x chat models (see https://developers.openai.com/api/docs/models)
+const MODEL = process.env.OPENAI_MODEL || 'gpt-5-nano';
+const FALLBACK_MODEL = process.env.OPENAI_FALLBACK_MODEL || 'gpt-5.4-nano';
+const IMAGE_MODEL = process.env.OPENAI_IMAGE_MODEL || 'gpt-image-2';
+const IMAGE_OUTPUT_FORMAT: ImageOutputFormat =
+  process.env.OPENAI_IMAGE_FORMAT === 'png' ||
+  process.env.OPENAI_IMAGE_FORMAT === 'webp'
+    ? process.env.OPENAI_IMAGE_FORMAT
+    : 'jpeg';
+
+type ChatMessage = OpenAI.Chat.Completions.ChatCompletionMessageParam;
+
+async function createChatCompletion(
+  messages: ChatMessage[],
+  maxOutputTokens: number
+): Promise<OpenAI.Chat.Completions.ChatCompletion> {
+  try {
+    return await openai.chat.completions.create(
+      buildChatCompletionParams(MODEL, messages, maxOutputTokens)
+    );
+  } catch (primaryError) {
+    console.warn(`Primary model ${MODEL} failed, trying fallback:`, primaryError);
+    return openai.chat.completions.create(
+      buildChatCompletionParams(FALLBACK_MODEL, messages, maxOutputTokens)
+    );
+  }
+}
+
+function parseSayings(responseText: string): string[] {
+  return responseText
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0 && !line.match(/^\d+\./))
+    .slice(0, 10);
+}
 
 /**
  * Generate 10 Valentine's sayings based on inspiration
@@ -24,132 +61,84 @@ Requirements:
 Sayings:`;
 
   try {
-    let completion;
-    try {
-      completion = await openai.chat.completions.create({
-        model: MODEL,
-        messages: [
-          {
-            role: 'system',
-            content:
-              'You are a creative writer specializing in Valentine\'s Day messages. Generate unique, heartfelt sayings.',
-          },
-          {
-            role: 'user',
-            content: prompt,
-          },
-        ],
-        temperature: 0.8,
-        max_tokens: 500,
-      });
-    } catch (primaryError) {
-      // Fallback to gpt-5-nano if gpt-oss-20b fails
-      console.warn(`Primary model ${MODEL} failed, trying fallback:`, primaryError);
-      completion = await openai.chat.completions.create({
-        model: FALLBACK_MODEL,
-        messages: [
-          {
-            role: 'system',
-            content:
-              'You are a creative writer specializing in Valentine\'s Day messages. Generate unique, heartfelt sayings.',
-          },
-          {
-            role: 'user',
-            content: prompt,
-          },
-        ],
-        temperature: 0.8,
-        max_tokens: 500,
-      });
-    }
+    const completion = await createChatCompletion(
+      [
+        {
+          role: 'system',
+          content:
+            'You are a creative writer specializing in Valentine\'s Day messages. Generate unique, heartfelt sayings.',
+        },
+        {
+          role: 'user',
+          content: prompt,
+        },
+      ],
+      500
+    );
 
     const responseText = completion.choices[0]?.message?.content || '';
-    const sayings = responseText
-      .split('\n')
-      .map((line) => line.trim())
-      .filter((line) => line.length > 0 && !line.match(/^\d+\./)) // Remove numbering
-      .slice(0, 10); // Ensure exactly 10
+    const sayings = parseSayings(responseText);
 
-    // If we don't have 10 sayings, pad with generated ones
     if (sayings.length < 10) {
       const additionalPrompt = `Generate ${10 - sayings.length} more unique Valentine's Day sayings based on: "${inspiration}". Return only the sayings, one per line.`;
-      let additionalCompletion;
-      try {
-        additionalCompletion = await openai.chat.completions.create({
-          model: MODEL,
-          messages: [
-            {
-              role: 'user',
-              content: additionalPrompt,
-            },
-          ],
-          temperature: 0.8,
-          max_tokens: 300,
-        });
-      } catch (primaryError) {
-        // Fallback to gpt-5-nano if gpt-oss-20b fails
-        additionalCompletion = await openai.chat.completions.create({
-          model: FALLBACK_MODEL,
-          messages: [
-            {
-              role: 'user',
-              content: additionalPrompt,
-            },
-          ],
-          temperature: 0.8,
-          max_tokens: 300,
-        });
-      }
+      const additionalCompletion = await createChatCompletion(
+        [
+          {
+            role: 'user',
+            content: additionalPrompt,
+          },
+        ],
+        300
+      );
 
       const additionalText = additionalCompletion.choices[0]?.message?.content || '';
-      const additionalSayings = additionalText
-        .split('\n')
-        .map((line) => line.trim())
-        .filter((line) => line.length > 0 && !line.match(/^\d+\./))
-        .slice(0, 10 - sayings.length);
-
-      sayings.push(...additionalSayings);
+      sayings.push(...parseSayings(additionalText).slice(0, 10 - sayings.length));
     }
 
-    return sayings.slice(0, 10); // Ensure exactly 10
+    return sayings.slice(0, 10);
   } catch (error) {
     console.error('OpenAI API error:', error);
     throw new Error('Failed to generate sayings');
   }
 }
 
+const STYLE_PROMPTS = {
+  valentine:
+    'Valentine\'s Day themed, romantic, hearts, red and pink colors, vivid colors and warm lighting',
+  romantic: 'Romantic, soft, dreamy, warm colors, natural lighting',
+  funny: 'Playful, humorous, lighthearted, colorful, vivid illustration style',
+} as const;
+
 /**
- * Generate an image using DALL-E
+ * Generate an image using GPT Image models (returns base64 payload, not a URL).
  */
 export async function generateImage(
   description: string,
   style: 'valentine' | 'romantic' | 'funny'
-): Promise<string> {
-  const stylePrompt = {
-    valentine: 'Valentine\'s Day themed, romantic, hearts, red and pink colors',
-    romantic: 'Romantic, soft, dreamy, warm colors',
-    funny: 'Playful, humorous, lighthearted, colorful',
-  };
-
-  const fullPrompt = `${description}. Style: ${stylePrompt[style]}`;
+): Promise<GeneratedImageData> {
+  const fullPrompt = `${description}. Style: ${STYLE_PROMPTS[style]}`;
 
   try {
-    // Use gpt-image-1.5 for image generation (dall-e-3 was shut down May 12, 2026)
     const response = await openai.images.generate({
-      model: 'gpt-image-1.5',
+      model: IMAGE_MODEL,
       prompt: fullPrompt,
       n: 1,
       size: '1024x1024',
+      quality: 'medium',
+      output_format: IMAGE_OUTPUT_FORMAT,
+      output_compression: IMAGE_OUTPUT_FORMAT === 'jpeg' ? 85 : undefined,
     });
 
-    const imageUrl = response.data[0]?.url;
-    if (!imageUrl) {
-      throw new Error('No image URL returned from OpenAI');
-    }
-
-    return imageUrl;
+    return parseGeneratedImageResponse(response.data, IMAGE_OUTPUT_FORMAT);
   } catch (error) {
     console.error('OpenAI Image API error:', error);
     throw new Error('Failed to generate image');
   }
 }
+
+export {
+  MODEL,
+  FALLBACK_MODEL,
+  IMAGE_MODEL,
+  IMAGE_OUTPUT_FORMAT,
+};

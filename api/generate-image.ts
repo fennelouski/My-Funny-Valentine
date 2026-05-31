@@ -79,11 +79,12 @@ export default async function handler(
       });
     }
 
-    // Generate image
-    const imageUrl = await generateImage(description, imageStyle);
-
-    // Cache result
-    await cacheImage(normalizedDescription, imageStyle, imageUrl);
+    // Generate image and cache the base64 payload behind a stable URL
+    const generatedImage = await generateImage(description, imageStyle);
+    const imageUrl = await cacheImage(normalizedDescription, imageStyle, {
+      b64: generatedImage.b64Json,
+      contentType: generatedImage.contentType,
+    });
 
     // Record usage (cache miss)
     await recordImageGeneration(userId);

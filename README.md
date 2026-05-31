@@ -33,7 +33,7 @@ This repository contains three main components:
 - **Runtime**: Node.js 18+
 - **Features**:
   - AI sayings generation
-  - Image generation (DALL-E 3)
+  - Image generation (GPT Image 2)
   - Subscription validation
   - Rate limiting
   - Caching (Vercel KV)
@@ -56,7 +56,7 @@ This repository contains three main components:
 - Vercel Serverless Functions
 - Node.js 18+
 - TypeScript
-- OpenAI API (gpt-oss-20b, dall-e-3)
+- OpenAI API (gpt-5-nano, gpt-image-2)
 - Vercel KV (Redis-compatible caching)
 
 ## Getting Started
@@ -88,6 +88,9 @@ This repository contains three main components:
 2. **Set up environment variables**:
    - Create `.env.local` with:
      - `OPENAI_API_KEY`: Your OpenAI API key
+     - `OPENAI_MODEL`: Optional chat model override (default: `gpt-5-nano`)
+     - `OPENAI_FALLBACK_MODEL`: Optional fallback chat model (default: `gpt-5.4-nano`)
+     - `OPENAI_IMAGE_MODEL`: Optional image model override (default: `gpt-image-2`)
      - `KV_REST_API_URL`: Vercel KV URL
      - `KV_REST_API_TOKEN`: Vercel KV token
 
@@ -228,8 +231,9 @@ npm test
 
 ## Cost Optimization
 
-- **Primary Model**: `gpt-oss-20b` at $0.03 per 1M input tokens
-- **Image Model**: `dall-e-3` with `quality: 'standard'`
+- **Primary chat model**: `gpt-5-nano` (override with `OPENAI_MODEL`)
+- **Fallback chat model**: `gpt-5.4-nano` (override with `OPENAI_FALLBACK_MODEL`)
+- **Image model**: `gpt-image-2` with `quality: 'medium'` (override with `OPENAI_IMAGE_MODEL`)
 - **Aggressive Caching**: Reduces API calls by ~90%
 - Estimated costs: <$10/month for 1000 unique requests
 

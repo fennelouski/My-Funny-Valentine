@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vercel dev",
     "build": "tsc",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@vercel/kv": "^0.2.0",
@@ -15,7 +17,8 @@
   "devDependencies": {
     "@types/node": "^20.0.0",
     "@vercel/node": "^3.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vitest": "^3.2.4"
   },
   "engines": {
     "node": ">=18.0.0"
