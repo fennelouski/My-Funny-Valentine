@@ -159,11 +159,32 @@ This product **must be created in App Store Connect** — it does not exist yet.
 Until it does, `SubscriptionManager.purchasePremium()` throws
 `SubscriptionError.productNotFound`.
 
-> 🚨 **Review risk.** The premium tier's headline benefit is AI *image*
-> generation, which requires the backend in `api/`. That backend is not
-> deployed. Shipping a paid subscription whose main feature cannot work is a
-> likely rejection under **Guideline 2.1 / 3.1.1**. Either deploy the backend
-> first, or ship 1.0 with no subscription and add it later.
+### How entitlement works
+
+The server grants premium on exactly one basis: a StoreKit 2 transaction
+signed by Apple, verified with Apple's `app-store-server-library`.
+
+1. `SubscriptionManager.checkSubscriptionStatus()` finds a verified entitlement
+   and posts its `jwsRepresentation` to `/api/validate-subscription`.
+2. `lib/app-store.ts` verifies the signature against Apple's root certificates,
+   checks the bundle ID and product ID, and reads the expiry.
+3. Only then does `redeemSignedTransaction` write `subscription:{userId}` to KV.
+
+Nothing else writes that key, so a client cannot promote itself by sending a
+chosen `userId`. If Apple root certificates are not configured, verification
+**fails closed** — premium is never granted.
+
+> 🚨 **Still a review risk until the backend is deployed.** The premium tier's
+> headline benefit is AI *image* generation, which lives in `api/`. The code
+> now works and is tested, but nothing is deployed. Shipping a paid
+> subscription whose main feature 403s is a likely rejection under
+> **Guideline 2.1 / 3.1.1**. Either deploy the backend first, or ship 1.0 with
+> no subscription and add it later.
+
+> ⚠️ **Not verified end to end.** The verification logic is unit-tested with a
+> mocked verifier, but has never seen a real Apple-signed transaction. Make a
+> sandbox purchase and confirm `/api/generate-image` returns 200 before you
+> charge anyone.
 
 ---
 
@@ -213,9 +234,27 @@ To point at a deployed backend, add to `Info.plist`:
 <string>https://your-app.vercel.app</string>
 ```
 
-The backend in `api/` + `lib/` has **not been verified** — it was never built or
-tested in this repo's current state (Node isn't installed on the dev machine).
-Treat it as unvalidated until you deploy and exercise it.
+### Backend environment variables
+
+| Variable | Required | Purpose |
+|---|---|---|
+| `OPENAI_API_KEY` | ✅ | Sayings and image generation |
+| `KV_REST_API_URL` / `KV_REST_API_TOKEN` | ✅ | Vercel KV (cache, rate limits, entitlements) |
+| `APPLE_ROOT_CERTS` | ✅ *for premium* | Comma-separated base64 DER of Apple's root CAs, from <https://www.apple.com/certificateauthority/>. Without these, premium is never granted. |
+| `APP_STORE_ENVIRONMENT` | recommended | `Sandbox` (default) or `Production` |
+| `APP_APPLE_ID` | production only | Numeric App ID from App Store Connect |
+| `APP_BUNDLE_ID` | optional | Defaults to `com.nathanfennel.My-Funny-Valentine` |
+| `PREMIUM_PRODUCT_ID` | optional | Defaults to the subscription ID in §5 |
+| `OPENAI_MODEL` / `OPENAI_IMAGE_MODEL` | optional | Model overrides |
+
+The backend now **builds and its tests pass** (`npm run type-check`,
+`npm test` — 25 tests). Its production dependency tree has no known
+vulnerabilities. It has still never been deployed or called by a real device,
+so treat live behaviour as unproven until you exercise it.
+
+Verify the OpenAI model IDs in `lib/openai.ts` against the current model list
+before deploying — a wrong name fails every request at runtime, and
+type-checking cannot catch it.
 
 ---
 

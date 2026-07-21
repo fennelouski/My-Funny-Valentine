@@ -21,6 +21,7 @@ class SubscriptionManager: ObservableObject {
     @Published var errorMessage: String?
     
     private let productId = "com.nathanfennel.My-Funny-Valentine.premium"
+    private let apiService = APIService.shared
     private var updateListenerTask: Task<Void, Never>?
     private var modelContext: ModelContext?
     
@@ -43,32 +44,46 @@ class SubscriptionManager: ObservableObject {
     func checkSubscriptionStatus() async {
         isLoading = true
         defer { isLoading = false }
-        
-        do {
-            // Check current entitlements
-            for await result in Transaction.currentEntitlements {
-                if case .verified(let transaction) = result {
-                    if transaction.productID == productId {
-                        // Check if subscription is still valid
-                        if let expirationDate = transaction.expirationDate {
-                            if expirationDate > Date() {
-                                await updateSubscriptionStatus(.premium, expiresAt: expirationDate)
-                                return
-                            } else {
-                                await updateSubscriptionStatus(.expired, expiresAt: expirationDate)
-                                return
-                            }
-                        } else {
-                            // Non-expiring subscription (shouldn't happen for monthly)
-                            await updateSubscriptionStatus(.premium, expiresAt: nil)
-                            return
-                        }
-                    }
-                }
+
+        // Check current entitlements
+        for await result in Transaction.currentEntitlements {
+            guard case .verified(let transaction) = result,
+                  transaction.productID == productId else { continue }
+
+            if let expirationDate = transaction.expirationDate {
+                await updateSubscriptionStatus(
+                    expirationDate > Date() ? .premium : .expired,
+                    expiresAt: expirationDate
+                )
+            } else {
+                // Non-expiring subscription (shouldn't happen for monthly)
+                await updateSubscriptionStatus(.premium, expiresAt: nil)
             }
-            
-            // No active subscription found
-            await updateSubscriptionStatus(.free, expiresAt: nil)
+
+            // Hand the Apple-signed transaction to the backend; server-side
+            // premium features stay locked until it verifies this.
+            await syncEntitlementWithServer(signedTransaction: result.jwsRepresentation)
+            return
+        }
+
+        // No active subscription found
+        await updateSubscriptionStatus(.free, expiresAt: nil)
+    }
+
+    /// Push the signed transaction to the backend so server-gated features
+    /// (image generation) unlock. No-op when no backend is configured.
+    private func syncEntitlementWithServer(signedTransaction: String) async {
+        guard await apiService.isConfigured else { return }
+
+        do {
+            _ = try await apiService.validateSubscription(
+                userId: UserPreferencesService.deviceUserId(),
+                signedTransaction: signedTransaction
+            )
+        } catch {
+            // The local StoreKit entitlement still drives the UI. A sync
+            // failure only means server features stay locked until we retry.
+            print("Subscription sync failed: \(error)")
         }
     }
     

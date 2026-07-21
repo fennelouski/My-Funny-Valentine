@@ -14,7 +14,7 @@ export default async function handler(
   }
 
   try {
-    const { userId, receipt } = req.body;
+    const { userId, signedTransaction } = req.body;
 
     // Validate input
     if (!userId || typeof userId !== 'string') {
@@ -23,8 +23,15 @@ export default async function handler(
       );
     }
 
-    // Validate subscription status
-    const subscriptionInfo = await validateSubscription(userId, receipt);
+    if (signedTransaction !== undefined && typeof signedTransaction !== 'string') {
+      return res.status(400).json(
+        createErrorResponse('signedTransaction must be a string', 'INVALID_INPUT')
+      );
+    }
+
+    // Verifies the transaction with Apple when one is supplied, then reads
+    // back the stored entitlement.
+    const subscriptionInfo = await validateSubscription(userId, signedTransaction);
 
     return res.status(200).json({
       isPremium: subscriptionInfo.isPremium,

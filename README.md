@@ -91,11 +91,15 @@ This repository contains three main components:
 2. **Set up environment variables**:
    - Create `.env.local` with:
      - `OPENAI_API_KEY`: Your OpenAI API key
-     - `OPENAI_MODEL`: Optional chat model override (default: `gpt-5-nano`)
-     - `OPENAI_FALLBACK_MODEL`: Optional fallback chat model (default: `gpt-5.4-nano`)
-     - `OPENAI_IMAGE_MODEL`: Optional image model override (default: `gpt-image-2`)
-     - `KV_REST_API_URL`: Vercel KV URL
-     - `KV_REST_API_TOKEN`: Vercel KV token
+     - `KV_REST_API_URL` / `KV_REST_API_TOKEN`: Vercel KV credentials
+     - `APPLE_ROOT_CERTS`: Comma-separated base64 DER of Apple's root CAs
+       (from <https://www.apple.com/certificateauthority/>). Required to grant
+       premium — subscription verification fails closed without it.
+     - `APP_STORE_ENVIRONMENT`: `Sandbox` (default) or `Production`
+     - `APP_APPLE_ID`: Numeric App ID, required in production
+     - `OPENAI_MODEL` / `OPENAI_FALLBACK_MODEL` / `OPENAI_IMAGE_MODEL`: optional overrides
+
+   See `app-store/SUBMISSION.md` for the full table.
 
 3. **Deploy to Vercel**:
    ```bash

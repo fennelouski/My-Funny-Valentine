@@ -88,13 +88,20 @@ actor APIService {
         return try JSONDecoder().decode(GenerateImageResponse.self, from: data)
     }
     
-    /// Validate subscription status
-    func validateSubscription(userId: String, receipt: String? = nil) async throws -> ValidateSubscriptionResponse {
+    /// Validate subscription status.
+    /// Pass the StoreKit 2 `jwsRepresentation` so the server can verify the
+    /// entitlement with Apple — the server grants premium on no other basis.
+    func validateSubscription(
+        userId: String,
+        signedTransaction: String? = nil
+    ) async throws -> ValidateSubscriptionResponse {
         let url = URL(string: "\(baseURL)/api/validate-subscription")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try JSONEncoder().encode(ValidateSubscriptionRequest(userId: userId, receipt: receipt))
+        request.httpBody = try JSONEncoder().encode(
+            ValidateSubscriptionRequest(userId: userId, signedTransaction: signedTransaction)
+        )
         
         let (data, response) = try await session.data(for: request)
         
@@ -138,7 +145,7 @@ nonisolated struct GenerateImageResponse: Decodable {
 
 nonisolated struct ValidateSubscriptionRequest: Encodable {
     let userId: String
-    let receipt: String?
+    let signedTransaction: String?
 }
 
 nonisolated struct ValidateSubscriptionResponse: Decodable {

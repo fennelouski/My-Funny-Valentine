@@ -1,4 +1,5 @@
 import { kv } from '@vercel/kv';
+import { verifySignedTransaction, VerifiedSubscription } from './app-store';
 
 export interface SubscriptionInfo {
   isPremium: boolean;
@@ -7,24 +8,72 @@ export interface SubscriptionInfo {
   remainingImageGenerations: number;
 }
 
+export interface StoredSubscription {
+  isPremium: boolean;
+  expiresAt: number | null;
+  originalTransactionId?: string;
+  environment?: string;
+  verifiedAt?: number;
+}
+
+function subscriptionKey(userId: string): string {
+  return `subscription:${userId}`;
+}
+
 /**
- * Validate subscription status for a user
- * In a real implementation, this would validate App Store receipts
- * For now, we'll use a simple KV-based storage
+ * Verify a StoreKit 2 signed transaction and persist the resulting entitlement.
+ *
+ * This is the only path that grants premium — nothing else writes the
+ * subscription key, so an unverified client cannot promote itself.
+ */
+export async function redeemSignedTransaction(
+  userId: string,
+  signedTransaction: string
+): Promise<VerifiedSubscription | null> {
+  const verified = await verifySignedTransaction(signedTransaction);
+  if (!verified) {
+    return null;
+  }
+
+  const stored: StoredSubscription = {
+    isPremium: verified.isActive,
+    expiresAt: verified.expiresAt,
+    originalTransactionId: verified.originalTransactionId,
+    environment: verified.environment,
+    verifiedAt: Date.now(),
+  };
+
+  // Keep the record a little past expiry so renewals and grace periods can be
+  // reconciled; a non-expiring entitlement is kept for a year.
+  const ttlSeconds = verified.expiresAt
+    ? Math.max(60, Math.ceil((verified.expiresAt - Date.now()) / 1000) + 7 * 24 * 60 * 60)
+    : 365 * 24 * 60 * 60;
+
+  await kv.set(subscriptionKey(userId), stored, { ex: ttlSeconds });
+
+  return verified;
+}
+
+/**
+ * Read the stored subscription state for a user.
+ *
+ * Premium is only ever granted by `redeemSignedTransaction`, which requires a
+ * transaction signed by Apple. Passing a `signedTransaction` here refreshes
+ * that state first.
  */
 export async function validateSubscription(
   userId: string,
-  receipt?: string
+  signedTransaction?: string
 ): Promise<SubscriptionInfo> {
+  if (signedTransaction) {
+    await redeemSignedTransaction(userId, signedTransaction);
+  }
+
   // Check subscription status in KV
-  const subscriptionKey = `subscription:${userId}`;
-  const subscription = await kv.get<{
-    isPremium: boolean;
-    expiresAt: number | null;
-  }>(subscriptionKey);
+  const subscription = await kv.get<StoredSubscription>(subscriptionKey(userId));
 
   const isPremium = subscription?.isPremium || false;
-  const expiresAt = subscription?.expiresAt || null;
+  const expiresAt = subscription?.expiresAt ?? null;
 
   // Check if subscription is still valid
   const isValid = isPremium && (expiresAt === null || expiresAt > Date.now());
