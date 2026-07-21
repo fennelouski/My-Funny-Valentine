@@ -74,8 +74,9 @@ struct CardTests {
             context.insert(card)
             try context.save()
             
+            let cardId = card.id
             let descriptor = FetchDescriptor<Card>(
-                predicate: #Predicate { $0.id == card.id }
+                predicate: #Predicate { $0.id == cardId }
             )
             let fetchedCards = try context.fetch(descriptor)
             

@@ -9,18 +9,18 @@ import Foundation
 @testable import My_Funny_Valentine
 
 class MockAPIService {
-    var generateSayingsResult: Result<SayingsResponse, APIError>?
-    var generateImageResult: Result<ImageResponse, APIError>?
+    var generateSayingsResult: Result<GenerateSayingsResponse, APIError>?
+    var generateImageResult: Result<GenerateImageResponse, APIError>?
     var delay: TimeInterval = 0
-    
+
     func generateSayings(
         inspiration: String,
         userId: String
-    ) async throws -> SayingsResponse {
+    ) async throws -> GenerateSayingsResponse {
         if delay > 0 {
             try await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
         }
-        
+
         if let result = generateSayingsResult {
             switch result {
             case .success(let response):
@@ -29,26 +29,25 @@ class MockAPIService {
                 throw error
             }
         }
-        
+
         // Default success response
-        return SayingsResponse(
+        return GenerateSayingsResponse(
             sayings: ["Test saying 1", "Test saying 2"],
             cached: false,
-            timestamp: Int64(Date().timeIntervalSince1970),
-            remainingRequests: 2,
-            resetAt: nil
+            timestamp: Date().timeIntervalSince1970,
+            remainingRequests: 2
         )
     }
-    
+
     func generateImage(
         description: String,
         style: ImageStyle,
         userId: String
-    ) async throws -> ImageResponse {
+    ) async throws -> GenerateImageResponse {
         if delay > 0 {
             try await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
         }
-        
+
         if let result = generateImageResult {
             switch result {
             case .success(let response):
@@ -57,9 +56,9 @@ class MockAPIService {
                 throw error
             }
         }
-        
+
         // Default success response
-        return ImageResponse(
+        return GenerateImageResponse(
             imageUrl: "https://example.com/image.png",
             cached: false,
             remainingGenerations: 9

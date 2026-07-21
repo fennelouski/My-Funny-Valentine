@@ -33,9 +33,9 @@ class ImageManagerViewModel {
                 imageData: processedData,
                 thumbnailData: thumbnailData
             )
-            faceImage.card = card
             modelContext.insert(faceImage)
-            card.faces.append(faceImage)
+            if card.faces == nil { card.faces = [] }
+            card.faces?.append(faceImage)
             card.modifiedAt = Date()
             
             try modelContext.save()
@@ -58,9 +58,9 @@ class ImageManagerViewModel {
                 source: source,
                 imageData: processedData
             )
-            cardImage.card = card
             modelContext.insert(cardImage)
-            card.images.append(cardImage)
+            if card.images == nil { card.images = [] }
+            card.images?.append(cardImage)
             card.modifiedAt = Date()
             
             try modelContext.save()

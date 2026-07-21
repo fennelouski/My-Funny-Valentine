@@ -72,8 +72,11 @@ This repository contains three main components:
    - Ensure CloudKit capability is enabled in Xcode
    - Set up CloudKit container in Apple Developer portal
 
-3. **Configure API endpoint**:
-   - Update `APIService.swift` with your backend API URL
+3. **Configure API endpoint** (optional):
+   - Add an `APIBaseURL` string to `Info.plist` pointing at your deployed backend.
+   - Until that's set, the app treats the hosted AI as unconfigured and
+     generates sayings **on-device**, so the app is fully usable with no backend.
+     The same fallback kicks in when the device is offline.
 
 4. **Run the app**:
    - Build and run in Xcode (⌘R)
@@ -161,7 +164,7 @@ Validate user's subscription status.
 ## Features
 
 ### Free Tier
-- 3 AI-generated sayings per day
+- 3 AI-generated sayings per day (unlimited on-device sayings when no backend is configured)
 - Basic card creation
 - CloudKit sync
 - Social sharing

@@ -165,10 +165,14 @@ struct SyncSettingsView: View {
 }
 
 #Preview {
-    NavigationStack {
+    let container = try! ModelContainer(
+        for: UserPreferences.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+    return NavigationStack {
         SyncSettingsView(
             syncService: CloudKitSyncService(
-                modelContext: ModelContext(ModelContainer(for: UserPreferences.self))
+                modelContext: ModelContext(container)
             )
         )
     }

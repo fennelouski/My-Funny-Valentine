@@ -45,10 +45,16 @@ class UserPreferencesService: ObservableObject {
     }
     
     private func getOrCreateUserId() -> String {
+        Self.deviceUserId()
+    }
+
+    /// Stable per-install identifier, shared by anything that needs to identify
+    /// this user to the backend.
+    static func deviceUserId() -> String {
         if let userId = UserDefaults.standard.string(forKey: "userId") {
             return userId
         }
-        
+
         let userId = UUID().uuidString
         UserDefaults.standard.set(userId, forKey: "userId")
         return userId

@@ -142,7 +142,11 @@ struct CardConflictPreview: View {
 }
 
 #Preview {
-    let modelContext = ModelContext(ModelContainer(for: Card.self))
+    let container = try! ModelContainer(
+        for: Card.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+    let modelContext = ModelContext(container)
     let card = Card()
     let localCard = Card()
     let cloudCard = Card()

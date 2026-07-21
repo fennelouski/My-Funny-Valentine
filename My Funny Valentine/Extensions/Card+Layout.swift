@@ -9,7 +9,10 @@ import SwiftUI
 extension Card {
     /// Mutable layout interface for editing - syncs with layoutData
     var layout: CardLayoutEditing {
-        CardLayoutEditing(card: self)
+        get { CardLayoutEditing(card: self) }
+        // CardLayoutEditing writes directly to the card (a reference type) in its
+        // own setters, so the setter here only needs to satisfy get-modify-set.
+        set { _ = newValue }
     }
 }
 

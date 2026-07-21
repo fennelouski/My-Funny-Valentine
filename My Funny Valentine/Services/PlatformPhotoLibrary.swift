@@ -32,14 +32,14 @@ class iOSPhotoLibraryService: PlatformPhotoLibraryProtocol {
     
     func saveImage(_ image: PlatformImage) async throws {
         let status = PHPhotoLibrary.authorizationStatus(for: .addOnly)
-        
-        guard status == .authorized || status == .limited else {
-            let newStatus = await requestAuthorization()
-            guard newStatus else {
+
+        if status != .authorized && status != .limited {
+            let granted = await requestAuthorization()
+            guard granted else {
                 throw PhotoLibraryError.permissionDenied
             }
         }
-        
+
         do {
             try await PHPhotoLibrary.shared().performChanges {
                 PHAssetChangeRequest.creationRequestForAsset(from: image)
@@ -51,14 +51,14 @@ class iOSPhotoLibraryService: PlatformPhotoLibraryProtocol {
     
     func saveImageToAlbum(_ image: PlatformImage, albumName: String = "My Funny Valentine") async throws {
         let status = PHPhotoLibrary.authorizationStatus(for: .addOnly)
-        
-        guard status == .authorized || status == .limited else {
-            let newStatus = await requestAuthorization()
-            guard newStatus else {
+
+        if status != .authorized && status != .limited {
+            let granted = await requestAuthorization()
+            guard granted else {
                 throw PhotoLibraryError.permissionDenied
             }
         }
-        
+
         do {
             var albumPlaceholder: PHObjectPlaceholder?
             

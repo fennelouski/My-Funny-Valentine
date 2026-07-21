@@ -20,14 +20,32 @@ struct My_Funny_ValentineApp: App {
             UserPreferences.self,
         ])
         
-        let modelConfiguration = ModelConfiguration(
+        // Prefer CloudKit-backed storage, but never crash on launch when it
+        // isn't available (no iCloud account, entitlement problems, etc.).
+        let cloudConfiguration = ModelConfiguration(
             schema: schema,
             isStoredInMemoryOnly: false,
             cloudKitDatabase: .automatic
         )
+        if let container = try? ModelContainer(for: schema, configurations: [cloudConfiguration]) {
+            return container
+        }
 
+        let localConfiguration = ModelConfiguration(
+            schema: schema,
+            isStoredInMemoryOnly: false,
+            cloudKitDatabase: .none
+        )
+        if let container = try? ModelContainer(for: schema, configurations: [localConfiguration]) {
+            return container
+        }
+
+        // Last resort so the app still opens; cards won't survive a relaunch.
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            return try ModelContainer(
+                for: schema,
+                configurations: [ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)]
+            )
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }

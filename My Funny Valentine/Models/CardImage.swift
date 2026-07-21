@@ -9,38 +9,63 @@ import Foundation
 import CoreGraphics
 import SwiftData
 
-enum ImageSource: String, Codable {
-    case imagePlayground
-    case sticker
-    case smartCutout
-    case photoImport
-}
+// ImageSource is defined in ImageSource.swift
 
 @Model
 final class CardImage {
     var id: UUID
     var cardId: UUID
-    var source: ImageSource
     var imageData: Data
-    var position: CGPoint
-    var size: CGSize
     var rotation: Double
-    
+
+    // Stored as primitives so SwiftData can persist them; see FaceImage for why.
+    var sourceRawValue: String
+    var positionX: Double
+    var positionY: Double
+    var sizeWidth: Double
+    var sizeHeight: Double
+
+    var syncedToCloud: Bool = false
+
+    var source: ImageSource {
+        get { ImageSource(rawValue: sourceRawValue) ?? .photoImport }
+        set { sourceRawValue = newValue.rawValue }
+    }
+
+    var position: CGPoint {
+        get { CGPoint(x: positionX, y: positionY) }
+        set {
+            positionX = newValue.x
+            positionY = newValue.y
+        }
+    }
+
+    var size: CGSize {
+        get { CGSize(width: sizeWidth, height: sizeHeight) }
+        set {
+            sizeWidth = newValue.width
+            sizeHeight = newValue.height
+        }
+    }
+
     init(
         id: UUID = UUID(),
         cardId: UUID,
         source: ImageSource,
         imageData: Data,
         position: CGPoint = .zero,
-        size: CGSize = .zero,
+        // Non-zero so an image added without an explicit size is still visible.
+        size: CGSize = CGSize(width: 200, height: 200),
         rotation: Double = 0.0
     ) {
         self.id = id
         self.cardId = cardId
-        self.source = source
+        self.sourceRawValue = source.rawValue
         self.imageData = imageData
-        self.position = position
-        self.size = size
+        self.positionX = position.x
+        self.positionY = position.y
+        self.sizeWidth = size.width
+        self.sizeHeight = size.height
         self.rotation = rotation
     }
 }

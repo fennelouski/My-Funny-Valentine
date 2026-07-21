@@ -160,7 +160,7 @@ actor ImageManager {
                 }
             }
         }
-        return (totalSize, maxTotalStorageBytes)
+        return (totalSize, Int64(maxTotalStorageBytes))
     }
 
     /// Clear memory cache (e.g., on memory warning)

@@ -71,7 +71,7 @@ class CloudKitSyncService: ObservableObject {
         self.networkMonitor = NetworkMonitor { [weak self] isOnline in
             Task { @MainActor in
                 self?.isOnline = isOnline
-                if isOnline && self?.syncStatus == .offline {
+                if isOnline, case .offline? = self?.syncStatus {
                     self?.syncStatus = .idle
                     self?.sync()
                 } else if !isOnline {
@@ -254,27 +254,23 @@ class CloudKitSyncService: ObservableObject {
         record["id"] = image.id.uuidString
         record["cardId"] = image.cardId.uuidString
         record["detectedAt"] = image.detectedAt
-        record["position"] = ["x": image.position.x, "y": image.position.y]
-        record["size"] = ["width": image.size.width, "height": image.size.height]
-        
+        record["positionX"] = Double(image.position.x)
+        record["positionY"] = Double(image.position.y)
+        record["sizeWidth"] = Double(image.size.width)
+        record["sizeHeight"] = Double(image.size.height)
+
         // Upload image asset (compress if needed)
-        if let imageData = image.imageData {
-            let compressedData = compressImage(imageData) ?? imageData
-            let asset = CKAsset(fileURL: try saveTemporaryAsset(data: compressedData, filename: "\(image.id).jpg"))
-            record["imageData"] = asset
-        }
-        
-        // Generate thumbnail if not already present
-        var thumbnailData = image.thumbnailData
-        if thumbnailData == nil, let imageData = image.imageData {
-            thumbnailData = generateThumbnail(from: imageData)
-        }
-        
-        if let thumbnailData = thumbnailData {
-            let thumbnailAsset = CKAsset(fileURL: try saveTemporaryAsset(data: thumbnailData, filename: "\(image.id)_thumb.jpg"))
-            record["thumbnailData"] = thumbnailAsset
-        }
-        
+        let compressedData = compressImage(image.imageData) ?? image.imageData
+        let asset = CKAsset(fileURL: try saveTemporaryAsset(data: compressedData, filename: "\(image.id).jpg"))
+        record["imageData"] = asset
+
+        // Upload thumbnail (falling back to a freshly generated one)
+        let thumbnailData = image.thumbnailData.isEmpty
+            ? (generateThumbnail(from: image.imageData) ?? image.imageData)
+            : image.thumbnailData
+        let thumbnailAsset = CKAsset(fileURL: try saveTemporaryAsset(data: thumbnailData, filename: "\(image.id)_thumb.jpg"))
+        record["thumbnailData"] = thumbnailAsset
+
         _ = try await database.save(record)
         image.syncedToCloud = true
         try modelContext.save()
@@ -300,28 +296,23 @@ class CloudKitSyncService: ObservableObject {
         record["id"] = image.id.uuidString
         record["cardId"] = image.cardId.uuidString
         record["source"] = image.source.rawValue
-        record["position"] = ["x": image.position.x, "y": image.position.y]
-        record["size"] = ["width": image.size.width, "height": image.size.height]
+        record["positionX"] = Double(image.position.x)
+        record["positionY"] = Double(image.position.y)
+        record["sizeWidth"] = Double(image.size.width)
+        record["sizeHeight"] = Double(image.size.height)
         record["rotation"] = image.rotation
-        
+
         // Upload image asset (compress if needed)
-        if let imageData = image.imageData {
-            let compressedData = compressImage(imageData) ?? imageData
-            let asset = CKAsset(fileURL: try saveTemporaryAsset(data: compressedData, filename: "\(image.id).jpg"))
-            record["imageData"] = asset
-        }
-        
-        // Generate thumbnail if not already present
-        var thumbnailData = image.thumbnailData
-        if thumbnailData == nil, let imageData = image.imageData {
-            thumbnailData = generateThumbnail(from: imageData)
-        }
-        
-        if let thumbnailData = thumbnailData {
+        let compressedData = compressImage(image.imageData) ?? image.imageData
+        let asset = CKAsset(fileURL: try saveTemporaryAsset(data: compressedData, filename: "\(image.id).jpg"))
+        record["imageData"] = asset
+
+        // Generate and upload a thumbnail
+        if let thumbnailData = generateThumbnail(from: image.imageData) {
             let thumbnailAsset = CKAsset(fileURL: try saveTemporaryAsset(data: thumbnailData, filename: "\(image.id)_thumb.jpg"))
             record["thumbnailData"] = thumbnailAsset
         }
-        
+
         _ = try await database.save(record)
         image.syncedToCloud = true
         try modelContext.save()
@@ -410,7 +401,7 @@ class CloudKitSyncService: ObservableObject {
             syncStatus = .error(.quotaExceeded)
         case .serverRecordChanged:
             syncStatus = .error(.conflictDetected(Card())) // Will be handled by conflict resolution
-        case .corruptedRecord:
+        case .serverRejectedRequest:
             syncStatus = .error(.corruptionError)
         default:
             syncStatus = .error(.unknown(error))

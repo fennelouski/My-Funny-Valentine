@@ -16,9 +16,33 @@ final class FaceImage {
     var imageData: Data
     var thumbnailData: Data
     var detectedAt: Date
-    var position: CGPoint
-    var size: CGSize
-    
+
+    // CGPoint/CGSize encode to unkeyed containers, which SwiftData's composite
+    // coder cannot persist ("Composite Coder only supports Keyed Container").
+    // Store the components and expose the geometry types as computed properties.
+    var positionX: Double
+    var positionY: Double
+    var sizeWidth: Double
+    var sizeHeight: Double
+
+    var syncedToCloud: Bool = false
+
+    var position: CGPoint {
+        get { CGPoint(x: positionX, y: positionY) }
+        set {
+            positionX = newValue.x
+            positionY = newValue.y
+        }
+    }
+
+    var size: CGSize {
+        get { CGSize(width: sizeWidth, height: sizeHeight) }
+        set {
+            sizeWidth = newValue.width
+            sizeHeight = newValue.height
+        }
+    }
+
     init(
         id: UUID = UUID(),
         cardId: UUID,
@@ -33,7 +57,9 @@ final class FaceImage {
         self.imageData = imageData
         self.thumbnailData = thumbnailData
         self.detectedAt = detectedAt
-        self.position = position
-        self.size = size
+        self.positionX = position.x
+        self.positionY = position.y
+        self.sizeWidth = size.width
+        self.sizeHeight = size.height
     }
 }
