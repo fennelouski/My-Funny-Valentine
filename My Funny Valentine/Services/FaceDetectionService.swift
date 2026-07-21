@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UIKit
+import CoreGraphics
 import Vision
 import CoreImage
 
@@ -20,8 +20,8 @@ actor FaceDetectionService {
     private init() {}
 
     /// Detect faces in an image and return extracted face regions
-    func detectFaces(in image: UIImage) async throws -> [DetectedFace] {
-        guard let cgImage = image.cgImage else {
+    func detectFaces(in image: PlatformImage) async throws -> [DetectedFace] {
+        guard let cgImage = PlatformGraphics.cgImage(from: image) else {
             throw FaceDetectionError.invalidImage
         }
 
@@ -38,7 +38,7 @@ actor FaceDetectionService {
                 }
 
                 let detectedFaces = results.compactMap { observation -> DetectedFace? in
-                    self.extractFaceRegion(from: cgImage, observation: observation, originalImage: image)
+                    self.extractFaceRegion(from: cgImage, observation: observation)
                 }
 
                 continuation.resume(returning: detectedFaces)
@@ -53,8 +53,8 @@ actor FaceDetectionService {
         }
     }
 
-    /// Extract face region from image with padding and orientation correction
-    private func extractFaceRegion(from cgImage: CGImage, observation: VNFaceObservation, originalImage: UIImage) -> DetectedFace? {
+    /// Extract face region from image with padding
+    private func extractFaceRegion(from cgImage: CGImage, observation: VNFaceObservation) -> DetectedFace? {
         let imageWidth = CGFloat(cgImage.width)
         let imageHeight = CGFloat(cgImage.height)
 
@@ -85,9 +85,11 @@ actor FaceDetectionService {
 
         guard let croppedCGImage = cgImage.cropping(to: rect) else { return nil }
 
-        // Apply orientation correction if needed
-        let orientedImage = orientImage(UIImage(cgImage: croppedCGImage), with: originalImage.imageOrientation)
-        guard let faceImageData = orientedImage.pngData() else { return nil }
+        let faceImage = PlatformGraphics.makeImage(
+            from: croppedCGImage,
+            size: CGSize(width: croppedCGImage.width, height: croppedCGImage.height)
+        )
+        guard let faceImageData = PlatformImageUtils.pngData(from: faceImage) else { return nil }
 
         return DetectedFace(
             id: UUID(),
@@ -95,18 +97,6 @@ actor FaceDetectionService {
             boundingBox: rect,
             confidence: observation.confidence
         )
-    }
-
-    /// Apply same orientation as source image
-    private func orientImage(_ image: UIImage, with orientation: UIImage.Orientation) -> UIImage {
-        guard orientation != .up else { return image }
-
-        UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
-        image.draw(in: CGRect(origin: .zero, size: image.size))
-        let orientedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return orientedImage ?? image
     }
 }
 

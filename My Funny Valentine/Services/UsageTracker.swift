@@ -136,7 +136,7 @@ class UsageTracker: ObservableObject {
         guard let modelContext = modelContext else { return }
         
         do {
-            if let prefs = userPreferences, modelContext.model(for: prefs.persistentModelID) == nil {
+            if let prefs = userPreferences, prefs.modelContext == nil {
                 modelContext.insert(prefs)
             }
             try modelContext.save()

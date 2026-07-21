@@ -89,8 +89,8 @@ struct FacePreviewCell: View {
 
     var body: some View {
         Button(action: onTap) {
-            if let uiImage = UIImage(data: face.imageData) {
-                Image(uiImage: uiImage)
+            if let uiImage = PlatformImage(data: face.imageData) {
+                PlatformImageUtils.swiftUIImage(from: uiImage)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 100, height: 100)

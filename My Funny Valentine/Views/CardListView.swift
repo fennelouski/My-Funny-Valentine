@@ -10,9 +10,10 @@ struct CardListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Card.modifiedAt, order: .reverse) private var cards: [Card]
     
+    // Adaptive so the grid fills wide iPad/Mac windows instead of leaving
+    // two stranded columns.
     private let columns = [
-        GridItem(.flexible(), spacing: 16),
-        GridItem(.flexible(), spacing: 16)
+        GridItem(.adaptive(minimum: 160, maximum: 200), spacing: 16)
     ]
     
     var body: some View {
@@ -44,7 +45,7 @@ struct CardListView: View {
                     }
                 }
             }
-            .background(Color(.systemGroupedBackground))
+            .background(Color.appGroupedBackground)
             .navigationTitle("My Cards")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {

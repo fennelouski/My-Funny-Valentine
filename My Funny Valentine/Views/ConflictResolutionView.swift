@@ -75,7 +75,7 @@ struct ConflictResolutionView: View {
                 }
             }
             .navigationTitle("Resolve Conflict")
-            .navigationBarTitleDisplayMode(.inline)
+            .appInlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {

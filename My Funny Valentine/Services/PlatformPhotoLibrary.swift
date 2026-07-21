@@ -60,8 +60,6 @@ class iOSPhotoLibraryService: PlatformPhotoLibraryProtocol {
         }
 
         do {
-            var albumPlaceholder: PHObjectPlaceholder?
-            
             try await PHPhotoLibrary.shared().performChanges {
                 let fetchOptions = PHFetchOptions()
                 fetchOptions.predicate = NSPredicate(format: "title = %@", albumName)
@@ -73,8 +71,7 @@ class iOSPhotoLibraryService: PlatformPhotoLibraryProtocol {
                     albumChangeRequest?.addAssets([assetRequest.placeholderForCreatedAsset!] as NSArray)
                 } else {
                     let albumChangeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: albumName)
-                    albumPlaceholder = albumChangeRequest.placeholderForCreatedAssetCollection
-                    
+
                     let assetRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
                     albumChangeRequest.addAssets([assetRequest.placeholderForCreatedAsset!] as NSArray)
                 }

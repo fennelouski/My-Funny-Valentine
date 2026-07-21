@@ -56,11 +56,9 @@ struct My_Funny_ValentineApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
-        #if os(visionOS)
-        .windowResizability(.contentSize)
-        .defaultSize(width: 1200, height: 800)
-        #endif
         #if os(macOS)
+        // Matches an App Store Mac screenshot size (2560x1600 at 2x).
+        .defaultSize(width: 1280, height: 800)
         .commands {
             CommandGroup(replacing: .newItem) {
                 Button("New Card") {

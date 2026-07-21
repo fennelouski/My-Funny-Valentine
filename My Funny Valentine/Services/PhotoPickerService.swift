@@ -11,7 +11,7 @@ import UniformTypeIdentifiers
 
 #if os(iOS) || os(visionOS)
 import UIKit
-import PhotosUI
+@preconcurrency import PhotosUI
 #elseif os(macOS)
 import AppKit
 #endif
@@ -89,13 +89,14 @@ extension PhotoPickerService: PHPickerViewControllerDelegate {
     }
 
     private func loadImage(from result: PHPickerResult) async -> PlatformImage? {
-        await withCheckedContinuation { continuation in
-            result.itemProvider.loadObject(ofClass: UIImage.self) { object, _ in
+        nonisolated(unsafe) let provider = result.itemProvider
+        return await withCheckedContinuation { continuation in
+            provider.loadObject(ofClass: UIImage.self) { object, _ in
                 if let image = object as? UIImage {
                     continuation.resume(returning: image as PlatformImage)
                     return
                 }
-                result.itemProvider.loadDataRepresentation(forTypeIdentifier: UTType.image.identifier) { data, _ in
+                provider.loadDataRepresentation(forTypeIdentifier: UTType.image.identifier) { data, _ in
                     if let data = data, let image = PlatformImageUtils.image(from: data) {
                         continuation.resume(returning: image)
                     } else {

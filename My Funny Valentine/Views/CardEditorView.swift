@@ -29,7 +29,7 @@ struct CardEditorView: View {
                 // Toolbar
                 editorToolbar
                     .frame(width: 80)
-                    .background(Color(.systemGray6))
+                    .background(Color.appFill)
                 
                 // Canvas
                 cardCanvas
@@ -38,10 +38,10 @@ struct CardEditorView: View {
                 // Property Inspector
                 propertyInspector
                     .frame(width: 300)
-                    .background(Color(.systemGray6))
+                    .background(Color.appFill)
             }
             .navigationTitle("Edit Card")
-            .navigationBarTitleDisplayMode(.inline)
+            .appInlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
@@ -119,12 +119,12 @@ struct CardEditorView: View {
                         for (index, facePosition) in template.facePositions.enumerated() {
                             if index < (card.faces ?? []).count {
                                 let faceImage = (card.faces ?? [])[index]
-                                if let uiImage = UIImage(data: faceImage.imageData) {
+                                if let uiImage = PlatformImage(data: faceImage.imageData) {
                                     let rect = CGRect(
                                         origin: facePosition.position,
                                         size: facePosition.size
                                     )
-                                    context.draw(Image(uiImage: uiImage), in: rect)
+                                    context.draw(PlatformImageUtils.swiftUIImage(from: uiImage), in: rect)
                                 }
                             }
                         }
@@ -144,23 +144,23 @@ struct CardEditorView: View {
                     
                     // Draw images
                     for image in card.images ?? [] {
-                        if let uiImage = UIImage(data: image.imageData) {
+                        if let uiImage = PlatformImage(data: image.imageData) {
                             let rect = CGRect(
                                 origin: image.position,
                                 size: image.size
                             )
-                            context.draw(Image(uiImage: uiImage), in: rect)
+                            context.draw(PlatformImageUtils.swiftUIImage(from: uiImage), in: rect)
                         }
                     }
                     
                     // Draw stickers
                     for sticker in card.stickers ?? [] {
-                        if let data = sticker.stickerData, let uiImage = UIImage(data: data) {
+                        if let data = sticker.stickerData, let uiImage = PlatformImage(data: data) {
                             let rect = CGRect(
                                 origin: sticker.position,
                                 size: sticker.size
                             )
-                            context.draw(Image(uiImage: uiImage), in: rect)
+                            context.draw(PlatformImageUtils.swiftUIImage(from: uiImage), in: rect)
                         }
                     }
                 }
@@ -198,14 +198,14 @@ struct CardEditorView: View {
     
     private func undo() {
         guard !undoStack.isEmpty else { return }
-        let previous = undoStack.removeLast()
+        _ = undoStack.removeLast()
         redoStack.append(card)
         // Restore previous state
     }
     
     private func redo() {
         guard !redoStack.isEmpty else { return }
-        let next = redoStack.removeLast()
+        _ = redoStack.removeLast()
         undoStack.append(card)
         // Restore next state
     }
@@ -249,11 +249,11 @@ struct TextEditorView: View {
                 }
                 
                 Section("Color") {
-                    ColorPicker("Text Color", selection: .constant(.black))
+                    ColorPicker("Text Color", selection: .constant(Color.black))
                 }
             }
             .navigationTitle("Edit Text")
-            .navigationBarTitleDisplayMode(.inline)
+            .appInlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {

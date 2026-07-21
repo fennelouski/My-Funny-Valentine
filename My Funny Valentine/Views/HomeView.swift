@@ -29,7 +29,7 @@ struct HomeView: View {
                 }
                 .padding(.vertical, 20)
             }
-            .background(Color(.systemGroupedBackground))
+            .background(Color.appGroupedBackground)
             .navigationDestination(for: Card.self) { card in
                 CardDetailView(card: card)
             }
@@ -115,7 +115,7 @@ struct HomeView: View {
                     endPoint: .bottomTrailing
                 )
             } else {
-                Color(.secondarySystemGroupedBackground)
+                Color.appSecondaryGroupedBackground
             }
         }
         .foregroundStyle(prominent ? AnyShapeStyle(.white) : AnyShapeStyle(Color.primary))

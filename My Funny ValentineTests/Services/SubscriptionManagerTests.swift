@@ -16,7 +16,7 @@ struct SubscriptionManagerTests {
     @Test("SubscriptionManager initializes correctly")
     func testSubscriptionManagerInitialization() async throws {
         let manager = SubscriptionManager.shared
-        
+
         // Check initial state
         #expect(manager.isPremium == false)
         #expect(manager.subscriptionStatus == .free)
@@ -25,7 +25,7 @@ struct SubscriptionManagerTests {
     @Test("SubscriptionManager checks subscription status")
     func testCheckSubscriptionStatus() async throws {
         let manager = SubscriptionManager.shared
-        
+
         await manager.checkSubscriptionStatus()
         
         // Status should be checked (may be free or premium depending on test environment)
@@ -38,7 +38,7 @@ struct SubscriptionManagerTests {
         // This test would need StoreKit Configuration files
         // For now, we verify the method exists
         
-        let manager = SubscriptionManager.shared
+        _ = SubscriptionManager.shared
         
         // In a real test environment with StoreKit Configuration:
         // do {
@@ -51,7 +51,7 @@ struct SubscriptionManagerTests {
     
     @Test("SubscriptionManager restore purchases")
     func testRestorePurchases() async throws {
-        let manager = SubscriptionManager.shared
+        _ = SubscriptionManager.shared
         
         // In a real test environment:
         // do {

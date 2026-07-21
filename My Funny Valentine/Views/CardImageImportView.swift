@@ -17,7 +17,7 @@ struct CardImageImportView: View {
 
     let card: Card
 
-    @State private var selectedImage: UIImage?
+    @State private var selectedImage: PlatformImage?
     @State private var detectedFaces: [DetectedFace] = []
     @State private var selectedFaceIds: Set<UUID> = []
     @State private var isDetectingFaces = false
@@ -73,7 +73,7 @@ struct CardImageImportView: View {
                 .padding()
             }
             .navigationTitle("Add Images")
-            .navigationBarTitleDisplayMode(.inline)
+            .appInlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Done") { dismiss() }
@@ -98,7 +98,7 @@ struct CardImageImportView: View {
         }
     }
 
-    private func runFaceDetection(on image: UIImage) {
+    private func runFaceDetection(on image: PlatformImage) {
         isDetectingFaces = true
         Task {
             do {
@@ -119,7 +119,7 @@ struct CardImageImportView: View {
         }
     }
 
-    private func handleImportedImage(_ image: UIImage, source: ImageSource) {
+    private func handleImportedImage(_ image: PlatformImage, source: ImageSource) {
         selectedImage = image
 
         // For cutout and Image Playground, add directly without face detection
@@ -178,11 +178,11 @@ struct CardImageImportView: View {
         dismiss()
     }
 
-    private func addImageToCard(_ image: UIImage, source: ImageSource) {
+    private func addImageToCard(_ image: PlatformImage, source: ImageSource) {
         let id = UUID()
         Task {
             do {
-                let (imageData, thumbnailData) = try await ImageManager.shared.storeImage(image, id: id)
+                let (imageData, _) = try await ImageManager.shared.storeImage(image, id: id)
 
                 await MainActor.run {
                     let cardImage = CardImage(
@@ -208,7 +208,7 @@ struct CardImageImportView: View {
 }
 
 struct FaceSelectionSheet: View {
-    let image: UIImage
+    let image: PlatformImage
     let detectedFaces: [DetectedFace]
     @Binding var selectedFaceIds: Set<UUID>
     let onConfirm: () -> Void
@@ -237,7 +237,7 @@ struct FaceSelectionSheet: View {
             }
             .padding()
             .navigationTitle("Select Faces")
-            .navigationBarTitleDisplayMode(.inline)
+            .appInlineNavigationTitle()
         }
     }
 }

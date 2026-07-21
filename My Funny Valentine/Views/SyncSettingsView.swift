@@ -119,7 +119,7 @@ struct SyncSettingsView: View {
             }
         }
         .navigationTitle("iCloud Sync")
-        .navigationBarTitleDisplayMode(.inline)
+        .appInlineNavigationTitle()
         .alert("Syncing", isPresented: $showingManualSync) {
             Button("OK") { }
         } message: {

@@ -10,7 +10,7 @@ import CloudKit
 import SwiftData
 import Combine
 import Network
-import UIKit
+import CoreGraphics
 
 enum SyncStatus {
     case idle
@@ -30,7 +30,7 @@ enum SyncError: LocalizedError {
     case networkError
     case authenticationError
     case quotaExceeded
-    case conflictDetected(Card)
+    case conflictDetected(cardId: UUID?)
     case corruptionError
     case unknown(Error)
     
@@ -92,7 +92,7 @@ class CloudKitSyncService: ObservableObject {
                 let status = try await container.accountStatus()
                 switch status {
                 case .available:
-                    await sync()
+                    sync()
                 case .noAccount:
                     syncStatus = .error(.authenticationError)
                 case .restricted:
@@ -192,7 +192,7 @@ class CloudKitSyncService: ObservableObject {
                 // CloudKit is newer or same, check if we need to resolve conflict
                 if let existingModified = existingRecord.modificationDate,
                    abs(card.modifiedAt.timeIntervalSince(existingModified)) > 1.0 {
-                    throw SyncError.conflictDetected(card)
+                    throw SyncError.conflictDetected(cardId: card.id)
                 }
             }
         } catch let error as CKError where error.code == .unknownItem {
@@ -350,43 +350,28 @@ class CloudKitSyncService: ObservableObject {
     
     // Compress image data before uploading to reduce storage usage
     private func compressImage(_ imageData: Data, maxSizeKB: Int = 500) -> Data? {
-        guard let image = UIImage(data: imageData) else { return nil }
-        
+        guard let image = PlatformImageUtils.image(from: imageData) else { return nil }
+
         var compression: CGFloat = 0.8
-        var compressedData = image.jpegData(compressionQuality: compression)
-        
+        var compressedData = PlatformImageUtils.jpegData(from: image, compressionQuality: compression)
+
         // Reduce quality until under max size
         while let data = compressedData,
               data.count > maxSizeKB * 1024,
               compression > 0.1 {
             compression -= 0.1
-            compressedData = image.jpegData(compressionQuality: compression)
+            compressedData = PlatformImageUtils.jpegData(from: image, compressionQuality: compression)
         }
-        
+
         return compressedData ?? imageData
     }
-    
+
     // Generate thumbnail for faster loading
     private func generateThumbnail(from imageData: Data, maxDimension: CGFloat = 200) -> Data? {
-        guard let image = UIImage(data: imageData) else { return nil }
-        
-        let size = image.size
-        let aspectRatio = size.width / size.height
-        var thumbnailSize: CGSize
-        
-        if size.width > size.height {
-            thumbnailSize = CGSize(width: maxDimension, height: maxDimension / aspectRatio)
-        } else {
-            thumbnailSize = CGSize(width: maxDimension * aspectRatio, height: maxDimension)
-        }
-        
-        UIGraphicsBeginImageContextWithOptions(thumbnailSize, false, 0.0)
-        defer { UIGraphicsEndImageContext() }
-        
-        image.draw(in: CGRect(origin: .zero, size: thumbnailSize))
-        let thumbnail = UIGraphicsGetImageFromCurrentImageContext()
-        
-        return thumbnail?.jpegData(compressionQuality: 0.7)
+        guard let image = PlatformImageUtils.image(from: imageData) else { return nil }
+
+        let thumbnail = PlatformImageUtils.resized(image, maxDimension: maxDimension)
+        return PlatformImageUtils.jpegData(from: thumbnail, compressionQuality: 0.7)
     }
     
     // MARK: - Error Handling
@@ -400,7 +385,7 @@ class CloudKitSyncService: ObservableObject {
         case .quotaExceeded:
             syncStatus = .error(.quotaExceeded)
         case .serverRecordChanged:
-            syncStatus = .error(.conflictDetected(Card())) // Will be handled by conflict resolution
+            syncStatus = .error(.conflictDetected(cardId: nil)) // Resolved via ConflictResolutionView
         case .serverRejectedRequest:
             syncStatus = .error(.corruptionError)
         default:

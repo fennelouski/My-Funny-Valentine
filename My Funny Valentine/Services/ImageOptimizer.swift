@@ -6,9 +6,14 @@
 //
 
 import Foundation
-import UIKit
 import CoreGraphics
 import UniformTypeIdentifiers
+
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 enum SharingDestination {
     case instagram
@@ -109,27 +114,27 @@ class ImageOptimizer {
     }
     
     /// Optimize an image for a specific sharing destination
-    func optimize(_ image: UIImage, for destination: SharingDestination) -> Data? {
+    func optimize(_ image: PlatformImage, for destination: SharingDestination) -> Data? {
         let settings = settings(for: destination)
         return optimize(image, with: settings)
     }
     
     /// Optimize an image with specific settings
-    func optimize(_ image: UIImage, with settings: ImageOptimizationSettings) -> Data? {
+    func optimize(_ image: PlatformImage, with settings: ImageOptimizationSettings) -> Data? {
         // Resize if needed
         let resizedImage = resize(image, maxWidth: settings.maxWidth, maxHeight: settings.maxHeight)
         
         // Convert to data with appropriate format and quality
         switch settings.format {
         case .jpeg:
-            return resizedImage.jpegData(compressionQuality: settings.quality)
+            return PlatformImageUtils.jpegData(from: resizedImage, compressionQuality: settings.quality)
         case .png:
-            return resizedImage.pngData()
+            return PlatformImageUtils.pngData(from: resizedImage)
         }
     }
     
     /// Resize image maintaining aspect ratio
-    private func resize(_ image: UIImage, maxWidth: CGFloat, maxHeight: CGFloat) -> UIImage {
+    private func resize(_ image: PlatformImage, maxWidth: CGFloat, maxHeight: CGFloat) -> PlatformImage {
         let size = image.size
         
         // If image is smaller than max dimensions, return original
@@ -156,14 +161,11 @@ class ImageOptimizer {
         }
         
         // Render resized image
-        let renderer = UIGraphicsImageRenderer(size: newSize)
-        return renderer.image { _ in
-            image.draw(in: CGRect(origin: .zero, size: newSize))
-        }
+        return PlatformImageUtils.resized(image, to: newSize) ?? image
     }
     
     /// Optimize for Instagram with specific aspect ratio
-    func optimizeForInstagram(_ image: UIImage, isPortrait: Bool = false) -> Data? {
+    func optimizeForInstagram(_ image: PlatformImage, isPortrait: Bool = false) -> Data? {
         let targetSize: CGSize
         if isPortrait {
             targetSize = CGSize(width: 1080, height: 1350)
@@ -172,47 +174,46 @@ class ImageOptimizer {
         }
         
         let resizedImage = resizeToExactSize(image, targetSize: targetSize, maintainAspectRatio: true)
-        return resizedImage?.jpegData(compressionQuality: 0.92)
+        return resizedImage.flatMap { PlatformImageUtils.jpegData(from: $0, compressionQuality: 0.92) }
     }
     
     /// Optimize for TikTok (vertical 9:16)
-    func optimizeForTikTok(_ image: UIImage) -> Data? {
+    func optimizeForTikTok(_ image: PlatformImage) -> Data? {
         let targetSize = CGSize(width: 1080, height: 1920)
         let resizedImage = resizeToExactSize(image, targetSize: targetSize, maintainAspectRatio: true)
-        return resizedImage?.jpegData(compressionQuality: 0.85)
+        return resizedImage.flatMap { PlatformImageUtils.jpegData(from: $0, compressionQuality: 0.85) }
     }
     
     /// Resize to exact size, optionally maintaining aspect ratio (with letterboxing/pillarboxing)
-    private func resizeToExactSize(_ image: UIImage, targetSize: CGSize, maintainAspectRatio: Bool) -> UIImage? {
-        let renderer = UIGraphicsImageRenderer(size: targetSize)
-        return renderer.image { context in
-            if maintainAspectRatio {
-                // Calculate aspect-fit size
-                let imageAspect = image.size.width / image.size.height
-                let targetAspect = targetSize.width / targetSize.height
-                
-                var drawSize: CGSize
-                var drawOrigin: CGPoint
-                
-                if imageAspect > targetAspect {
-                    // Image is wider - fit to width
-                    drawSize = CGSize(width: targetSize.width, height: targetSize.width / imageAspect)
-                    drawOrigin = CGPoint(x: 0, y: (targetSize.height - drawSize.height) / 2)
-                } else {
-                    // Image is taller - fit to height
-                    drawSize = CGSize(width: targetSize.height * imageAspect, height: targetSize.height)
-                    drawOrigin = CGPoint(x: (targetSize.width - drawSize.width) / 2, y: 0)
-                }
-                
-                // Fill background with white
-                UIColor.white.setFill()
-                context.fill(CGRect(origin: .zero, size: targetSize))
-                
-                // Draw image centered
-                image.draw(in: CGRect(origin: drawOrigin, size: drawSize))
-            } else {
-                image.draw(in: CGRect(origin: .zero, size: targetSize))
+    private func resizeToExactSize(_ image: PlatformImage, targetSize: CGSize, maintainAspectRatio: Bool) -> PlatformImage? {
+        PlatformGraphics.image(size: targetSize, scale: 1.0) { context in
+            guard maintainAspectRatio else {
+                PlatformGraphics.draw(image, in: CGRect(origin: .zero, size: targetSize), context: context)
+                return
             }
+
+            // Calculate aspect-fit size
+            let imageAspect = image.size.width / image.size.height
+            let targetAspect = targetSize.width / targetSize.height
+
+            let drawSize: CGSize
+            let drawOrigin: CGPoint
+
+            if imageAspect > targetAspect {
+                // Image is wider - fit to width
+                drawSize = CGSize(width: targetSize.width, height: targetSize.width / imageAspect)
+                drawOrigin = CGPoint(x: 0, y: (targetSize.height - drawSize.height) / 2)
+            } else {
+                // Image is taller - fit to height
+                drawSize = CGSize(width: targetSize.height * imageAspect, height: targetSize.height)
+                drawOrigin = CGPoint(x: (targetSize.width - drawSize.width) / 2, y: 0)
+            }
+
+            // Letterbox/pillarbox background
+            context.setFillColor(PlatformColor.white.cgColor)
+            context.fill(CGRect(origin: .zero, size: targetSize))
+
+            PlatformGraphics.draw(image, in: CGRect(origin: drawOrigin, size: drawSize), context: context)
         }
     }
     
@@ -223,7 +224,7 @@ class ImageOptimizer {
     }
     
     /// Further compress if needed to meet size limit
-    func compressToSizeLimit(_ image: UIImage, maxSizeMB: Double, for destination: SharingDestination) -> Data? {
+    func compressToSizeLimit(_ image: PlatformImage, maxSizeMB: Double, for destination: SharingDestination) -> Data? {
         var quality: CGFloat = settings(for: destination).quality
         
         while quality > 0.1 {

@@ -6,160 +6,123 @@
 //
 
 import Foundation
-import UIKit
+import CoreGraphics
 import SwiftUI
 
 class CardRenderer {
     static let shared = CardRenderer()
-    
+
     private init() {}
-    
-    /// Render a Card to a UIImage
-    func renderCard(_ card: Card, size: CGSize = CGSize(width: 1080, height: 1080)) -> UIImage? {
-        let renderer = UIGraphicsImageRenderer(size: size)
-        
-        return renderer.image { context in
-            // Get background color from layout or use default
+
+    /// Render a Card to an image
+    func renderCard(_ card: Card, size: CGSize = CGSize(width: 1080, height: 1080)) -> PlatformImage? {
+        PlatformGraphics.image(size: size) { context in
+            // Background
             let backgroundColor = getBackgroundColor(from: card)
-            backgroundColor.setFill()
+            context.setFillColor(backgroundColor.cgColor)
             context.fill(CGRect(origin: .zero, size: size))
-            
-            // Draw faces
+
+            // Faces
             if let faces = card.faces {
                 for face in faces {
-                    if let faceImage = UIImage(data: face.imageData) {
+                    if let faceImage = PlatformImageUtils.image(from: face.imageData) {
                         let rect = CGRect(
                             x: face.position.x,
                             y: face.position.y,
                             width: face.size.width,
                             height: face.size.height
                         )
-                        faceImage.draw(in: rect)
+                        PlatformGraphics.draw(faceImage, in: rect, context: context)
                     }
                 }
             }
-            
-            // Draw card images
+
+            // Card images
             if let images = card.images {
                 for cardImage in images {
-                    if let image = UIImage(data: cardImage.imageData) {
-                        let rect = CGRect(
-                            x: cardImage.position.x,
-                            y: cardImage.position.y,
-                            width: cardImage.size.width,
-                            height: cardImage.size.height
-                        )
-                        
-                        // Apply rotation if needed
-                        if cardImage.rotation != 0 {
-                            context.cgContext.saveGState()
-                            let center = CGPoint(
-                                x: rect.midX,
-                                y: rect.midY
-                            )
-                            context.cgContext.translateBy(x: center.x, y: center.y)
-                            context.cgContext.rotate(by: CGFloat(cardImage.rotation))
-                            context.cgContext.translateBy(x: -center.x, y: -center.y)
-                            image.draw(in: rect)
-                            context.cgContext.restoreGState()
-                        } else {
-                            image.draw(in: rect)
-                        }
+                    guard let image = PlatformImageUtils.image(from: cardImage.imageData) else { continue }
+                    let rect = CGRect(
+                        x: cardImage.position.x,
+                        y: cardImage.position.y,
+                        width: cardImage.size.width,
+                        height: cardImage.size.height
+                    )
+
+                    if cardImage.rotation != 0 {
+                        context.saveGState()
+                        let center = CGPoint(x: rect.midX, y: rect.midY)
+                        context.translateBy(x: center.x, y: center.y)
+                        context.rotate(by: CGFloat(cardImage.rotation))
+                        context.translateBy(x: -center.x, y: -center.y)
+                        PlatformGraphics.draw(image, in: rect, context: context)
+                        context.restoreGState()
+                    } else {
+                        PlatformGraphics.draw(image, in: rect, context: context)
                     }
                 }
             }
-            
-            // Draw text
-            if let layoutData = card.getLayoutData() {
+
+            // Text
+            if let layoutData = card.getLayoutData(), !layoutData.textPositions.isEmpty {
                 for textPosition in layoutData.textPositions {
-                    drawText(textPosition, in: context.cgContext, size: size)
+                    drawText(textPosition, in: context)
                 }
-            } else {
-                // Fallback: draw saying or custom text
-                if let saying = card.saying {
-                    drawSimpleText(saying, in: context.cgContext, size: size)
-                } else if let customText = card.customText {
-                    drawSimpleText(customText, in: context.cgContext, size: size)
-                }
+            } else if let text = card.saying ?? card.customText {
+                drawSimpleText(text, in: context, size: size)
             }
         }
     }
-    
+
     /// Get background color from card layout or return default
-    private func getBackgroundColor(from card: Card) -> UIColor {
+    private func getBackgroundColor(from card: Card) -> PlatformColor {
         if let layoutData = card.getLayoutData() {
-            return UIColor(hex: layoutData.backgroundColor) ?? .white
+            return PlatformColor.fromHex(layoutData.backgroundColor) ?? .white
         }
         return .white
     }
-    
-    /// Draw text from TextPosition
-    private func drawText(_ textPosition: TextPosition, in context: CGContext, size: CGSize) {
-        let font = UIFont(name: textPosition.fontName, size: textPosition.fontSize) ?? UIFont.systemFont(ofSize: textPosition.fontSize)
-        let color = UIColor(hex: textPosition.color) ?? .black
-        
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: font,
-            .foregroundColor: color
-        ]
-        
-        let attributedString = NSAttributedString(string: textPosition.text, attributes: attributes)
+
+    private func drawText(_ textPosition: TextPosition, in context: CGContext) {
+        let font = PlatformFont(name: textPosition.fontName, size: textPosition.fontSize)
+            ?? PlatformFont.systemFont(ofSize: textPosition.fontSize)
+        let color = PlatformColor.fromHex(textPosition.color) ?? .black
+
+        let attributed = NSAttributedString(
+            string: textPosition.text,
+            attributes: [.font: font, .foregroundColor: color]
+        )
         let rect = CGRect(
             x: textPosition.position.x,
             y: textPosition.position.y,
             width: textPosition.size.width,
             height: textPosition.size.height
         )
-        
-        attributedString.draw(in: rect)
+
+        PlatformGraphics.draw(attributed, in: rect, context: context)
     }
-    
-    /// Draw simple text (fallback)
+
     private func drawSimpleText(_ text: String, in context: CGContext, size: CGSize) {
-        let font = UIFont.systemFont(ofSize: 32)
-        let color = UIColor.black
-        
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: font,
-            .foregroundColor: color
-        ]
-        
-        let attributedString = NSAttributedString(string: text, attributes: attributes)
-        let textSize = attributedString.size()
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+
+        let attributed = NSAttributedString(
+            string: text,
+            attributes: [
+                .font: PlatformFont.systemFont(ofSize: 48),
+                .foregroundColor: PlatformColor.black,
+                .paragraphStyle: paragraph
+            ]
+        )
+
+        let inset = size.width * 0.1
+        let maxWidth = size.width - (inset * 2)
+        let textSize = PlatformGraphics.size(of: attributed, maxWidth: maxWidth)
         let rect = CGRect(
-            x: (size.width - textSize.width) / 2,
-            y: size.height * 0.8,
-            width: textSize.width,
+            x: inset,
+            y: (size.height - textSize.height) / 2,
+            width: maxWidth,
             height: textSize.height
         )
-        
-        attributedString.draw(in: rect)
-    }
-}
 
-// UIColor extension for hex color support
-extension UIColor {
-    convenience init?(hex: String) {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&int)
-        let a, r, g, b: UInt64
-        switch hex.count {
-        case 3: // RGB (12-bit)
-            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6: // RGB (24-bit)
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8: // ARGB (32-bit)
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            return nil
-        }
-        
-        self.init(
-            red: CGFloat(r) / 255,
-            green: CGFloat(g) / 255,
-            blue: CGFloat(b) / 255,
-            alpha: CGFloat(a) / 255
-        )
+        PlatformGraphics.draw(attributed, in: rect, context: context)
     }
 }

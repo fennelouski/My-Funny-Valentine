@@ -43,14 +43,14 @@ struct UsageLimitView: View {
                 }
             }
             .padding()
-            .background(Color(.systemGray6))
+            .background(Color.appFill)
             .cornerRadius(10)
             
             // Progress Bar
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     Rectangle()
-                        .fill(Color(.systemGray5))
+                        .fill(Color.appSecondaryFill)
                         .frame(height: 8)
                         .cornerRadius(4)
                     
@@ -90,7 +90,7 @@ struct UpgradePromptView: View {
                     Text("Maybe Later")
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color(.systemGray5))
+                        .background(Color.appSecondaryFill)
                         .foregroundColor(.primary)
                         .cornerRadius(10)
                 }
@@ -106,7 +106,7 @@ struct UpgradePromptView: View {
             }
         }
         .padding()
-        .background(Color(.systemBackground))
+        .background(Color.appBackground)
         .cornerRadius(16)
         .shadow(radius: 10)
     }

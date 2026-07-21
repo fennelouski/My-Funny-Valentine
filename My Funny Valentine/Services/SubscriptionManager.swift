@@ -8,7 +8,6 @@
 import Foundation
 import StoreKit
 import SwiftData
-import UIKit
 import Combine
 
 @MainActor
@@ -169,9 +168,7 @@ class SubscriptionManager: ObservableObject {
     
     func manageSubscription() {
         if let url = URL(string: "https://apps.apple.com/account/subscriptions") {
-            Task {
-                await UIApplication.shared.open(url)
-            }
+            PlatformGraphics.open(url)
         }
     }
     

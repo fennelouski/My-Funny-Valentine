@@ -28,23 +28,27 @@ struct CardTileView: View {
             
             VStack(spacing: 8) {
                 if let thumbnailData = (card.faces ?? []).first?.thumbnailData,
-                   let uiImage = UIImage(data: thumbnailData) {
-                    Image(uiImage: uiImage)
+                   let uiImage = PlatformImage(data: thumbnailData) {
+                    PlatformImageUtils.swiftUIImage(from: uiImage)
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: size.width * 0.6, maxHeight: size.height * 0.4)
                         .clipShape(Circle())
                 }
-                
+
                 Text(displayText)
                     .font(.caption)
                     .fontWeight(.medium)
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
-                    .lineLimit(3)
-                    .padding(.horizontal, 8)
+                    .lineLimit(4)
+                    .minimumScaleFactor(0.75)
             }
+            .padding(.horizontal, 12)
+            // Keep contents inside the tile; long sayings otherwise spill out.
+            .frame(width: size.width, height: size.height)
         }
+        .frame(width: size.width, height: size.height)
     }
     
     private var displayText: String {

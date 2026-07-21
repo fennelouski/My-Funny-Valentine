@@ -76,7 +76,7 @@ struct ShareSheet: NSViewRepresentable {
     func updateNSView(_ nsView: NSView, context: Context) {
         // Show sharing picker when view appears
         DispatchQueue.main.async {
-            if let window = nsView.window {
+            if nsView.window != nil {
                 let sharingServicePicker = NSSharingServicePicker(items: items)
                 let rect = NSRect(x: nsView.bounds.midX, y: nsView.bounds.midY, width: 0, height: 0)
                 sharingServicePicker.show(relativeTo: rect, of: nsView, preferredEdge: .minY)

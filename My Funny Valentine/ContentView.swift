@@ -9,9 +9,18 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @State private var selectedTab = 0
-    
+    @Environment(\.modelContext) private var modelContext
+    @State private var selectedTab = ScreenshotSupport.initialTab
+
     var body: some View {
+        content
+            .task {
+                ScreenshotSupport.seedSampleCardsIfRequested(in: modelContext)
+            }
+    }
+
+    @ViewBuilder
+    private var content: some View {
         #if os(macOS)
         // macOS: Use NavigationSplitView for better macOS UX
         NavigationSplitView {
@@ -38,6 +47,7 @@ struct ContentView: View {
                 }
             }
         }
+        .frame(minWidth: 900, idealWidth: 1280, minHeight: 600, idealHeight: 800)
         #else
         // iOS/visionOS: Use TabView
         TabView(selection: $selectedTab) {

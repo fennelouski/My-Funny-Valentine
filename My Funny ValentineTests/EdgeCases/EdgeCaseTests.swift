@@ -21,7 +21,7 @@ struct EdgeCaseTests {
     @Test("Handles network errors gracefully")
     func testNetworkErrors() async throws {
         // Test API error handling
-        let service = APIService.shared
+        _ = APIService.shared
         
         // Would test with network unavailable or timeout scenarios
     }

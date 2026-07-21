@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LocalSayingsGenerator {
+nonisolated struct LocalSayingsGenerator {
     static let shared = LocalSayingsGenerator()
 
     private init() {}

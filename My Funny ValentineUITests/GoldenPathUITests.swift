@@ -50,12 +50,21 @@ final class GoldenPathUITests: XCTestCase {
         generateSayings.tap()
 
         // Sayings should appear even with no backend configured (on-device fallback)
-        let firstSaying = app.buttons.containing(
-            NSPredicate(format: "label CONTAINS[c] %@", "coffee")
-        ).firstMatch
+        let firstSaying = app.buttons.matching(identifier: "sayings.row").firstMatch
         XCTAssertTrue(firstSaying.waitForExistence(timeout: 10), "Sayings should be generated on-device")
+        XCTAssertTrue(
+            firstSaying.label.localizedCaseInsensitiveContains("coffee"),
+            "Generated saying should be built from the inspiration word"
+        )
 
         let chosen = firstSaying.label
+        // The results list can still be settling (or behind the keyboard) right
+        // after generating, so wait until the row is actually tappable.
+        expectation(
+            for: NSPredicate(format: "isHittable == true"),
+            evaluatedWith: firstSaying
+        )
+        waitForExpectations(timeout: 10)
         firstSaying.tap()
 
         let done = app.buttons["sayings.done"]

@@ -6,19 +6,19 @@
 //
 
 import Foundation
-import UIKit
+import CoreGraphics
 
 extension Card {
-    /// Render card as UIImage for sharing
-    func renderAsImage(size: CGSize = CGSize(width: 1080, height: 1080)) -> UIImage? {
+    /// Render card as an image for sharing
+    func renderAsImage(size: CGSize = CGSize(width: 1080, height: 1080)) -> PlatformImage? {
         return CardRenderer.shared.renderCard(self, size: size)
     }
-    
+
     /// Get optimized image for sharing destination
-    func optimizedImage(for destination: SharingDestination) -> UIImage? {
+    func optimizedImage(for destination: SharingDestination) -> PlatformImage? {
         guard let image = renderAsImage() else { return nil }
         guard let optimizedData = ImageOptimizer.shared.optimize(image, for: destination),
-              let optimizedImage = UIImage(data: optimizedData) else {
+              let optimizedImage = PlatformImageUtils.image(from: optimizedData) else {
             return image // Fallback to original
         }
         return optimizedImage

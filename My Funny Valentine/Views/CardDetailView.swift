@@ -58,15 +58,15 @@ struct CardDetailView: View {
                     )
                 }
                 .padding()
-                .background(Color(.secondarySystemGroupedBackground))
+                .background(Color.appSecondaryGroupedBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding(.horizontal)
             }
             .padding(.bottom, 32)
         }
-        .background(Color(.systemGroupedBackground))
+        .background(Color.appGroupedBackground)
         .navigationTitle(isNewCard ? "New Card" : "Edit Card")
-        .navigationBarTitleDisplayMode(.inline)
+        .appInlineNavigationTitle()
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") {

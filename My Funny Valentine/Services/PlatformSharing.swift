@@ -79,7 +79,7 @@ class macOSSharingService: PlatformSharingProtocol {
         
         let sharingServicePicker = NSSharingServicePicker(items: [image])
         
-        if let bounds = view.window?.contentView?.bounds {
+        if view.window?.contentView != nil {
             sharingServicePicker.show(relativeTo: .zero, of: view, preferredEdge: .minY)
         } else {
             // Fallback: show at center of window

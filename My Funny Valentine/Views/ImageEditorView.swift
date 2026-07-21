@@ -9,7 +9,7 @@ import SwiftUI
 
 /// Image placement, resize, rotate, and layer management for card editor.
 struct ImageEditorView: View {
-    let image: UIImage
+    let image: PlatformImage
     let onRemove: () -> Void
     @State private var scale: CGFloat = 1.0
     @State private var rotation: Double = 0
@@ -19,7 +19,7 @@ struct ImageEditorView: View {
 
     var body: some View {
         ZStack(alignment: .center) {
-            Image(uiImage: image)
+            PlatformImageUtils.swiftUIImage(from: image)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 150, height: 150)
@@ -103,8 +103,8 @@ struct EditableImageLayer: View {
     }
 
     var body: some View {
-        if let uiImage = UIImage(data: imageData) {
-            Image(uiImage: uiImage)
+        if let uiImage = PlatformImage(data: imageData) {
+            PlatformImageUtils.swiftUIImage(from: uiImage)
                 .resizable()
                 .scaledToFit()
                 .frame(width: currentSize.width, height: currentSize.height)
@@ -123,7 +123,7 @@ struct EditableImageLayer: View {
 }
 
 #Preview {
-    if let image = UIImage(systemName: "person.fill") {
+    if let image = PlatformImageUtils.systemImage(named: "person.fill") {
         ImageEditorView(image: image, onRemove: {})
             .frame(width: 300, height: 300)
     }

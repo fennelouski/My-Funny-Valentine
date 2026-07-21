@@ -64,7 +64,7 @@ struct PremiumUpgradeView: View {
                         )
                     }
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.appFill)
                     .cornerRadius(16)
                     
                     // Pricing
@@ -118,9 +118,9 @@ struct PremiumUpgradeView: View {
                 .padding()
             }
             .navigationTitle("Premium")
-            .navigationBarTitleDisplayMode(.inline)
+            .appInlineNavigationTitle()
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button("Close") {
                         dismiss()
                     }
