@@ -1,3 +1,11 @@
+> ⚠️ **SUPERSEDED — do not use for submission.** This document predates the
+> decision to ship 1.0 **free with no in-app purchases**, with on-device
+> generation (Apple Intelligence / Image Playground) as the primary path.
+> The authoritative submission reference is `app-store/SUBMISSION.md`; the
+> published privacy policy is
+> <https://nathanfennel.com/my-funny-valentine/privacy>. Anything here about
+> subscriptions, premium tiers, or pricing no longer applies.
+
 # App Store Connect Configuration Guide
 
 This guide walks you through setting up your app in App Store Connect for submission.

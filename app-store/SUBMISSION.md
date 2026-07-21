@@ -17,7 +17,7 @@ summary of what is *actually true of the current build*.
 | iOS build (iPhone/iPad) | ✅ Succeeds, **0 warnings** |
 | macOS build | ✅ Succeeds, **0 warnings** |
 | iOS tests | ✅ 89 tests, all passing (unit + UI) |
-| Backend tests | ✅ 26 tests, `tsc --noEmit` clean |
+| Backend tests | ✅ 27 tests, `tsc --noEmit` clean |
 | Onboarding | ✅ First-launch flow, 5 UI tests |
 | App icon | ✅ Present for iOS + macOS (`AppIcon` asset catalog) |
 | Screenshots | ✅ Captured at required sizes (§6) |
@@ -218,11 +218,19 @@ Generated from the real app, at Apple's required dimensions:
 
 | Platform | Size | Count | Location |
 |---|---|---|---|
-| iPhone 6.9" | 1320 × 2868 | 5 | `app-store/screenshots/iphone-6.9/` |
-| iPad 13" | 2064 × 2752 | 5 | `app-store/screenshots/ipad-13/` |
+| iPhone 6.9" | 1320 × 2868 | 6 | `app-store/screenshots/iphone-6.9/` |
+| iPad 13" | 2064 × 2752 | 6 | `app-store/screenshots/ipad-13/` |
 | Mac | 1280 × 800 | 3 | `app-store/screenshots/mac/` |
 
-Screens captured: Home, Card editor, AI sayings, My Cards, Settings.
+Screens captured: Welcome (onboarding), Home, Card editor, AI sayings,
+My Cards, Settings.
+
+**Marketing variants** — each screenshot composed onto a branded gradient
+with a headline, at the same exact dimensions, in
+`app-store/screenshots/marketing/<device>/`. Regenerate with
+`swift scripts/make-marketing-images.swift`. Upload either set to App Store
+Connect; the marketing set is the stronger listing. Suggested order:
+AI sayings → Card editor → Home → My Cards → Settings → Welcome.
 
 These are **not committed to git** (see `.gitignore`) — they are build output.
 Regenerate any time:
@@ -235,8 +243,8 @@ xcodebuild test -scheme "My Funny Valentine" \
   -resultBundlePath /tmp/shots.xcresult
 xcrun xcresulttool export attachments --path /tmp/shots.xcresult --output-path /tmp/shots
 
-# macOS (DEBUG build only)
-open -a "My Funny Valentine.app" --args -screenshotTab 1 -seedSampleCards YES
+# macOS (DEBUG build only) — captures all three tabs at exact 1280x800
+scripts/capture-mac-screenshots.sh "<DerivedData>/Build/Products/Debug/My Funny Valentine.app"
 ```
 
 The `-screenshotTab` / `-seedSampleCards` launch arguments are compiled out of
@@ -360,3 +368,57 @@ Still requires you:
 - [ ] Answer export compliance, or add the Info.plist key (§9)
 - [ ] Decide whether macOS 26.2 minimum is intended (§2)
 - [ ] Archive and upload: Product → Archive → Distribute App
+
+---
+
+## 12. App Store Connect walkthrough (click-by-click)
+
+The exact order to fill everything in. Each step names the ASC screen and the
+section of this document holding the values.
+
+**A. Create the app record** — ASC → My Apps → **+** → New App
+1. Platforms: check **iOS** and **macOS**.
+2. Name / Bundle ID / SKU: from §2. The bundle ID must already exist in the
+   Developer portal with the CloudKit capability.
+3. Primary language: English (U.S.).
+
+**B. App Information** (sidebar → General)
+1. Categories: Photo & Video, secondary Lifestyle (§2).
+2. Age rating questionnaire: answer **None/No** to every content question →
+   rating 4+.
+3. Content rights: does not use third-party content.
+
+**C. Pricing & Availability**
+1. Price: **Free** (Tier 0).
+2. Availability: all territories (default).
+
+**D. App Privacy** (sidebar → App Privacy)
+1. Privacy Policy URL: `https://nathanfennel.com/my-funny-valentine/privacy`.
+2. "Do you or your third-party partners collect data from this app?" —
+   answer per §4. For the default build (no `APIBaseURL`): **No, we do not
+   collect data**. If you ship with the backend enabled: answer **Yes** →
+   "Other User Content" (the typed prompt) + "Other IDs" (the install UUID),
+   both **App Functionality**, both **Not linked to identity**, **No
+   tracking**.
+
+**E. In-App Purchases** — skip entirely. §5: there are none. Do not create
+products.
+
+**F. Prepare the version** (sidebar → 1.0 Prepare for Submission)
+1. Screenshots: upload from `app-store/screenshots/marketing/` (or the raw
+   set) — iPhone 6.9" and iPad 13" slots; the Mac listing takes the 1280×800
+   set. Order per §6.
+2. Description / Promotional Text / Keywords / What's New: paste from §3.
+3. Support URL + Marketing URL: from §3.
+4. Version `1.0`, Copyright `© 2026 Nathan Fennel`.
+5. App Review notes: paste the block in §10. No sign-in credentials needed.
+
+**G. Build**
+1. Xcode: Product → Archive (each platform), Distribute App → App Store
+   Connect. Signing must be set to your team first (§11).
+2. Back in ASC, attach the processed build to the version.
+3. Export compliance: standard encryption only → answer per §9 (or ship the
+   Info.plist key and skip the question).
+
+**H. Submit** — Add for Review → Submit. Both platforms can go in one
+submission from the same app record.
