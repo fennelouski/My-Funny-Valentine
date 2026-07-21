@@ -49,12 +49,16 @@ final class GoldenPathUITests: XCTestCase {
         XCTAssertTrue(generateSayings.waitForExistence(timeout: 5))
         generateSayings.tap()
 
-        // Sayings should appear even with no backend configured (on-device fallback)
+        // Sayings should appear even with no backend configured. Two on-device
+        // tiers can serve this: Apple's foundation model (thematic, so it may
+        // not echo the inspiration word) or the template generator (which
+        // always does). Assert the user-visible contract, not which tier ran.
         let firstSaying = app.buttons.matching(identifier: "sayings.row").firstMatch
-        XCTAssertTrue(firstSaying.waitForExistence(timeout: 10), "Sayings should be generated on-device")
-        XCTAssertTrue(
-            firstSaying.label.localizedCaseInsensitiveContains("coffee"),
-            "Generated saying should be built from the inspiration word"
+        XCTAssertTrue(firstSaying.waitForExistence(timeout: 30), "Sayings should be generated on-device")
+        XCTAssertGreaterThan(
+            firstSaying.label.trimmingCharacters(in: .whitespacesAndNewlines).count,
+            10,
+            "Generated saying should be a real message, got: \(firstSaying.label)"
         )
 
         let chosen = firstSaying.label

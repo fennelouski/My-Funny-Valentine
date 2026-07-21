@@ -5,8 +5,8 @@ A complete iOS app for creating personalized Valentine's Day cards with AI-gener
 ## Project Overview
 
 My Funny Valentine is a full-stack iOS application that allows users to create custom Valentine's Day cards with:
-- AI-generated romantic sayings based on user inspiration
-- Custom image generation for premium subscribers
+- AI-generated romantic sayings, on device via Apple's foundation model
+- Custom artwork generation, on device via Image Playground
 - Face detection and photo integration
 - CloudKit sync for cross-device access
 - Social sharing capabilities
@@ -21,8 +21,8 @@ This repository contains three main components:
 - **Platform**: iOS 17+
 - **Features**:
   - Card creation and editing
-  - AI-generated sayings
-  - Image generation (premium)
+  - AI-generated sayings (on-device)
+  - Artwork generation (on-device)
   - CloudKit sync
   - Face detection
   - Social sharing

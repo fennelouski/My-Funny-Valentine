@@ -120,6 +120,22 @@ your photos, and sync everything across your devices.
 
 ## 4. Privacy
 
+### On-device AI
+
+Both generative features run locally, with graceful degradation:
+
+| Feature | Framework | Requires | Fallback |
+|---|---|---|---|
+| Sayings | FoundationModels (`SystemLanguageModel`) | iOS 26 / macOS 26 + Apple Intelligence on | Hosted backend, then built-in templates |
+| Artwork | ImagePlayground (`ImageCreator`) | iOS 18.4 / macOS 15.4 + Apple Intelligence on | Hosted backend (premium) |
+
+Nothing the user types or photographs leaves the device on the default path.
+Every tier degrades rather than dead-ends, so the app still works on a device
+with Apple Intelligence disabled or unsupported.
+
+Verified running in the iOS 26.5 simulator — the foundation model produces
+thematic sayings rather than template fills.
+
 ### Usage description strings (already in `Info.plist`)
 
 | Key | Purpose |
@@ -137,7 +153,8 @@ For the app **as it currently ships** (no backend deployed — see §7):
 | Do you collect data? | **No** |
 | Photos | Processed on device, never transmitted |
 | Face detection | On-device via the Vision framework |
-| Saying generation | On-device; no network call |
+| Saying generation | On-device (Apple foundation model or templates); no network call |
+| Image generation | On-device via Image Playground; no network call |
 | Analytics / tracking / ads | None |
 | iCloud sync | User's own private CloudKit database, not accessible to the developer |
 
@@ -174,12 +191,24 @@ Nothing else writes that key, so a client cannot promote itself by sending a
 chosen `userId`. If Apple root certificates are not configured, verification
 **fails closed** — premium is never granted.
 
-> 🚨 **Still a review risk until the backend is deployed.** The premium tier's
-> headline benefit is AI *image* generation, which lives in `api/`. The code
-> now works and is tested, but nothing is deployed. Shipping a paid
-> subscription whose main feature 403s is a likely rejection under
-> **Guideline 2.1 / 3.1.1**. Either deploy the backend first, or ship 1.0 with
-> no subscription and add it later.
+> ⚠️ **Decide what premium is actually for.** Image generation now runs on
+> device via Image Playground, free and with no quota, on any device with
+> Apple Intelligence. That removes the old rejection risk — the feature no
+> longer 403s without a backend — but it also means the premium tier's original
+> headline benefit is now free.
+>
+> Options, in rough order of least work:
+> 1. **Ship 1.0 with no subscription.** Everything works on device. Simplest,
+>    and nothing in the app is currently paywalled that users would miss.
+> 2. **Reposition premium** around the cloud fallback: generation on devices
+>    *without* Apple Intelligence, plus higher limits. This is a real benefit
+>    for older hardware but needs the backend deployed.
+> 3. **Keep it as-is** — premium buys the cloud path only. Weakest story; be
+>    careful the subscription description doesn't promise what the free tier
+>    already does, which invites a **Guideline 3.1.2** rejection.
+>
+> Whichever you pick, the subscription description in App Store Connect must
+> describe only what premium *actually* adds over the free tier.
 
 > ⚠️ **Not verified end to end.** The verification logic is unit-tested with a
 > mocked verifier, but has never seen a real Apple-signed transaction. Make a

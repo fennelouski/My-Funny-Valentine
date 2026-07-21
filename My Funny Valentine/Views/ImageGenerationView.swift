@@ -11,9 +11,9 @@ struct ImageGenerationView: View {
     @StateObject private var viewModel: ImageGenerationViewModel
     @Environment(\.dismiss) private var dismiss
     
-    var onImageGenerated: ((String) -> Void)?
+    var onImageGenerated: ((Data) -> Void)?
     
-    init(userId: String, isPremium: Bool, onImageGenerated: ((String) -> Void)? = nil) {
+    init(userId: String, isPremium: Bool, onImageGenerated: ((Data) -> Void)? = nil) {
         _viewModel = StateObject(wrappedValue: ImageGenerationViewModel(userId: userId, isPremium: isPremium))
         self.onImageGenerated = onImageGenerated
     }
@@ -23,7 +23,7 @@ struct ImageGenerationView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     // Premium Gate
-                    if !viewModel.isPremium {
+                    if !viewModel.isPremium && !viewModel.canUseOnDeviceGeneration {
                         PremiumGateView()
                             .padding()
                     } else {
@@ -124,7 +124,36 @@ struct ImageGenerationView: View {
                             .padding(.horizontal)
                         }
                         
-                        // Generated Image
+                        // Generated Image (on device)
+                        if let image = viewModel.generatedImage {
+                            VStack(spacing: 12) {
+                                PlatformImageUtils.swiftUIImage(from: image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxHeight: 400)
+                                    .cornerRadius(10)
+
+                                Button {
+                                    if let data = PlatformImageUtils.pngData(from: image) {
+                                        onImageGenerated?(data)
+                                    }
+                                    dismiss()
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "plus.circle.fill")
+                                        Text("Add to Card")
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.accentColor)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                                }
+                            }
+                            .padding()
+                        }
+
+                        // Generated Image (backend)
                         if let imageURL = viewModel.generatedImageURL, let url = URL(string: imageURL) {
                             VStack(spacing: 12) {
                                 AsyncImage(url: url) { phase in
@@ -147,8 +176,12 @@ struct ImageGenerationView: View {
                                 .cornerRadius(10)
                                 
                                 Button(action: {
-                                    onImageGenerated?(imageURL)
-                                    dismiss()
+                                    Task {
+                                        if let (data, _) = try? await URLSession.shared.data(from: url) {
+                                            onImageGenerated?(data)
+                                        }
+                                        dismiss()
+                                    }
                                 }) {
                                     HStack {
                                         Image(systemName: "plus.circle.fill")

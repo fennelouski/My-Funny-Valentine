@@ -18,6 +18,8 @@ class AIGenerationViewModel: ObservableObject {
     @Published var selectedSaying: String?
     @Published var isCached: Bool = false
     @Published var remainingRequests: Int = 3
+    /// True when the last batch came from Apple's on-device model.
+    @Published var usedOnDeviceModel: Bool = false
     
     private let apiService = APIService.shared
     private let cacheService = CacheService.shared
@@ -48,7 +50,23 @@ class AIGenerationViewModel: ObservableObject {
         errorMessage = nil
         defer { isLoading = false }
 
-        // Without a deployed backend, generate on-device so the feature still works.
+        // Preferred: Apple's on-device model. Free, private, works offline, and
+        // costs no rate-limited backend request.
+        if OnDeviceSayingsGenerator.isAvailable {
+            do {
+                generatedSayings = try await OnDeviceSayingsGenerator.shared
+                    .sayings(for: trimmedInspiration)
+                isCached = false
+                usedOnDeviceModel = true
+                return
+            } catch {
+                // Fall through to the backend / template tiers.
+                usedOnDeviceModel = false
+            }
+        }
+
+        // Without a deployed backend, generate from templates so the feature
+        // still works.
         guard await apiService.isConfigured else {
             useLocalSayings(for: trimmedInspiration)
             return
@@ -95,6 +113,7 @@ class AIGenerationViewModel: ObservableObject {
     private func useLocalSayings(for inspiration: String) {
         generatedSayings = LocalSayingsGenerator.shared.sayings(for: inspiration)
         isCached = false
+        usedOnDeviceModel = false
     }
     
     func selectSaying(_ saying: String) {
