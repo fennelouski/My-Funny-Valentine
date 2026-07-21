@@ -53,8 +53,11 @@ final class GoldenPathUITests: XCTestCase {
         // tiers can serve this: Apple's foundation model (thematic, so it may
         // not echo the inspiration word) or the template generator (which
         // always does). Assert the user-visible contract, not which tier ran.
+        // Real model inference on a cold simulator or a loaded machine can take
+        // well over a minute — the app shows a spinner the whole time, so a
+        // long wait here is the honest bound, not laziness.
         let firstSaying = app.buttons.matching(identifier: "sayings.row").firstMatch
-        XCTAssertTrue(firstSaying.waitForExistence(timeout: 30), "Sayings should be generated on-device")
+        XCTAssertTrue(firstSaying.waitForExistence(timeout: 120), "Sayings should be generated on-device")
         XCTAssertGreaterThan(
             firstSaying.label.trimmingCharacters(in: .whitespacesAndNewlines).count,
             10,
