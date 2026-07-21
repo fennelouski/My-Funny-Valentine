@@ -7,25 +7,25 @@
 
 import SwiftUI
 import PhotosUI
+import SwiftData
 
 struct FaceImportView: View {
     @Environment(\.modelContext) private var modelContext
-    @StateObject private var photoPicker = PhotoPickerService()
-    @State private var detectedFaces: [VNFaceObservation] = []
-    @State private var selectedFaceIndex: Int = 0
+    @State private var selectedItem: PhotosPickerItem?
+    @State private var selectedImage: UIImage?
+    @State private var detectedFaces: [DetectedFace] = []
     @State private var isProcessing = false
     @State private var errorMessage: String?
     @State private var importedFaces: [FaceImage] = []
     @State private var currentStep: ImportStep = .firstFace
     @State private var showingFaceSelection = false
-    @State private var sourceImage: UIImage?
-    
+
     enum ImportStep {
         case firstFace
         case secondFace
         case complete
     }
-    
+
     var body: some View {
         NavigationView {
             VStack(spacing: 30) {
@@ -37,26 +37,21 @@ struct FaceImportView: View {
             }
             .navigationTitle("Import Faces")
             .sheet(isPresented: $showingFaceSelection) {
-                FaceSelectionView(
-                    faces: detectedFaces,
-                    sourceImage: sourceImage,
-                    selectedIndex: $selectedFaceIndex,
-                    onSelect: { observation in
-                        extractAndSaveFace(observation: observation)
-                    }
-                )
+                FaceSelectionView(faces: detectedFaces) { face in
+                    saveFace(face)
+                }
             }
         }
     }
-    
+
     private var importView: some View {
         VStack(spacing: 20) {
             Text(currentStep == .firstFace ? "Import your photo" : "Import a loved one's photo (optional)")
                 .font(.title2)
                 .multilineTextAlignment(.center)
                 .padding()
-            
-            if let image = photoPicker.selectedImage {
+
+            if let image = selectedImage {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
@@ -64,11 +59,8 @@ struct FaceImportView: View {
                     .cornerRadius(12)
                     .padding()
             }
-            
-            PhotosPicker(
-                selection: $photoPicker.selectedItem,
-                matching: .images
-            ) {
+
+            PhotosPicker(selection: $selectedItem, matching: .images) {
                 Label("Select Photo", systemImage: "photo")
                     .font(.headline)
                     .foregroundColor(.white)
@@ -77,38 +69,31 @@ struct FaceImportView: View {
                     .background(Color.pink)
                     .cornerRadius(10)
             }
-            .onChange(of: photoPicker.selectedItem) { _, newItem in
-                Task {
-                    await photoPicker.loadImage(from: newItem)
-                    if let image = photoPicker.selectedImage {
-                        detectFaces(in: image)
-                    }
-                }
+            .onChange(of: selectedItem) { _, newItem in
+                Task { await loadAndDetect(newItem) }
             }
-            
+
             if isProcessing {
                 ProgressView("Detecting faces...")
                     .padding()
             }
-            
+
             if let error = errorMessage {
                 Text(error)
                     .foregroundColor(.red)
+                    .multilineTextAlignment(.center)
                     .padding()
             }
-            
+
             if !importedFaces.isEmpty && currentStep == .firstFace {
                 Button("Continue to Second Face") {
                     currentStep = .secondFace
-                    photoPicker.selectedImage = nil
-                    photoPicker.selectedItem = nil
-                    detectedFaces = []
-                    errorMessage = nil
+                    resetSelection()
                 }
                 .buttonStyle(.borderedProminent)
                 .padding()
             }
-            
+
             if !importedFaces.isEmpty && currentStep == .secondFace {
                 Button("Skip Second Face") {
                     generateCards()
@@ -119,20 +104,20 @@ struct FaceImportView: View {
         }
         .padding()
     }
-    
+
     private var completionView: some View {
         VStack(spacing: 20) {
             Image(systemName: "checkmark.circle.fill")
                 .font(.system(size: 80))
                 .foregroundColor(.green)
-            
+
             Text("Faces imported successfully!")
                 .font(.title)
-            
+
             Text("\(importedFaces.count) face(s) ready for card creation")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
-            
+
             NavigationLink("View Generated Cards") {
                 CardLibraryView()
             }
@@ -141,99 +126,74 @@ struct FaceImportView: View {
         }
         .padding()
     }
-    
-    private func detectFaces(in image: UIImage) {
+
+    private func resetSelection() {
+        selectedImage = nil
+        selectedItem = nil
+        detectedFaces = []
+        errorMessage = nil
+    }
+
+    private func loadAndDetect(_ item: PhotosPickerItem?) async {
+        guard let item else { return }
         isProcessing = true
         errorMessage = nil
-        sourceImage = image
-        
-        FaceDetectionService.shared.detectFaces(in: image) { observations in
-            DispatchQueue.main.async {
-                isProcessing = false
-                
-                if observations.isEmpty {
-                    errorMessage = "No faces detected. Please try another photo."
-                } else if observations.count == 1 {
-                    // Auto-select if only one face
-                    extractAndSaveFace(observation: observations[0])
-                } else {
-                    // Show selection interface for multiple faces
-                    detectedFaces = observations
-                    showingFaceSelection = true
-                }
+        defer { isProcessing = false }
+
+        do {
+            guard let data = try await item.loadTransferable(type: Data.self),
+                  let image = UIImage(data: data) else {
+                errorMessage = "Could not load that photo. Please try another."
+                return
             }
+            selectedImage = image
+
+            let faces = try await FaceDetectionService.shared.detectFaces(in: image)
+            if faces.isEmpty {
+                errorMessage = "No faces detected. Please try another photo."
+            } else if faces.count == 1 {
+                saveFace(faces[0])
+            } else {
+                detectedFaces = faces
+                showingFaceSelection = true
+            }
+        } catch {
+            errorMessage = "Face detection failed. Please try another photo."
         }
     }
-    
-    private func extractAndSaveFace(observation: VNFaceObservation) {
-        guard let sourceImage = sourceImage else { return }
-        
-        guard let extractedFace = FaceDetectionService.shared.extractFace(
-            from: sourceImage,
-            observation: observation
-        ) else {
-            errorMessage = "Failed to extract face. Please try again."
-            return
-        }
-        
-        guard let thumbnail = FaceDetectionService.shared.createThumbnail(from: extractedFace) else {
-            errorMessage = "Failed to create thumbnail. Please try again."
-            return
-        }
-        
-        guard let faceData = extractedFace.jpegData(compressionQuality: 0.8),
-              let thumbData = thumbnail.jpegData(compressionQuality: 0.8) else {
-            errorMessage = "Failed to process image. Please try again."
-            return
-        }
-        
-        // Create a temporary card ID for storing faces before card generation
-        let tempCardId = UUID()
+
+    private func saveFace(_ face: DetectedFace) {
+        // Faces are held in memory until cards are generated; CardGenerationService
+        // creates its own persisted copies attached to each card.
         let faceImage = FaceImage(
-            cardId: tempCardId,
-            imageData: faceData,
-            thumbnailData: thumbData,
+            cardId: UUID(),
+            imageData: face.imageData,
+            thumbnailData: face.imageData,
             position: .zero,
             size: CGSize(width: 150, height: 150)
         )
-        
         importedFaces.append(faceImage)
-        modelContext.insert(faceImage)
-        
-        // If this was the second face, generate cards
+
         if currentStep == .secondFace {
             generateCards()
         }
     }
-    
+
     private func generateCards() {
-        // Generate cards with imported faces
-        let generatedCards = CardGenerationService.shared.generateTemplateCards(
+        _ = CardGenerationService.shared.generateTemplateCards(
             faces: importedFaces,
             modelContext: modelContext
         )
-        
-        // Update face cardIds to match their actual cards
-        for (index, card) in generatedCards.enumerated() {
-            if let faces = card.faces {
-                for face in faces {
-                    face.cardId = card.id
-                }
-            }
-        }
-        
         try? modelContext.save()
         currentStep = .complete
     }
 }
 
 struct FaceSelectionView: View {
-    let faces: [VNFaceObservation]
-    let sourceImage: UIImage?
-    @Binding var selectedIndex: Int
-    let onSelect: (VNFaceObservation) -> Void
+    let faces: [DetectedFace]
+    let onSelect: (DetectedFace) -> Void
     @Environment(\.dismiss) private var dismiss
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -241,19 +201,19 @@ struct FaceSelectionView: View {
                     Text("Multiple faces detected. Select one:")
                         .font(.headline)
                         .padding()
-                    
-                    if let image = sourceImage {
-                        ForEach(Array(faces.enumerated()), id: \.offset) { index, observation in
-                            FaceThumbnailView(
-                                image: image,
-                                observation: observation,
-                                isSelected: index == selectedIndex
-                            )
-                            .onTapGesture {
-                                selectedIndex = index
-                                onSelect(observation)
-                                dismiss()
-                            }
+
+                    ForEach(faces) { face in
+                        if let uiImage = UIImage(data: face.imageData) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 150, height: 150)
+                                .cornerRadius(12)
+                                .padding(8)
+                                .onTapGesture {
+                                    onSelect(face)
+                                    dismiss()
+                                }
                         }
                     }
                 }
@@ -271,33 +231,3 @@ struct FaceSelectionView: View {
         }
     }
 }
-
-struct FaceThumbnailView: View {
-    let image: UIImage
-    let observation: VNFaceObservation
-    let isSelected: Bool
-    
-    var body: some View {
-        VStack {
-            if let faceImage = FaceDetectionService.shared.extractFace(
-                from: image,
-                observation: observation
-            ) {
-                Image(uiImage: faceImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 150, height: 150)
-                    .cornerRadius(12)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(isSelected ? Color.pink : Color.clear, lineWidth: 3)
-                    )
-            }
-        }
-        .padding()
-        .background(isSelected ? Color.pink.opacity(0.1) : Color.clear)
-        .cornerRadius(12)
-    }
-}
-
-import Vision

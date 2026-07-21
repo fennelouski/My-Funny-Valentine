@@ -19,10 +19,16 @@ final class UserPreferences {
     var imageGenerationsUsed: Int
     var lastResetDate: Date
     var syncEnabled: Bool
-    
+    var conflictResolutionStrategyRawValue: String = ConflictResolutionStrategy.lastWriteWins.rawValue
+
     var subscriptionStatus: SubscriptionStatus {
         get { SubscriptionStatus(rawValue: subscriptionStatusRawValue) ?? .free }
         set { subscriptionStatusRawValue = newValue.rawValue }
+    }
+
+    var conflictResolutionStrategy: ConflictResolutionStrategy {
+        get { ConflictResolutionStrategy(rawValue: conflictResolutionStrategyRawValue) ?? .lastWriteWins }
+        set { conflictResolutionStrategyRawValue = newValue.rawValue }
     }
     
     var isPremium: Bool {

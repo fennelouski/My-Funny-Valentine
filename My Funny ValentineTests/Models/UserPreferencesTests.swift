@@ -164,8 +164,9 @@ struct UserPreferencesTests {
             context.insert(prefs)
             try context.save()
             
+            let prefsUserId = prefs.userId
             let descriptor = FetchDescriptor<UserPreferences>(
-                predicate: #Predicate { $0.userId == prefs.userId }
+                predicate: #Predicate { $0.userId == prefsUserId }
             )
             let fetched = try context.fetch(descriptor)
             

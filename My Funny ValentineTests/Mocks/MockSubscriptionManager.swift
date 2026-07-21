@@ -6,13 +6,15 @@
 //
 
 import Foundation
+import Combine
 import StoreKit
 @testable import My_Funny_Valentine
 
 @MainActor
 class MockSubscriptionManager: ObservableObject {
     @Published var isPremium: Bool = false
-    @Published var subscriptionStatus: SubscriptionStatus = .free
+    // Qualified because StoreKit also declares a `SubscriptionStatus`.
+    @Published var subscriptionStatus: My_Funny_Valentine.SubscriptionStatus = .free
     @Published var subscriptionExpiresAt: Date?
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?

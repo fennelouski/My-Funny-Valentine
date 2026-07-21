@@ -116,8 +116,12 @@ struct SyncStatusBadge: View {
 }
 
 #Preview {
-    VStack(spacing: 20) {
-        SyncStatusView(syncService: CloudKitSyncService(modelContext: ModelContext(ModelContainer(for: Card.self))))
+    let container = try! ModelContainer(
+        for: Card.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+    return VStack(spacing: 20) {
+        SyncStatusView(syncService: CloudKitSyncService(modelContext: ModelContext(container)))
     }
     .padding()
 }

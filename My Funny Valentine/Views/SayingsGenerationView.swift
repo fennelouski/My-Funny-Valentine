@@ -66,6 +66,7 @@ struct SayingsGenerationView: View {
                 }
                 .disabled(!viewModel.canGenerate)
                 .padding(.horizontal)
+                .accessibilityIdentifier("sayings.generate")
                 
                 // Usage Info
                 HStack {
@@ -153,6 +154,7 @@ struct SayingsGenerationView: View {
                         dismiss()
                     }
                     .disabled(viewModel.selectedSaying == nil)
+                    .accessibilityIdentifier("sayings.done")
                 }
             }
         }

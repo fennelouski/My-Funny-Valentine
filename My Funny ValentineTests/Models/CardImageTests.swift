@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics
 import SwiftData
 import Testing
 @testable import My_Funny_Valentine
@@ -46,7 +47,7 @@ struct CardImageTests {
                 imageData: imageData
             )
             #expect(cardImage.source == source)
-            #expect(cardImage.sourceRawValue == source.rawValue)
+            #expect(cardImage.source.rawValue == source.rawValue)
         }
     }
     
@@ -84,8 +85,9 @@ struct CardImageTests {
             context.insert(cardImage)
             try context.save()
             
+            let imageId = cardImage.id
             let descriptor = FetchDescriptor<CardImage>(
-                predicate: #Predicate { $0.id == cardImage.id }
+                predicate: #Predicate { $0.id == imageId }
             )
             let fetched = try context.fetch(descriptor)
             

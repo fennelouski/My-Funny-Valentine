@@ -59,7 +59,7 @@ private struct ImagePlaygroundButtonContent: View {
                 }
                 .imagePlaygroundSheet(isPresented: $showImagePlayground) { url in
                     generatedImageURL = url
-                    if let url, let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                    if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
                         onImageImported(image)
                     }
                 }

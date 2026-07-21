@@ -11,10 +11,29 @@ actor APIService {
     
     private let baseURL: String
     private let session: URLSession
-    
-    init(baseURL: String = "https://your-vercel-app.vercel.app", session: URLSession = .shared) {
+
+    /// Shipped as a placeholder. While it's still in place we treat the hosted
+    /// backend as unconfigured and generate sayings on-device instead of
+    /// stalling on a host that will never answer.
+    static let placeholderBaseURL = "https://your-vercel-app.vercel.app"
+
+    /// Set `APIBaseURL` in Info.plist to point the app at a deployed backend.
+    static var configuredBaseURL: String {
+        if let fromPlist = Bundle.main.object(forInfoDictionaryKey: "APIBaseURL") as? String,
+           !fromPlist.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return fromPlist
+        }
+        return placeholderBaseURL
+    }
+
+    init(baseURL: String = APIService.configuredBaseURL, session: URLSession = .shared) {
         self.baseURL = baseURL
         self.session = session
+    }
+
+    /// True when a real backend is available to call.
+    var isConfigured: Bool {
+        baseURL != Self.placeholderBaseURL && !baseURL.isEmpty
     }
     
     /// Generate Valentine sayings via AI
@@ -129,13 +148,21 @@ struct ValidateSubscriptionResponse: Decodable {
     let remainingImageGenerations: Int
 }
 
-enum ImageStyle: String, Codable {
+enum ImageStyle: String, Codable, CaseIterable {
     case valentine
     case romantic
     case funny
+
+    var displayName: String {
+        switch self {
+        case .valentine: return "Valentine"
+        case .romantic: return "Romantic"
+        case .funny: return "Funny"
+        }
+    }
 }
 
-enum APIError: Error {
+enum APIError: Error, Equatable {
     case invalidResponse
     case httpError(statusCode: Int)
     case premiumRequired

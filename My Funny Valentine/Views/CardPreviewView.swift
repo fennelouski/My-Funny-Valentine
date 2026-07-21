@@ -79,9 +79,11 @@ struct CardPreviewView: View {
     private var cardPreview: some View {
         Canvas { context, size in
             // Draw background
-            card.layout.backgroundColor.color.uiColor.setFill()
-            context.cgContext.fill(CGRect(origin: .zero, size: cardSize))
-            
+            context.fill(
+                Path(CGRect(origin: .zero, size: size)),
+                with: .color(card.layout.backgroundColor.color)
+            )
+
             // Draw faces
             if let template = TemplateManager.shared.getTemplate(id: card.templateId ?? "") {
                 for (index, facePosition) in template.facePositions.enumerated() {
@@ -97,30 +99,17 @@ struct CardPreviewView: View {
                     }
                 }
             }
-            
+
             // Draw text
             for textPosition in card.layout.textPositions {
                 if !textPosition.text.isEmpty {
-                    let font = UIFont(name: textPosition.fontName, size: textPosition.fontSize) ?? UIFont.systemFont(ofSize: textPosition.fontSize)
-                    let attributes: [NSAttributedString.Key: Any] = [
-                        .font: font,
-                        .foregroundColor: textPosition.color.color.uiColor
-                    ]
-                    
-                    let attributedString = NSAttributedString(string: textPosition.text, attributes: attributes)
-                    let textSize = attributedString.size()
-                    let textRect = CGRect(
-                        origin: CGPoint(
-                            x: textPosition.position.x - textSize.width / 2,
-                            y: textPosition.position.y - textSize.height / 2
-                        ),
-                        size: textSize
-                    )
-                    
-                    attributedString.draw(in: textRect)
+                    let text = Text(textPosition.text)
+                        .font(.custom(textPosition.fontName, size: textPosition.fontSize))
+                        .foregroundColor(textPosition.color.color)
+                    context.draw(text, at: textPosition.position, anchor: .center)
                 }
             }
-            
+
             // Draw images
             for image in card.images ?? [] {
                 if let uiImage = UIImage(data: image.imageData) {
@@ -131,7 +120,7 @@ struct CardPreviewView: View {
                     context.draw(Image(uiImage: uiImage), in: rect)
                 }
             }
-            
+
             // Draw stickers
             for sticker in card.stickers ?? [] {
                 if let data = sticker.stickerData, let uiImage = UIImage(data: data) {

@@ -67,7 +67,7 @@ extension PhotoPickerService: PHPickerViewControllerDelegate {
             isPresentingPicker = false
 
             guard !results.isEmpty else {
-                onImageSelected?(nil)
+                // Picker dismissed with no selection — nothing to hand back.
                 return
             }
 

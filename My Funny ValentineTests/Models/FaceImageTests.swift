@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics
 import SwiftData
 import Testing
 @testable import My_Funny_Valentine
@@ -50,8 +51,6 @@ struct FaceImageTests {
         faceImage.position = CGPoint(x: 50, y: 75)
         #expect(faceImage.position.x == 50)
         #expect(faceImage.position.y == 75)
-        #expect(faceImage.positionX == 50)
-        #expect(faceImage.positionY == 75)
     }
     
     @Test("FaceImage size can be set and retrieved")
@@ -66,8 +65,6 @@ struct FaceImageTests {
         
         #expect(faceImage.size.width == 150)
         #expect(faceImage.size.height == 200)
-        #expect(faceImage.sizeWidth == 150)
-        #expect(faceImage.sizeHeight == 200)
     }
     
     @Test("FaceImage persists in SwiftData")
@@ -79,8 +76,9 @@ struct FaceImageTests {
             context.insert(faceImage)
             try context.save()
             
+            let faceId = faceImage.id
             let descriptor = FetchDescriptor<FaceImage>(
-                predicate: #Predicate { $0.id == faceImage.id }
+                predicate: #Predicate { $0.id == faceId }
             )
             let fetched = try context.fetch(descriptor)
             

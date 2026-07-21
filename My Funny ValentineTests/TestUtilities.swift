@@ -85,7 +85,8 @@ struct TestData {
     static func sampleStickerReference(cardId: UUID) -> StickerReference {
         StickerReference(
             cardId: cardId,
-            imageData: sampleImageData(),
+            stickerId: "sticker-1",
+            stickerData: sampleImageData(),
             position: CGPoint(x: 75, y: 75),
             size: CGSize(width: 80, height: 80)
         )

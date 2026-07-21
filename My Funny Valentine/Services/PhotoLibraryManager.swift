@@ -69,18 +69,4 @@ class PhotoLibraryManager {
     func saveImageToAlbum(_ image: PlatformImage, albumName: String = "My Funny Valentine") async throws {
         try await platformService.saveImageToAlbum(image, albumName: albumName)
     }
-    
-    #if os(iOS) || os(visionOS)
-    /// Legacy method for UIImage compatibility (iOS/visionOS only)
-    @available(*, deprecated, message: "Use saveImage(_:) with PlatformImage instead")
-    func saveImage(_ image: UIImage) async throws {
-        try await saveImage(image as PlatformImage)
-    }
-    
-    /// Legacy method for UIImage compatibility (iOS/visionOS only)
-    @available(*, deprecated, message: "Use saveImageToAlbum(_:albumName:) with PlatformImage instead")
-    func saveImageToAlbum(_ image: UIImage, albumName: String = "My Funny Valentine") async throws {
-        try await saveImageToAlbum(image as PlatformImage, albumName: albumName)
-    }
-    #endif
 }

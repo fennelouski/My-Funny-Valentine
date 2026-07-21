@@ -16,7 +16,7 @@ struct PremiumFeatureGate<Content: View>: View {
     init(
         subscriptionManager: SubscriptionManager,
         @ViewBuilder content: @escaping () -> Content,
-        @ViewBuilder premiumContent: (() -> Content)? = nil
+        premiumContent: (() -> Content)? = nil
     ) {
         self.subscriptionManager = subscriptionManager
         self.content = content

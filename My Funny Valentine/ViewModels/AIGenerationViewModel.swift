@@ -44,29 +44,36 @@ class AIGenerationViewModel: ObservableObject {
             return
         }
         
-        // Check cache first
+        isLoading = true
+        errorMessage = nil
+        defer { isLoading = false }
+
+        // Without a deployed backend, generate on-device so the feature still works.
+        guard await apiService.isConfigured else {
+            useLocalSayings(for: trimmedInspiration)
+            return
+        }
+
+        // Check cache before spending a request
         if let cachedSayings = cacheService.getCachedSayings(for: trimmedInspiration) {
             generatedSayings = cachedSayings
             isCached = true
             return
         }
-        
-        isLoading = true
-        errorMessage = nil
-        
+
         do {
             let response = try await apiService.generateSayings(
                 inspiration: trimmedInspiration,
                 userId: userId
             )
-            
+
             generatedSayings = response.sayings
             isCached = response.cached
             remainingRequests = response.remainingRequests
-            
+
             // Cache the response
             cacheService.cacheSayings(response.sayings, for: trimmedInspiration)
-            
+
         } catch APIError.rateLimitExceeded {
             errorMessage = "Rate limit exceeded. Please try again later."
         } catch APIError.premiumRequired {
@@ -78,10 +85,16 @@ class AIGenerationViewModel: ObservableObject {
                 errorMessage = "Server error (status: \(statusCode))"
             }
         } catch {
-            errorMessage = "An unexpected error occurred: \(error.localizedDescription)"
+            // Offline or unreachable: fall back rather than dead-ending the user.
+            useLocalSayings(for: trimmedInspiration)
         }
-        
-        isLoading = false
+    }
+
+    /// Fresh on-device batch. Deliberately uncached so tapping Generate again
+    /// gives a different set.
+    private func useLocalSayings(for inspiration: String) {
+        generatedSayings = LocalSayingsGenerator.shared.sayings(for: inspiration)
+        isCached = false
     }
     
     func selectSaying(_ saying: String) {
