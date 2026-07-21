@@ -123,6 +123,16 @@ IAP, on-device generation, capped server fallback). The `website/` directory
 in this repo is an unused earlier standalone site — the nathanfennel.com pages
 supersede it.
 
+> 🚨 **Not live yet.** The pages are committed and pushed (`cb6893c1`) and the
+> site builds locally with all three routes, but Vercel deployments for
+> nathanfennel.com are stuck: every deploy since mid-July sits in status
+> UNKNOWN with no build logs, and production still serves a build from before
+> these pages (checked 21 Jul 2026 — `/giant-text` is 200, everything newer
+> 404s). This smells like an account-level build block; unblock it in the
+> Vercel dashboard, and once any deploy of current `main` succeeds these URLs
+> go live with no further work. **Verify all three URLs return 200 before
+> submitting** — App Review follows the privacy link.
+
 ---
 
 ## 4. Privacy
