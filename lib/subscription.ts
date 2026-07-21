@@ -1,5 +1,19 @@
 import { kv } from '@vercel/kv';
 import { verifySignedTransaction, VerifiedSubscription } from './app-store';
+import { getPeriodKey, getTTL } from './utils';
+
+/**
+ * Daily cap on backend image generations, per install.
+ *
+ * The app generates artwork on device via Image Playground wherever Apple
+ * Intelligence is available; this backend path only serves devices that can't,
+ * so the cap exists to bound OpenAI spend rather than to upsell.
+ */
+export const DAILY_IMAGE_LIMIT = 3;
+
+function imageUsageKey(userId: string): string {
+  return `image_usage:${userId}:${getPeriodKey('day')}`;
+}
 
 export interface SubscriptionInfo {
   isPremium: boolean;
@@ -84,10 +98,9 @@ export async function validateSubscription(
     ? await getRemainingRequests(userId, true)
     : await getRemainingRequests(userId, false);
 
-  // Get remaining image generations
-  const imageUsageKey = `image_usage:${userId}:${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}`;
-  const imageCount = (await kv.get<number>(imageUsageKey)) || 0;
-  const remainingImageGenerations = isValid ? Math.max(0, 10 - imageCount) : 0;
+  // Image generation is available to everyone, capped daily.
+  const imageCount = (await kv.get<number>(imageUsageKey(userId))) || 0;
+  const remainingImageGenerations = Math.max(0, DAILY_IMAGE_LIMIT - imageCount);
 
   return {
     isPremium: isValid,
@@ -101,12 +114,9 @@ export async function validateSubscription(
  * Record image generation usage
  */
 export async function recordImageGeneration(userId: string): Promise<void> {
-  const periodKey = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}`;
-  const key = `image_usage:${userId}:${periodKey}`;
-  const ttl = await import('./utils').then((m) => m.getTTL('month'));
-
+  const key = imageUsageKey(userId);
   await kv.incr(key);
-  await kv.expire(key, ttl);
+  await kv.expire(key, getTTL('day'));
 }
 
 /**

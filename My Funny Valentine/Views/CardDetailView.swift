@@ -120,8 +120,7 @@ struct CardDetailView: View {
         }
         .sheet(isPresented: $showingImageGenerator) {
             ImageGenerationView(
-                userId: UserPreferencesService.deviceUserId(),
-                isPremium: SubscriptionManager.shared.isPremium
+                userId: UserPreferencesService.deviceUserId()
             ) { data in
                 artworkData = data
             }

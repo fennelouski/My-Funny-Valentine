@@ -26,7 +26,11 @@ vi.mock('./app-store', () => ({
   PREMIUM_PRODUCT_ID: 'com.nathanfennel.My-Funny-Valentine.premium',
 }));
 
-import { validateSubscription, redeemSignedTransaction } from './subscription';
+import {
+  validateSubscription,
+  redeemSignedTransaction,
+  DAILY_IMAGE_LIMIT,
+} from './subscription';
 
 const USER = 'user-123';
 
@@ -51,7 +55,14 @@ describe('subscription entitlement', () => {
     const info = await validateSubscription(USER);
 
     expect(info.isPremium).toBe(false);
-    expect(info.remainingImageGenerations).toBe(0);
+  });
+
+  it('offers image generation to users with no subscription', async () => {
+    // Artwork is no longer paywalled — everyone gets the same daily cap.
+    const info = await validateSubscription(USER);
+
+    expect(info.isPremium).toBe(false);
+    expect(info.remainingImageGenerations).toBe(DAILY_IMAGE_LIMIT);
   });
 
   it('grants premium after a transaction verifies', async () => {
@@ -62,7 +73,8 @@ describe('subscription entitlement', () => {
 
     const info = await validateSubscription(USER);
     expect(info.isPremium).toBe(true);
-    expect(info.remainingImageGenerations).toBe(10);
+    // Premium no longer changes the image cap; it is the same for everyone.
+    expect(info.remainingImageGenerations).toBe(DAILY_IMAGE_LIMIT);
   });
 
   it('does not grant premium when verification fails', async () => {

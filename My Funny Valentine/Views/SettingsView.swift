@@ -9,10 +9,11 @@ import SwiftData
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var preferences: [UserPreferences]
-    
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+
     @State private var syncEnabled: Bool = true
     @State private var syncStatus: String = "Synced"
-    
+
     private var userPreferences: UserPreferences {
         if let prefs = preferences.first {
             return prefs
@@ -21,46 +22,43 @@ struct SettingsView: View {
         modelContext.insert(prefs)
         return prefs
     }
-    
+
+    private var appVersion: String {
+        let info = Bundle.main.infoDictionary
+        let short = info?["CFBundleShortVersionString"] as? String ?? "1.0"
+        let build = info?["CFBundleVersion"] as? String ?? "1"
+        return "\(short) (\(build))"
+    }
+
     var body: some View {
         NavigationStack {
             List {
-                // Subscription section
-                Section("Subscription") {
-                    HStack {
-                        Label("Status", systemImage: "crown.fill")
+                Section {
+                    HStack(alignment: .firstTextBaseline) {
+                        Label("Sayings", systemImage: "sparkles")
                         Spacer()
-                        Text(userPreferences.subscriptionStatus == .premium ? "Premium" : "Free")
+                        Text(OnDeviceSayingsGenerator.isAvailable ? "On device" : "Built-in")
                             .foregroundStyle(.secondary)
                     }
-                    
-                    if userPreferences.subscriptionStatus != .premium {
-                        NavigationLink {
-                            Text("Upgrade to Premium")
-                        } label: {
-                            Label("Upgrade", systemImage: "star.fill")
-                        }
+
+                    HStack(alignment: .firstTextBaseline) {
+                        Label("Artwork", systemImage: "photo.artframe")
+                        Spacer()
+                        Text(OnDeviceImageGenerator.isSupported ? "On device" : "Unavailable")
+                            .foregroundStyle(.secondary)
                     }
+
+                    if let reason = OnDeviceSayingsGenerator.unavailableReason {
+                        Text(reason)
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
+                } header: {
+                    Text("Generation")
+                } footer: {
+                    Text("Cards are generated on your device. Nothing you type or photograph is sent anywhere.")
                 }
-                
-                // Usage section
-                Section("Usage") {
-                    HStack {
-                        Label("AI Requests", systemImage: "brain.head.profile")
-                        Spacer()
-                        Text("\(userPreferences.aiRequestsUsed) used")
-                            .foregroundStyle(.secondary)
-                    }
-                    
-                    HStack {
-                        Label("Image Generations", systemImage: "photo.artframe")
-                        Spacer()
-                        Text("\(userPreferences.imageGenerationsUsed) used")
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                
-                // Sync section
+
                 Section("iCloud Sync") {
                     Toggle(isOn: $syncEnabled) {
                         Label("Sync Enabled", systemImage: "icloud")
@@ -69,7 +67,7 @@ struct SettingsView: View {
                         userPreferences.syncEnabled = newValue
                         try? modelContext.save()
                     }
-                    
+
                     HStack {
                         Label("Status", systemImage: "checkmark.icloud")
                         Spacer()
@@ -77,15 +75,21 @@ struct SettingsView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
-                
-                // About section
+
                 Section("About") {
                     HStack {
                         Label("Version", systemImage: "info.circle")
                         Spacer()
-                        Text("1.0")
+                        Text(appVersion)
                             .foregroundStyle(.secondary)
                     }
+
+                    Button {
+                        hasCompletedOnboarding = false
+                    } label: {
+                        Label("Show Welcome Again", systemImage: "sparkles.rectangle.stack")
+                    }
+                    .accessibilityIdentifier("settings.replayOnboarding")
                 }
             }
             .navigationTitle("Settings")

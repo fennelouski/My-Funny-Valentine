@@ -24,6 +24,26 @@ enum ScreenshotSupport {
         return 0
     }
 
+    /// Lets UI tests and screenshot runs jump straight to the app with
+    /// `-skipOnboarding YES`. Always false outside DEBUG builds.
+    static var shouldSkipOnboarding: Bool {
+        #if DEBUG
+        return UserDefaults.standard.bool(forKey: "skipOnboarding")
+        #else
+        return false
+        #endif
+    }
+
+    /// Forces the onboarding flow to show with `-showOnboarding YES`, even if
+    /// it has been completed before. Always false outside DEBUG builds.
+    static var shouldForceOnboarding: Bool {
+        #if DEBUG
+        return UserDefaults.standard.bool(forKey: "showOnboarding")
+        #else
+        return false
+        #endif
+    }
+
     /// Inserts a small set of demo cards when launched with `-seedSampleCards YES`.
     /// No-op in Release builds and when the store already has cards.
     static func seedSampleCardsIfRequested(in context: ModelContext) {

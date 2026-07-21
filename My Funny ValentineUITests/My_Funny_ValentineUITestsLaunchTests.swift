@@ -20,6 +20,7 @@ final class My_Funny_ValentineUITestsLaunchTests: XCTestCase {
     @MainActor
     func testLaunch() throws {
         let app = XCUIApplication()
+        app.launchArguments = ["-skipOnboarding", "YES"]
         app.launch()
 
         // Insert steps here to perform after app launch but before taking a screenshot,

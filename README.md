@@ -10,7 +10,7 @@ My Funny Valentine is a full-stack iOS application that allows users to create c
 - Face detection and photo integration
 - CloudKit sync for cross-device access
 - Social sharing capabilities
-- Subscription-based monetization
+- Free, with on-device generation
 
 ## Repository Structure
 
@@ -26,7 +26,7 @@ This repository contains three main components:
   - CloudKit sync
   - Face detection
   - Social sharing
-  - Subscription management
+  - First-launch onboarding
 
 ### 2. Backend API (`api/`, `lib/`)
 - **Platform**: Vercel Serverless Functions
@@ -167,17 +167,19 @@ Validate user's subscription status.
 
 ## Features
 
-### Free Tier
-- 3 AI-generated sayings per day (unlimited on-device sayings when no backend is configured)
-- Basic card creation
-- CloudKit sync
-- Social sharing
+The app is **free with no in-app purchases**.
 
-### Premium Tier
-- 20 AI-generated sayings per month
-- 10 custom image generations per month
-- Advanced card templates
-- Priority support
+| Feature | Availability |
+|---|---|
+| Card creation | Unlimited |
+| On-device sayings | Unlimited |
+| On-device artwork | Unlimited |
+| Backend sayings (fallback) | 3/day per install |
+| Backend artwork (fallback) | 3/day per install |
+
+The backend caps only bound OpenAI spend for devices that can't generate
+locally. Server-side subscription verification remains in `lib/app-store.ts`
+if a paid tier is added later.
 
 ## Project Structure
 

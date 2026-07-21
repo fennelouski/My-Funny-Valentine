@@ -13,8 +13,8 @@ struct ImageGenerationView: View {
     
     var onImageGenerated: ((Data) -> Void)?
     
-    init(userId: String, isPremium: Bool, onImageGenerated: ((Data) -> Void)? = nil) {
-        _viewModel = StateObject(wrappedValue: ImageGenerationViewModel(userId: userId, isPremium: isPremium))
+    init(userId: String, onImageGenerated: ((Data) -> Void)? = nil) {
+        _viewModel = StateObject(wrappedValue: ImageGenerationViewModel(userId: userId))
         self.onImageGenerated = onImageGenerated
     }
     
@@ -23,8 +23,8 @@ struct ImageGenerationView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     // Premium Gate
-                    if !viewModel.isPremium && !viewModel.canUseOnDeviceGeneration {
-                        PremiumGateView()
+                    if !viewModel.canUseOnDeviceGeneration && viewModel.remainingGenerations <= 0 {
+                        UnavailableGateView()
                             .padding()
                     } else {
                         // Description Input Section
@@ -224,42 +224,28 @@ struct ImageGenerationView: View {
     }
 }
 
-struct PremiumGateView: View {
+struct UnavailableGateView: View {
     var body: some View {
         VStack(spacing: 16) {
-            Image(systemName: "crown.fill")
+            Image(systemName: "wand.and.stars.inverse")
                 .font(.system(size: 50))
-                .foregroundColor(.yellow)
-            
-            Text("Premium Feature")
+                .foregroundStyle(.secondary)
+
+            Text("Artwork isn't available")
                 .font(.title2)
                 .fontWeight(.bold)
-            
-            Text("Custom image generation is available for premium subscribers")
+
+            Text(OnDeviceImageGenerator.isSupported
+                 ? "You've used today's artwork generations. Try again tomorrow, or write your own message instead."
+                 : "This device can't generate artwork. You can still add a photo and write your own message.")
                 .font(.subheadline)
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
-            
-            Button(action: {
-                // TODO: Navigate to subscription screen
-            }) {
-                HStack {
-                    Image(systemName: "star.fill")
-                    Text("Upgrade to Premium")
-                }
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.accentColor)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-            }
         }
         .padding()
-        .background(Color.appFill)
-        .cornerRadius(12)
     }
 }
 
 #Preview {
-    ImageGenerationView(userId: "test-user", isPremium: true)
+    ImageGenerationView(userId: "test-user")
 }

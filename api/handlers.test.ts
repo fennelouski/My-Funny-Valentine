@@ -36,7 +36,7 @@ vi.mock('../lib/openai', () => ({
 
 import sayingsHandler from './generate-sayings';
 import imageHandler from './generate-image';
-import { redeemSignedTransaction } from '../lib/subscription';
+import { redeemSignedTransaction, DAILY_IMAGE_LIMIT } from '../lib/subscription';
 
 interface Captured {
   status: number;
@@ -155,24 +155,12 @@ describe('POST /api/generate-image', () => {
     verifySignedTransaction.mockReset();
   });
 
-  it('refuses a free user', async () => {
-    const { req, res, captured } = makeReqRes({
-      description: 'two cats',
-      userId: 'free-user',
-    });
-    await imageHandler(req, res);
-
-    expect(captured.status).toBe(403);
-    expect(generateImage).not.toHaveBeenCalled();
-  });
-
-  it('serves a verified premium user', async () => {
-    await grantPremium('premium-user');
+  it('serves a free user — no subscription required', async () => {
     generateImage.mockResolvedValue({ b64Json: 'AAAA', contentType: 'image/jpeg' });
 
     const { req, res, captured } = makeReqRes({
       description: 'two cats',
-      userId: 'premium-user',
+      userId: 'free-user',
     });
     await imageHandler(req, res);
 
@@ -181,20 +169,34 @@ describe('POST /api/generate-image', () => {
     expect(generateImage).toHaveBeenCalledTimes(1);
   });
 
-  it('enforces the monthly image limit', async () => {
-    await grantPremium('premium-user');
+  it('enforces the daily image cap', async () => {
     generateImage.mockResolvedValue({ b64Json: 'AAAA', contentType: 'image/jpeg' });
 
-    for (let i = 0; i < 10; i++) {
-      const r = makeReqRes({ description: `scene ${i}`, userId: 'premium-user' });
+    for (let i = 0; i < DAILY_IMAGE_LIMIT; i++) {
+      const r = makeReqRes({ description: `scene ${i}`, userId: 'free-user' });
       await imageHandler(r.req, r.res);
       expect(r.captured.status).toBe(200);
     }
 
-    const blocked = makeReqRes({ description: 'scene 11', userId: 'premium-user' });
+    const blocked = makeReqRes({ description: 'one too many', userId: 'free-user' });
     await imageHandler(blocked.req, blocked.res);
 
     expect(blocked.captured.status).toBe(429);
+    expect(blocked.captured.body.remainingGenerations).toBe(0);
+  });
+
+  it('caps each install separately', async () => {
+    generateImage.mockResolvedValue({ b64Json: 'AAAA', contentType: 'image/jpeg' });
+
+    for (let i = 0; i < DAILY_IMAGE_LIMIT; i++) {
+      const r = makeReqRes({ description: `scene ${i}`, userId: 'install-a' });
+      await imageHandler(r.req, r.res);
+    }
+
+    const other = makeReqRes({ description: 'fresh', userId: 'install-b' });
+    await imageHandler(other.req, other.res);
+
+    expect(other.captured.status).toBe(200);
   });
 
   it('rejects an over-long description', async () => {

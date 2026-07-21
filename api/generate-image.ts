@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { validateSubscription, recordImageGeneration, getRemainingImageGenerations } from '../lib/subscription';
+import { recordImageGeneration, getRemainingImageGenerations } from '../lib/subscription';
 import { getCachedImage, cacheImage } from '../lib/cache';
 import { generateImage } from '../lib/openai';
 import { createErrorResponse } from '../lib/utils';
@@ -43,14 +43,7 @@ export default async function handler(
     const validStyles = ['valentine', 'romantic', 'funny'];
     const imageStyle = validStyles.includes(style) ? style : 'valentine';
 
-    // Validate subscription
-    const subscription = await validateSubscription(userId);
-    if (!subscription.isPremium) {
-      return res.status(403).json(
-        createErrorResponse('Premium subscription required', 'SUBSCRIPTION_REQUIRED')
-      );
-    }
-
+    // Available to everyone, bounded by a daily cap.
     // Check usage limit
     const remaining = await getRemainingImageGenerations(userId);
     if (remaining <= 0) {

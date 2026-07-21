@@ -19,17 +19,15 @@ class ImageGenerationViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var isCached: Bool = false
-    @Published var remainingGenerations: Int = 0
-    @Published var isPremium: Bool = false
+    @Published var remainingGenerations: Int = 3
     /// True when the last image came from Apple's on-device model.
     @Published var usedOnDeviceModel: Bool = false
     
     private let apiService = APIService.shared
     private let userId: String
     
-    init(userId: String, isPremium: Bool) {
+    init(userId: String) {
         self.userId = userId
-        self.isPremium = isPremium
     }
     
     var characterCount: Int {
@@ -45,7 +43,7 @@ class ImageGenerationViewModel: ObservableObject {
         !descriptionText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
         characterCount <= 100 &&
         !isLoading &&
-        (canUseOnDeviceGeneration || (isPremium && remainingGenerations > 0))
+        (canUseOnDeviceGeneration || remainingGenerations > 0)
     }
 
     func generateImage() async {
@@ -77,12 +75,6 @@ class ImageGenerationViewModel: ObservableObject {
             }
         }
 
-        guard isPremium else {
-            errorMessage = "Premium subscription required"
-            isLoading = false
-            return
-        }
-
         guard remainingGenerations > 0 else {
             errorMessage = "Image generation limit reached"
             isLoading = false
@@ -104,12 +96,12 @@ class ImageGenerationViewModel: ObservableObject {
         } catch APIError.rateLimitExceeded {
             errorMessage = "Image generation limit reached"
         } catch APIError.premiumRequired {
-            errorMessage = "Premium subscription required"
+            errorMessage = "Artwork generation isn't available on this device right now."
         } catch APIError.httpError(let statusCode) {
             if statusCode == 429 {
                 errorMessage = "Image generation limit reached"
             } else if statusCode == 403 {
-                errorMessage = "Premium subscription required"
+                errorMessage = "Artwork generation isn't available on this device right now."
             } else {
                 errorMessage = "Server error (status: \(statusCode))"
             }

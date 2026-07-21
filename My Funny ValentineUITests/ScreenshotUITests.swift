@@ -22,7 +22,7 @@ final class ScreenshotUITests: XCTestCase {
         continueAfterFailure = false
         app = XCUIApplication()
         // Seed a populated library so marketing shots aren't near-empty.
-        app.launchArguments = ["--uitesting", "-seedSampleCards", "YES"]
+        app.launchArguments = ["--uitesting", "-seedSampleCards", "YES", "-skipOnboarding", "YES"]
         app.launch()
     }
 

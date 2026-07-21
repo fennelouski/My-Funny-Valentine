@@ -10,13 +10,40 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @State private var selectedTab = ScreenshotSupport.initialTab
 
+    /// Set when onboarding is dismissed in this session, so a forced run
+    /// (`-showOnboarding`) can still be completed rather than looping forever.
+    @State private var dismissedOnboarding = false
+
+    private var showOnboarding: Bool {
+        if dismissedOnboarding { return false }
+        if ScreenshotSupport.shouldForceOnboarding { return true }
+        if ScreenshotSupport.shouldSkipOnboarding { return false }
+        return !hasCompletedOnboarding
+    }
+
     var body: some View {
-        content
-            .task {
-                ScreenshotSupport.seedSampleCardsIfRequested(in: modelContext)
+        Group {
+            if showOnboarding {
+                OnboardingView {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        hasCompletedOnboarding = true
+                        dismissedOnboarding = true
+                    }
+                }
+            } else {
+                content
             }
+        }
+        .task {
+            ScreenshotSupport.seedSampleCardsIfRequested(in: modelContext)
+        }
+        .onChange(of: hasCompletedOnboarding) { _, completed in
+            // "Show Welcome Again" in Settings replays the flow mid-session.
+            if !completed { dismissedOnboarding = false }
+        }
     }
 
     @ViewBuilder

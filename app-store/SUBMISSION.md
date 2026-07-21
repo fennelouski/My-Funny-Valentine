@@ -16,8 +16,9 @@ summary of what is *actually true of the current build*.
 |---|---|
 | iOS build (iPhone/iPad) | ✅ Succeeds, **0 warnings** |
 | macOS build | ✅ Succeeds, **0 warnings** |
-| Unit tests | ✅ 66 tests, all passing |
-| UI tests | ✅ All passing, incl. create-card golden path |
+| iOS tests | ✅ 89 tests, all passing (unit + UI) |
+| Backend tests | ✅ 26 tests, `tsc --noEmit` clean |
+| Onboarding | ✅ First-launch flow, 5 UI tests |
 | App icon | ✅ Present for iOS + macOS (`AppIcon` asset catalog) |
 | Screenshots | ✅ Captured at required sizes (§6) |
 
@@ -127,7 +128,7 @@ Both generative features run locally, with graceful degradation:
 | Feature | Framework | Requires | Fallback |
 |---|---|---|---|
 | Sayings | FoundationModels (`SystemLanguageModel`) | iOS 26 / macOS 26 + Apple Intelligence on | Hosted backend, then built-in templates |
-| Artwork | ImagePlayground (`ImageCreator`) | iOS 18.4 / macOS 15.4 + Apple Intelligence on | Hosted backend (premium) |
+| Artwork | ImagePlayground (`ImageCreator`) | iOS 18.4 / macOS 15.4 + Apple Intelligence on | Hosted backend, capped 3/day |
 
 Nothing the user types or photographs leaves the device on the default path.
 Every tier degrades rather than dead-ends, so the app still works on a device
@@ -166,54 +167,42 @@ For the app **as it currently ships** (no backend deployed — see §7):
 
 ## 5. In-app purchase
 
-| Field | Value |
+**None. Version 1.0 ships free with no in-app purchases.**
+
+In App Store Connect, answer **No** to "Does your app contain in-app
+purchases?" There is no subscription product to create, no paywall in the app,
+and no restore-purchases flow for review to test. This removes the whole class
+of Guideline 3.1 rejections.
+
+Everything is available to every user:
+
+| Feature | Availability |
 |---|---|
-| Product ID | `com.nathanfennel.My-Funny-Valentine.premium` |
-| Type | Auto-renewable subscription |
-| Duration | 1 month |
+| Card creation | Unlimited |
+| On-device sayings | Unlimited |
+| On-device artwork | Unlimited |
+| Backend sayings (fallback) | 3/day per install |
+| Backend artwork (fallback) | 3/day per install |
 
-This product **must be created in App Store Connect** — it does not exist yet.
-Until it does, `SubscriptionManager.purchasePremium()` throws
-`SubscriptionError.productNotFound`.
+The backend caps exist purely to bound OpenAI spend on devices that can't
+generate locally. They are not an upsell and the app never asks for money.
 
-### How entitlement works
+### Re-enabling a subscription later
 
-The server grants premium on exactly one basis: a StoreKit 2 transaction
-signed by Apple, verified with Apple's `app-store-server-library`.
+The server-side machinery is still in the repo and still tested:
+`lib/app-store.ts` verifies StoreKit 2 transactions against Apple's root
+certificates, and `redeemSignedTransaction` is the only writer of the
+entitlement key, so a client cannot promote itself with a chosen `userId`. It
+fails closed when certificates aren't configured.
 
-1. `SubscriptionManager.checkSubscriptionStatus()` finds a verified entitlement
-   and posts its `jwsRepresentation` to `/api/validate-subscription`.
-2. `lib/app-store.ts` verifies the signature against Apple's root certificates,
-   checks the bundle ID and product ID, and reads the expiry.
-3. Only then does `redeemSignedTransaction` write `subscription:{userId}` to KV.
+What was removed is the client: the paywall views, `SubscriptionViewModel`, and
+all premium gating. To bring a subscription back you would create the product
+in App Store Connect, restore a purchase UI, and have `SubscriptionManager`
+post `jwsRepresentation` to `/api/validate-subscription` again.
 
-Nothing else writes that key, so a client cannot promote itself by sending a
-chosen `userId`. If Apple root certificates are not configured, verification
-**fails closed** — premium is never granted.
-
-> ⚠️ **Decide what premium is actually for.** Image generation now runs on
-> device via Image Playground, free and with no quota, on any device with
-> Apple Intelligence. That removes the old rejection risk — the feature no
-> longer 403s without a backend — but it also means the premium tier's original
-> headline benefit is now free.
->
-> Options, in rough order of least work:
-> 1. **Ship 1.0 with no subscription.** Everything works on device. Simplest,
->    and nothing in the app is currently paywalled that users would miss.
-> 2. **Reposition premium** around the cloud fallback: generation on devices
->    *without* Apple Intelligence, plus higher limits. This is a real benefit
->    for older hardware but needs the backend deployed.
-> 3. **Keep it as-is** — premium buys the cloud path only. Weakest story; be
->    careful the subscription description doesn't promise what the free tier
->    already does, which invites a **Guideline 3.1.2** rejection.
->
-> Whichever you pick, the subscription description in App Store Connect must
-> describe only what premium *actually* adds over the free tier.
-
-> ⚠️ **Not verified end to end.** The verification logic is unit-tested with a
-> mocked verifier, but has never seen a real Apple-signed transaction. Make a
-> sandbox purchase and confirm `/api/generate-image` returns 200 before you
-> charge anyone.
+> ⚠️ That path has never been exercised against a real Apple-signed
+> transaction. If you re-enable it, make a sandbox purchase and confirm the
+> entitlement lands before charging anyone.
 
 ---
 
@@ -320,7 +309,10 @@ declaration that should be made by the developer, not generated.
 
 ```
 No demo account is required — all functionality is available immediately on
-launch.
+launch. The app is free with no in-app purchases and never asks for payment.
+
+On first launch a short three-page welcome appears; tap "Skip" or step through
+it to reach the app.
 
 Saying generation runs entirely on device in this build; the app makes no
 network requests for it and works fully offline.
@@ -333,6 +325,8 @@ sync of the user's own cards. The app does not send push notifications.
 
 To try the main flow: Home → "Create a Card" → "Generate with AI" → type any
 word (e.g. "coffee") → Generate → pick a saying → Done → Save.
+
+To replay the welcome flow: Settings → "Show Welcome Again".
 ```
 
 ---
@@ -347,13 +341,14 @@ Verified in this repo:
 - [x] Screenshots at required dimensions for iPhone, iPad, Mac
 - [x] Privacy usage strings present
 - [x] App is fully functional with no backend
+- [x] First-launch onboarding, replayable from Settings
+- [x] No in-app purchases — answer "No" in App Store Connect
 
 Still requires you:
 
 - [ ] Set the signing team and create App Store provisioning profiles
 - [ ] Create the app record in App Store Connect (§2)
 - [ ] Host the privacy policy and support pages, add URLs (§3)
-- [ ] Decide the subscription question in §5 — **this is the biggest open risk**
 - [ ] Create the CloudKit production schema and deploy it
 - [ ] Answer export compliance, or add the Info.plist key (§9)
 - [ ] Decide whether macOS 26.2 minimum is intended (§2)
