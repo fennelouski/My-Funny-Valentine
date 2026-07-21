@@ -31,6 +31,15 @@ describe('image-host', () => {
     expect(getApiBaseUrl()).toBe('http://localhost:3000');
   });
 
+  it('prefers the stable API_BASE_URL over the per-deployment VERCEL_URL', () => {
+    // Cached image URLs live for 30 days; they must use the stable alias,
+    // not a deployment-specific hash URL.
+    process.env.VERCEL_URL = 'my-app-abc123.vercel.app';
+    process.env.API_BASE_URL = 'https://api.example.com/';
+    expect(getApiBaseUrl()).toBe('https://api.example.com');
+    expect(buildImagePublicUrl('k1')).toBe('https://api.example.com/api/image/k1');
+  });
+
   it('parses base64 image responses from GPT Image models', () => {
     const result = parseGeneratedImageResponse([
       { b64_json: 'aGVsbG8=', url: null },

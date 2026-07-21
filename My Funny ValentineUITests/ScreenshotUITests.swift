@@ -61,6 +61,21 @@ final class ScreenshotUITests: XCTestCase {
         capture("05-Settings")
     }
 
+    @MainActor
+    func testCaptureOnboardingScreenshot() throws {
+        // Relaunch forcing the welcome flow; the suite default skips it.
+        app.terminate()
+        app.launchArguments = ["--uitesting", "-showOnboarding", "YES"]
+        app.launch()
+
+        let next = app.buttons["onboarding.next"]
+        guard next.waitForExistence(timeout: 10) else {
+            XCTFail("Onboarding did not appear")
+            return
+        }
+        capture("00-Welcome")
+    }
+
     // MARK: - Flow helpers
 
     @MainActor

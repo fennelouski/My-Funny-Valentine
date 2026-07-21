@@ -7,12 +7,15 @@ export function buildImagePublicUrl(cacheKey: string): string {
 }
 
 export function getApiBaseUrl(): string {
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`;
-  }
-
+  // Explicit stable origin first: VERCEL_URL is the per-deployment hash URL,
+  // and image URLs are cached for 30 days — they must point at the alias that
+  // stays valid across deployments.
   if (process.env.API_BASE_URL) {
     return process.env.API_BASE_URL.replace(/\/$/, '');
+  }
+
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
   }
 
   return 'http://localhost:3000';

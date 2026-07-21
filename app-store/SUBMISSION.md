@@ -109,13 +109,19 @@ First release. Create Valentine's cards with generated sayings, build cards from
 your photos, and sync everything across your devices.
 ```
 
-**URLs** — all three must be live before submission:
+**URLs** — live on nathanfennel.com (deployed via Vercel from that repo's `main`):
 
-| Field | Status |
+| Field | URL |
 |---|---|
-| Support URL | ⚠️ Needs hosting |
-| Marketing URL | ⚠️ Needs hosting (`website/` in this repo) |
-| Privacy Policy URL | ⚠️ **Required.** Text is in `legal/privacy-policy.md`, needs a public URL |
+| Support URL | `https://nathanfennel.com/my-funny-valentine/support` |
+| Marketing URL | `https://nathanfennel.com/my-funny-valentine` |
+| Privacy Policy URL | `https://nathanfennel.com/my-funny-valentine/privacy` |
+
+The pages live in the `nathanfennel.com` repo under
+`src/app/my-funny-valentine/` and reflect the actual 1.0 behaviour (free, no
+IAP, on-device generation, capped server fallback). The `website/` directory
+in this repo is an unused earlier standalone site — the nathanfennel.com pages
+supersede it.
 
 ---
 
@@ -266,9 +272,10 @@ To point at a deployed backend, add to `Info.plist`:
 | `OPENAI_MODEL` / `OPENAI_IMAGE_MODEL` | optional | Model overrides |
 
 The backend now **builds and its tests pass** (`npm run type-check`,
-`npm test` — 25 tests). Its production dependency tree has no known
-vulnerabilities. It has still never been deployed or called by a real device,
-so treat live behaviour as unproven until you exercise it.
+`npm test` — 27 tests). Its production dependency tree has no known
+vulnerabilities. It has still never been deployed or called by a real device —
+follow `docs/DEPLOYMENT.md` for the full Vercel runbook, including post-deploy
+smoke tests that prove the endpoints, caps, and image hosting actually work.
 
 Verify the OpenAI model IDs in `lib/openai.ts` against the current model list
 before deploying — a wrong name fails every request at runtime, and
@@ -348,7 +355,7 @@ Still requires you:
 
 - [ ] Set the signing team and create App Store provisioning profiles
 - [ ] Create the app record in App Store Connect (§2)
-- [ ] Host the privacy policy and support pages, add URLs (§3)
+- [x] Privacy policy, support, and marketing pages live on nathanfennel.com (§3)
 - [ ] Create the CloudKit production schema and deploy it
 - [ ] Answer export compliance, or add the Info.plist key (§9)
 - [ ] Decide whether macOS 26.2 minimum is intended (§2)
