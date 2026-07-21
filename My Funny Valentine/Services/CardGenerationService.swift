@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 import SwiftData
-import UIKit
+import CoreGraphics
 
 class CardGenerationService {
     static let shared = CardGenerationService()
@@ -68,98 +68,66 @@ class CardGenerationService {
         return cards
     }
     
-    func renderCard(_ card: Card, size: CGSize) -> UIImage? {
-        let renderer = UIGraphicsImageRenderer(size: size)
-        
-        return renderer.image { context in
+    func renderCard(_ card: Card, size: CGSize) -> PlatformImage? {
+        let template = TemplateManager.shared.getTemplate(id: card.templateId ?? "")
+
+        return PlatformGraphics.image(size: size) { context in
             // Draw background
-            if let template = TemplateManager.shared.getTemplate(id: card.templateId ?? "") {
-                template.backgroundColor.color.uiColor.setFill()
-            } else {
-                UIColor.white.setFill()
-            }
-            context.cgContext.fill(CGRect(origin: .zero, size: size))
-            
+            let background = template.map { PlatformColor($0.backgroundColor.color) } ?? .white
+            context.setFillColor(background.cgColor)
+            context.fill(CGRect(origin: .zero, size: size))
+
             // Draw faces
-            if let template = TemplateManager.shared.getTemplate(id: card.templateId ?? ""),
-               let faces = card.faces {
-                for (index, face) in faces.enumerated() {
-                    if index < template.facePositions.count {
-                        if let uiImage = UIImage(data: face.imageData) {
-                            let rect = CGRect(
-                                origin: face.position,
-                                size: face.size
-                            )
-                            uiImage.draw(in: rect)
-                        }
+            if let template, let faces = card.faces {
+                for (index, face) in faces.enumerated() where index < template.facePositions.count {
+                    if let image = PlatformImageUtils.image(from: face.imageData) {
+                        let rect = CGRect(origin: face.position, size: face.size)
+                        PlatformGraphics.draw(image, in: rect, context: context)
                     }
                 }
             }
-            
-            // Draw text
+
+            let layoutData = card.getLayoutData()
+            let textX = layoutData?.textPositionX ?? 200
+            let textY = layoutData?.textPositionY ?? 400
+
+            // Draw saying
             if let saying = card.saying, !saying.isEmpty {
-                let font = UIFont.systemFont(ofSize: 24)
-                let attributes: [NSAttributedString.Key: Any] = [
-                    .font: font,
-                    .foregroundColor: UIColor.black
-                ]
-                
-                let attributedString = NSAttributedString(string: saying, attributes: attributes)
-                let textSize = attributedString.size()
-                
-                if let layoutData = card.getLayoutData() {
-                    let textRect = CGRect(
-                        origin: CGPoint(
-                            x: layoutData.textPositionX ?? 200,
-                            y: layoutData.textPositionY ?? 400
-                        ),
-                        size: textSize
-                    )
-                    attributedString.draw(in: textRect)
-                }
+                drawText(saying, fontSize: 24, at: CGPoint(x: textX, y: textY), maxWidth: size.width - textX, context: context)
             }
-            
+
             // Draw custom text
             if let customText = card.customText, !customText.isEmpty {
-                let font = UIFont.systemFont(ofSize: 20)
-                let attributes: [NSAttributedString.Key: Any] = [
-                    .font: font,
-                    .foregroundColor: UIColor.black
-                ]
-                
-                let attributedString = NSAttributedString(string: customText, attributes: attributes)
-                let textSize = attributedString.size()
-                
-                if let layoutData = card.getLayoutData() {
-                    let textRect = CGRect(
-                        origin: CGPoint(
-                            x: layoutData.textPositionX ?? 200,
-                            y: (layoutData.textPositionY ?? 400) + 50
-                        ),
-                        size: textSize
-                    )
-                    attributedString.draw(in: textRect)
-                }
+                drawText(customText, fontSize: 20, at: CGPoint(x: textX, y: textY + 50), maxWidth: size.width - textX, context: context)
             }
-            
+
             // Draw images
             if let images = card.images {
                 for image in images {
-                    if let uiImage = UIImage(data: image.imageData) {
-                        let rect = CGRect(
-                            origin: image.position,
-                            size: image.size
-                        )
-                        uiImage.draw(in: rect)
+                    if let platformImage = PlatformImageUtils.image(from: image.imageData) {
+                        let rect = CGRect(origin: image.position, size: image.size)
+                        PlatformGraphics.draw(platformImage, in: rect, context: context)
                     }
                 }
             }
         }
     }
-}
 
-extension Color {
-    var uiColor: UIColor {
-        UIColor(self)
+    private func drawText(
+        _ text: String,
+        fontSize: CGFloat,
+        at origin: CGPoint,
+        maxWidth: CGFloat,
+        context: CGContext
+    ) {
+        let attributed = NSAttributedString(
+            string: text,
+            attributes: [
+                .font: PlatformFont.systemFont(ofSize: fontSize),
+                .foregroundColor: PlatformColor.black
+            ]
+        )
+        let textSize = PlatformGraphics.size(of: attributed, maxWidth: max(maxWidth, 1))
+        PlatformGraphics.draw(attributed, in: CGRect(origin: origin, size: textSize), context: context)
     }
 }

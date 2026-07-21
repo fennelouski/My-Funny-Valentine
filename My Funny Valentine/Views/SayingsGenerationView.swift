@@ -121,6 +121,7 @@ struct SayingsGenerationView: View {
                         }
                         .padding()
                     }
+                    .scrollDismissesKeyboard(.immediately)
                 } else if !viewModel.isLoading {
                     Spacer()
                     VStack(spacing: 12) {
@@ -139,14 +140,14 @@ struct SayingsGenerationView: View {
                 Spacer()
             }
             .navigationTitle("Generate Sayings")
-            .navigationBarTitleDisplayMode(.inline)
+            .appInlineNavigationTitle()
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         dismiss()
                     }
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
                         if let selectedSaying = viewModel.selectedSaying {
                             onSayingSelected?(selectedSaying)
@@ -180,7 +181,7 @@ struct SayingsRowView: View {
                 }
             }
             .padding()
-            .background(isSelected ? Color.accentColor.opacity(0.1) : Color(.systemGray6))
+            .background(isSelected ? Color.accentColor.opacity(0.1) : Color.appFill)
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
@@ -188,6 +189,7 @@ struct SayingsRowView: View {
             )
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("sayings.row")
     }
 }
 

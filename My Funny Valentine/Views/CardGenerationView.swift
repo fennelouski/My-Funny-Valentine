@@ -30,7 +30,7 @@ struct CardGenerationView: View {
                 }
             }
             .navigationTitle("Generated Cards")
-            .navigationBarTitleDisplayMode(.inline)
+            .appInlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Done") {

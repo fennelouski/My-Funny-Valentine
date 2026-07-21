@@ -62,7 +62,7 @@ struct ManageSubscriptionView: View {
                             }
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color(.systemGray5))
+                            .background(Color.appSecondaryFill)
                             .foregroundColor(.primary)
                             .cornerRadius(12)
                         }
@@ -99,7 +99,7 @@ struct ManageSubscriptionView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color(.systemGray5))
+                        .background(Color.appSecondaryFill)
                         .foregroundColor(.primary)
                         .cornerRadius(12)
                     }
@@ -111,9 +111,9 @@ struct ManageSubscriptionView: View {
             }
             .padding()
             .navigationTitle("Manage Subscription")
-            .navigationBarTitleDisplayMode(.inline)
+            .appInlineNavigationTitle()
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
                         dismiss()
                     }

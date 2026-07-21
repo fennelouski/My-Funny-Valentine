@@ -64,7 +64,7 @@ struct PremiumFeatureGate<Content: View>: View {
                     }
                 }
                 .padding()
-                .background(Color(.systemBackground).opacity(0.95))
+                .background(Color.appBackground.opacity(0.95))
                 .cornerRadius(16)
                 .shadow(radius: 10)
             }

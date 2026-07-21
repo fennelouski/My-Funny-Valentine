@@ -33,7 +33,7 @@ struct SubscriptionStatusView: View {
                 }
             }
             .padding()
-            .background(Color(.systemGray6))
+            .background(Color.appFill)
             .cornerRadius(12)
             
             // Usage Statistics
@@ -60,7 +60,7 @@ struct SubscriptionStatusView: View {
                 }
             }
             .padding()
-            .background(Color(.systemGray6))
+            .background(Color.appFill)
             .cornerRadius(12)
             
             // Action Buttons
@@ -89,7 +89,7 @@ struct SubscriptionStatusView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color(.systemGray5))
+                        .background(Color.appSecondaryFill)
                         .foregroundColor(.primary)
                         .cornerRadius(12)
                     }
@@ -110,7 +110,7 @@ struct SubscriptionStatusView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color(.systemGray5))
+                    .background(Color.appSecondaryFill)
                     .foregroundColor(.primary)
                     .cornerRadius(12)
                 }

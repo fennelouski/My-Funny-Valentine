@@ -8,37 +8,31 @@
 import Foundation
 import SwiftUI
 
-struct ColorData: Codable {
+nonisolated struct ColorData: Codable {
     var red: Double
     var green: Double
     var blue: Double
     var alpha: Double
-    
+
     init(color: Color) {
-        // Convert SwiftUI Color to RGB components
-        let uiColor = UIColor(color)
-        var r: CGFloat = 0
-        var g: CGFloat = 0
-        var b: CGFloat = 0
-        var a: CGFloat = 0
-        uiColor.getRed(&r, green: &g, blue: &b, alpha: &a)
-        self.red = Double(r)
-        self.green = Double(g)
-        self.blue = Double(b)
-        self.alpha = Double(a)
+        let components = PlatformColor(color).rgbaComponents
+        self.red = Double(components.red)
+        self.green = Double(components.green)
+        self.blue = Double(components.blue)
+        self.alpha = Double(components.alpha)
     }
-    
+
     var color: Color {
         Color(red: red, green: green, blue: blue, opacity: alpha)
     }
-    
+
     var hexString: String {
         let r = Int(red * 255)
         let g = Int(green * 255)
         let b = Int(blue * 255)
         return String(format: "#%02X%02X%02X", r, g, b)
     }
-    
+
     init?(hex: String) {
         let hex = hex.hasPrefix("#") ? String(hex.dropFirst()) : hex
         guard hex.count == 6 || hex.count == 8,
@@ -53,5 +47,3 @@ struct ColorData: Codable {
         self.alpha = a
     }
 }
-
-import UIKit

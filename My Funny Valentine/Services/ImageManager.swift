@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UIKit
+import CoreGraphics
 import CoreGraphics
 import UniformTypeIdentifiers
 
@@ -21,8 +21,8 @@ actor ImageManager {
     private let thumbnailSize = CGSize(width: 200, height: 200)
     private let jpegCompressionQuality: CGFloat = 0.8
 
-    private var memoryCache: NSCache<NSString, UIImage> = {
-        let cache = NSCache<NSString, UIImage>()
+    private var memoryCache: NSCache<NSString, PlatformImage> = {
+        let cache = NSCache<NSString, PlatformImage>()
         cache.countLimit = 50
         cache.totalCostLimit = 50 * 1024 * 1024 // 50MB
         return cache
@@ -47,7 +47,7 @@ actor ImageManager {
     // MARK: - Public API
 
     /// Store an image and return the compressed data along with thumbnail data
-    func storeImage(_ image: UIImage, id: UUID) async throws -> (imageData: Data, thumbnailData: Data) {
+    func storeImage(_ image: PlatformImage, id: UUID) async throws -> (imageData: Data, thumbnailData: Data) {
         try ensureDirectoriesExist()
 
         let imageData = try compressImage(image)
@@ -74,12 +74,12 @@ actor ImageManager {
     func storeImageData(_ data: Data, id: UUID, preserveTransparency: Bool = false) async throws -> (imageData: Data, thumbnailData: Data) {
         try ensureDirectoriesExist()
 
-        guard let image = UIImage(data: data) else {
+        guard let image = PlatformImageUtils.image(from: data) else {
             throw ImageManagerError.invalidImageData
         }
 
         let imageData: Data
-        if preserveTransparency, let pngData = image.pngData() {
+        if preserveTransparency, let pngData = PlatformImageUtils.pngData(from: image) {
             imageData = pngData
         } else {
             imageData = try compressImage(image)
@@ -105,7 +105,7 @@ actor ImageManager {
     }
 
     /// Load image from storage or cache
-    func loadImage(id: UUID) async -> UIImage? {
+    func loadImage(id: UUID) async -> PlatformImage? {
         if let cached = memoryCache.object(forKey: id.uuidString as NSString) {
             return cached
         }
@@ -115,14 +115,14 @@ actor ImageManager {
 
         if fileManager.fileExists(atPath: imageURL.path),
            let data = try? Data(contentsOf: imageURL),
-           let image = UIImage(data: data) {
+           let image = PlatformImageUtils.image(from: data) {
             cacheImage(image, for: id)
             return image
         }
 
         if fileManager.fileExists(atPath: pngURL.path),
            let data = try? Data(contentsOf: pngURL),
-           let image = UIImage(data: data) {
+           let image = PlatformImageUtils.image(from: data) {
             cacheImage(image, for: id)
             return image
         }
@@ -145,22 +145,25 @@ actor ImageManager {
 
     /// Get current storage usage
     func getStorageUsage() async -> (used: Int64, limit: Int64) {
+        let used = Self.directorySize(imagesDirectory) + Self.directorySize(thumbnailsDirectory)
+        return (used, Int64(maxTotalStorageBytes))
+    }
+
+    /// Sum of file sizes under `url`. Synchronous so the directory enumerator
+    /// isn't iterated from an async context.
+    private nonisolated static func directorySize(_ url: URL) -> Int64 {
+        guard let enumerator = FileManager.default.enumerator(
+            at: url,
+            includingPropertiesForKeys: [.fileSizeKey]
+        ) else { return 0 }
+
         var totalSize: Int64 = 0
-        if let enumerator = fileManager.enumerator(at: imagesDirectory, includingPropertiesForKeys: [.fileSizeKey]) {
-            for case let fileURL as URL in enumerator {
-                if let size = try? fileURL.resourceValues(forKeys: [.fileSizeKey]).fileSize {
-                    totalSize += Int64(size)
-                }
+        for case let fileURL as URL in enumerator {
+            if let size = try? fileURL.resourceValues(forKeys: [.fileSizeKey]).fileSize {
+                totalSize += Int64(size)
             }
         }
-        if let enumerator = fileManager.enumerator(at: thumbnailsDirectory, includingPropertiesForKeys: [.fileSizeKey]) {
-            for case let fileURL as URL in enumerator {
-                if let size = try? fileURL.resourceValues(forKeys: [.fileSizeKey]).fileSize {
-                    totalSize += Int64(size)
-                }
-            }
-        }
-        return (totalSize, Int64(maxTotalStorageBytes))
+        return totalSize
     }
 
     /// Clear memory cache (e.g., on memory warning)
@@ -179,19 +182,16 @@ actor ImageManager {
         }
     }
 
-    private func compressImage(_ image: UIImage) throws -> Data {
-        guard let data = image.jpegData(compressionQuality: jpegCompressionQuality) else {
+    private func compressImage(_ image: PlatformImage) throws -> Data {
+        guard let data = PlatformImageUtils.jpegData(from: image, compressionQuality: jpegCompressionQuality) else {
             throw ImageManagerError.compressionFailed
         }
         return data
     }
 
-    private func generateThumbnail(from image: UIImage) throws -> Data {
-        let renderer = UIGraphicsImageRenderer(size: thumbnailSize)
-        let thumbnail = renderer.image { _ in
-            image.draw(in: CGRect(origin: .zero, size: thumbnailSize))
-        }
-        guard let data = thumbnail.jpegData(compressionQuality: 0.7) else {
+    private func generateThumbnail(from image: PlatformImage) throws -> Data {
+        let thumbnail = PlatformImageUtils.resized(image, to: thumbnailSize) ?? image
+        guard let data = PlatformImageUtils.jpegData(from: thumbnail, compressionQuality: 0.7) else {
             throw ImageManagerError.compressionFailed
         }
         return data
@@ -204,8 +204,12 @@ actor ImageManager {
         }
     }
 
-    private func cacheImage(_ image: UIImage, for id: UUID) {
-        memoryCache.setObject(image, forKey: id.uuidString as NSString, cost: image.jpegData(compressionQuality: 0.8)?.count ?? 0)
+    private func cacheImage(_ image: PlatformImage, for id: UUID) {
+        memoryCache.setObject(
+            image,
+            forKey: id.uuidString as NSString,
+            cost: PlatformImageUtils.jpegData(from: image, compressionQuality: 0.8)?.count ?? 0
+        )
     }
 }
 

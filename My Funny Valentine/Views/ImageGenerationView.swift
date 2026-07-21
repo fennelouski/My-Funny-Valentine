@@ -179,9 +179,9 @@ struct ImageGenerationView: View {
                 .padding(.vertical)
             }
             .navigationTitle("Generate Image")
-            .navigationBarTitleDisplayMode(.inline)
+            .appInlineNavigationTitle()
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         dismiss()
                     }
@@ -222,7 +222,7 @@ struct PremiumGateView: View {
             }
         }
         .padding()
-        .background(Color(.systemGray6))
+        .background(Color.appFill)
         .cornerRadius(12)
     }
 }

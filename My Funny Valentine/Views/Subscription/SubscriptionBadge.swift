@@ -33,7 +33,7 @@ struct SubscriptionBadge: View {
             .background(
                 subscriptionManager.isPremium
                     ? Color.yellow.opacity(0.2)
-                    : Color(.systemGray5)
+                    : Color.appSecondaryFill
             )
             .cornerRadius(8)
         }

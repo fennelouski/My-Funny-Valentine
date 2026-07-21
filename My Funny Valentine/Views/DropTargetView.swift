@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
-import UIKit
 import UniformTypeIdentifiers
+
+#if os(iOS) || os(visionOS)
+import UIKit
 
 /// UIViewRepresentable wrapper for UIDropInteraction to accept smart cutouts from Photos app.
 /// Handles drag-and-drop of images with transparency (cutouts).
 struct DropTargetView: UIViewRepresentable {
-    let onImageDropped: (UIImage) -> Void
+    let onImageDropped: (PlatformImage) -> Void
     let isActive: Bool
 
-    init(isActive: Bool = true, onImageDropped: @escaping (UIImage) -> Void) {
+    init(isActive: Bool = true, onImageDropped: @escaping (PlatformImage) -> Void) {
         self.isActive = isActive
         self.onImageDropped = onImageDropped
     }
@@ -33,7 +35,7 @@ struct DropTargetView: UIViewRepresentable {
 }
 
 class DropTargetUIView: UIView {
-    var onImageDropped: ((UIImage) -> Void)?
+    var onImageDropped: ((PlatformImage) -> Void)?
     var isDropTargetActive: Bool = true
 
     override init(frame: CGRect) {
@@ -78,20 +80,10 @@ extension DropTargetUIView: UIDropInteractionDelegate {
                 return
             }
 
-            if provider.hasItemConformingToTypeIdentifier(UTType.png.identifier) {
-                provider.loadDataRepresentation(forTypeIdentifier: UTType.png.identifier) { [weak self] data, _ in
-                    if let data = data, let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            self?.onImageDropped?(image)
-                        }
-                    }
-                }
-                return
-            }
-
-            if provider.hasItemConformingToTypeIdentifier(UTType.image.identifier) {
-                provider.loadDataRepresentation(forTypeIdentifier: UTType.image.identifier) { [weak self] data, _ in
-                    if let data = data, let image = UIImage(data: data) {
+            // Prefer PNG so Photos "smart cutout" transparency survives the drop
+            for type in [UTType.png, UTType.image] where provider.hasItemConformingToTypeIdentifier(type.identifier) {
+                provider.loadDataRepresentation(forTypeIdentifier: type.identifier) { [weak self] data, _ in
+                    if let data, let image = UIImage(data: data) {
                         DispatchQueue.main.async {
                             self?.onImageDropped?(image)
                         }
@@ -102,3 +94,41 @@ extension DropTargetUIView: UIDropInteractionDelegate {
         }
     }
 }
+
+#elseif os(macOS)
+
+/// SwiftUI drop target for macOS. Accepts image data dragged from Finder,
+/// Photos, or other apps.
+struct DropTargetView: View {
+    let onImageDropped: (PlatformImage) -> Void
+    let isActive: Bool
+
+    @State private var isTargeted = false
+
+    init(isActive: Bool = true, onImageDropped: @escaping (PlatformImage) -> Void) {
+        self.isActive = isActive
+        self.onImageDropped = onImageDropped
+    }
+
+    var body: some View {
+        Color.clear
+            .contentShape(Rectangle())
+            .overlay {
+                if isTargeted {
+                    RoundedRectangle(cornerRadius: 12)
+                        .strokeBorder(Color.accentColor, style: StrokeStyle(lineWidth: 2, dash: [6]))
+                }
+            }
+            .dropDestination(for: Data.self) { items, _ in
+                guard isActive,
+                      let data = items.first,
+                      let image = PlatformImageUtils.image(from: data) else { return false }
+                onImageDropped(image)
+                return true
+            } isTargeted: { targeted in
+                isTargeted = targeted && isActive
+            }
+    }
+}
+
+#endif

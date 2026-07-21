@@ -112,43 +112,43 @@ actor APIService {
 
 // MARK: - Request/Response Types
 
-struct GenerateSayingsRequest: Encodable {
+nonisolated struct GenerateSayingsRequest: Encodable {
     let inspiration: String
     let userId: String
 }
 
-struct GenerateSayingsResponse: Decodable {
+nonisolated struct GenerateSayingsResponse: Decodable {
     let sayings: [String]
     let cached: Bool
     let timestamp: Double
     let remainingRequests: Int
 }
 
-struct GenerateImageRequest: Encodable {
+nonisolated struct GenerateImageRequest: Encodable {
     let description: String
     let userId: String
     let style: String
 }
 
-struct GenerateImageResponse: Decodable {
+nonisolated struct GenerateImageResponse: Decodable {
     let imageUrl: String
     let cached: Bool
     let remainingGenerations: Int
 }
 
-struct ValidateSubscriptionRequest: Encodable {
+nonisolated struct ValidateSubscriptionRequest: Encodable {
     let userId: String
     let receipt: String?
 }
 
-struct ValidateSubscriptionResponse: Decodable {
+nonisolated struct ValidateSubscriptionResponse: Decodable {
     let isPremium: Bool
     let expiresAt: Double?
     let remainingAIRequests: Int
     let remainingImageGenerations: Int
 }
 
-enum ImageStyle: String, Codable, CaseIterable {
+nonisolated enum ImageStyle: String, Codable, CaseIterable {
     case valentine
     case romantic
     case funny

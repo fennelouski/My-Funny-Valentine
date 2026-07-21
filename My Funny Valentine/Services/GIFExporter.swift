@@ -235,7 +235,7 @@ class GIFExporter {
         CGImageDestinationSetProperties(destination, gifProperties as CFDictionary)
         
         // Add frames
-        for (index, frame) in frames.enumerated() {
+        for frame in frames {
             guard let cgImage = frame.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
                 continue
             }

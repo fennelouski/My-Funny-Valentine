@@ -15,7 +15,7 @@ import ImagePlayground
 /// Gracefully handles when unavailable (older devices, AI disabled).
 struct ImagePlaygroundButton: View {
     @Binding var generatedImageURL: URL?
-    let onImageImported: (UIImage) -> Void
+    let onImageImported: (PlatformImage) -> Void
 
     var body: some View {
         #if canImport(ImagePlayground)
@@ -47,7 +47,7 @@ private struct ImagePlaygroundButtonContent: View {
     @Environment(\.supportsImagePlayground) private var supportsImagePlayground
     @Binding var generatedImageURL: URL?
     @State private var showImagePlayground = false
-    let onImageImported: (UIImage) -> Void
+    let onImageImported: (PlatformImage) -> Void
 
     var body: some View {
         Group {
@@ -59,7 +59,7 @@ private struct ImagePlaygroundButtonContent: View {
                 }
                 .imagePlaygroundSheet(isPresented: $showImagePlayground) { url in
                     generatedImageURL = url
-                    if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                    if let data = try? Data(contentsOf: url), let image = PlatformImage(data: data) {
                         onImageImported(image)
                     }
                 }

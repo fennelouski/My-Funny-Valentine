@@ -12,7 +12,7 @@ import SwiftData
 struct FaceImportView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var selectedItem: PhotosPickerItem?
-    @State private var selectedImage: UIImage?
+    @State private var selectedImage: PlatformImage?
     @State private var detectedFaces: [DetectedFace] = []
     @State private var isProcessing = false
     @State private var errorMessage: String?
@@ -52,7 +52,7 @@ struct FaceImportView: View {
                 .padding()
 
             if let image = selectedImage {
-                Image(uiImage: image)
+                PlatformImageUtils.swiftUIImage(from: image)
                     .resizable()
                     .scaledToFit()
                     .frame(maxHeight: 300)
@@ -142,7 +142,7 @@ struct FaceImportView: View {
 
         do {
             guard let data = try await item.loadTransferable(type: Data.self),
-                  let image = UIImage(data: data) else {
+                  let image = PlatformImage(data: data) else {
                 errorMessage = "Could not load that photo. Please try another."
                 return
             }
@@ -203,8 +203,8 @@ struct FaceSelectionView: View {
                         .padding()
 
                     ForEach(faces) { face in
-                        if let uiImage = UIImage(data: face.imageData) {
-                            Image(uiImage: uiImage)
+                        if let uiImage = PlatformImage(data: face.imageData) {
+                            PlatformImageUtils.swiftUIImage(from: uiImage)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 150, height: 150)
@@ -220,7 +220,7 @@ struct FaceSelectionView: View {
                 .padding()
             }
             .navigationTitle("Select Face")
-            .navigationBarTitleDisplayMode(.inline)
+            .appInlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {

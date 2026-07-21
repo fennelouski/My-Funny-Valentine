@@ -142,7 +142,7 @@ struct CardThumbnailView: View {
     var body: some View {
         VStack {
             if let thumbnail = CardGenerationService.shared.renderCard(card, size: thumbnailSize) {
-                Image(uiImage: thumbnail)
+                PlatformImageUtils.swiftUIImage(from: thumbnail)
                     .resizable()
                     .scaledToFit()
                     .frame(width: thumbnailSize.width, height: thumbnailSize.height)
@@ -166,7 +166,7 @@ struct CardRowView: View {
                 card,
                 size: CGSize(width: 80, height: 120)
             ) {
-                Image(uiImage: thumbnail)
+                PlatformImageUtils.swiftUIImage(from: thumbnail)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 80, height: 120)

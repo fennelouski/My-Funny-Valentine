@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct CardTemplate: Identifiable, Codable {
+nonisolated struct CardTemplate: Identifiable, Codable {
     var id: String
     var name: String
     var category: TemplateCategory
@@ -36,7 +36,7 @@ struct CardTemplate: Identifiable, Codable {
     }
 }
 
-enum TemplateCategory: String, Codable {
+nonisolated enum TemplateCategory: String, Codable {
     case romantic
     case funny
     case cute
@@ -44,7 +44,7 @@ enum TemplateCategory: String, Codable {
     case modern
 }
 
-struct FacePosition: Codable {
+nonisolated struct FacePosition: Codable {
     var position: CGPoint
     var size: CGSize
     var index: Int // 0 for first face, 1 for second face
@@ -56,7 +56,7 @@ struct FacePosition: Codable {
     }
 }
 
-struct TextArea: Codable {
+nonisolated struct TextArea: Codable {
     var position: CGPoint
     var size: CGSize
     var defaultText: String?

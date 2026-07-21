@@ -6,6 +6,10 @@
 //
 
 import SwiftUI
+
+// Share preview is built on UIKit activity sharing; macOS uses ShareSheet's
+// NSSharingServicePicker path instead.
+#if os(iOS)
 import UIKit
 
 enum ShareDestination: String, CaseIterable {
@@ -108,16 +112,16 @@ struct SharePreviewView: View {
                 Spacer()
             }
             .navigationTitle("Share Card")
-            .navigationBarTitleDisplayMode(.inline)
+            .appInlineNavigationTitle()
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         onCancel()
                     }
                 }
                 
                 if let onEdit = onEdit {
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                    ToolbarItem(placement: .confirmationAction) {
                         Button("Edit") {
                             onEdit()
                         }
@@ -251,9 +255,11 @@ struct ShareDestinationButton: View {
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 16)
-            .background(isSelected ? Color.accentColor : Color(.systemGray6))
+            .background(isSelected ? Color.accentColor : Color.appFill)
             .cornerRadius(12)
         }
         .buttonStyle(.plain)
     }
 }
+
+#endif

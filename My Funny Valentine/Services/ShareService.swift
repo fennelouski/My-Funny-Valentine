@@ -66,7 +66,7 @@ class ShareService {
     #if os(iOS)
     /// Share image using iOS Share Sheet (iOS-specific)
     func shareImage(_ image: PlatformImage, from viewController: UIViewController, completion: ((Bool, Error?) -> Void)? = nil) {
-        guard let imageData = PlatformImageUtils.jpegData(from: image, compressionQuality: 0.9) else {
+        guard PlatformImageUtils.jpegData(from: image, compressionQuality: 0.9) != nil else {
             completion?(false, ShareError.imageGenerationFailed)
             return
         }
@@ -103,9 +103,7 @@ class ShareService {
             throw ShareError.appNotInstalled("Instagram")
         }
         
-        // Convert PlatformImage to UIImage for ImageOptimizer (iOS-specific)
-        guard let uiImage = image as? UIImage,
-              let optimizedData = ImageOptimizer.shared.optimizeForInstagram(uiImage, isPortrait: isPortrait) else {
+        guard let optimizedData = ImageOptimizer.shared.optimizeForInstagram(image, isPortrait: isPortrait) else {
             throw ShareError.imageGenerationFailed
         }
         
@@ -127,8 +125,7 @@ class ShareService {
     func shareToFacebook(_ image: PlatformImage, from viewController: UIViewController) throws {
         // Facebook sharing is typically done through the standard share sheet
         // But we can optimize the image first
-        guard let uiImage = image as? UIImage,
-              let optimizedData = ImageOptimizer.shared.optimize(uiImage, for: .facebook),
+        guard let optimizedData = ImageOptimizer.shared.optimize(image, for: .facebook),
               let optimizedImage = PlatformImageUtils.image(from: optimizedData) else {
             throw ShareError.imageGenerationFailed
         }
@@ -142,8 +139,7 @@ class ShareService {
             throw ShareError.appNotInstalled("TikTok")
         }
         
-        guard let uiImage = image as? UIImage,
-              let optimizedData = ImageOptimizer.shared.optimizeForTikTok(uiImage) else {
+        guard let optimizedData = ImageOptimizer.shared.optimizeForTikTok(image) else {
             throw ShareError.imageGenerationFailed
         }
         
@@ -161,8 +157,7 @@ class ShareService {
     
     /// Share image optimized for email (iOS only)
     func shareToEmail(_ image: PlatformImage, from viewController: UIViewController) {
-        guard let uiImage = image as? UIImage,
-              let optimizedData = ImageOptimizer.shared.optimize(uiImage, for: .email),
+        guard let optimizedData = ImageOptimizer.shared.optimize(image, for: .email),
               let optimizedImage = PlatformImageUtils.image(from: optimizedData) else {
             // Fallback to regular share if optimization fails
             shareImage(image, from: viewController)
@@ -174,8 +169,7 @@ class ShareService {
     
     /// Share image optimized for Messages (iOS only)
     func shareToMessages(_ image: PlatformImage, from viewController: UIViewController) {
-        guard let uiImage = image as? UIImage,
-              let optimizedData = ImageOptimizer.shared.optimize(uiImage, for: .messages),
+        guard let optimizedData = ImageOptimizer.shared.optimize(image, for: .messages),
               let optimizedImage = PlatformImageUtils.image(from: optimizedData) else {
             shareImage(image, from: viewController)
             return

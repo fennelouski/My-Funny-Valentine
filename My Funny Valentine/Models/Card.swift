@@ -89,7 +89,7 @@ final class Card {
 }
 
 // CardLayoutData for storing layout information
-struct CardLayoutData: Codable {
+nonisolated struct CardLayoutData: Codable {
     var backgroundColor: String
     var textPositions: [TextPosition]
     var imagePositions: [ImagePosition]
@@ -123,7 +123,7 @@ struct CardLayoutData: Codable {
     }
 }
 
-struct TextPosition: Codable {
+nonisolated struct TextPosition: Codable {
     var text: String
     var fontName: String
     var fontSize: CGFloat
@@ -132,14 +132,14 @@ struct TextPosition: Codable {
     var size: CGSize
 }
 
-struct ImagePosition: Codable {
+nonisolated struct ImagePosition: Codable {
     var imageId: UUID
     var position: CGPoint
     var size: CGSize
     var rotation: Double
 }
 
-struct StickerPosition: Codable {
+nonisolated struct StickerPosition: Codable {
     var stickerId: String
     var position: CGPoint
     var size: CGSize
