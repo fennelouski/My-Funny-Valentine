@@ -44,6 +44,10 @@ struct ContentView: View {
             // "Show Welcome Again" in Settings replays the flow mid-session.
             if !completed { dismissedOnboarding = false }
         }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ShowPreferences"))) { _ in
+            // Keep the current settings category when Preferences is invoked again.
+            if !(2...4).contains(selectedTab) { selectedTab = 2 }
+        }
     }
 
     @ViewBuilder
@@ -56,8 +60,13 @@ struct ContentView: View {
                     .tag(0)
                 Label("My Cards", systemImage: "rectangle.stack.fill")
                     .tag(1)
-                Label("Settings", systemImage: "gearshape.fill")
-                    .tag(2)
+                Section("Settings") {
+                    ForEach(SettingsSection.allCases) { section in
+                        SettingsSectionLabel(section: section, isSelected: selectedTab == section.sidebarTag)
+                            .tag(section.sidebarTag)
+                            .accessibilityIdentifier("settings.section.\(section.rawValue)")
+                    }
+                }
             }
             .navigationSplitViewColumnWidth(min: 200, ideal: 250)
         } detail: {
@@ -68,7 +77,11 @@ struct ContentView: View {
                 case 1:
                     CardListView()
                 case 2:
-                    SettingsView()
+                    SettingsView(section: .generation)
+                case 3:
+                    SettingsView(section: .iCloud)
+                case 4:
+                    SettingsView(section: .about)
                 default:
                     HomeView()
                 }
