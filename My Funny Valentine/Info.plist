@@ -11,6 +11,8 @@
 	<key>NSCameraUsageDescription</key>
 	<string>We need camera access to take photos for your cards.</string>
 	<!-- macOS: App configuration -->
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.photography</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
