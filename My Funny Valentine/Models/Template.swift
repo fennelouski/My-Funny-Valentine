@@ -16,6 +16,7 @@ nonisolated struct CardTemplate: Identifiable, Codable {
     var facePositions: [FacePosition]
     var textAreas: [TextArea]
     var backgroundColor: ColorData
+    var minimumFaceCount: Int?
     
     init(
         id: String,
@@ -24,7 +25,8 @@ nonisolated struct CardTemplate: Identifiable, Codable {
         imageName: String,
         facePositions: [FacePosition] = [],
         textAreas: [TextArea] = [],
-        backgroundColor: ColorData = ColorData(color: .white)
+        backgroundColor: ColorData = ColorData(color: .white),
+        minimumFaceCount: Int? = nil
     ) {
         self.id = id
         self.name = name
@@ -33,6 +35,7 @@ nonisolated struct CardTemplate: Identifiable, Codable {
         self.facePositions = facePositions
         self.textAreas = textAreas
         self.backgroundColor = backgroundColor
+        self.minimumFaceCount = minimumFaceCount
     }
 }
 
@@ -294,6 +297,101 @@ class TemplateManager {
                 backgroundColor: ColorData(color: .black)
             )
         ]
+        templates.append(contentsOf: starterTemplates())
+    }
+
+    private func starterTemplates() -> [CardTemplate] {
+        let worlds: [(id: String, category: TemplateCategory, background: Color, cards: [(name: String, saying: String)])] = [
+            (
+                "pizza", .funny, Color(red: 1, green: 0.95, blue: 0.87),
+                [
+                    ("Pizza Crush", "You had me at pizza."),
+                    ("Perfect Slice", "You're my perfect slice."),
+                    ("Extra Cheesy", "I love you, extra cheese and all."),
+                    ("Crust and Trust", "In crust we trust. In you, I swoon."),
+                    ("The Last Slice", "I'd save you the last slice.")
+                ]
+            ),
+            (
+                "space", .romantic, Color(red: 1, green: 0.97, blue: 0.92),
+                [
+                    ("Cosmic Love", "You're the center of my universe."),
+                    ("Cosmic Chemistry", "Our chemistry is out of this world."),
+                    ("Moon and Snacks", "I love you to the moon and snack."),
+                    ("Stars Align", "You make my stars align."),
+                    ("Space for You", "There's always space for you.")
+                ]
+            ),
+            (
+                "birds", .cute, Color(red: 0.92, green: 0.97, blue: 0.95),
+                [
+                    ("Lovebirds", "You're my favorite person to perch beside."),
+                    ("Heart Takes Flight", "You make my heart take flight."),
+                    ("Tweet on You", "I've got a crush worth tweeting about."),
+                    ("Perfect Pair", "Two little lovebirds. One big love."),
+                    ("Nest Best Thing", "You're the best thing in my nest.")
+                ]
+            ),
+            (
+                "dino", .funny, Color(red: 1, green: 0.94, blue: 0.92),
+                [
+                    ("Dino-mite", "You're dino-mite, Valentine."),
+                    ("Tiny Arms, Giant Love", "Tiny arms. Giant love."),
+                    ("Jurassic Spark", "You make my Jurassic heart race."),
+                    ("Prehistoric Crush", "My crush on you is prehistoric."),
+                    ("Roar a Little More", "I love you more than I can roar.")
+                ]
+            ),
+            (
+                "disco", .modern, Color(red: 1, green: 0.95, blue: 0.98),
+                [
+                    ("Disco Date", "You and me? Same groove."),
+                    ("Dance Floor Crush", "You light up my dance floor."),
+                    ("Under the Disco Ball", "Be my date under the disco ball."),
+                    ("Love on Repeat", "Our love deserves an encore."),
+                    ("Boogie into Forever", "Let's boogie into forever.")
+                ]
+            ),
+            (
+                "sweets", .classic, Color(red: 0.96, green: 0.94, blue: 1),
+                [
+                    ("Sweet Tooth", "I'm sweet on you."),
+                    ("Candy Crush", "You're my favorite kind of sweet."),
+                    ("A Sprinkle of Love", "You make life sweeter, one sprinkle at a time."),
+                    ("Better than Chocolate", "I like you more than chocolate. That's serious."),
+                    ("Sugar Rush", "You give my heart a sugar rush.")
+                ]
+            )
+        ]
+
+        return worlds.flatMap { world in
+            world.cards.enumerated().map { index, card in
+                CardTemplate(
+                    id: "starter_\(world.id)_\(index + 1)",
+                    name: card.name,
+                    category: world.category,
+                    imageName: "starter_\(world.id)",
+                    facePositions: [FacePosition(position: CGPoint(x: 154, y: 164), size: CGSize(width: 92, height: 110))],
+                    textAreas: [TextArea(position: CGPoint(x: 32, y: 430), size: CGSize(width: 336, height: 130), defaultText: card.saying, maxLength: 120)],
+                    backgroundColor: ColorData(color: world.background),
+                    minimumFaceCount: 0
+                )
+            }
+        }
+    }
+
+    func getStarterTemplates() -> [CardTemplate] {
+        templates.filter { $0.id.hasPrefix("starter_") }
+    }
+
+    /// A picker opens a draft; saving remains the editor's explicit action.
+    func makeDraft(from template: CardTemplate) -> Card {
+        Card(
+            templateId: template.id,
+            saying: template.textAreas.first?.defaultText,
+            customText: nil,
+            layoutData: CardLayoutData(backgroundColor: template.backgroundColor.hexString)
+        )
     }
     
     func getAllTemplates() -> [CardTemplate] {

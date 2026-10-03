@@ -87,7 +87,7 @@ final class GoldenPathUITests: XCTestCase {
 
         // Back on Home, the new card shows up in Recent Cards
         XCTAssertTrue(
-            app.staticTexts["Recent Cards"].waitForExistence(timeout: 10),
+            app.staticTexts["Your latest"].waitForExistence(timeout: 10),
             "Saved card should appear on Home. Chosen saying: \(chosen)"
         )
     }

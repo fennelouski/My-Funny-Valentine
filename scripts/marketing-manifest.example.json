@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "revision": "REPLACE_WITH_FULL_40_CHARACTER_GIT_SHA",
+  "sourceBuildRef": "REPLACE_WITH_VERIFIED_APP_BUILD_REFERENCE",
+  "outputDirectory": "marketing-v1",
+  "captures": [
+    {"id": "iphone-6.9-home", "path": "native/iphone-6.9/home.png", "platform": "iphone-6.9", "sha256": "REPLACE_WITH_ORIGINAL_PNG_SHA256", "nativeCapture": {"kind": "native-screenshot", "platform": "iphone-6.9", "revision": "REPLACE_WITH_FULL_40_CHARACTER_GIT_SHA", "sourceBuildRef": "REPLACE_WITH_VERIFIED_APP_BUILD_REFERENCE", "capturedAtUTC": "REPLACE_WITH_REAL_ISO8601_CAPTURE_TIMESTAMP", "device": "REPLACE_WITH_ACTUAL_DEVICE", "captureMethod": "REPLACE_WITH_REAL_NATIVE_CAPTURE_METHOD", "appVersion": "REPLACE_WITH_ACTUAL_APP_VERSION", "appBuild": "REPLACE_WITH_ACTUAL_APP_BUILD"}},
+    {"id": "iphone-6.9-editor", "path": "native/iphone-6.9/editor.png", "platform": "iphone-6.9", "sha256": "REPLACE_WITH_ORIGINAL_PNG_SHA256", "nativeCapture": {"kind": "native-screenshot", "platform": "iphone-6.9", "revision": "REPLACE_WITH_FULL_40_CHARACTER_GIT_SHA", "sourceBuildRef": "REPLACE_WITH_VERIFIED_APP_BUILD_REFERENCE", "capturedAtUTC": "REPLACE_WITH_REAL_ISO8601_CAPTURE_TIMESTAMP", "device": "REPLACE_WITH_ACTUAL_DEVICE", "captureMethod": "REPLACE_WITH_REAL_NATIVE_CAPTURE_METHOD", "appVersion": "REPLACE_WITH_ACTUAL_APP_VERSION", "appBuild": "REPLACE_WITH_ACTUAL_APP_BUILD"}},
+    {"id": "iphone-6.9-saved", "path": "native/iphone-6.9/saved.png", "platform": "iphone-6.9", "sha256": "REPLACE_WITH_ORIGINAL_PNG_SHA256", "nativeCapture": {"kind": "native-screenshot", "platform": "iphone-6.9", "revision": "REPLACE_WITH_FULL_40_CHARACTER_GIT_SHA", "sourceBuildRef": "REPLACE_WITH_VERIFIED_APP_BUILD_REFERENCE", "capturedAtUTC": "REPLACE_WITH_REAL_ISO8601_CAPTURE_TIMESTAMP", "device": "REPLACE_WITH_ACTUAL_DEVICE", "captureMethod": "REPLACE_WITH_REAL_NATIVE_CAPTURE_METHOD", "appVersion": "REPLACE_WITH_ACTUAL_APP_VERSION", "appBuild": "REPLACE_WITH_ACTUAL_APP_BUILD"}},
+    {"id": "ipad-13-home", "path": "native/ipad-13/home.png", "platform": "ipad-13", "sha256": "REPLACE_WITH_ORIGINAL_PNG_SHA256", "nativeCapture": {"kind": "native-screenshot", "platform": "ipad-13", "revision": "REPLACE_WITH_FULL_40_CHARACTER_GIT_SHA", "sourceBuildRef": "REPLACE_WITH_VERIFIED_APP_BUILD_REFERENCE", "capturedAtUTC": "REPLACE_WITH_REAL_ISO8601_CAPTURE_TIMESTAMP", "device": "REPLACE_WITH_ACTUAL_DEVICE", "captureMethod": "REPLACE_WITH_REAL_NATIVE_CAPTURE_METHOD", "appVersion": "REPLACE_WITH_ACTUAL_APP_VERSION", "appBuild": "REPLACE_WITH_ACTUAL_APP_BUILD"}},
+    {"id": "ipad-13-editor", "path": "native/ipad-13/editor.png", "platform": "ipad-13", "sha256": "REPLACE_WITH_ORIGINAL_PNG_SHA256", "nativeCapture": {"kind": "native-screenshot", "platform": "ipad-13", "revision": "REPLACE_WITH_FULL_40_CHARACTER_GIT_SHA", "sourceBuildRef": "REPLACE_WITH_VERIFIED_APP_BUILD_REFERENCE", "capturedAtUTC": "REPLACE_WITH_REAL_ISO8601_CAPTURE_TIMESTAMP", "device": "REPLACE_WITH_ACTUAL_DEVICE", "captureMethod": "REPLACE_WITH_REAL_NATIVE_CAPTURE_METHOD", "appVersion": "REPLACE_WITH_ACTUAL_APP_VERSION", "appBuild": "REPLACE_WITH_ACTUAL_APP_BUILD"}},
+    {"id": "ipad-13-saved", "path": "native/ipad-13/saved.png", "platform": "ipad-13", "sha256": "REPLACE_WITH_ORIGINAL_PNG_SHA256", "nativeCapture": {"kind": "native-screenshot", "platform": "ipad-13", "revision": "REPLACE_WITH_FULL_40_CHARACTER_GIT_SHA", "sourceBuildRef": "REPLACE_WITH_VERIFIED_APP_BUILD_REFERENCE", "capturedAtUTC": "REPLACE_WITH_REAL_ISO8601_CAPTURE_TIMESTAMP", "device": "REPLACE_WITH_ACTUAL_DEVICE", "captureMethod": "REPLACE_WITH_REAL_NATIVE_CAPTURE_METHOD", "appVersion": "REPLACE_WITH_ACTUAL_APP_VERSION", "appBuild": "REPLACE_WITH_ACTUAL_APP_BUILD"}},
+    {"id": "mac-home", "path": "native/mac/home.png", "platform": "mac", "sha256": "REPLACE_WITH_ORIGINAL_PNG_SHA256", "nativeCapture": {"kind": "native-screenshot", "platform": "mac", "revision": "REPLACE_WITH_FULL_40_CHARACTER_GIT_SHA", "sourceBuildRef": "REPLACE_WITH_VERIFIED_APP_BUILD_REFERENCE", "capturedAtUTC": "REPLACE_WITH_REAL_ISO8601_CAPTURE_TIMESTAMP", "device": "REPLACE_WITH_ACTUAL_DEVICE", "captureMethod": "REPLACE_WITH_REAL_NATIVE_CAPTURE_METHOD", "appVersion": "REPLACE_WITH_ACTUAL_APP_VERSION", "appBuild": "REPLACE_WITH_ACTUAL_APP_BUILD"}},
+    {"id": "mac-editor", "path": "native/mac/editor.png", "platform": "mac", "sha256": "REPLACE_WITH_ORIGINAL_PNG_SHA256", "nativeCapture": {"kind": "native-screenshot", "platform": "mac", "revision": "REPLACE_WITH_FULL_40_CHARACTER_GIT_SHA", "sourceBuildRef": "REPLACE_WITH_VERIFIED_APP_BUILD_REFERENCE", "capturedAtUTC": "REPLACE_WITH_REAL_ISO8601_CAPTURE_TIMESTAMP", "device": "REPLACE_WITH_ACTUAL_DEVICE", "captureMethod": "REPLACE_WITH_REAL_NATIVE_CAPTURE_METHOD", "appVersion": "REPLACE_WITH_ACTUAL_APP_VERSION", "appBuild": "REPLACE_WITH_ACTUAL_APP_BUILD"}},
+    {"id": "mac-saved", "path": "native/mac/saved.png", "platform": "mac", "sha256": "REPLACE_WITH_ORIGINAL_PNG_SHA256", "nativeCapture": {"kind": "native-screenshot", "platform": "mac", "revision": "REPLACE_WITH_FULL_40_CHARACTER_GIT_SHA", "sourceBuildRef": "REPLACE_WITH_VERIFIED_APP_BUILD_REFERENCE", "capturedAtUTC": "REPLACE_WITH_REAL_ISO8601_CAPTURE_TIMESTAMP", "device": "REPLACE_WITH_ACTUAL_DEVICE", "captureMethod": "REPLACE_WITH_REAL_NATIVE_CAPTURE_METHOD", "appVersion": "REPLACE_WITH_ACTUAL_APP_VERSION", "appBuild": "REPLACE_WITH_ACTUAL_APP_BUILD"}}
+  ],
+  "galleries": [
+    {
+      "platform": "iphone-6.9",
+      "images": [
+        {"id": "01-replace", "headline": "REPLACE headline 01", "hero": "iphone-6.9-home"},
+        {"id": "02-replace", "headline": "REPLACE headline 02", "hero": "iphone-6.9-editor", "left": "iphone-6.9-home"},
+        {"id": "03-replace", "headline": "REPLACE headline 03", "hero": "iphone-6.9-saved", "left": "iphone-6.9-home", "right": "iphone-6.9-editor"},
+        {"id": "04-replace", "headline": "REPLACE headline 04", "hero": "iphone-6.9-home"},
+        {"id": "05-replace", "headline": "REPLACE headline 05", "hero": "iphone-6.9-editor", "left": "iphone-6.9-home"},
+        {"id": "06-replace", "headline": "REPLACE headline 06", "hero": "iphone-6.9-saved", "left": "iphone-6.9-home", "right": "iphone-6.9-editor"},
+        {"id": "07-replace", "headline": "REPLACE headline 07", "hero": "iphone-6.9-home"},
+        {"id": "08-replace", "headline": "REPLACE headline 08", "hero": "iphone-6.9-editor", "left": "iphone-6.9-home"},
+        {"id": "09-replace", "headline": "REPLACE headline 09", "hero": "iphone-6.9-saved", "left": "iphone-6.9-home", "right": "iphone-6.9-editor"},
+        {"id": "10-replace", "headline": "REPLACE headline 10", "hero": "iphone-6.9-home"}
+      ]
+    },
+    {
+      "platform": "ipad-13",
+      "images": [
+        {"id": "01-replace", "headline": "REPLACE headline 01", "hero": "ipad-13-home"},
+        {"id": "02-replace", "headline": "REPLACE headline 02", "hero": "ipad-13-editor", "left": "ipad-13-home"},
+        {"id": "03-replace", "headline": "REPLACE headline 03", "hero": "ipad-13-saved", "left": "ipad-13-home", "right": "ipad-13-editor"},
+        {"id": "04-replace", "headline": "REPLACE headline 04", "hero": "ipad-13-home"},
+        {"id": "05-replace", "headline": "REPLACE headline 05", "hero": "ipad-13-editor", "left": "ipad-13-home"},
+        {"id": "06-replace", "headline": "REPLACE headline 06", "hero": "ipad-13-saved", "left": "ipad-13-home", "right": "ipad-13-editor"},
+        {"id": "07-replace", "headline": "REPLACE headline 07", "hero": "ipad-13-home"},
+        {"id": "08-replace", "headline": "REPLACE headline 08", "hero": "ipad-13-editor", "left": "ipad-13-home"},
+        {"id": "09-replace", "headline": "REPLACE headline 09", "hero": "ipad-13-saved", "left": "ipad-13-home", "right": "ipad-13-editor"},
+        {"id": "10-replace", "headline": "REPLACE headline 10", "hero": "ipad-13-home"}
+      ]
+    },
+    {
+      "platform": "mac",
+      "images": [
+        {"id": "01-replace", "headline": "REPLACE headline 01", "hero": "mac-home"},
+        {"id": "02-replace", "headline": "REPLACE headline 02", "hero": "mac-editor", "left": "mac-home"},
+        {"id": "03-replace", "headline": "REPLACE headline 03", "hero": "mac-saved", "left": "mac-home", "right": "mac-editor"},
+        {"id": "04-replace", "headline": "REPLACE headline 04", "hero": "mac-home"},
+        {"id": "05-replace", "headline": "REPLACE headline 05", "hero": "mac-editor", "left": "mac-home"},
+        {"id": "06-replace", "headline": "REPLACE headline 06", "hero": "mac-saved", "left": "mac-home", "right": "mac-editor"},
+        {"id": "07-replace", "headline": "REPLACE headline 07", "hero": "mac-home"},
+        {"id": "08-replace", "headline": "REPLACE headline 08", "hero": "mac-editor", "left": "mac-home"},
+        {"id": "09-replace", "headline": "REPLACE headline 09", "hero": "mac-saved", "left": "mac-home", "right": "mac-editor"},
+        {"id": "10-replace", "headline": "REPLACE headline 10", "hero": "mac-home"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "updated_at_utc": "2026-10-03 01:29:34 UTC",
+  "status": "draft_not_uploaded",
+  "source_basis": "Current native source plus release-owner reports; final source revision and signed build verification pending.",
+  "identity": {
+    "name": "My Funny Valentine",
+    "bundle_id": "com.nathanfennel.My-Funny-Valentine",
+    "development_team_id": "EJLR2RPSV2",
+    "configured_version": "1.0",
+    "configured_build": "1",
+    "app_store_app_id": null,
+    "sku": null,
+    "app_store_connect_verified": false,
+    "supported_platforms": [
+      "iOS",
+      "iPadOS",
+      "macOS"
+    ],
+    "visionos_work": "paused_by_owner"
+  },
+  "minimum_os": {
+    "ios_configured": "18.0",
+    "ipados_configured": "18.0",
+    "macos_configured": "15.1",
+    "previous_macos_minimum": "26.2",
+    "latest_compile_status": "pending",
+    "oldest_os_runtime_verification": "pending"
+  },
+  "listing": {
+    "locale": "en-US",
+    "subtitle": "Funny cards, made yours",
+    "promotional_text": "Pick a playful card, make the message yours, and send a smile. Thirty editable starters, optional photos and face animation. Free, with no in-app purchases.",
+    "description": "Send a card that sounds like you.\n\nStart with one of 30 editable cards across six playful collections: Pizza Crush, Cosmic Love, Lovebirds, Dino-mite, Disco Date and Sweet Tooth. Each collection has original illustrated artwork and five different messages. Pick your favorite and make the words yours.\n\nMAKE IT PERSONAL\n• Edit the message and add a personal note\n• Add a photo, or choose a face from your photo\n• Make and save cards without adding a photo\n• Find a message with built-in suggestions or optional Apple Intelligence on compatible devices\n\nREADY TO SEND\n• Preview your card before sharing\n• Share a card image with the native share sheet\n• Add a playful face animation and share it as a GIF\n\nYOUR CARD LIBRARY\n• Save cards on the device where you make them\n• Reopen a card to edit it or send it again\n• Browse the starter cards and edit your own messages offline\n\nOptional Image Playground artwork is available on supported Apple Intelligence devices. Apple manages its availability, processing and usage limits. Built-in cards, your own messages and photo editing remain available without it.\n\nMy Funny Valentine is free, with no in-app purchases, ads or app account.",
+    "keywords": "valentine,card,greeting,love,funny,romantic,photo,face,gif,anniversary,message,art",
+    "whats_new": null,
+    "primary_category": "Photo & Video",
+    "secondary_category": "Lifestyle",
+    "age_rating": null,
+    "age_rating_questionnaire_status": "pending",
+    "review_notes": "No demo account is required. The app is free and has no in-app purchases or ads.\n\nThe app opens directly to 30 editable starter cards. Choose a card, edit its message or personal note, then Save. My Cards contains the cards explicitly saved by the user. Cancel leaves the saved card unchanged.\n\nPhotos are optional. Photo adds an image. Face detects faces locally with Apple's Vision framework. Foreground masking is used where available; a photo crop is the fallback. From Share, a card with an added face can use Animate face and share a GIF. Only the added faces move.\n\nFind the words offers built-in messages. Optional FoundationModels generation needs iOS 26 or macOS 26, eligible hardware, enabled Apple Intelligence and a ready model. If generation is unavailable or fails, built-in suggestions remain available.\n\nImage Playground appears only when the Apple system reports support. Apple manages this optional generation sheet, which may use Private Cloud Compute and Apple-managed limits. It is not guaranteed to work offline. The app imports the completed image into the card.\n\nThis build has no hosted backend configured. Saved cards and their photos use persistent local storage on this device. There is no cross-device synchronization. If storage cannot open, the app shows a retry screen instead of using temporary memory storage.",
+    "field_verification_status": "pending"
+  },
+  "commercial": {
+    "requested_price": "free",
+    "requested_availability": "all supported storefronts Apple permits",
+    "in_app_purchases": false,
+    "ads": false,
+    "app_account_required": false,
+    "app_store_connect_pricing_and_availability_verified": false
+  },
+  "urls": {
+    "privacy": "https://nathanfennel.com/my-funny-valentine/privacy.html",
+    "support": "https://nathanfennel.com/my-funny-valentine/support.html",
+    "marketing": null,
+    "status": "proposed_live_verification_pending"
+  },
+  "review_contact": {
+    "name": null,
+    "email": null,
+    "phone": null,
+    "source": "owner's actual App Store Connect record, not inferred",
+    "status": "pending"
+  },
+  "capabilities": {
+    "editable_starters": {
+      "count": 30,
+      "illustration_count": 6,
+      "worlds": [
+        "Pizza Crush",
+        "Cosmic Love",
+        "Lovebirds",
+        "Dino-mite",
+        "Disco Date",
+        "Sweet Tooth"
+      ],
+      "works_without_photo": true,
+      "offline": true,
+      "art_provenance": "starter-art-provenance.json"
+    },
+    "saving": {
+      "storage": "persistent local SwiftData",
+      "existing_schema_and_default_store_location_preserved": true,
+      "automatic_cross_device_sync": false,
+      "memory_only_fallback": false,
+      "open_failure": "retry screen before editable content",
+      "current_native_verification": "pending"
+    },
+    "photos": {
+      "optional": true,
+      "face_detection": "on-device Vision",
+      "foreground_cutout": "system foreground matte when available, padded photo crop fallback",
+      "native_visual_verification": "pending"
+    },
+    "sharing": {
+      "card_image": "PNG through native share sheet",
+      "face_animation": "GIF on iOS and macOS; only added faces move",
+      "native_export_verification": "pending"
+    },
+    "sayings": {
+      "built_in_messages": "offline, not AI output",
+      "optional_apple_generation": "SystemLanguageModel.default",
+      "optional_generation_minimum_os": {
+        "ios": "26.0",
+        "macos": "26.0"
+      },
+      "requirements": [
+        "eligible hardware",
+        "Apple Intelligence enabled",
+        "model ready"
+      ],
+      "fallback": "built-in messages when unavailable or generation fails",
+      "eligible_device_verification": "pending"
+    },
+    "artwork_generation": {
+      "implementation": "interactive Image Playground system sheet",
+      "gate": "system supportsImagePlayground availability",
+      "processing": "Apple-managed; may use Private Cloud Compute",
+      "usage_limits": "Apple-managed",
+      "guaranteed_offline": false,
+      "guaranteed_on_device": false,
+      "guaranteed_unlimited": false,
+      "eligible_device_verification": "pending"
+    },
+    "hosted_backend": {
+      "configured": false,
+      "status": "default app has no APIBaseURL configured"
+    }
+  },
+  "privacy": {
+    "app_privacy_answers": null,
+    "label_published": false,
+    "verification_status": "signed-build data-flow and live-policy verification pending",
+    "basis": [
+      "Cards and photos saved locally on this device",
+      "Face detection runs locally",
+      "No configured hosted generation backend",
+      "Optional Apple system generation may use Apple-managed processing",
+      "No ads or tracking in the release scope"
+    ]
+  },
+  "gallery": {
+    "status": "fresh_native_capture_and_composition_pending",
+    "target_images_per_platform": {
+      "iphone": 10,
+      "ipad": 10,
+      "mac": 10
+    },
+    "target_dimensions": null,
+    "dimension_verification": "Apple accepted dimensions and actual native capture dimensions pending",
+    "obsolete_gallery_date": "2026-07-21",
+    "obsolete_gallery_counts": {
+      "iphone": 6,
+      "ipad": 6,
+      "mac": 3
+    },
+    "obsolete_claims": [
+      "iCloud synchronization",
+      "obsolete Settings Synced status"
+    ],
+    "composition": {
+      "headline": "short centered top copy",
+      "native_captures_per_image": "1 to 3",
+      "hero": "upright and centered; portrait may extend below bottom edge",
+      "left_fan_angle": "negative, counterclockwise",
+      "right_fan_angle": "positive, clockwise",
+      "background_designs": "3 to 4 distinct styles, alternate adjacent images"
+    },
+    "first_three_scenes": [
+      "choose an editable starter",
+      "edit a message",
+      "finished share preview"
+    ],
+    "uploaded_gallery_verified": false
+  },
+  "verification": {
+    "prior_ios_build_for_testing": {
+      "status": "reported_succeeded",
+      "scope": "before latest storage and minimum-OS edits",
+      "source": "release owner",
+      "receipt_path": null
+    },
+    "prior_macos_build_for_testing": {
+      "status": "reported_succeeded",
+      "scope": "before latest storage and minimum-OS edits",
+      "source": "release owner",
+      "receipt_path": null
+    },
+    "latest_source_builds": "pending",
+    "native_test_execution": "pending",
+    "current_native_visuals": "pending",
+    "existing_store_reopen_or_upgrade": "pending",
+    "oldest_supported_os_runtime": "pending",
+    "eligible_device_apple_generation": "pending",
+    "signed_archives": "pending",
+    "upload_and_processing": "pending",
+    "app_store_connect_fields": "pending",
+    "privacy_label_and_legal_attestations": "pending",
+    "review_submission": "pending",
+    "source_revision": null,
+    "source_freeze_record": null
+  },
+  "apple_sources": [
+    {
+      "title": "Deprecation of the ImageCreator class",
+      "url": "https://developer.apple.com/news/?id=dz9wvq0r",
+      "used_for": "interactive system-sheet migration"
+    },
+    {
+      "title": "Create high-quality images using Image Playground",
+      "url": "https://developer.apple.com/videos/play/wwdc2026/375/",
+      "used_for": "Apple-managed availability, Private Cloud Compute and usage limits"
+    }
+  ]
+}

@@ -14,36 +14,33 @@ class ImageGenerationViewModel: ObservableObject {
     @Published var descriptionText: String = ""
     @Published var selectedStyle: ImageStyle = .valentine
     @Published var generatedImageURL: String?
-    /// Set when the image came from Image Playground rather than the backend.
-    @Published var generatedImage: PlatformImage?
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var isCached: Bool = false
     @Published var remainingGenerations: Int = 3
-    /// True when the last image came from Apple's on-device model.
-    @Published var usedOnDeviceModel: Bool = false
+    @Published private(set) var isBackendConfigured = false
     
-    private let apiService = APIService.shared
+    private let apiService: APIService
     private let userId: String
     
-    init(userId: String) {
+    init(userId: String, apiService: APIService = .shared) {
         self.userId = userId
+        self.apiService = apiService
     }
     
     var characterCount: Int {
         descriptionText.count
     }
     
-    /// On-device generation runs for free, so it isn't premium-gated.
-    var canUseOnDeviceGeneration: Bool {
-        OnDeviceImageGenerator.isSupported
+    func loadAvailability() async {
+        isBackendConfigured = await apiService.isConfigured
     }
 
     var canGenerate: Bool {
         !descriptionText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
         characterCount <= 100 &&
         !isLoading &&
-        (canUseOnDeviceGeneration || remainingGenerations > 0)
+        isBackendConfigured && remainingGenerations > 0
     }
 
     func generateImage() async {
@@ -53,33 +50,22 @@ class ImageGenerationViewModel: ObservableObject {
             return
         }
 
-        isLoading = true
-        errorMessage = nil
-
-        // Preferred: Image Playground on device. No network, no cost, no quota.
-        if canUseOnDeviceGeneration {
-            do {
-                let image = try await OnDeviceImageGenerator.shared.image(
-                    for: trimmedDescription,
-                    style: selectedStyle
-                )
-                generatedImage = image
-                generatedImageURL = nil
-                usedOnDeviceModel = true
-                isCached = false
-                isLoading = false
-                return
-            } catch {
-                // Apple Intelligence off or unsupported — try the backend.
-                usedOnDeviceModel = false
-            }
+        // Apple artwork uses the system sheet. This optional hosted path must
+        // never request the shipped placeholder endpoint.
+        await loadAvailability()
+        guard isBackendConfigured else {
+            errorMessage = "Choose a photo or a starter card."
+            return
         }
 
         guard remainingGenerations > 0 else {
             errorMessage = "Image generation limit reached"
-            isLoading = false
             return
         }
+
+        isLoading = true
+        errorMessage = nil
+        defer { isLoading = false }
 
         do {
             let response = try await apiService.generateImage(
@@ -89,7 +75,6 @@ class ImageGenerationViewModel: ObservableObject {
             )
             
             generatedImageURL = response.imageUrl
-            generatedImage = nil
             isCached = response.cached
             remainingGenerations = response.remainingGenerations
 
@@ -109,7 +94,6 @@ class ImageGenerationViewModel: ObservableObject {
             errorMessage = "An unexpected error occurred: \(error.localizedDescription)"
         }
         
-        isLoading = false
     }
     
     func clearError() {

@@ -10,18 +10,20 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = true
     @State private var selectedTab = ScreenshotSupport.initialTab
 
     /// Set when onboarding is dismissed in this session, so a forced run
     /// (`-showOnboarding`) can still be completed rather than looping forever.
     @State private var dismissedOnboarding = false
+    @State private var replayWelcome = false
+    @State private var showingNewCard = false
 
     private var showOnboarding: Bool {
         if dismissedOnboarding { return false }
         if ScreenshotSupport.shouldForceOnboarding { return true }
         if ScreenshotSupport.shouldSkipOnboarding { return false }
-        return !hasCompletedOnboarding
+        return replayWelcome
     }
 
     var body: some View {
@@ -37,12 +39,22 @@ struct ContentView: View {
                 content
             }
         }
+        .sheet(isPresented: $showingNewCard) {
+            NavigationStack { CardDetailView(card: nil) }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("NewCard"))) { _ in
+            showingNewCard = true
+        }
         .task {
             ScreenshotSupport.seedSampleCardsIfRequested(in: modelContext)
+            if !showOnboarding { hasCompletedOnboarding = true }
         }
         .onChange(of: hasCompletedOnboarding) { _, completed in
             // "Show Welcome Again" in Settings replays the flow mid-session.
-            if !completed { dismissedOnboarding = false }
+            if !completed { dismissedOnboarding = false; replayWelcome = true }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("BrowseStarters"))) { _ in
+            selectedTab = 0
         }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ShowPreferences"))) { _ in
             // Keep the current settings category when Preferences is invoked again.
@@ -87,7 +99,7 @@ struct ContentView: View {
                 }
             }
         }
-        .frame(minWidth: 900, idealWidth: 1280, minHeight: 600, idealHeight: 800)
+        .frame(minWidth: 720, idealWidth: 1280, minHeight: 560, idealHeight: 800)
         #else
         // iOS/visionOS: Use TabView
         TabView(selection: $selectedTab) {

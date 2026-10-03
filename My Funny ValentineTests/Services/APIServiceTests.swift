@@ -115,6 +115,34 @@ struct APIServiceTests {
         let real = APIService(baseURL: "https://example.com")
         #expect(await real.isConfigured == true)
     }
+
+    @Test("Artwork stays offline when the backend is unconfigured")
+    @MainActor
+    func testUnconfiguredArtworkNeverRequestsPlaceholder() async {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [MockURLProtocol.self]
+        let api = APIService(
+            baseURL: APIService.placeholderBaseURL,
+            session: URLSession(configuration: configuration)
+        )
+        MockURLProtocol.responseHandler = { _ in
+            Issue.record("Unconfigured artwork must not make a network request")
+            throw URLError(.badURL)
+        }
+        defer { MockURLProtocol.responseHandler = nil }
+
+        let model = ImageGenerationViewModel(userId: "offline-test", apiService: api)
+        model.descriptionText = "A dancing cat"
+        await model.loadAvailability()
+        #expect(model.isBackendConfigured == false)
+        #expect(model.canGenerate == false)
+
+        // Check the action itself as well as the disabled UI state.
+        await model.generateImage()
+        #expect(model.generatedImageURL == nil)
+        #expect(model.isLoading == false)
+        #expect(model.errorMessage == "Choose a photo or a starter card.")
+    }
 }
 
 // MARK: - URLProtocol stub

@@ -1,32 +1,35 @@
 # My Funny Valentine
 
-A complete iOS app for creating personalized Valentine's Day cards with AI-generated sayings and custom images. Includes a SwiftUI iOS app, backend API, and marketing website.
+A native iPhone, iPad and Mac app for making personalized Valentine's cards. The current app has 30 editable illustrated starters, optional photos and Apple generation. The repository also contains optional backend and website code; the default app has no hosted API configured.
 
 ## Project Overview
 
-My Funny Valentine is a full-stack iOS application that allows users to create custom Valentine's Day cards with:
-- AI-generated romantic sayings, on device via Apple's foundation model
-- Custom artwork generation, on device via Image Playground
+The current native app supports:
+
+- 30 editable starters across six illustrated collections
+- Built-in messages and optional Apple Intelligence sayings on compatible devices
+- Optional artwork creation through Apple's Image Playground sheet
 - Face detection and photo integration
-- CloudKit sync for cross-device access
-- Social sharing capabilities
-- Free, with on-device generation
+- Persistent cards and photos saved on this device
+- PNG sharing and face animation as a GIF
+- Free card editing with no in-app purchases
 
 ## Repository Structure
 
 This repository contains three main components:
 
-### 1. iOS App (`My Funny Valentine/`)
+### 1. Native app (`My Funny Valentine/`)
+
 - **Framework**: SwiftUI + SwiftData
-- **Platform**: iOS 17+
+- **Configured minimums**: iOS/iPadOS 18.0 and macOS 15.1; oldest-OS runtime checks remain pending
 - **Features**:
   - Card creation and editing
-  - AI-generated sayings (on-device)
-  - Artwork generation (on-device)
-  - CloudKit sync
+  - Built-in messages and optional on-device Apple Intelligence sayings
+  - Artwork creation with Image Playground when the system supports it
+  - Persistent local card storage
   - Face detection
   - Social sharing
-  - First-launch onboarding
+  - Welcome flow replayable from Settings
 
 ### 2. Backend API (`api/`, `lib/`)
 - **Platform**: Vercel Serverless Functions
@@ -45,12 +48,13 @@ This repository contains three main components:
 
 ## Tech Stack
 
-### iOS App
+### Native app
+
 - SwiftUI
-- SwiftData
-- CloudKit
-- Vision Framework (face detection)
-- StoreKit 2 (subscriptions)
+- SwiftData with persistent local storage
+- Vision for face detection and optional foreground masking
+- ImageIO for GIF export
+- Optional Apple FoundationModels and the Image Playground sheet
 
 ### Backend API
 - Vercel Serverless Functions
@@ -68,15 +72,14 @@ This repository contains three main components:
    open "My Funny Valentine.xcodeproj"
    ```
 
-2. **Configure CloudKit**:
-   - Ensure CloudKit capability is enabled in Xcode
-   - Set up CloudKit container in Apple Developer portal
+2. **Check local storage**:
+   - Cards and photos use the existing persistent SwiftData store on this device.
+   - If the store cannot open, the app shows a retry screen before the editor.
 
 3. **Configure API endpoint** (optional):
    - Add an `APIBaseURL` string to `Info.plist` pointing at your deployed backend.
-   - Until that's set, the app treats the hosted AI as unconfigured and
-     generates sayings **on-device**, so the app is fully usable with no backend.
-     The same fallback kicks in when the device is offline.
+   - The default app has no hosted API configured. Built-in messages and card editing work offline.
+   - Optional FoundationModels sayings require compatible hardware, iOS 26 or macOS 26, enabled Apple Intelligence and a ready model. Built-in messages remain available when generation fails or is unavailable.
 
 4. **Run the app**:
    - Build and run in Xcode (⌘R)
@@ -99,7 +102,7 @@ This repository contains three main components:
      - `APP_APPLE_ID`: Numeric App ID, required in production
      - `OPENAI_MODEL` / `OPENAI_FALLBACK_MODEL` / `OPENAI_IMAGE_MODEL`: optional overrides
 
-   See `app-store/SUBMISSION.md` for the full table.
+   Backend configuration is separate from the current native release. The current release draft is in `app-store/SUBMISSION.md`.
 
 3. **Deploy to Vercel**:
    ```bash
@@ -172,20 +175,28 @@ The app is **free with no in-app purchases**.
 | Feature | Availability |
 |---|---|
 | Card creation | Unlimited |
-| On-device sayings | Unlimited |
-| On-device artwork | Unlimited |
-| Backend sayings (fallback) | 3/day per install |
-| Backend artwork (fallback) | 3/day per install |
+| Apple sayings | Available when the on-device model is ready; built-in messages otherwise |
+| Image Playground artwork | Compatible device and Apple Intelligence required; Apple manages limits |
+| Backend sayings | Only with a configured backend; 3/day per app-provided ID |
+| Backend artwork | Only with a configured backend; 3/day per app-provided ID |
 
-The backend caps only bound OpenAI spend for devices that can't generate
-locally. Server-side subscription verification remains in `lib/app-store.ts`
+The default app has no hosted API configured. Photos and built-in messages
+work without Apple Intelligence. Image Playground is optional and can use
+Apple's Private Cloud Compute; it is not an offline or unlimited artwork
+promise. Apple's supported path is the interactive system sheet, not the
+discontinued `ImageCreator` API. See [Apple's migration notice](https://developer.apple.com/news/?id=dz9wvq0r)
+and [Image Playground guidance](https://developer.apple.com/videos/play/wwdc2026/375/).
+
+Backend per-ID caps do not replace verified client identity or a global
+spending limit. Add and verify those controls before enabling hosted
+generation. Server-side subscription verification remains in `lib/app-store.ts`
 if a paid tier is added later.
 
 ## Project Structure
 
 ```
 .
-├── My Funny Valentine/          # iOS app source
+├── My Funny Valentine/          # Native iPhone, iPad and Mac app source
 │   ├── Components/              # Reusable UI components
 │   ├── Models/                  # SwiftData models
 │   ├── Services/                # Business logic services
@@ -215,10 +226,12 @@ npm test
 
 ## Development
 
-### iOS Development
-- Minimum iOS version: 17.0
-- Xcode 15+ required
-- Swift 5.9+
+### Native development
+
+- Configured minimum iOS/iPadOS version: 18.0
+- Configured minimum macOS version: 15.1
+- Use an Xcode SDK that supports the project's Apple generation APIs and availability checks.
+- Compilation, native behavior and oldest-OS results must be recorded for the release build.
 
 ### Backend Development
 - Node.js 18+
@@ -253,7 +266,13 @@ npm test
 - User ID validation
 - Environment variables for secrets
 - HTTPS only (enforced by Vercel)
-- CloudKit encryption for user data
+- Cards and photos stored locally on this device
+
+## Release status and public links
+
+The [current release draft](app-store/SUBMISSION.md) and [listing metadata](app-store-audit/2026-10-03-my-funny-valentine/release-listing.json) record verification and release steps. Native checks, fresh marketing captures, signed archives, uploads, App Store Connect fields and submission remain pending. Cards are saved on this device; sharing sends an exported copy.
+
+Prospective privacy and support pages are [privacy.html](https://nathanfennel.com/my-funny-valentine/privacy.html) and [support.html](https://nathanfennel.com/my-funny-valentine/support.html). Deployment and live URL checks remain pending. The App Store marketing URL stays unset because there is no app directory marketing page.
 
 ## License
 

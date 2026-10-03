@@ -20,14 +20,14 @@ enum SettingsSection: String, CaseIterable, Identifiable {
     var title: LocalizedStringKey {
         switch self {
         case .generation: "Generation"
-        case .iCloud: "iCloud Sync"
+        case .iCloud: "Storage"
         case .about: "About"
         }
     }
     var symbol: String {
         switch self {
         case .generation: "sparkles"
-        case .iCloud: "icloud"
+        case .iCloud: "externaldrive"
         case .about: "info.circle"
         }
     }
@@ -63,26 +63,14 @@ struct SettingsSectionLabel: View {
 struct SettingsView: View {
     /// macOS borrows the app's existing sidebar; the Settings tab owns navigation elsewhere.
     var section: SettingsSection? = nil
-    @Environment(\.modelContext) private var modelContext
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    @Query private var preferences: [UserPreferences]
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
 
     @State private var selectedSection: SettingsSection? = .generation
     @State private var preferredCompactColumn: NavigationSplitViewColumn = .sidebar
-    @State private var syncEnabled: Bool = true
     @State private var sampleCard = Card(saying: "You're my favorite person.")
 
     private var activeSection: SettingsSection { section ?? selectedSection ?? .generation }
-
-    private var userPreferences: UserPreferences {
-        if let prefs = preferences.first {
-            return prefs
-        }
-        let prefs = UserPreferences()
-        modelContext.insert(prefs)
-        return prefs
-    }
 
     private var appVersion: String {
         let info = Bundle.main.infoDictionary
@@ -115,9 +103,6 @@ struct SettingsView: View {
                 .navigationSplitViewStyle(.balanced)
             }
         }
-        .onAppear {
-            syncEnabled = userPreferences.syncEnabled
-        }
     }
 
     private var detail: some View {
@@ -125,7 +110,7 @@ struct SettingsView: View {
             switch activeSection {
             case .generation:
                 Section("Card sample") {
-                    CardTileView(card: sampleCard, size: CGSize(width: 180, height: 240))
+                    CardTileView(card: sampleCard, size: CGSize(width: 180, height: 270))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                         .accessibilityIdentifier("settings.cardSample")
@@ -133,7 +118,7 @@ struct SettingsView: View {
 
                 Section {
                     generationStatus("Sayings", symbol: "sparkles", value: OnDeviceSayingsGenerator.isAvailable ? "On device" : "Built-in")
-                    generationStatus("Artwork", symbol: "photo.artframe", value: OnDeviceImageGenerator.isSupported ? "On device" : "Unavailable")
+                    generationStatus("Artwork", symbol: "photo.artframe", value: "Samples and Photos")
 
                     if let reason = OnDeviceSayingsGenerator.unavailableReason {
                         Text(reason)
@@ -143,18 +128,15 @@ struct SettingsView: View {
                 } header: {
                     Text("Generation")
                 } footer: {
-                    Text("Cards are generated on your device. Nothing you type or photograph is sent anywhere.")
+                    Text("Face detection stays on your device. Image Playground is optional; Apple manages its availability and limits.")
                 }
             case .iCloud:
-                Section("iCloud Sync") {
-                    Toggle(isOn: $syncEnabled) {
-                        Label("Sync Enabled", systemImage: "icloud")
-                    }
-                    .accessibilityIdentifier("settings.syncEnabled")
-                    .onChange(of: syncEnabled) { _, newValue in
-                        userPreferences.syncEnabled = newValue
-                        try? modelContext.save()
-                    }
+                Section {
+                    Label("Saved on this device", systemImage: "externaldrive.badge.checkmark")
+                } header: {
+                    Text("Storage")
+                } footer: {
+                    Text("Sharing exports a copy of your card.")
                 }
             case .about:
                 Section("About") {

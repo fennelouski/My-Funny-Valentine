@@ -101,7 +101,15 @@ nonisolated enum PlatformGraphics {
 
     static func cgImage(from image: PlatformImage) -> CGImage? {
         #if canImport(UIKit)
-        return image.cgImage
+        guard image.imageOrientation != .up else { return image.cgImage }
+        guard image.size.width.isFinite, image.size.height.isFinite,
+              image.size.width > 0, image.size.height > 0 else { return nil }
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = image.scale
+        format.opaque = false
+        return UIGraphicsImageRenderer(size: image.size, format: format).image { _ in
+            image.draw(in: CGRect(origin: .zero, size: image.size))
+        }.cgImage
         #elseif canImport(AppKit)
         var rect = CGRect(origin: .zero, size: image.size)
         return image.cgImage(forProposedRect: &rect, context: nil, hints: nil)

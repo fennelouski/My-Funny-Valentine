@@ -184,8 +184,13 @@ struct FaceImportView: View {
             faces: importedFaces,
             modelContext: modelContext
         )
-        try? modelContext.save()
-        currentStep = .complete
+        do {
+            try modelContext.save()
+            currentStep = .complete
+        } catch {
+            modelContext.rollback()
+            errorMessage = "Your faces are still here. Please try making the cards again."
+        }
     }
 }
 
@@ -198,22 +203,26 @@ struct FaceSelectionView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
-                    Text("Multiple faces detected. Select one:")
+                    Text("Choose a face")
                         .font(.headline)
                         .padding()
 
                     ForEach(faces) { face in
                         if let uiImage = PlatformImage(data: face.imageData) {
-                            PlatformImageUtils.swiftUIImage(from: uiImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 150, height: 150)
-                                .cornerRadius(12)
-                                .padding(8)
-                                .onTapGesture {
-                                    onSelect(face)
-                                    dismiss()
-                                }
+                            Button {
+                                onSelect(face)
+                                dismiss()
+                            } label: {
+                                PlatformImageUtils.swiftUIImage(from: uiImage)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 150, height: 150)
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                    .padding(8)
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityLabel("Choose face \(faces.firstIndex(where: { $0.id == face.id }).map { $0 + 1 } ?? 1)")
+                            .accessibilityIdentifier("faceSelection.\(face.id)")
                         }
                     }
                 }

@@ -1,0 +1,19 @@
+{
+  "created_at_utc": "2026-10-03T01:29:04.916519+00:00",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "Use case: photorealistic-natural\nAsset type: native app face-cutout QA fixture, not release artwork\nPrimary request: Generate one color studio headshot of a wholly fictional adult person.\nScene/backdrop: Plain, evenly lit bright blue background with plenty of empty space around the person.\nSubject: One adult, approximately 35 years old, looking straight at the camera with a gentle neutral expression. Both eyes and ears visible; clear short hair and ear silhouette. Ordinary dark charcoal crew-neck top. Head, neck, and shoulders visible.\nComposition/framing: Portrait photograph. Person centered and occupying the middle 60% of the frame width; entire hair silhouette comfortably inside the image, shoulders visible along the lower portion. Clear separation from backdrop, no objects.\nStyle/medium: Realistic color studio photography, natural skin texture, crisp focus, even soft lighting.\nConstraints: Wholly fictional identity. Exactly one adult. No text, logos, watermarks, hats, glasses, jewelry, extra people or decorative elements. Bright blue background is opaque; do not remove or blur it.",
+  "transparent_background": false,
+  "original_tool_output": "/Users/nathan/.codex/generated_images/01a0ff41-28c4-7c02-b50d-2ee2aca11c74/exec-01a343bf-d292-4047-9bc6-9ffe4019e3e9.png",
+  "audit_output": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/qa-face-source.png",
+  "test_only_resource": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/My Funny ValentineTests/Fixtures/qa-face-source.png",
+  "sha256": "036b1f6c301ecd4c3a1d545c7359d1710730bfcdc438d0e0839c7600a0879d36",
+  "bytes": 2127845,
+  "pixel_dimensions": {
+    "width": 1374,
+    "height": 1145
+  },
+  "copies_identical_to_original": true,
+  "release_assets_modified": false,
+  "visual_inspection": "One fictional adult, front-facing, both ears and hair silhouette visible, shoulders visible, bright blue empty background, no text or branding.",
+  "intended_use": "Native PhotoPicker and Vision face-cutout QA only. Not bundled in the release application."
+}

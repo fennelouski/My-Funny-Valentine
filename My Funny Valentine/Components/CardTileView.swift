@@ -1,62 +1,24 @@
-//
-//  CardThumbnailView.swift
-//  My Funny Valentine
-//
-
 import SwiftUI
-import SwiftData
 
 struct CardTileView: View {
     let card: Card
-    var size: CGSize = CGSize(width: 160, height: 220)
-    
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .fill(
-                    LinearGradient(
-                        colors: [
-                            Color(red: 1, green: 0.4, blue: 0.5),
-                            Color(red: 0.9, green: 0.2, blue: 0.4)
-                        ],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .frame(width: size.width, height: size.height)
-                .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
-            
-            VStack(spacing: 8) {
-                if let thumbnailData = (card.faces ?? []).first?.thumbnailData,
-                   let uiImage = PlatformImage(data: thumbnailData) {
-                    PlatformImageUtils.swiftUIImage(from: uiImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: size.width * 0.6, maxHeight: size.height * 0.4)
-                        .clipShape(Circle())
-                }
+    var size = CGSize(width: 160, height: 240)
+    var faceAnimationPhase: Double? = nil
 
-                Text(displayText)
-                    .font(.caption)
-                    .fontWeight(.medium)
-                    .foregroundStyle(.white)
-                    .multilineTextAlignment(.center)
-                    .lineLimit(4)
-                    .minimumScaleFactor(0.75)
+    var body: some View {
+        Group {
+            if let image = CardRenderer.shared.renderCard(card, size: CGSize(width: size.width * 2, height: size.height * 2), faceAnimationPhase: faceAnimationPhase) {
+                PlatformImageUtils.swiftUIImage(from: image)
+                    .resizable()
+                    .scaledToFit()
+            } else {
+                ContentUnavailableView("Card unavailable", systemImage: "photo")
             }
-            .padding(.horizontal, 12)
-            // Keep contents inside the tile; long sayings otherwise spill out.
-            .frame(width: size.width, height: size.height)
         }
         .frame(width: size.width, height: size.height)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .overlay(RoundedRectangle(cornerRadius: 12).strokeBorder(.primary.opacity(0.1)))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel([card.saying, card.customText].compactMap { $0 }.joined(separator: ". "))
     }
-    
-    private var displayText: String {
-        card.customText ?? card.saying ?? "New Card"
-    }
-}
-
-#Preview {
-    CardTileView(card: Card(saying: "You're the best!"))
-        .padding()
 }

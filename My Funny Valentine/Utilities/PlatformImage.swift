@@ -22,7 +22,7 @@ nonisolated struct PlatformImageUtils {
     /// Convert PlatformImage to Data (JPEG)
     static func jpegData(from image: PlatformImage, compressionQuality: CGFloat = 0.9) -> Data? {
         #if os(iOS) || os(visionOS)
-        return image.jpegData(compressionQuality: compressionQuality)
+        return normalized(image).jpegData(compressionQuality: compressionQuality)
         #elseif os(macOS)
         guard let tiffData = image.tiffRepresentation,
               let bitmapImage = NSBitmapImageRep(data: tiffData),
@@ -36,7 +36,7 @@ nonisolated struct PlatformImageUtils {
     /// Convert PlatformImage to Data (PNG)
     static func pngData(from image: PlatformImage) -> Data? {
         #if os(iOS) || os(visionOS)
-        return image.pngData()
+        return normalized(image).pngData()
         #elseif os(macOS)
         guard let tiffData = image.tiffRepresentation,
               let bitmapImage = NSBitmapImageRep(data: tiffData),
@@ -97,10 +97,20 @@ nonisolated struct PlatformImageUtils {
         guard size.width > 0, size.height > 0 else { return image }
 
         let ratio = min(maxDimension / size.width, maxDimension / size.height)
-        guard ratio < 1 else { return image }
+        guard ratio < 1 else { return normalized(image) }
 
         let newSize = CGSize(width: size.width * ratio, height: size.height * ratio)
         return resized(image, to: newSize) ?? image
+    }
+
+    private static func normalized(_ image: PlatformImage) -> PlatformImage {
+        #if canImport(UIKit)
+        guard image.imageOrientation != .up,
+              let cgImage = PlatformGraphics.cgImage(from: image) else { return image }
+        return UIImage(cgImage: cgImage, scale: image.scale, orientation: .up)
+        #else
+        return image
+        #endif
     }
 }
 

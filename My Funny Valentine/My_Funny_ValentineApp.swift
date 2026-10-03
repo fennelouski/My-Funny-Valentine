@@ -11,51 +11,45 @@ import CloudKit
 
 @main
 struct My_Funny_ValentineApp: App {
-    var sharedModelContainer: ModelContainer = {
+    @State private var storage = Self.loadStorage()
+
+    private static func loadStorage() -> Result<ModelContainer, Error> {
         let schema = Schema([
-            Card.self,
-            FaceImage.self,
-            CardImage.self,
-            StickerReference.self,
-            UserPreferences.self,
+            Card.self, FaceImage.self, CardImage.self, StickerReference.self, UserPreferences.self
         ])
-        
-        // Prefer CloudKit-backed storage, but never crash on launch when it
-        // isn't available (no iCloud account, entitlement problems, etc.).
-        let cloudConfiguration = ModelConfiguration(
-            schema: schema,
-            isStoredInMemoryOnly: false,
-            cloudKitDatabase: .automatic
-        )
-        if let container = try? ModelContainer(for: schema, configurations: [cloudConfiguration]) {
-            return container
-        }
-
-        let localConfiguration = ModelConfiguration(
-            schema: schema,
-            isStoredInMemoryOnly: false,
-            cloudKitDatabase: .none
-        )
-        if let container = try? ModelContainer(for: schema, configurations: [localConfiguration]) {
-            return container
-        }
-
-        // Last resort so the app still opens; cards won't survive a relaunch.
         do {
-            return try ModelContainer(
-                for: schema,
-                configurations: [ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)]
-            )
+            let local: ModelConfiguration
+            if ScreenshotSupport.shouldUseQAStore {
+                let directory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+                    .appendingPathComponent("MyFunnyValentine-QA-\(ScreenshotSupport.qaStoreName)", isDirectory: true)
+                try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+                local = ModelConfiguration(schema: schema, url: directory.appendingPathComponent("cards.store"), cloudKitDatabase: .none)
+            } else {
+                local = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false, cloudKitDatabase: .none)
+            }
+            return .success(try ModelContainer(for: schema, configurations: [local]))
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            return .failure(error)
         }
-    }()
+    }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            switch storage {
+            case .success(let container):
+                ContentView().modelContainer(container)
+            case .failure(let error):
+                ContentUnavailableView {
+                    Label("Cards couldn't open", systemImage: "externaldrive.badge.exclamationmark")
+                } description: {
+                    Text("Try again to open your saved cards.")
+                } actions: {
+                    Button("Try again") { storage = Self.loadStorage() }
+                    DisclosureGroup("Details") { Text(error.localizedDescription).textSelection(.enabled) }
+                        .frame(maxWidth: 480)
+                }
+            }
         }
-        .modelContainer(sharedModelContainer)
         #if os(macOS)
         // Matches an App Store Mac screenshot size (2560x1600 at 2x).
         .defaultSize(width: 1280, height: 800)
@@ -69,13 +63,6 @@ struct My_Funny_ValentineApp: App {
             }
             
             CommandGroup(after: .toolbar) {
-                Button("Export Card...") {
-                    NotificationCenter.default.post(name: NSNotification.Name("ExportCard"), object: nil)
-                }
-                .keyboardShortcut("e", modifiers: [.command, .shift])
-                
-                Divider()
-                
                 Button("Preferences...") {
                     NotificationCenter.default.post(name: NSNotification.Name("ShowPreferences"), object: nil)
                 }

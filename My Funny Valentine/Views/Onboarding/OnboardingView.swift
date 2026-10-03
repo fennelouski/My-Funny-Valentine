@@ -26,7 +26,7 @@ struct OnboardingView: View {
             OnboardingPage(
                 symbol: "heart.fill",
                 title: "My Funny Valentine",
-                body: "Make a Valentine's card that actually sounds like you — funny, sweet, and yours in about a minute."
+                body: "Pick a card. Add your words. Send some love."
             ),
             OnboardingPage(
                 symbol: "sparkles",
@@ -36,7 +36,7 @@ struct OnboardingView: View {
             OnboardingPage(
                 symbol: "photo.on.rectangle.angled",
                 title: "Add a face, add some art",
-                body: "Drop in a photo and we'll find the face for you, or generate artwork to go with your message. Then share it anywhere."
+                body: "Add your photo or face. Try Image Playground when it's available."
             )
         ]
     }
@@ -45,9 +45,9 @@ struct OnboardingView: View {
     /// reality on hardware without Apple Intelligence.
     private var sayingsBody: String {
         if OnDeviceSayingsGenerator.isAvailable {
-            return "Give us a word — coffee, hiking, their terrible puns — and Apple Intelligence writes the message right here on your device. Nothing you type is sent anywhere."
+            return "Pick an inspiration. Apple Intelligence can help find the words."
         }
-        return "Give us a word — coffee, hiking, their terrible puns — and we'll suggest messages built around it. Nothing you type leaves your device."
+        return "Pick an inspiration. Try a few ready-made messages."
     }
 
     private var isLastPage: Bool { index == pages.count - 1 }

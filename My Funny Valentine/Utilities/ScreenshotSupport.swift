@@ -14,6 +14,29 @@ import SwiftData
 
 enum ScreenshotSupport {
 
+    static var qaStoreName: String {
+        #if DEBUG
+        if let name = UserDefaults.standard.string(forKey: "qaStoreName"),
+           name.range(of: "^[A-Za-z0-9-]{1,64}$", options: .regularExpression) != nil {
+            return name
+        }
+        #endif
+        return "20261003"
+    }
+
+    /// Native QA uses a separate persistent library; Release always uses the user's store.
+    static var shouldUseQAStore: Bool {
+        #if DEBUG && MFV_QA_STORE
+        true
+        #elseif DEBUG
+        ProcessInfo.processInfo.arguments.contains("--uitesting")
+            || UserDefaults.standard.bool(forKey: "qaStore")
+            || ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+        #else
+        false
+        #endif
+    }
+
     /// Tab to select on launch. Always 0 outside DEBUG builds.
     static var initialTab: Int {
         #if DEBUG

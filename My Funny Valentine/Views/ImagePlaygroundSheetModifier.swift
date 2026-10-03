@@ -1,74 +1,70 @@
-//
-//  ImagePlaygroundSheetModifier.swift
-//  My Funny Valentine
-//
-//  Created by Nathan Fennel on 2/12/26.
-//
-
 import SwiftUI
 
 #if canImport(ImagePlayground)
 import ImagePlayground
 #endif
 
-/// Provides Image Playground integration when Apple Intelligence is available.
-/// Gracefully handles when unavailable (older devices, AI disabled).
+/// The system owns generation, device readiness, and Apple usage limits.
+/// Photos and starter cards remain usable when Image Playground is unavailable.
 struct ImagePlaygroundButton: View {
     @Binding var generatedImageURL: URL?
+    var concept: String = ""
+    var sourceImage: Image? = nil
     let onImageImported: (PlatformImage) -> Void
 
     var body: some View {
         #if canImport(ImagePlayground)
-        if #available(iOS 18.1, *) {
+        if #available(iOS 18.1, macOS 15.1, visionOS 2.4, *) {
             ImagePlaygroundButtonContent(
                 generatedImageURL: $generatedImageURL,
+                concept: concept,
+                sourceImage: sourceImage,
                 onImageImported: onImageImported
             )
-        } else {
-            unsupportedView
         }
-        #else
-        unsupportedView
         #endif
-    }
-
-    private var unsupportedView: some View {
-        Button {} label: {
-            Label("Image Playground (Unavailable)", systemImage: "apple.logo")
-                .foregroundStyle(.secondary)
-        }
-        .disabled(true)
     }
 }
 
 #if canImport(ImagePlayground)
-@available(iOS 18.1, *)
+@available(iOS 18.1, macOS 15.1, visionOS 2.4, *)
 private struct ImagePlaygroundButtonContent: View {
     @Environment(\.supportsImagePlayground) private var supportsImagePlayground
     @Binding var generatedImageURL: URL?
-    @State private var showImagePlayground = false
+    let concept: String
+    let sourceImage: Image?
     let onImageImported: (PlatformImage) -> Void
+    @State private var showImagePlayground = false
+    @State private var importFailed = false
 
     var body: some View {
-        Group {
-            if supportsImagePlayground {
-                Button {
-                    showImagePlayground = true
-                } label: {
-                    Label("Add from Image Playground", systemImage: "apple.logo")
+        if supportsImagePlayground {
+            Button {
+                showImagePlayground = true
+            } label: {
+                Label("Image Playground", systemImage: "sparkles")
+                    .frame(minHeight: 44)
+            }
+            .accessibilityIdentifier("artwork.imagePlayground")
+            .imagePlaygroundSheet(
+                isPresented: $showImagePlayground,
+                concepts: concept.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? [] : [.text(concept)],
+                sourceImage: sourceImage
+            ) { url in
+                // The URL is temporary. Read its pixels before the system ends
+                // the session, then let the caller persist them with the card.
+                guard let data = try? Data(contentsOf: url),
+                      let image = PlatformImage(data: data) else {
+                    importFailed = true
+                    return
                 }
-                .imagePlaygroundSheet(isPresented: $showImagePlayground) { url in
-                    generatedImageURL = url
-                    if let data = try? Data(contentsOf: url), let image = PlatformImage(data: data) {
-                        onImageImported(image)
-                    }
-                }
-            } else {
-                Button {} label: {
-                    Label("Image Playground (Requires Apple Intelligence)", systemImage: "apple.logo")
-                        .foregroundStyle(.secondary)
-                }
-                .disabled(true)
+                generatedImageURL = url
+                onImageImported(image)
+            }
+            .alert("Couldn't add artwork", isPresented: $importFailed) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text("Try Image Playground again, or choose a photo.")
             }
         }
     }

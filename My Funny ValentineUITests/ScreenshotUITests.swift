@@ -1,163 +1,279 @@
-//
-//  ScreenshotUITests.swift
-//  My Funny ValentineUITests
-//
-//  Drives the app through its main screens and attaches screenshots, so
-//  App Store marketing images can be regenerated on any device size:
-//
-//    xcodebuild test -scheme "My Funny Valentine" \
-//      -destination 'platform=iOS Simulator,name=iPhone 17 Pro Max' \
-//      -only-testing:"My Funny ValentineUITests/ScreenshotUITests"
-//
-//  Then export with: xcrun xcresulttool export attachments --path <xcresult>
-//
-
 import XCTest
 
+/// Captures real native screens for later marketing composition.
+/// Run only on owned QA devices; --uitesting uses a separate persistent library.
 final class ScreenshotUITests: XCTestCase {
-
     private var app: XCUIApplication!
+    private var capturedScenes: [String] = []
+    private var qaStoreName = ""
 
     override func setUpWithError() throws {
         continueAfterFailure = false
-        app = XCUIApplication()
-        // Seed a populated library so marketing shots aren't near-empty.
-        app.launchArguments = ["--uitesting", "-seedSampleCards", "YES", "-skipOnboarding", "YES"]
-        app.launch()
-    }
-
-    override func tearDownWithError() throws {
-        app = nil
+        capturedScenes = []
+        qaStoreName = "gallery-\(UUID().uuidString)"
     }
 
     @MainActor
     func testCaptureAppStoreScreenshots() throws {
-        // Walk the real creation flow once, capturing the AI generator on the way.
-        createCard(inspiration: "coffee", captureGenerator: true)
+        launch(tab: 0)
+        let pizza = app.buttons["starter.starter_pizza_1"]
+        try require(pizza, "Home must show the starter gallery")
+        try capture("01-All-Cards", showing: [
+            app.buttons["home.createCard"],
+            app.descendants(matching: .any)["home.collection"].firstMatch,
+            pizza
+        ])
 
-        // 01 — Home with recent cards
-        goToTab("Home")
-        capture("01-Home")
+        try tap(pizza, "Open the pizza starter")
+        try assertEditor(message: "You had me at pizza.")
+        let personalNote = "Love, Alex"
+        let note = try textInput(identifier: "cardDetail.note", placeholder: "Love, me")
+        try reveal(note)
+        try tap(note, "Personalize the note")
+        XCTAssertTrue((note.value as? String ?? "").isEmpty || note.value as? String == "Love, me")
+        note.typeText(personalNote)
+        XCTAssertEqual(note.value as? String, personalNote)
 
-        // 02 — Card editor with live preview
-        let createCard = app.buttons["home.createCard"]
-        if createCard.waitForExistence(timeout: 5) {
-            createCard.tap()
-            let sayingField = app.textFields["Add a saying..."]
-            if sayingField.waitForExistence(timeout: 5) {
-                sayingField.tap()
-                sayingField.typeText("You're the coffee to my heart.")
+        // Multiline fields do not use Return to dismiss the keyboard. Opening
+        // and closing the app's real preview resigns editing without adding text.
+        if app.keyboards.firstMatch.exists {
+            try openSharePreview()
+            try closeSharePreview()
+            try waitForKeyboardToClose()
+        }
+        scrollToTop()
+        try assertEditor(message: "You had me at pizza.")
+        try capture("02-Personalized-Pizza", showing: [
+            try visiblePreview(), app.buttons["cardDetail.save"]
+        ])
+
+        try openSharePreview()
+        try capture("03-Ready-To-Send-PNG", showing: [
+            try visiblePreview(), app.buttons["cardDetail.sharePNG"]
+        ])
+        try closeSharePreview()
+        try saveEditor()
+
+        let collections: [(title: String, template: String, message: String, scene: String)] = [
+            ("Cosmic love", "starter_space_1", "You're the center of my universe.", "04-Cosmic-Love"),
+            ("Lovebirds", "starter_birds_1", "You're my favorite person to perch beside.", "05-Lovebirds"),
+            ("Dino-mite", "starter_dino_1", "You're dino-mite, Valentine.", "06-Dino-Mite"),
+            ("Disco date", "starter_disco_1", "You and me? Same groove.", "07-Disco-Date"),
+            ("Sweet tooth", "starter_sweets_1", "I'm sweet on you.", "08-Sweet-Tooth")
+        ]
+        for collection in collections {
+            try chooseCollection(collection.title)
+            let starter = app.buttons["starter.\(collection.template)"]
+            try reveal(starter)
+            try tap(starter, "Open \(collection.title)")
+            try assertEditor(message: collection.message)
+            try capture(collection.scene, showing: [
+                try visiblePreview(), app.buttons["cardDetail.save"]
+            ])
+            // Populate the QA library through Save, rather than fake seed cards.
+            try saveEditor()
+        }
+
+        // The existing launch hook selects the same native tab/sidebar route
+        // on Mac and iOS, avoiding assumptions about sidebar AX element types.
+        launch(tab: 1)
+        try require(app.buttons["library.newCard"], "My Cards must open")
+        let savedPizza = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", personalNote)).firstMatch
+        try reveal(savedPizza)
+        try tap(savedPizza, "Reopen the card created by this run")
+        try assertEditor(message: "You had me at pizza.")
+        let reopenedNote = try textInput(identifier: "cardDetail.note", placeholder: "Love, me")
+        XCTAssertEqual(reopenedNote.value as? String, personalNote, "The personalized card must survive relaunch")
+        // Saving the reopened card moves it to the front of the recent library.
+        try saveEditor()
+        scrollToTop()
+        try capture("09-My-Cards", showing: [app.buttons["library.newCard"], savedPizza])
+
+        try tap(savedPizza, "Open a saved card to find a saying")
+        try assertEditor(message: "You had me at pizza.")
+        let findWords = app.buttons["cardDetail.generateWithAI"]
+        try reveal(findWords)
+        try tap(findWords, "Open Find the words")
+        let inspiration = try textInput(identifier: "", placeholder: "e.g., love, friendship, humor")
+        try tap(inspiration, "Enter inspiration")
+        inspiration.typeText("pizza")
+        XCTAssertEqual(inspiration.value as? String, "pizza")
+        try tap(app.buttons["sayings.generate"], "Generate real sayings")
+        let firstSaying = app.buttons.matching(identifier: "sayings.row").firstMatch
+        try require(firstSaying, "Generation must return usable sayings", timeout: 120)
+        XCTAssertGreaterThan(firstSaying.label.trimmingCharacters(in: .whitespacesAndNewlines).count, 10)
+        if app.keyboards.firstMatch.exists {
+            guard app.scrollViews.count > 0 else {
+                throw CaptureError.missing("Sayings must have a scrollable result list")
             }
-            capture("02-CardEditor")
-            dismissEditor()
+            let results = app.scrollViews.element(boundBy: app.scrollViews.count - 1)
+            try require(results, "Sayings must have a scrollable result list")
+            results.swipeUp()
+            results.swipeDown()
+            try waitForKeyboardToClose()
         }
+        try tap(firstSaying, "Select a saying")
+        XCTAssertTrue(app.buttons["sayings.done"].isEnabled)
+        try capture("10-Find-The-Words", showing: [firstSaying, app.buttons["sayings.done"]])
+        try tap(app.buttons["sayings.done"], "Use the selected saying in the draft")
+        // Leave the earlier saved card intact; no existing QA records are deleted.
+        try tap(app.buttons["cardDetail.cancel"], "Discard this final exploratory edit")
 
-        // 03 — Card library
-        goToTab("My Cards")
-        capture("04-MyCards")
-
-        // 04 — Settings
-        goToTab("Settings")
-        capture("05-Settings")
+        XCTAssertEqual(capturedScenes.count, 10)
+        XCTAssertEqual(Set(capturedScenes).count, 10, "Every attachment must name a distinct scene")
     }
 
     @MainActor
-    func testCaptureOnboardingScreenshot() throws {
-        // Relaunch forcing the welcome flow; the suite default skips it.
-        app.terminate()
-        app.launchArguments = ["--uitesting", "-showOnboarding", "YES"]
+    private func launch(tab: Int) {
+        app?.terminate()
+        app = XCUIApplication()
+        app.launchArguments = [
+            "--uitesting", "-screenshotTab", String(tab),
+            "-qaStoreName", qaStoreName,
+            "-skipOnboarding", "YES", "-showOnboarding", "NO", "-seedSampleCards", "NO"
+        ]
         app.launch()
-
-        let next = app.buttons["onboarding.next"]
-        guard next.waitForExistence(timeout: 10) else {
-            XCTFail("Onboarding did not appear")
-            return
-        }
-        capture("00-Welcome")
     }
 
-    // MARK: - Flow helpers
+    @MainActor
+    private func assertEditor(message: String) throws {
+        try require(app.buttons["cardDetail.cancel"], "The card editor must open")
+        try require(app.buttons["cardDetail.save"], "The editor must offer Save")
+        XCTAssertTrue(app.buttons["cardDetail.save"].isEnabled)
+        let field = try textInput(identifier: "cardDetail.message", placeholder: "You're my favorite person.")
+        XCTAssertEqual(field.value as? String, message, "The chosen starter must reach the editor")
+        _ = try visiblePreview()
+        XCTAssertFalse(app.staticTexts["Card unavailable"].exists)
+        XCTAssertFalse(app.alerts.firstMatch.exists)
+    }
 
     @MainActor
-    private func createCard(inspiration: String, captureGenerator: Bool) {
-        goToTab("Home")
-
-        let createCard = app.buttons["home.createCard"]
-        guard createCard.waitForExistence(timeout: 10) else { return }
-        createCard.tap()
-
-        let generate = app.buttons["cardDetail.generateWithAI"]
-        guard generate.waitForExistence(timeout: 10) else { return }
-        generate.tap()
-
-        let inspirationField = app.textFields["e.g., love, friendship, humor"]
-        guard inspirationField.waitForExistence(timeout: 10) else { return }
-        inspirationField.tap()
-        // Trailing newline submits and dismisses the keyboard, so screenshots
-        // show the full results list.
-        inspirationField.typeText(inspiration + "\n")
-
-        let generateSayings = app.buttons["sayings.generate"]
-        guard generateSayings.waitForExistence(timeout: 5) else { return }
-        generateSayings.tap()
-
-        let saying = app.buttons.matching(identifier: "sayings.row").firstMatch
-        guard saying.waitForExistence(timeout: 10) else { return }
-
-        if captureGenerator {
-            capture("03-AISayings")
+    private func textInput(identifier: String, placeholder: String) throws -> XCUIElement {
+        var candidates: [XCUIElement] = []
+        if !identifier.isEmpty {
+            let group = app.descendants(matching: .any)[identifier].firstMatch
+            candidates = [app.textFields[identifier], app.textViews[identifier], group.textFields.firstMatch, group.textViews.firstMatch]
         }
+        candidates += [app.textFields[placeholder], app.textViews[placeholder]]
+        if let field = candidates.first(where: { $0.exists }) { return field }
+        let fallback = app.textFields[placeholder]
+        try require(fallback, "Expected text input: \(placeholder)")
+        return fallback
+    }
 
-        waitUntilHittable(saying)
-        saying.tap()
-
-        let done = app.buttons["sayings.done"]
-        if done.waitForExistence(timeout: 5) {
-            done.tap()
-        }
-
-        let save = app.buttons["cardDetail.save"]
-        if save.waitForExistence(timeout: 5), save.isEnabled {
-            save.tap()
+    @MainActor
+    private func chooseCollection(_ title: String) throws {
+        scrollToTop()
+        let picker = app.descendants(matching: .any)["home.collection"].firstMatch
+        try tap(picker, "Open the collection picker")
+        #if os(macOS)
+        let primary = app.menuItems[title].firstMatch
+        #else
+        let primary = app.buttons[title].firstMatch
+        #endif
+        if primary.waitForExistence(timeout: 3) {
+            try tap(primary, "Choose \(title)")
+        } else {
+            try tap(app.staticTexts[title].firstMatch, "Choose \(title) from the native menu")
         }
     }
 
     @MainActor
-    private func dismissEditor() {
-        let cancel = app.buttons["Cancel"].firstMatch
-        if cancel.exists, cancel.isHittable {
-            cancel.tap()
+    private func openSharePreview() throws {
+        try tap(app.buttons["cardDetail.share"], "Prepare the actual PNG")
+        try require(app.buttons["cardDetail.sharePNG"], "PNG export must finish", timeout: 20)
+        XCTAssertFalse(app.alerts.firstMatch.exists)
+    }
+
+    @MainActor
+    private func closeSharePreview() throws {
+        try tap(app.buttons["Done"].firstMatch, "Close Ready to send")
+        try require(app.buttons["cardDetail.save"], "Return to the card draft")
+    }
+
+    @MainActor
+    private func saveEditor() throws {
+        try tap(app.buttons["cardDetail.save"], "Save this card")
+        let closed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"), object: app.buttons["cardDetail.save"])
+        XCTAssertEqual(XCTWaiter.wait(for: [closed], timeout: 10), .completed, "Save must close the editor")
+        XCTAssertFalse(app.alerts.firstMatch.exists)
+    }
+
+    @MainActor
+    private func visiblePreview() throws -> XCUIElement {
+        let previews = app.descendants(matching: .any).matching(identifier: "cardDetail.preview")
+        try require(previews.firstMatch, "A rendered card preview must exist")
+        guard let preview = previews.allElementsBoundByIndex.first(where: { $0.isHittable }) else {
+            throw CaptureError.missing("The card preview is offscreen")
+        }
+        XCTAssertGreaterThan(preview.frame.width, 160)
+        XCTAssertGreaterThan(preview.frame.height, 200)
+        return preview
+    }
+
+    @MainActor
+    private func reveal(_ element: XCUIElement) throws {
+        for _ in 0..<6 {
+            if element.exists && element.isHittable { return }
+            scroll(down: true)
+        }
+        try require(element, "The expected control must exist after scrolling")
+        XCTAssertTrue(element.isHittable, "The expected control must be visible")
+    }
+
+    @MainActor
+    private func scrollToTop() {
+        for _ in 0..<3 { scroll(down: false) }
+    }
+
+    @MainActor
+    private func scroll(down: Bool) {
+        let scrollView = app.scrollViews.firstMatch
+        guard scrollView.exists else { return }
+        #if os(macOS)
+        scrollView.scroll(byDeltaX: 0, deltaY: down ? -500 : 500)
+        #else
+        if down { scrollView.swipeUp() } else { scrollView.swipeDown() }
+        #endif
+    }
+
+    @MainActor
+    private func waitForKeyboardToClose() throws {
+        let closed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"), object: app.keyboards.firstMatch)
+        guard XCTWaiter.wait(for: [closed], timeout: 5) == .completed else {
+            throw CaptureError.missing("The keyboard must close before a marketing capture")
         }
     }
 
     @MainActor
-    private func goToTab(_ name: String) {
-        let tab = app.tabBars.buttons[name]
-        if tab.waitForExistence(timeout: 5), tab.isHittable {
-            tab.tap()
-            return
-        }
-        // macOS/iPad sidebar layouts expose the same labels as buttons
-        let sidebarItem = app.buttons[name].firstMatch
-        if sidebarItem.exists, sidebarItem.isHittable {
-            sidebarItem.tap()
-        }
+    private func require(_ element: XCUIElement, _ reason: String, timeout: TimeInterval = 10) throws {
+        guard element.waitForExistence(timeout: timeout) else { throw CaptureError.missing(reason) }
     }
 
     @MainActor
-    private func waitUntilHittable(_ element: XCUIElement, timeout: TimeInterval = 10) {
-        expectation(for: NSPredicate(format: "isHittable == true"), evaluatedWith: element)
-        waitForExpectations(timeout: timeout)
+    private func tap(_ element: XCUIElement, _ reason: String) throws {
+        try require(element, reason)
+        let hittable = XCTNSPredicateExpectation(predicate: NSPredicate(format: "isHittable == true"), object: element)
+        guard XCTWaiter.wait(for: [hittable], timeout: 5) == .completed else { throw CaptureError.missing(reason) }
+        XCTAssertTrue(element.isEnabled, reason)
+        element.tap()
     }
 
-    // MARK: - Capture
-
     @MainActor
-    private func capture(_ name: String) {
-        let screenshot = XCUIScreen.main.screenshot()
-        let attachment = XCTAttachment(screenshot: screenshot)
+    private func capture(_ name: String, showing elements: [XCUIElement]) throws {
+        for element in elements {
+            try require(element, "\(name) must show its expected content")
+            XCTAssertTrue(element.isHittable, "\(name) must show its expected content onscreen")
+        }
+        XCTAssertFalse(app.alerts.firstMatch.exists, "Do not capture an error as a product scene")
+        let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = name
         attachment.lifetime = .keepAlways
         add(attachment)
+        capturedScenes.append(name)
+    }
+
+    private enum CaptureError: Error {
+        case missing(String)
     }
 }

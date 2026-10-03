@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "app": "My Funny Valentine",
+  "recorded_at_utc": "2026-10-03 01:13:42 UTC",
+  "generation_mode": "built-in",
+  "tool": "image_gen.imagegen",
+  "imagegen_skill": "/Users/nathan/.codex/skills/.system/imagegen/SKILL.md",
+  "asset_format": "PNG",
+  "composition": "Portrait 2:3; illustrated upper area, blank pale lower message area. Native editable message uses top-left (32,430), size (336,130) on 400×600 logical canvas.",
+  "artwork_modified": false,
+  "assets": [
+    {
+      "world": "pizza",
+      "asset_name": "starter_pizza",
+      "source_path": "/Users/nathan/.codex/generated_images/01a0fea8-5dea-7443-816a-00bb59e83104/exec-66f0728e-6850-46f1-ab6a-6db8cdf32435.png",
+      "source_sha256": "99d98d71516e2f4c12e6205c94210c45a1bd0713b85d823139a46383b43e2f0c",
+      "output_asset_path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/My Funny Valentine/Assets.xcassets/starter_pizza.imageset/art.png",
+      "output_sha256": "99d98d71516e2f4c12e6205c94210c45a1bd0713b85d823139a46383b43e2f0c",
+      "pixel_dimensions": [
+        1024,
+        1536
+      ],
+      "copied_without_modification": true,
+      "prompt": "Use case: illustration-story\nAsset type: original raster illustration for an editable Valentine greeting card, portrait 2:3 aspect ratio.\nPrimary request: Pizza Crush — two joyful pizza-slice characters high-fiving, cheerful affectionate energy, charming complete faces and expressive little arms.\nStyle/medium: premium bold editorial greeting-card illustration, playful hand-painted textures, confident shapes and polished expressive details.\nColor palette: tomato red, rosy pink and cream-sauce yellow.\nComposition/framing: a complete flat portrait card artwork, no mockup or surrounding objects. Keep both pizza characters and all illustration details within the upper 65% of the image. Let the upper illustrated area feel lively and generously filled. The bottom 28% must be a single uninterrupted very pale cream area, entirely blank and quiet for an editable black text message added by the app later. No toppings, hearts, shadows, texture, borders or decorations in that bottom area. The background above can transition cleanly into this message area.\nConstraints: complete illustration without needing a user photo. No cutout face holes. No human subjects. No text, lettering, logos, labels, watermark, baked-in quotations or typography. Exact portrait 2:3 composition.",
+      "review": {
+        "inspected_before_copy": true,
+        "complete_without_user_photo": true,
+        "no_baked_text": true,
+        "clear_native_message_area": true
+      }
+    },
+    {
+      "world": "space",
+      "asset_name": "starter_space",
+      "source_path": "/Users/nathan/.codex/generated_images/01a0fea8-5dea-7443-816a-00bb59e83104/exec-9d404566-5ef9-448d-9749-fafc82965ba6.png",
+      "source_sha256": "4e791b018a5e41337538225270d9dadd7d3e548c48fd31b3c05a553d46b6496b",
+      "output_asset_path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/My Funny Valentine/Assets.xcassets/starter_space.imageset/art.png",
+      "output_sha256": "4e791b018a5e41337538225270d9dadd7d3e548c48fd31b3c05a553d46b6496b",
+      "pixel_dimensions": [
+        1024,
+        1536
+      ],
+      "copied_without_modification": true,
+      "prompt": "Use case: illustration-story\nAsset type: original raster illustration for an editable Valentine greeting card, portrait 2:3 aspect ratio.\nPrimary request: Cosmic Love — a tiny charming rocket orbiting a heart-shaped planet, a delightful celestial Valentine scene full of wonder.\nStyle/medium: premium bold editorial greeting-card illustration, playful hand-painted textures, confident shapes and polished details.\nColor palette: midnight navy with coral, warm pink and soft gold celestial accents; a very pale cream message area below.\nComposition/framing: complete flat portrait card artwork, no mockup or surrounding objects. Place the heart planet, rocket and entire celestial scene in the upper 65% of the image. The bottom 28% must be a single uninterrupted very pale cream area, entirely blank and quiet for an editable black text message added by the app later. No stars, orbit paths, shadows, texture, borders or decorations in that bottom area. Make a clean intentional transition from the midnight navy scene to the pale message space.\nConstraints: complete illustration without a user photo, no cutout face holes, no human subjects. No text, lettering, logos, labels, watermark, baked-in quotations or typography. Exact portrait 2:3 composition.",
+      "review": {
+        "inspected_before_copy": true,
+        "complete_without_user_photo": true,
+        "no_baked_text": true,
+        "clear_native_message_area": true
+      }
+    },
+    {
+      "world": "birds",
+      "asset_name": "starter_birds",
+      "source_path": "/Users/nathan/.codex/generated_images/01a0fea8-5dea-7443-816a-00bb59e83104/exec-05a12ddf-639d-4de0-9934-65753fbf2784.png",
+      "source_sha256": "40276e31f667cc785022a661fc0adf884f1c7aa90853f9f4a587f790c31c856c",
+      "output_asset_path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/My Funny Valentine/Assets.xcassets/starter_birds.imageset/art.png",
+      "output_sha256": "40276e31f667cc785022a661fc0adf884f1c7aa90853f9f4a587f790c31c856c",
+      "pixel_dimensions": [
+        1024,
+        1536
+      ],
+      "copied_without_modification": true,
+      "prompt": "Use case: illustration-story\nAsset type: original raster illustration for an editable Valentine greeting card, portrait 2:3 aspect ratio.\nPrimary request: Lovebirds — two affectionate charming lovebirds perched together on a branch, leaning into each other with sweet expressive faces, a joyful complete illustration.\nStyle/medium: premium bold editorial greeting-card illustration, playful hand-painted textures, confident shapes and polished expressive details.\nColor palette: deep teal, mint, coral and rosy accents; very pale mint-white message space below.\nComposition/framing: complete flat portrait card artwork, no mockup or surrounding objects. Keep both birds, branch, leaves and all decorative illustration details within the upper 65% of the image. Let the upper scene feel lovingly composed and filled. The bottom 28% must be one uninterrupted very pale mint-white area, entirely blank and quiet for an editable black text message added by the app later. No leaves, hearts, branches, shadows, texture, borders or decorations in that bottom area. A clean intentional transition may separate the upper illustration from the quiet message area.\nConstraints: complete illustration without needing a user photo, no cutout face holes, no human subjects. No text, lettering, logos, labels, watermark, baked-in quotations or typography. Exact portrait 2:3 composition.",
+      "review": {
+        "inspected_before_copy": true,
+        "complete_without_user_photo": true,
+        "no_baked_text": true,
+        "clear_native_message_area": true
+      }
+    },
+    {
+      "world": "dino",
+      "asset_name": "starter_dino",
+      "source_path": "/Users/nathan/.codex/generated_images/01a0fea8-5dea-7443-816a-00bb59e83104/exec-5878c7c2-06b0-440e-8150-290241e2fa4d.png",
+      "source_sha256": "f5e49e06c477e2afce4d43b925fa3e1b95ba098586d32212da026e095b83d5bb",
+      "output_asset_path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/My Funny Valentine/Assets.xcassets/starter_dino.imageset/art.png",
+      "output_sha256": "f5e49e06c477e2afce4d43b925fa3e1b95ba098586d32212da026e095b83d5bb",
+      "pixel_dimensions": [
+        1024,
+        1536
+      ],
+      "copied_without_modification": true,
+      "prompt": "Use case: illustration-story\nAsset type: original raster illustration for an editable Valentine greeting card, portrait 2:3 aspect ratio.\nPrimary request: Dino-mite — a charming green T-rex with tiny arms holding a big coral-red heart, joyfully smitten expression, complete cute dinosaur body.\nStyle/medium: premium bold editorial greeting-card illustration, playful hand-painted textures, confident shapes and polished expressive details.\nColor palette: leafy and mint green, coral, rosy pink; a very pale coral-white message space below.\nComposition/framing: complete flat portrait card artwork, no mockup or surrounding objects. Place the entire dinosaur, its heart, tail and all decorative illustration details within the upper 65% of the image. The bottom 28% must be a single uninterrupted very pale coral-white area, entirely blank and quiet for an editable black text message added by the app later. No plants, hearts, feet, tail, shadows, texture, borders or decorations in that bottom area. The upper scene should transition cleanly into the message space.\nConstraints: complete illustration without needing a user photo. No cutout face holes. No human subjects. No text, lettering, logos, labels, watermark, baked-in quotations or typography. Exact portrait 2:3 composition.",
+      "review": {
+        "inspected_before_copy": true,
+        "complete_without_user_photo": true,
+        "no_baked_text": true,
+        "clear_native_message_area": true
+      }
+    },
+    {
+      "world": "disco",
+      "asset_name": "starter_disco",
+      "source_path": "/Users/nathan/.codex/generated_images/01a0fea8-5dea-7443-816a-00bb59e83104/exec-740c74ca-c452-42bc-aef6-2c94f3bc2317.png",
+      "source_sha256": "9df1b062d49f71ed6108114c7fa918b31ac7d0188d847792fa8666794885c35e",
+      "output_asset_path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/My Funny Valentine/Assets.xcassets/starter_disco.imageset/art.png",
+      "output_sha256": "9df1b062d49f71ed6108114c7fa918b31ac7d0188d847792fa8666794885c35e",
+      "pixel_dimensions": [
+        1024,
+        1536
+      ],
+      "copied_without_modification": true,
+      "prompt": "Use case: illustration-story\nAsset type: original raster illustration for an editable Valentine greeting card, portrait 2:3 aspect ratio.\nPrimary request: Disco Date — a glittering mirror disco ball with heart-shaped disco rays, joyful sparkling romance and playful dance-floor energy.\nStyle/medium: premium bold editorial greeting-card illustration, playful hand-painted textures, confident graphic shapes and polished glittering details.\nColor palette: hot pink, deep plum and warm gold; a very pale pink-white message space below.\nComposition/framing: complete flat portrait card artwork, no mockup or surrounding objects. Keep the disco ball, heart-shaped rays, glitter and all decorative illustration details in the upper 65% of the image. Let the upper scene be festive and filled. The bottom 28% must be one uninterrupted very pale pink-white area, entirely blank and quiet for an editable black text message added by the app later. No rays, glitter, reflection, shadows, texture, borders or decorations in that bottom area. Make a clean intentional transition between the vivid disco scene and quiet message space.\nConstraints: complete illustration without needing a user photo, no cutout face holes, no human subjects. No text, lettering, logos, labels, watermark, baked-in quotations or typography. Exact portrait 2:3 composition.",
+      "review": {
+        "inspected_before_copy": true,
+        "complete_without_user_photo": true,
+        "no_baked_text": true,
+        "clear_native_message_area": true
+      }
+    },
+    {
+      "world": "sweets",
+      "asset_name": "starter_sweets",
+      "source_path": "/Users/nathan/.codex/generated_images/01a0fea8-5dea-7443-816a-00bb59e83104/exec-4f050b3a-371c-40ee-9bf0-44e9e28dba1c.png",
+      "source_sha256": "b6bbbfb842237011ff051c60f67380c010ab097bf979e86f3385c185793e3292",
+      "output_asset_path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/My Funny Valentine/Assets.xcassets/starter_sweets.imageset/art.png",
+      "output_sha256": "b6bbbfb842237011ff051c60f67380c010ab097bf979e86f3385c185793e3292",
+      "pixel_dimensions": [
+        1024,
+        1536
+      ],
+      "copied_without_modification": true,
+      "prompt": "Use case: illustration-story\nAsset type: original raster illustration for an editable Valentine greeting card, portrait 2:3 aspect ratio.\nPrimary request: Sweet Tooth — a lovable strawberry mochi and cupcake couple with complete cute expressive faces, leaning together affectionately, delightful little dessert personalities.\nStyle/medium: premium bold editorial greeting-card illustration, playful hand-painted textures, confident shapes and polished expressive details.\nColor palette: pastel rose, mint and lavender with creamy dessert tones; a very pale lavender-white message space below.\nComposition/framing: complete flat portrait card artwork, no mockup or surrounding objects. Keep both desserts, strawberry, frosting, sprinkles and all decorative illustration details within the upper 65% of the image. Let the upper scene feel lively and filled. The bottom 28% must be one uninterrupted very pale lavender-white area, entirely blank and quiet for an editable black text message added by the app later. No sprinkles, hearts, shadows, texture, borders or decorations in that bottom area. Transition cleanly between the dessert illustration and the quiet message space.\nConstraints: complete illustration without needing a user photo. No cutout face holes. No human subjects. No text, lettering, logos, labels, watermark, baked-in quotations or typography. Exact portrait 2:3 composition.",
+      "review": {
+        "inspected_before_copy": true,
+        "complete_without_user_photo": true,
+        "no_baked_text": true,
+        "clear_native_message_area": true
+      }
+    }
+  ]
+}
