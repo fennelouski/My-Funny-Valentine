@@ -40,7 +40,7 @@ final class ScreenshotUITests: XCTestCase {
             try openSharePreview()
             try closeSharePreview()
         }
-        scrollToTop()
+        try scrollToTop()
         try waitForKeyboardToClose()
         try assertEditor(message: "You had me at pizza.")
         try capture("02-Personalized-Pizza", showing: [
@@ -86,7 +86,7 @@ final class ScreenshotUITests: XCTestCase {
         XCTAssertEqual(reopenedNote.value as? String, personalNote, "The personalized card must survive relaunch")
         // Saving the reopened card moves it to the front of the recent library.
         try saveEditor()
-        scrollToTop()
+        try scrollToTop()
         try capture("09-My-Cards", showing: [app.buttons["library.newCard"], savedPizza])
 
         try tap(savedPizza, "Open a saved card to find a saying")
@@ -103,11 +103,7 @@ final class ScreenshotUITests: XCTestCase {
         try require(firstSaying, "Generation must return usable sayings", timeout: 120)
         XCTAssertGreaterThan(firstSaying.label.trimmingCharacters(in: .whitespacesAndNewlines).count, 10)
         if app.keyboards.firstMatch.exists {
-            guard app.scrollViews.count > 0 else {
-                throw CaptureError.missing("Sayings must have a scrollable result list")
-            }
-            let results = app.scrollViews.element(boundBy: app.scrollViews.count - 1)
-            try require(results, "Sayings must have a scrollable result list")
+            let results = try currentScrollView()
             results.swipeUp()
             results.swipeDown()
         }
@@ -163,7 +159,7 @@ final class ScreenshotUITests: XCTestCase {
 
     @MainActor
     private func chooseCollection(_ title: String) throws {
-        scrollToTop()
+        try scrollToTop()
         let picker = app.descendants(matching: .any)["home.collection"].firstMatch
         try tap(picker, "Open the collection picker")
         #if os(macOS)
@@ -215,26 +211,72 @@ final class ScreenshotUITests: XCTestCase {
     private func reveal(_ element: XCUIElement) throws {
         for _ in 0..<6 {
             if element.exists && element.isHittable { return }
-            scroll(down: true)
+            try scroll(down: true)
         }
         try require(element, "The expected control must exist after scrolling")
         XCTAssertTrue(element.isHittable, "The expected control must be visible")
     }
 
     @MainActor
-    private func scrollToTop() {
-        for _ in 0..<3 { scroll(down: false) }
+    private func scrollToTop() throws {
+        for _ in 0..<3 { try scroll(down: false) }
     }
 
     @MainActor
-    private func scroll(down: Bool) {
-        let scrollView = app.scrollViews.firstMatch
-        guard scrollView.exists else { return }
+    private func scroll(down: Bool) throws {
+        let scrollView = try currentScrollView()
         #if os(macOS)
         scrollView.scroll(byDeltaX: 0, deltaY: down ? -500 : 500)
         #else
         if down { scrollView.swipeUp() } else { scrollView.swipeDown() }
         #endif
+    }
+
+    @MainActor
+    private func currentScrollView() throws -> XCUIElement {
+        if isVisible(app.buttons["sayings.generate"]) || isVisible(app.buttons["sayings.done"]) {
+            return try visibleScrollView(
+                app.scrollViews.containing(.button, identifier: "sayings.row"),
+                reason: "The visible sayings result list must receive the scroll"
+            )
+        }
+        if isVisible(app.buttons["cardDetail.sharePNG"]) {
+            return try visibleScrollView(
+                app.scrollViews.matching(identifier: "cardShare.scroll"),
+                reason: "The visible share preview must receive the scroll"
+            )
+        }
+        if isVisible(app.buttons["cardDetail.save"]) {
+            return try visibleScrollView(
+                app.scrollViews.matching(identifier: "cardDetail.scroll"),
+                reason: "The visible card editor must receive the scroll"
+            )
+        }
+        if isVisible(app.descendants(matching: .any)["home.collection"].firstMatch)
+            || isVisible(app.buttons["library.newCard"]) {
+            return try visibleScrollView(
+                app.scrollViews,
+                reason: "The visible gallery or library must receive the scroll"
+            )
+        }
+        throw CaptureError.missing("No current scrollable screen is visible")
+    }
+
+    @MainActor
+    private func isVisible(_ element: XCUIElement) -> Bool {
+        element.exists && element.isHittable
+    }
+
+    @MainActor
+    private func visibleScrollView(_ query: XCUIElementQuery, reason: String) throws -> XCUIElement {
+        let visible = query.allElementsBoundByIndex.filter {
+            $0.exists && $0.isHittable && $0.frame.width > 0 && $0.frame.height > 0
+        }
+        // The outer gallery is larger than its horizontal recent-card strip.
+        guard let scrollView = visible.max(by: {
+            $0.frame.width * $0.frame.height < $1.frame.width * $1.frame.height
+        }) else { throw CaptureError.missing(reason) }
+        return scrollView
     }
 
     @MainActor

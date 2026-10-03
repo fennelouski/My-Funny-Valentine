@@ -7,6 +7,7 @@ struct CardDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.colorScheme) private var colorScheme
 
     let card: Card?
     @State private var draft: Card
@@ -83,6 +84,7 @@ struct CardDetailView: View {
             .padding(20)
             .frame(maxWidth: .infinity)
         }
+        .accessibilityIdentifier("cardDetail.scroll")
         .scrollDismissesKeyboard(.interactively)
         .background(Color.appGroupedBackground)
         .navigationTitle(card == nil ? "Make it yours" : "Edit card")
@@ -217,7 +219,9 @@ struct CardDetailView: View {
         .padding(20)
         .background(Color.appSecondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 20))
         .buttonStyle(.bordered)
-        .tint(Color(red: 0.69, green: 0.10, blue: 0.28))
+        .tint(colorScheme == .dark
+            ? Color(red: 0.98, green: 0.55, blue: 0.68)
+            : Color(red: 0.69, green: 0.10, blue: 0.28))
     }
 
     @ViewBuilder private var photoButton: some View {
@@ -294,6 +298,7 @@ struct CardDetailView: View {
                 }
                 .padding(20)
             }
+            .accessibilityIdentifier("cardShare.scroll")
             .scrollDismissesKeyboard(.interactively)
             .navigationTitle("Ready to send")
             .appInlineNavigationTitle()
