@@ -1,4 +1,7 @@
 import XCTest
+#if os(iOS)
+import UIKit
+#endif
 
 /// Captures real native screens for later marketing composition.
 /// Run only on owned QA devices; --uitesting uses a separate persistent library.
@@ -11,6 +14,9 @@ final class ScreenshotUITests: XCTestCase {
         continueAfterFailure = false
         capturedScenes = []
         qaStoreName = "gallery-\(UUID().uuidString)"
+        #if os(iOS)
+        XCUIDevice.shared.orientation = UIDevice.current.userInterfaceIdiom == .pad ? .landscapeLeft : .portrait
+        #endif
     }
 
     @MainActor
