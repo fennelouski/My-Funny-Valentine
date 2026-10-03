@@ -10,6 +10,7 @@ import SwiftUI
 struct SayingsGenerationView: View {
     @StateObject private var viewModel: AIGenerationViewModel
     @Environment(\.dismiss) private var dismiss
+    @FocusState private var inspirationFocused: Bool
     
     var onSayingSelected: ((String) -> Void)?
     
@@ -19,15 +20,17 @@ struct SayingsGenerationView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 20) {
                 // Inspiration Input Section
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Enter inspiration text")
+                    Text("A little inspiration")
                         .font(.headline)
                     
                     TextField("e.g., love, friendship, humor", text: $viewModel.inspirationText)
                         .textFieldStyle(.roundedBorder)
+                        .focused($inspirationFocused)
+                        .onSubmit { inspirationFocused = false }
                         .onChange(of: viewModel.inspirationText) { _, newValue in
                             if newValue.count > 50 {
                                 viewModel.inspirationText = String(newValue.prefix(50))
@@ -45,6 +48,7 @@ struct SayingsGenerationView: View {
                 
                 // Generate Button
                 Button(action: {
+                    inspirationFocused = false
                     Task {
                         await viewModel.generateSayings()
                     }
@@ -55,7 +59,7 @@ struct SayingsGenerationView: View {
                                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         } else {
                             Image(systemName: "sparkles")
-                            Text("Generate Sayings")
+                            Text("Find sayings")
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -67,21 +71,6 @@ struct SayingsGenerationView: View {
                 .disabled(!viewModel.canGenerate)
                 .padding(.horizontal)
                 .accessibilityIdentifier("sayings.generate")
-                
-                // Usage Info
-                HStack {
-                    Image(systemName: "info.circle")
-                    Text("Remaining requests: \(viewModel.remainingRequests)")
-                    Spacer()
-                    if viewModel.isCached {
-                        Label("Cached", systemImage: "checkmark.circle.fill")
-                            .font(.caption)
-                            .foregroundColor(.green)
-                    }
-                }
-                .font(.caption)
-                .foregroundColor(.secondary)
-                .padding(.horizontal)
                 
                 // Error Message
                 if let errorMessage = viewModel.errorMessage {
@@ -128,7 +117,7 @@ struct SayingsGenerationView: View {
                         Image(systemName: "sparkles")
                             .font(.system(size: 50))
                             .foregroundColor(.secondary)
-                        Text("Enter inspiration text and tap Generate to create Valentine's sayings")
+                        Text("Coffee? Pizza? An inside joke?")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
@@ -139,7 +128,7 @@ struct SayingsGenerationView: View {
                 
                 Spacer()
             }
-            .navigationTitle("Generate Sayings")
+            .navigationTitle("Find the words")
             .appInlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

@@ -83,6 +83,7 @@ struct CardDetailView: View {
             .padding(20)
             .frame(maxWidth: .infinity)
         }
+        .scrollDismissesKeyboard(.interactively)
         .background(Color.appGroupedBackground)
         .navigationTitle(card == nil ? "Make it yours" : "Edit card")
         .appInlineNavigationTitle()
@@ -293,6 +294,7 @@ struct CardDetailView: View {
                 }
                 .padding(20)
             }
+            .scrollDismissesKeyboard(.interactively)
             .navigationTitle("Ready to send")
             .appInlineNavigationTitle()
             .toolbar {

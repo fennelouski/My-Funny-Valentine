@@ -34,14 +34,14 @@ final class ScreenshotUITests: XCTestCase {
         note.typeText(personalNote)
         XCTAssertEqual(note.value as? String, personalNote)
 
-        // Multiline fields do not use Return to dismiss the keyboard. Opening
-        // and closing the app's real preview resigns editing without adding text.
+        // Closing the preview can restore note-field focus. Scroll before
+        // checking dismissal so the editor's native gesture handles the keyboard.
         if app.keyboards.firstMatch.exists {
             try openSharePreview()
             try closeSharePreview()
-            try waitForKeyboardToClose()
         }
         scrollToTop()
+        try waitForKeyboardToClose()
         try assertEditor(message: "You had me at pizza.")
         try capture("02-Personalized-Pizza", showing: [
             try visiblePreview(), app.buttons["cardDetail.save"]
@@ -110,8 +110,8 @@ final class ScreenshotUITests: XCTestCase {
             try require(results, "Sayings must have a scrollable result list")
             results.swipeUp()
             results.swipeDown()
-            try waitForKeyboardToClose()
         }
+        try waitForKeyboardToClose()
         try tap(firstSaying, "Select a saying")
         XCTAssertTrue(app.buttons["sayings.done"].isEnabled)
         try capture("10-Find-The-Words", showing: [firstSaying, app.buttons["sayings.done"]])
