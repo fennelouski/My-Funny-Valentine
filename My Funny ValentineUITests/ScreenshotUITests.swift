@@ -14,13 +14,13 @@ final class ScreenshotUITests: XCTestCase {
         continueAfterFailure = false
         capturedScenes = []
         qaStoreName = "gallery-\(UUID().uuidString)"
-        #if os(iOS)
-        XCUIDevice.shared.orientation = UIDevice.current.userInterfaceIdiom == .pad ? .landscapeLeft : .portrait
-        #endif
     }
 
     @MainActor
     func testCaptureAppStoreScreenshots() throws {
+        #if os(iOS)
+        XCUIDevice.shared.orientation = UIDevice.current.userInterfaceIdiom == .pad ? .landscapeLeft : .portrait
+        #endif
         launch(tab: 0)
         let pizza = app.buttons["starter.starter_pizza_1"]
         try require(pizza, "Home must show the starter gallery")
