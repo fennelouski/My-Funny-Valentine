@@ -313,7 +313,16 @@ final class ScreenshotUITests: XCTestCase {
             XCTAssertTrue(element.isHittable, "\(name) must show its expected content onscreen")
         }
         XCTAssertFalse(app.alerts.firstMatch.exists, "Do not capture an error as a product scene")
+        #if os(iOS)
+        // App-only XCTest captures can apply the iPad landscape transform twice.
+        // Capture the actual device screen, and keep its native bytes unchanged.
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            XCTAssertGreaterThan(app.frame.width, app.frame.height, "The iPad app must actually be in landscape")
+        }
+        let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        #else
         let attachment = XCTAttachment(screenshot: app.screenshot())
+        #endif
         attachment.name = name
         attachment.lifetime = .keepAlways
         add(attachment)

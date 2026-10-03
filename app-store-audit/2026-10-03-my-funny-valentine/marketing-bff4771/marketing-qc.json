@@ -1,0 +1,498 @@
+{
+  "scope": "Actual30 composed JPEG payloads plus byte-identical native source hashes; contact sheets are review derivatives only and are not upload images.",
+  "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+  "sourceBuildRef": "native-source-sha256:ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+  "manifestSHA256": "87b060f82f988490727a9ec6abed4eac5742d3e5a9ea5f070f2ef5ab67191ccf",
+  "generatedAtUTC": "2026-10-03T03:56:25Z",
+  "outputCount": 30,
+  "nativeSourceHashesUnchanged": true,
+  "outputs": [
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/iphone-6.9/01-Love-At-First-Card.jpg",
+      "sha256": "97178f489662a556e9fe09c9c2ffaf3c09b3a0574a3c20bcb35c3b14d0469f4a",
+      "pixelDimensions": [
+        1320,
+        2868
+      ],
+      "bytes": 758143,
+      "platform": "iphone-6.9",
+      "headline": "Love at first card",
+      "background": "coralBurgundy",
+      "heroCaptureID": "iphone-01-All-Cards",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/iphone-6.9/02-Make-It-Yours.jpg",
+      "sha256": "fbfe907c85b0ae42cbe280a26e86fc681235cf2f9e49ebaf6b6d90702537308f",
+      "pixelDimensions": [
+        1320,
+        2868
+      ],
+      "bytes": 545891,
+      "platform": "iphone-6.9",
+      "headline": "Make it yours",
+      "background": "midnightStars",
+      "heroCaptureID": "iphone-02-Personalized-Pizza",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/iphone-6.9/03-Ready-Set-Send.jpg",
+      "sha256": "22f7b3e9b04a09c907208025f58a4dea3a8f2a314cd688eaf1c8c02e547a96dc",
+      "pixelDimensions": [
+        1320,
+        2868
+      ],
+      "bytes": 500521,
+      "platform": "iphone-6.9",
+      "headline": "Ready. Set. Send.",
+      "background": "pinkPlum",
+      "heroCaptureID": "iphone-03-Ready-To-Send-PNG",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/iphone-6.9/04-Love-Across-The-Universe.jpg",
+      "sha256": "4ccf0f9f4c3fc9d0c5d6e1c547c94feec19b54530ecbbbdeb163c30ae1042625",
+      "pixelDimensions": [
+        1320,
+        2868
+      ],
+      "bytes": 601185,
+      "platform": "iphone-6.9",
+      "headline": "Love, across the universe",
+      "background": "tealMint",
+      "heroCaptureID": "iphone-04-Cosmic-Love",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/iphone-6.9/05-Two-Lovebirds-Your-Words.jpg",
+      "sha256": "362f627505231b5502b1f7d32f8c27a65b12f7efc273d87848acc086a0a441a6",
+      "pixelDimensions": [
+        1320,
+        2868
+      ],
+      "bytes": 598358,
+      "platform": "iphone-6.9",
+      "headline": "Two lovebirds. Your words.",
+      "background": "coralBurgundy",
+      "heroCaptureID": "iphone-05-Lovebirds",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/iphone-6.9/06-Big-Feelings-Tiny-Arms.jpg",
+      "sha256": "83159a792c61eec2100dfc8918fd4453418ac8c0cabca2c89281cff0d94a1486",
+      "pixelDimensions": [
+        1320,
+        2868
+      ],
+      "bytes": 545364,
+      "platform": "iphone-6.9",
+      "headline": "Big feelings. Tiny arms.",
+      "background": "midnightStars",
+      "heroCaptureID": "iphone-06-Dino-Mite",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/iphone-6.9/07-Turn-Up-The-Love.jpg",
+      "sha256": "08fce1d1dc479481a7bc6e1377352d57abd0fd23b9a919a9ea4e0075d37e8de3",
+      "pixelDimensions": [
+        1320,
+        2868
+      ],
+      "bytes": 613592,
+      "platform": "iphone-6.9",
+      "headline": "Turn up the love",
+      "background": "pinkPlum",
+      "heroCaptureID": "iphone-07-Disco-Date",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/iphone-6.9/08-A-Little-Extra-Sweetness.jpg",
+      "sha256": "62f7f8fed83203687818f6c8957f63dd81c78d6797d21254b2190e9e66a875cc",
+      "pixelDimensions": [
+        1320,
+        2868
+      ],
+      "bytes": 574058,
+      "platform": "iphone-6.9",
+      "headline": "A little extra sweetness",
+      "background": "tealMint",
+      "heroCaptureID": "iphone-08-Sweet-Tooth",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/iphone-6.9/09-Keep-Your-Favorites.jpg",
+      "sha256": "71e381455e4cf3c1927dae2ecf8bf6807280f3bcc6a7b33a43559b68bea773d5",
+      "pixelDimensions": [
+        1320,
+        2868
+      ],
+      "bytes": 866155,
+      "platform": "iphone-6.9",
+      "headline": "Keep your favorites",
+      "background": "coralBurgundy",
+      "heroCaptureID": "iphone-09-My-Cards",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/iphone-6.9/10-Find-The-Words.jpg",
+      "sha256": "5c2497e33d7a6e47739941e31478812f02b2b7ff41f61d2f7aaccab7c84ad027",
+      "pixelDimensions": [
+        1320,
+        2868
+      ],
+      "bytes": 513241,
+      "platform": "iphone-6.9",
+      "headline": "Find the words",
+      "background": "midnightStars",
+      "heroCaptureID": "iphone-10-Find-The-Words",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/ipad-13/01-Love-At-First-Card.jpg",
+      "sha256": "e4d191252d4cc5cf07202e4f761012425f4e259508fae51aaa14ff3ca63bf942",
+      "pixelDimensions": [
+        2752,
+        2064
+      ],
+      "bytes": 998124,
+      "platform": "ipad-13",
+      "headline": "Love at first card",
+      "background": "coralBurgundy",
+      "heroCaptureID": "ipad-01-All-Cards",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/ipad-13/02-Make-It-Yours.jpg",
+      "sha256": "2499b389462eb130a6e71526e1b24da25d1350b6287636314aeca9b588f520f0",
+      "pixelDimensions": [
+        2752,
+        2064
+      ],
+      "bytes": 589568,
+      "platform": "ipad-13",
+      "headline": "Make it yours",
+      "background": "midnightStars",
+      "heroCaptureID": "ipad-02-Personalized-Pizza",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/ipad-13/03-Ready-Set-Send.jpg",
+      "sha256": "4a44740da77d4e1e0c3b43d56f1b7c15cde8e564d81ab6acfef447f537be04b5",
+      "pixelDimensions": [
+        2752,
+        2064
+      ],
+      "bytes": 579083,
+      "platform": "ipad-13",
+      "headline": "Ready. Set. Send.",
+      "background": "pinkPlum",
+      "heroCaptureID": "ipad-03-Ready-To-Send-PNG",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/ipad-13/04-Love-Across-The-Universe.jpg",
+      "sha256": "b987ee143e5e17eee311def5c2f50efddc553a1903d55e6fbd466ade81f914d2",
+      "pixelDimensions": [
+        2752,
+        2064
+      ],
+      "bytes": 505432,
+      "platform": "ipad-13",
+      "headline": "Love, across the universe",
+      "background": "tealMint",
+      "heroCaptureID": "ipad-04-Cosmic-Love",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/ipad-13/05-Two-Lovebirds-Your-Words.jpg",
+      "sha256": "44e00249540d481a56cff18fb3ce80b2bc92dd632274cc4082e7254a26d47a9e",
+      "pixelDimensions": [
+        2752,
+        2064
+      ],
+      "bytes": 523435,
+      "platform": "ipad-13",
+      "headline": "Two lovebirds. Your words.",
+      "background": "coralBurgundy",
+      "heroCaptureID": "ipad-05-Lovebirds",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/ipad-13/06-Big-Feelings-Tiny-Arms.jpg",
+      "sha256": "7dd4400f2b39c9acbfe811dce20a3cbb924bb22b4b83836aaee1234053e018fc",
+      "pixelDimensions": [
+        2752,
+        2064
+      ],
+      "bytes": 485947,
+      "platform": "ipad-13",
+      "headline": "Big feelings. Tiny arms.",
+      "background": "midnightStars",
+      "heroCaptureID": "ipad-06-Dino-Mite",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/ipad-13/07-Turn-Up-The-Love.jpg",
+      "sha256": "b81f51a3c584a8562ec0fc644f9cd8017b34c12eefd103ae83cccf698ca45557",
+      "pixelDimensions": [
+        2752,
+        2064
+      ],
+      "bytes": 474293,
+      "platform": "ipad-13",
+      "headline": "Turn up the love",
+      "background": "pinkPlum",
+      "heroCaptureID": "ipad-07-Disco-Date",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/ipad-13/08-A-Little-Extra-Sweetness.jpg",
+      "sha256": "456de159e65ed77496ad379fa2c4873e5b29f9158eeb031f7036c7ba552b9305",
+      "pixelDimensions": [
+        2752,
+        2064
+      ],
+      "bytes": 509045,
+      "platform": "ipad-13",
+      "headline": "A little extra sweetness",
+      "background": "tealMint",
+      "heroCaptureID": "ipad-08-Sweet-Tooth",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/ipad-13/09-Keep-Your-Favorites.jpg",
+      "sha256": "99d1dabeaf33258a841be0929be801b95bb0c0eee34521a032087d4aa1060862",
+      "pixelDimensions": [
+        2752,
+        2064
+      ],
+      "bytes": 730277,
+      "platform": "ipad-13",
+      "headline": "Keep your favorites",
+      "background": "coralBurgundy",
+      "heroCaptureID": "ipad-09-My-Cards",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/ipad-13/10-Find-The-Words.jpg",
+      "sha256": "e18954330948189941d41f9c2d6c55c83f0130b63251fffecc057596a1aa8aec",
+      "pixelDimensions": [
+        2752,
+        2064
+      ],
+      "bytes": 429975,
+      "platform": "ipad-13",
+      "headline": "Find the words",
+      "background": "midnightStars",
+      "heroCaptureID": "ipad-10-Find-The-Words",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/mac/01-Love-At-First-Card.jpg",
+      "sha256": "a3027a0b12b3e4183658834f1b3793d445e4f653181291c6e4f817528afb2f34",
+      "pixelDimensions": [
+        2560,
+        1600
+      ],
+      "bytes": 691679,
+      "platform": "mac",
+      "headline": "Love at first card",
+      "background": "coralBurgundy",
+      "heroCaptureID": "mac-01-All-Cards-Clean",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/mac/02-Make-It-Yours.jpg",
+      "sha256": "d4becf0e499e3cc39511e26ccd9f49cbe1e7c6870a8402f9f06f312534d96fd6",
+      "pixelDimensions": [
+        2560,
+        1600
+      ],
+      "bytes": 426703,
+      "platform": "mac",
+      "headline": "Make it yours",
+      "background": "midnightStars",
+      "heroCaptureID": "mac-02-Personalized-Pizza",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/mac/03-Ready-Set-Send.jpg",
+      "sha256": "e638ad1d1cbce0d8502df04e11e9c1c0ae443b613a5206d307c9c1fe12be9a6b",
+      "pixelDimensions": [
+        2560,
+        1600
+      ],
+      "bytes": 584735,
+      "platform": "mac",
+      "headline": "Ready. Set. Send.",
+      "background": "pinkPlum",
+      "heroCaptureID": "mac-03-Ready-To-Send-PNG",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/mac/04-Love-Across-The-Universe.jpg",
+      "sha256": "eb617f1320f1b224596876440bcdbde80004ed979dac1e25f30c8c531338ea6a",
+      "pixelDimensions": [
+        2560,
+        1600
+      ],
+      "bytes": 406545,
+      "platform": "mac",
+      "headline": "Love, across the universe",
+      "background": "tealMint",
+      "heroCaptureID": "mac-04-Cosmic-Love",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/mac/05-Two-Lovebirds-Your-Words.jpg",
+      "sha256": "cbd1f1b83baa1c686166b30f14f5a887ec6994b3ead9f28b2738c1bfb2ba7ac5",
+      "pixelDimensions": [
+        2560,
+        1600
+      ],
+      "bytes": 404081,
+      "platform": "mac",
+      "headline": "Two lovebirds. Your words.",
+      "background": "coralBurgundy",
+      "heroCaptureID": "mac-05-Lovebirds",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/mac/06-Big-Feelings-Tiny-Arms.jpg",
+      "sha256": "70668f96eac118ef33620f6ea020c86065fa0882c64c54b2b9581da9cc89b96b",
+      "pixelDimensions": [
+        2560,
+        1600
+      ],
+      "bytes": 378696,
+      "platform": "mac",
+      "headline": "Big feelings. Tiny arms.",
+      "background": "midnightStars",
+      "heroCaptureID": "mac-06-Dino-Mite",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/mac/07-Turn-Up-The-Love.jpg",
+      "sha256": "d0b1d3c5b3b2206a3649b5b2cd27d97d10f3684b00a971e5151e090cd94081a9",
+      "pixelDimensions": [
+        2560,
+        1600
+      ],
+      "bytes": 389192,
+      "platform": "mac",
+      "headline": "Turn up the love",
+      "background": "pinkPlum",
+      "heroCaptureID": "mac-07-Disco-Date",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/mac/08-A-Little-Extra-Sweetness.jpg",
+      "sha256": "160c487e7c11bf95a2a698eb552884324f42cd887acfe44ac329782013bfa8b4",
+      "pixelDimensions": [
+        2560,
+        1600
+      ],
+      "bytes": 397053,
+      "platform": "mac",
+      "headline": "A little extra sweetness",
+      "background": "tealMint",
+      "heroCaptureID": "mac-08-Sweet-Tooth",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/mac/09-Keep-Your-Favorites.jpg",
+      "sha256": "b725216441742791a2f85f93b74d58614d9d67411b8f25c32dd47e59684de28a",
+      "pixelDimensions": [
+        2560,
+        1600
+      ],
+      "bytes": 555188,
+      "platform": "mac",
+      "headline": "Keep your favorites",
+      "background": "coralBurgundy",
+      "heroCaptureID": "mac-09-My-Cards",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/mac/10-Find-The-Words.jpg",
+      "sha256": "5712b80fb4656df472e3c467d4681ab9dbbd8a0fe2c118e4d8df23acb8e9cb3e",
+      "pixelDimensions": [
+        2560,
+        1600
+      ],
+      "bytes": 495185,
+      "platform": "mac",
+      "headline": "Find the words",
+      "background": "midnightStars",
+      "heroCaptureID": "mac-10-Find-The-Words",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS primary and independent actual-export review"
+    }
+  ],
+  "visualReview": {
+    "primaryReviewer": "/root/mindglyph_canvas_review",
+    "method": "Actual final30 JPEG export contact sheets inspected with filesystem view_image at original contact-sheet resolution; source originals also reviewed.",
+    "recordedAtUTC": "2026-10-03T03:58:48.082530+00:00",
+    "status": "PASS BOTH REVIEWERS",
+    "checked": [
+      "10actual iPhone posters",
+      "10actual normalized landscape iPad posters",
+      "10actual Mac posters",
+      "Full centered top marketing headlines",
+      "Four stylized backgrounds",
+      "Upright centered hero in front",
+      "Same-platform supporting screenshots fanned outward",
+      "No native content replacement or retouching"
+    ],
+    "findings": [],
+    "independentReview": {
+      "reviewer": "/root/mindglyph_canvas_review/apple_privacy_flows",
+      "recordedAtUTC": "2026-10-03T04:00:33.596278+00:00",
+      "status": "PASS",
+      "scope": "All30 actual exports through the3 platform contact sheets; additionally iPad10-Find-The-Words.jpg and Mac10-Find-The-Words.jpg at original export resolution to confirm small native text readability.",
+      "findings": []
+    },
+    "approvedPortraitCropping": "Tall portrait heroes may extend below the marketing canvas, as the user requested. Headlines remain fully visible."
+  },
+  "transientOriginalsExcluded": "Earlier malformed app-bounds iPad originals remain in diagnostic captures/ipad-bff4771 and are absent from final manifest/provenance.",
+  "compositorChecks": {
+    "selfTestCommand": "swift scripts/make-marketing-images.swift --self-test",
+    "selfTestExitCode": 0,
+    "validatedActualManifestCaptureCount": 30,
+    "validatedActualManifestImageCount": 30,
+    "compositionExitCode": 0,
+    "knownMetadataOrientation": "Standard ImageIO orientation normalization at full original pixel resolution; original files unchanged.",
+    "invalidHistoricalPadInputs": "Rejected after standard orientation produces wrong platform aspect.",
+    "diffCheck": "PASS scripts/make-marketing-images.swift"
+  },
+  "uploadStatus": "Not uploaded by this task; JPEG payloads are ready for release owner review."
+}

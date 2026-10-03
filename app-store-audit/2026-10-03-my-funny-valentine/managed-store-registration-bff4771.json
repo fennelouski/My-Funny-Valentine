@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-10-03T04:01:39.806286+00:00",
+  "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+  "nativeFingerprint": "native-source-fingerprint.json",
+  "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+  "version": "1.0",
+  "build": "1",
+  "bundleID": "com.nathanfennel.My-Funny-Valentine",
+  "platform": "iOS",
+  "method": "Xcode Organizer Validate App, recommended App Store Connect validation",
+  "archive": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/iOS/My Funny Valentine.xcarchive",
+  "startedAtUTC": "2026-10-03T03:43:18Z",
+  "appRecordPrompt": {
+    "observed": true,
+    "name": "My Funny Valentine",
+    "primaryLanguage": "English (US)",
+    "proposedSKU": "com.nathanfennel.My-Funny-Valentine",
+    "bundleID": "com.nathanfennel.My-Funny-Valentine",
+    "text": "Your app must be registered with App Store Connect before it can be uploaded."
+  },
+  "result": "failed during app record creation before validation or binary transfer",
+  "error": "The operation couldn\u2019t be completed. (IDEDistribution.DistributionAppRecordProviderError error 0.)",
+  "appStoreAppID": null,
+  "createdRecordVerified": false,
+  "uploadVerified": false,
+  "submissionVerified": false,
+  "errorCause": "not established; no name collision, account role or authentication cause inferred",
+  "safeCheckpoint": "Canceled failed sheet through native Cancel; Organizer visibly retained exact archive1.0(1).",
+  "browserBlocker": "Chrome existing unsaved-page warning persists after safe Cancel attempts. Owner asked to click Cancel to preserve page and sign in to App Store Connect in a separate tab. No Leave, discard, reload, force quit or credential replay performed.",
+  "safeStructuredDiagnostic": "IDEDistribution.DistributionAppRecordProviderError.missingApp(bundleId: com.nathanfennel.My-Funny-Valentine), logged2026-10-03 03:43:28 UTC",
+  "browserSupportedAlternative": "Chrome purpose-built browser binding exposed getJsDialog().dismiss(), but naming/listing browser task timed out before a tab could be obtained; no dialog dismissal or draft discard verified.",
+  "independentBrowserFallback": {
+    "status": "native Codex browser operational; owner sign-in required",
+    "destination": "https://appstoreconnect.apple.com/apps",
+    "observed": "Apple Account Email or Phone Number entry, Continue disabled; unauthenticated",
+    "credentialsEntered": false,
+    "handoffTabMarked": true,
+    "ownerSignInRequested": true
+  }
+}

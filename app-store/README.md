@@ -1,5 +1,7 @@
 # App Store Assets Directory
 
+> Historical preparation notes. Premium features, subscriptions, request quotas and older screenshots below are superseded by the free October 2026 release. Use [SUBMISSION.md](SUBMISSION.md) and its linked verification records for current App Store work.
+
 This directory contains all assets and documentation needed for App Store submission.
 
 ## Directory Structure

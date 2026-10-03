@@ -1,0 +1,56 @@
+{
+  "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+  "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+  "appVersion": "1.0",
+  "appBuild": "1",
+  "device": "Native Mac macOS26.5.2, development-signed isolated QA library",
+  "captureMethod": "Cua actual native UI; no UI injection or simulated results",
+  "checks": [
+    {
+      "name": "On-device sayings UI",
+      "result": "passed",
+      "input": "pizza and a cozy movie night",
+      "visibleSuggestionCount": 10,
+      "selected": "You're the pepperoni to my marinara.",
+      "selectionReachedDraft": true,
+      "evidence": "../captures/mac-bff4771/10-Find-The-Words.jpg",
+      "evidenceSHA256": "957b6a31bef7f751e97059e997b549ccf76bdf7930e4982051524ca48a3d2c16"
+    },
+    {
+      "name": "Image Playground system sheet and completed image import",
+      "result": "passed",
+      "sourceImage": null,
+      "input": "You're the pepperoni to my marinara.",
+      "style": "Apple Animation",
+      "personalSuggestionsSelected": false,
+      "externalProviderSelected": false,
+      "completedImageVisibleInDraft": true,
+      "evidence": "../captures/mac-bff4771/11-Image-Playground-Imported.jpg",
+      "evidenceSHA256": "a8c4fbd4d7ebae5366fe6a34a421d7b0082ba75bb8dc3f1ddee6f84437817837"
+    },
+    {
+      "name": "Cancel exploratory edits preserves saved original",
+      "result": "passed",
+      "savedMessage": "You had me at pizza.",
+      "savedNote": "Love, Alex",
+      "visibleSavedCards": 6
+    },
+    {
+      "name": "cold launch persistent library",
+      "result": "passed",
+      "visibleSavedCards": 6,
+      "savedMessage": "You had me at pizza.",
+      "savedNote": "Love, Alex",
+      "savedFaceVisible": true,
+      "exploratoryGeneratedPhotoAbsent": true,
+      "evidence": "../captures/mac-bff4771/12-Cold-Launch-Preserved.jpg",
+      "evidenceSHA256": "067e9db088f7f428c27770a839fce9ef65188735a0a33830f7f86009547513f1"
+    }
+  ],
+  "limits": [
+    "Only this eligible Mac runtime was exercised for system AI; older systems and Simulator do not prove availability.",
+    "No generated user/person photo was sent; only a generic food phrase was provided.",
+    "System generation may use Apple services; no blanket offline claim.",
+    "Exploratory artwork and suggestion were cancelled rather than saved."
+  ]
+}

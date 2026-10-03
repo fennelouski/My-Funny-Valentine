@@ -1,0 +1,1041 @@
+{
+  "checkedAtUTC": "2026-10-03T04:08:38.000254+00:00",
+  "sourceRevision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+  "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+  "signedArtifactReceipt": "signed-archives-bff4771.json",
+  "scope": "Read-only static framework linking, imported symbols, source availability gates, dependency and deployment metadata. No build, signing, GUI, Simulator, installation, launch or upload.",
+  "verdict": "No concrete static minimum-OS incompatibility found in the inspected dependencies and AI feature gates. Exact minimum-OS runtime compatibility remains unverified.",
+  "findings": [],
+  "runtimeLimitations": {
+    "iOS18.0": "Exact runtime unavailable; not launched in this audit.",
+    "macOS15.1": "Exact runtime unavailable; not launched in this audit.",
+    "iOS18.5": "Parent arranging a separate Simulator compatibility check; no result claimed here."
+  },
+  "sourceAvailabilityGates": [
+    {
+      "path": "My Funny Valentine/Services/OnDeviceSayingsGenerator.swift",
+      "typeDeclarationLine": 17,
+      "guardLines": [
+        47,
+        57,
+        77
+      ],
+      "minimum": {
+        "iOS": "26.0",
+        "macOS": "26.0"
+      },
+      "readinessGuardLines": [
+        48,
+        58,
+        78
+      ],
+      "olderOSBehavior": "isAvailable returns false, unavailableReason returns a newer-OS explanation, direct generation throws unavailable."
+    },
+    {
+      "path": "My Funny Valentine/Views/ImagePlaygroundSheetModifier.swift",
+      "wrapperGuardLine": 17,
+      "contentAvailabilityLine": 30,
+      "hardwareReadinessGuardLine": 41,
+      "minimum": {
+        "iOS": "18.1",
+        "macOS": "15.1"
+      },
+      "olderOrUnsupportedBehavior": "Optional Image Playground button is absent; photo and starter paths remain available."
+    },
+    {
+      "path": "My Funny Valentine/ViewModels/AIGenerationViewModel.swift",
+      "onDeviceCheckLine": 55,
+      "unconfiguredBackendFallbackLines": [
+        68,
+        69
+      ],
+      "localFallbackLine": 114,
+      "behavior": "Older OS or unavailable on-device model proceeds to configured backend/cache or bundled local sayings, without accessing FoundationModels directly."
+    },
+    {
+      "path": "My Funny Valentine/Services/FaceDetectionService.swift",
+      "guardLine": 44,
+      "minimum": {
+        "iOS": "17.0",
+        "macOS": "14.0"
+      },
+      "note": "Foreground instance masking is below both app minimums. Failures retain a photo crop. Simulator CPU override is compiled only for Simulator and absent from these device/App Store exports."
+    }
+  ],
+  "platforms": {
+    "iOS": {
+      "exportPath": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/iOS/Export/My Funny Valentine.ipa",
+      "exportSHA256": "939b573da8a55cab720a87fb279b0970baf0fd8b7d127ae12358339d6469b5b7",
+      "binaryPath": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/iOS/Inspection/Payload/My Funny Valentine.app/My Funny Valentine",
+      "binarySHA256": "8b3fa7363717d3631dd02b843d73ead0e08722b1e95f4e3615206ebd1adb9458",
+      "declaredMinimumOS": "18.0",
+      "architectures": {
+        "arm64": {
+          "buildVersion": {
+            "platform": "2",
+            "minos": "18.0",
+            "sdk": "26.5"
+          },
+          "relevantFrameworks": {
+            "FoundationModels": {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/System/Library/Frameworks/FoundationModels.framework/FoundationModels",
+              "importedSymbolCount": 57,
+              "weakImportedSymbolCount": 57,
+              "allImportedSymbolsWeak": true,
+              "linkSafety": "Weak framework and symbol imports tolerate absence on older OS; use sites guarded."
+            },
+            "ImagePlayground": {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/System/Library/Frameworks/ImagePlayground.framework/ImagePlayground",
+              "importedSymbolCount": 7,
+              "weakImportedSymbolCount": 7,
+              "allImportedSymbolsWeak": true,
+              "linkSafety": "Weak framework and symbol imports tolerate absence on older OS; use sites guarded."
+            }
+          },
+          "allLinkedDynamicLibraries": [
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Foundation.framework/Foundation"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/libobjc.A.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/libSystem.B.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CloudKit.framework/CloudKit"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Combine.framework/Combine"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreImage.framework/CoreImage"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreText.framework/CoreText"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreTransferable.framework/CoreTransferable"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CryptoKit.framework/CryptoKit"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/System/Library/Frameworks/FoundationModels.framework/FoundationModels"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/ImageIO.framework/ImageIO"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/System/Library/Frameworks/ImagePlayground.framework/ImagePlayground"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Network.framework/Network"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Photos.framework/Photos"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/PhotosUI.framework/PhotosUI"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/SwiftData.framework/SwiftData"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/SwiftUI.framework/SwiftUI"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/UIKit.framework/UIKit"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Vision.framework/Vision"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/_PhotosUI_SwiftUI.framework/_PhotosUI_SwiftUI"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/_SwiftData_SwiftUI.framework/_SwiftData_SwiftUI"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftAVFoundation.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftAccelerate.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftCore.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreAudio.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreFoundation.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreImage.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreLocation.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreMIDI.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreMedia.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftDispatch.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftMetal.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftMetalKit.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftModelIO.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftOSLog.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftObjectiveC.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftObservation.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftQuartzCore.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftSpatial.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftUniformTypeIdentifiers.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftXPC.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswift_Builtin_float.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswift_Concurrency.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftos.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftsimd.dylib"
+            }
+          ],
+          "machOValidationPassed": true,
+          "commands": [
+            [
+              "otool",
+              "-arch",
+              "arm64",
+              "-l",
+              "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/iOS/Inspection/Payload/My Funny Valentine.app/My Funny Valentine"
+            ],
+            [
+              "xcrun",
+              "dyld_info",
+              "-arch",
+              "arm64",
+              "-imports",
+              "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/iOS/Inspection/Payload/My Funny Valentine.app/My Funny Valentine"
+            ],
+            [
+              "xcrun",
+              "dyld_info",
+              "-arch",
+              "arm64",
+              "-validate_only",
+              "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/iOS/Inspection/Payload/My Funny Valentine.app/My Funny Valentine"
+            ]
+          ],
+          "loadCommandsLog": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/iOS/Logs/minimum-os-arm64-load-commands.log",
+          "importedSymbolsLog": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/iOS/Logs/minimum-os-arm64-imported-symbols.log",
+          "validationLog": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/iOS/Logs/minimum-os-arm64-macho-validation.log"
+        }
+      },
+      "bundledFrameworks": [],
+      "bundledDynamicLibraries": []
+    },
+    "macOS": {
+      "exportPath": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/macOS/Export/My Funny Valentine.pkg",
+      "exportSHA256": "165a337a40673bd2da406127550d23103f552cff09f7a43d756033cdc78a8d5d",
+      "binaryPath": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/macOS/Inspection/expanded-package/com.nathanfennel.My-Funny-Valentine.pkg/Payload/My Funny Valentine.app/Contents/MacOS/My Funny Valentine",
+      "binarySHA256": "418d562cea6b658866cfe6dc1a5d4ce7016bac4aa211018f21aa21e2f2c8f0f4",
+      "declaredMinimumOS": "15.1",
+      "architectures": {
+        "x86_64": {
+          "buildVersion": {
+            "platform": "1",
+            "minos": "15.1",
+            "sdk": "26.5"
+          },
+          "relevantFrameworks": {
+            "FoundationModels": {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/System/Library/Frameworks/FoundationModels.framework/Versions/A/FoundationModels",
+              "importedSymbolCount": 57,
+              "weakImportedSymbolCount": 57,
+              "allImportedSymbolsWeak": true,
+              "linkSafety": "Weak framework and symbol imports tolerate absence on older OS; use sites guarded."
+            },
+            "ImagePlayground": {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/ImagePlayground.framework/Versions/A/ImagePlayground",
+              "importedSymbolCount": 7,
+              "weakImportedSymbolCount": 0,
+              "allImportedSymbolsWeak": false,
+              "linkSafety": "Strong framework and symbol imports are available at the declared macOS15.1 minimum per SDK annotations. Device support is separately gated."
+            }
+          },
+          "allLinkedDynamicLibraries": [
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/libobjc.A.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/libSystem.B.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CloudKit.framework/Versions/A/CloudKit"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Combine.framework/Versions/A/Combine"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreImage.framework/Versions/A/CoreImage"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreText.framework/Versions/A/CoreText"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreTransferable.framework/Versions/A/CoreTransferable"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CryptoKit.framework/Versions/A/CryptoKit"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/System/Library/Frameworks/FoundationModels.framework/Versions/A/FoundationModels"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/ImagePlayground.framework/Versions/A/ImagePlayground"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Network.framework/Versions/A/Network"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Photos.framework/Versions/A/Photos"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/PhotosUI.framework/Versions/A/PhotosUI"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/SwiftData.framework/Versions/A/SwiftData"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/SwiftUI.framework/Versions/A/SwiftUI"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Vision.framework/Versions/A/Vision"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/_PhotosUI_SwiftUI.framework/Versions/A/_PhotosUI_SwiftUI"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/_SwiftData_SwiftUI.framework/Versions/A/_SwiftData_SwiftUI"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftAVFoundation.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftAccelerate.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftCore.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreAudio.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreFoundation.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreImage.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreLocation.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreMIDI.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreMedia.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftDispatch.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftIOKit.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftMapKit.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftMetal.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftOSLog.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftObjectiveC.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftObservation.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftQuartzCore.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftSpatial.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftUniformTypeIdentifiers.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftXPC.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswift_Builtin_float.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswift_Concurrency.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftos.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftsimd.dylib"
+            }
+          ],
+          "machOValidationPassed": true,
+          "commands": [
+            [
+              "otool",
+              "-arch",
+              "x86_64",
+              "-l",
+              "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/macOS/Inspection/expanded-package/com.nathanfennel.My-Funny-Valentine.pkg/Payload/My Funny Valentine.app/Contents/MacOS/My Funny Valentine"
+            ],
+            [
+              "xcrun",
+              "dyld_info",
+              "-arch",
+              "x86_64",
+              "-imports",
+              "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/macOS/Inspection/expanded-package/com.nathanfennel.My-Funny-Valentine.pkg/Payload/My Funny Valentine.app/Contents/MacOS/My Funny Valentine"
+            ],
+            [
+              "xcrun",
+              "dyld_info",
+              "-arch",
+              "x86_64",
+              "-validate_only",
+              "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/macOS/Inspection/expanded-package/com.nathanfennel.My-Funny-Valentine.pkg/Payload/My Funny Valentine.app/Contents/MacOS/My Funny Valentine"
+            ]
+          ],
+          "loadCommandsLog": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/macOS/Logs/minimum-os-x86_64-load-commands.log",
+          "importedSymbolsLog": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/macOS/Logs/minimum-os-x86_64-imported-symbols.log",
+          "validationLog": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/macOS/Logs/minimum-os-x86_64-macho-validation.log"
+        },
+        "arm64": {
+          "buildVersion": {
+            "platform": "1",
+            "minos": "15.1",
+            "sdk": "26.5"
+          },
+          "relevantFrameworks": {
+            "FoundationModels": {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/System/Library/Frameworks/FoundationModels.framework/Versions/A/FoundationModels",
+              "importedSymbolCount": 57,
+              "weakImportedSymbolCount": 57,
+              "allImportedSymbolsWeak": true,
+              "linkSafety": "Weak framework and symbol imports tolerate absence on older OS; use sites guarded."
+            },
+            "ImagePlayground": {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/ImagePlayground.framework/Versions/A/ImagePlayground",
+              "importedSymbolCount": 7,
+              "weakImportedSymbolCount": 0,
+              "allImportedSymbolsWeak": false,
+              "linkSafety": "Strong framework and symbol imports are available at the declared macOS15.1 minimum per SDK annotations. Device support is separately gated."
+            }
+          },
+          "allLinkedDynamicLibraries": [
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/libobjc.A.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/libSystem.B.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CloudKit.framework/Versions/A/CloudKit"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Combine.framework/Versions/A/Combine"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreImage.framework/Versions/A/CoreImage"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreText.framework/Versions/A/CoreText"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CoreTransferable.framework/Versions/A/CoreTransferable"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/CryptoKit.framework/Versions/A/CryptoKit"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/System/Library/Frameworks/FoundationModels.framework/Versions/A/FoundationModels"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/ImagePlayground.framework/Versions/A/ImagePlayground"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Network.framework/Versions/A/Network"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Photos.framework/Versions/A/Photos"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/PhotosUI.framework/Versions/A/PhotosUI"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/SwiftData.framework/Versions/A/SwiftData"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/SwiftUI.framework/Versions/A/SwiftUI"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/Vision.framework/Versions/A/Vision"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/_PhotosUI_SwiftUI.framework/Versions/A/_PhotosUI_SwiftUI"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/System/Library/Frameworks/_SwiftData_SwiftUI.framework/Versions/A/_SwiftData_SwiftUI"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftAVFoundation.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftAccelerate.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftCore.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreAudio.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreFoundation.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreImage.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreLocation.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreMIDI.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftCoreMedia.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftDispatch.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftIOKit.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftMapKit.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftMetal.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftOSLog.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftObjectiveC.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftObservation.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftQuartzCore.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftSpatial.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftUniformTypeIdentifiers.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftXPC.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswift_Builtin_float.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswift_Concurrency.dylib"
+            },
+            {
+              "command": "LC_LOAD_DYLIB",
+              "path": "/usr/lib/swift/libswiftos.dylib"
+            },
+            {
+              "command": "LC_LOAD_WEAK_DYLIB",
+              "path": "/usr/lib/swift/libswiftsimd.dylib"
+            }
+          ],
+          "machOValidationPassed": true,
+          "commands": [
+            [
+              "otool",
+              "-arch",
+              "arm64",
+              "-l",
+              "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/macOS/Inspection/expanded-package/com.nathanfennel.My-Funny-Valentine.pkg/Payload/My Funny Valentine.app/Contents/MacOS/My Funny Valentine"
+            ],
+            [
+              "xcrun",
+              "dyld_info",
+              "-arch",
+              "arm64",
+              "-imports",
+              "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/macOS/Inspection/expanded-package/com.nathanfennel.My-Funny-Valentine.pkg/Payload/My Funny Valentine.app/Contents/MacOS/My Funny Valentine"
+            ],
+            [
+              "xcrun",
+              "dyld_info",
+              "-arch",
+              "arm64",
+              "-validate_only",
+              "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/macOS/Inspection/expanded-package/com.nathanfennel.My-Funny-Valentine.pkg/Payload/My Funny Valentine.app/Contents/MacOS/My Funny Valentine"
+            ]
+          ],
+          "loadCommandsLog": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/macOS/Logs/minimum-os-arm64-load-commands.log",
+          "importedSymbolsLog": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/macOS/Logs/minimum-os-arm64-imported-symbols.log",
+          "validationLog": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-bff4771/macOS/Logs/minimum-os-arm64-macho-validation.log"
+        }
+      },
+      "bundledFrameworks": [],
+      "bundledDynamicLibraries": []
+    }
+  },
+  "sdkAvailabilityEvidence": {
+    "iphoneos": {
+      "FoundationModels": {
+        "interfacePath": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk/System/Library/Frameworks/FoundationModels.framework/Modules/FoundationModels.swiftmodule/arm64e-apple-ios.swiftinterface",
+        "interfaceSHA256": "1be9b7565fbf702fc023ac790fe5e8608683ce24718a57ea332ecb38e30bfba9",
+        "declarations": [
+          {
+            "line": 35,
+            "declaration": "public protocol Generable : FoundationModels.ConvertibleFromGeneratedContent, FoundationModels.ConvertibleToGeneratedContent {",
+            "availabilityAnnotations": [
+              {
+                "line": 32,
+                "annotation": "@available(iOS 26.0, macOS 26.0, visionOS 26.0, *)"
+              }
+            ]
+          },
+          {
+            "line": 320,
+            "declaration": "final public class LanguageModelSession {",
+            "availabilityAnnotations": [
+              {
+                "line": 317,
+                "annotation": "@_hasMissingDesignatedInitializers @available(iOS 26.0, macOS 26.0, visionOS 26.0, *)"
+              }
+            ]
+          },
+          {
+            "line": 513,
+            "declaration": "final public class SystemLanguageModel : Swift.Sendable {",
+            "availabilityAnnotations": [
+              {
+                "line": 510,
+                "annotation": "@_hasMissingDesignatedInitializers @available(iOS 26.0, macOS 26.0, visionOS 26.0, *)"
+              }
+            ]
+          }
+        ]
+      },
+      "ImagePlayground": {
+        "interfacePath": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk/System/Library/Frameworks/ImagePlayground.framework/Modules/ImagePlayground.swiftmodule/arm64e-apple-ios.swiftinterface",
+        "interfaceSHA256": "35d8efda45535e4c3b62e1ea5ea06fe47afbfe7c113c7166c8e334b9923fee4f",
+        "declarations": [
+          {
+            "line": 21,
+            "declaration": "@_Concurrency.MainActor @preconcurrency public func imagePlaygroundSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, concepts: [ImagePlayground.ImagePlaygroundConcept] = [], sourceImage: SwiftUICore.Image? = nil, onCompletion: @escaping (Foundation.URL) -> Swift.Void, onCancellation: (() -> Swift.Void)? = nil) -> some SwiftUICore.View",
+            "availabilityAnnotations": [
+              {
+                "line": 18,
+                "annotation": "@available(iOS 18.1, macOS 15.1, visionOS 2.4, *)"
+              }
+            ]
+          },
+          {
+            "line": 26,
+            "declaration": "@_Concurrency.MainActor @preconcurrency public func imagePlaygroundSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, concepts: [ImagePlayground.ImagePlaygroundConcept] = [], sourceImageURL: Foundation.URL, onCompletion: @escaping (_ url: Foundation.URL) -> Swift.Void, onCancellation: (() -> Swift.Void)? = nil) -> some SwiftUICore.View",
+            "availabilityAnnotations": [
+              {
+                "line": 23,
+                "annotation": "@available(iOS 18.1, macOS 15.1, visionOS 2.4, *)"
+              }
+            ]
+          },
+          {
+            "line": 31,
+            "declaration": "@_Concurrency.MainActor @preconcurrency public func imagePlaygroundSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, concept: Swift.String, sourceImageURL: Foundation.URL, onCompletion: @escaping (_ url: Foundation.URL) -> Swift.Void, onCancellation: (() -> Swift.Void)? = nil) -> some SwiftUICore.View",
+            "availabilityAnnotations": [
+              {
+                "line": 28,
+                "annotation": "@available(iOS 18.1, macOS 15.1, visionOS 2.4, *)"
+              }
+            ]
+          },
+          {
+            "line": 36,
+            "declaration": "@_Concurrency.MainActor @preconcurrency public func imagePlaygroundSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, concept: Swift.String, sourceImage: SwiftUICore.Image? = nil, onCompletion: @escaping (_ url: Foundation.URL) -> Swift.Void, onCancellation: (() -> Swift.Void)? = nil) -> some SwiftUICore.View",
+            "availabilityAnnotations": [
+              {
+                "line": 33,
+                "annotation": "@available(iOS 18.1, macOS 15.1, visionOS 2.4, *)"
+              }
+            ]
+          },
+          {
+            "line": 204,
+            "declaration": "public struct ImagePlaygroundConcept {",
+            "availabilityAnnotations": [
+              {
+                "line": 201,
+                "annotation": "@available(iOS 18.1, macOS 15.1, visionOS 2.4, *)"
+              }
+            ]
+          },
+          {
+            "line": 242,
+            "declaration": "public var supportsImagePlayground: Swift.Bool {",
+            "availabilityAnnotations": [
+              {
+                "line": 241,
+                "annotation": "@available(iOS 18.1, macOS 15.1, visionOS 2.4, *)"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "macosx": {
+      "FoundationModels": {
+        "interfacePath": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/FoundationModels.framework/Versions/A/Modules/FoundationModels.swiftmodule/arm64e-apple-macos.swiftinterface",
+        "interfaceSHA256": "ff2285670b0966addb9827dc895a3ee3c9db6e186baae62c034fed012632aacc",
+        "declarations": [
+          {
+            "line": 35,
+            "declaration": "public protocol Generable : FoundationModels.ConvertibleFromGeneratedContent, FoundationModels.ConvertibleToGeneratedContent {",
+            "availabilityAnnotations": [
+              {
+                "line": 32,
+                "annotation": "@available(iOS 26.0, macOS 26.0, visionOS 26.0, *)"
+              }
+            ]
+          },
+          {
+            "line": 320,
+            "declaration": "final public class LanguageModelSession {",
+            "availabilityAnnotations": [
+              {
+                "line": 317,
+                "annotation": "@_hasMissingDesignatedInitializers @available(iOS 26.0, macOS 26.0, visionOS 26.0, *)"
+              }
+            ]
+          },
+          {
+            "line": 513,
+            "declaration": "final public class SystemLanguageModel : Swift.Sendable {",
+            "availabilityAnnotations": [
+              {
+                "line": 510,
+                "annotation": "@_hasMissingDesignatedInitializers @available(iOS 26.0, macOS 26.0, visionOS 26.0, *)"
+              }
+            ]
+          }
+        ]
+      },
+      "ImagePlayground": {
+        "interfacePath": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/ImagePlayground.framework/Versions/A/Modules/ImagePlayground.swiftmodule/arm64e-apple-macos.swiftinterface",
+        "interfaceSHA256": "527718e1e889a953798e383d09ca04b4b6d0c0b2ba09039a032b7667b5242384",
+        "declarations": [
+          {
+            "line": 20,
+            "declaration": "@_Concurrency.MainActor @preconcurrency public func imagePlaygroundSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, concepts: [ImagePlayground.ImagePlaygroundConcept] = [], sourceImage: SwiftUICore.Image? = nil, onCompletion: @escaping (Foundation.URL) -> Swift.Void, onCancellation: (() -> Swift.Void)? = nil) -> some SwiftUICore.View",
+            "availabilityAnnotations": [
+              {
+                "line": 17,
+                "annotation": "@available(iOS 18.1, macOS 15.1, visionOS 2.4, *)"
+              }
+            ]
+          },
+          {
+            "line": 25,
+            "declaration": "@_Concurrency.MainActor @preconcurrency public func imagePlaygroundSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, concepts: [ImagePlayground.ImagePlaygroundConcept] = [], sourceImageURL: Foundation.URL, onCompletion: @escaping (_ url: Foundation.URL) -> Swift.Void, onCancellation: (() -> Swift.Void)? = nil) -> some SwiftUICore.View",
+            "availabilityAnnotations": [
+              {
+                "line": 22,
+                "annotation": "@available(iOS 18.1, macOS 15.1, visionOS 2.4, *)"
+              }
+            ]
+          },
+          {
+            "line": 30,
+            "declaration": "@_Concurrency.MainActor @preconcurrency public func imagePlaygroundSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, concept: Swift.String, sourceImageURL: Foundation.URL, onCompletion: @escaping (_ url: Foundation.URL) -> Swift.Void, onCancellation: (() -> Swift.Void)? = nil) -> some SwiftUICore.View",
+            "availabilityAnnotations": [
+              {
+                "line": 27,
+                "annotation": "@available(iOS 18.1, macOS 15.1, visionOS 2.4, *)"
+              }
+            ]
+          },
+          {
+            "line": 35,
+            "declaration": "@_Concurrency.MainActor @preconcurrency public func imagePlaygroundSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, concept: Swift.String, sourceImage: SwiftUICore.Image? = nil, onCompletion: @escaping (_ url: Foundation.URL) -> Swift.Void, onCancellation: (() -> Swift.Void)? = nil) -> some SwiftUICore.View",
+            "availabilityAnnotations": [
+              {
+                "line": 32,
+                "annotation": "@available(iOS 18.1, macOS 15.1, visionOS 2.4, *)"
+              }
+            ]
+          },
+          {
+            "line": 187,
+            "declaration": "public struct ImagePlaygroundConcept {",
+            "availabilityAnnotations": [
+              {
+                "line": 184,
+                "annotation": "@available(iOS 18.1, macOS 15.1, visionOS 2.4, *)"
+              }
+            ]
+          },
+          {
+            "line": 225,
+            "declaration": "public var supportsImagePlayground: Swift.Bool {",
+            "availabilityAnnotations": [
+              {
+                "line": 224,
+                "annotation": "@available(iOS 18.1, macOS 15.1, visionOS 2.4, *)"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "dependencyAudit": {
+    "projectPath": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/My Funny Valentine.xcodeproj/project.pbxproj",
+    "packageProductDependencies": [],
+    "packageReferences": [],
+    "dependencyManifestPaths": [],
+    "frameworksBuildPhaseEmpty": true,
+    "thirdPartyBundledCodeFound": false,
+    "note": "Exports link only system frameworks and Swift runtime libraries. No package products, manually linked build-phase frameworks, or bundled framework/dylib binaries were found."
+  },
+  "nativeSourceSHA256AfterAudit": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf"
+}

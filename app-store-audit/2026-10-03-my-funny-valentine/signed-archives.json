@@ -1,0 +1,84 @@
+{
+  "revision": "3d6163695296d5d4b822e17513423d46587aafc6",
+  "nativeSourceSHA256": "fa067fb09f19f8268aa133bacaaa29f083d731adb5521ba03c9562b6d0fed4c0",
+  "recordedAtUTC": "2026-10-03T02:11:58.679417+00:00",
+  "status": "signed_archives_and_exports_verified_upload_failed",
+  "archives": [
+    {
+      "platform": "iOS",
+      "archivePath": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/iOS/My Funny Valentine.xcarchive",
+      "signedAppPath": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/iOS/My Funny Valentine.xcarchive/Products/Applications/My Funny Valentine.app",
+      "version": "1.0",
+      "build": "1",
+      "bundleId": "com.nathanfennel.My-Funny-Valentine",
+      "minimumOS": "18.0",
+      "architectures": "arm64",
+      "executableSHA256": "36e83efe775abaa6c48a7d6b53ed875ed5b1ef9cd7cd8d53bd8ca33adb87df6d",
+      "codeSignatureVerification": "passed --deep --strict",
+      "privacyManifestSHA256": "5c20dbcb4ab17c390d6c89c0d6c7f7a274f377c2304159f01bb2ebb88a2cd069",
+      "privacyManifestIncluded": true,
+      "nonExemptEncryption": false,
+      "entitlementKeys": [
+        "application-identifier",
+        "com.apple.developer.team-identifier",
+        "get-task-allow"
+      ],
+      "sandbox": null,
+      "userSelectedFilesReadOnly": null,
+      "qaCompilationFlags": false,
+      "targetDeviceFamily": [
+        1,
+        2
+      ],
+      "export": {
+        "status": "succeeded",
+        "packagePath": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/iOS/Export/My Funny Valentine.ipa",
+        "packageSHA256": "b5296c8154c572a240c58bdf416e551817eb00087af4d9007ac90eed58c163aa",
+        "packageBytes": 13396155,
+        "resignedAppSignatureVerification": "passed --deep --strict",
+        "privacyManifestVerified": true
+      }
+    },
+    {
+      "platform": "macOS",
+      "archivePath": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/macOS/My Funny Valentine.xcarchive",
+      "signedAppPath": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/macOS/My Funny Valentine.xcarchive/Products/Applications/My Funny Valentine.app",
+      "version": "1.0",
+      "build": "1",
+      "bundleId": "com.nathanfennel.My-Funny-Valentine",
+      "minimumOS": "15.1",
+      "architectures": "x86_64 arm64",
+      "executableSHA256": "c3c076289a1eeb524ebbdd6bb90bb629ed294f373d2540a3de996e46fc5a43a1",
+      "codeSignatureVerification": "passed --deep --strict",
+      "privacyManifestSHA256": "5c20dbcb4ab17c390d6c89c0d6c7f7a274f377c2304159f01bb2ebb88a2cd069",
+      "privacyManifestIncluded": true,
+      "nonExemptEncryption": false,
+      "entitlementKeys": [
+        "com.apple.security.app-sandbox",
+        "com.apple.security.files.user-selected.read-only"
+      ],
+      "sandbox": true,
+      "userSelectedFilesReadOnly": true,
+      "qaCompilationFlags": false,
+      "export": {
+        "status": "succeeded",
+        "packagePath": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/macOS/Export/My Funny Valentine.pkg",
+        "packageSHA256": "256d59cac720d45825af52d831c9c3bc6ac564fc80a7212a459029dbfdc55ffa",
+        "packageBytes": 12945151,
+        "installerSignatureVerification": "passed pkgutil --check-signature"
+      }
+    }
+  ],
+  "upload": {
+    "status": "failed_before_upload",
+    "iOSLog": "/tmp/mfv-ios-upload-20261003.log",
+    "macOSLog": "/tmp/mfv-macos-upload-20261003.log",
+    "error": "Error Downloading App Information",
+    "uploaded": false,
+    "underlyingCause": "investigating",
+    "processingVerified": false
+  },
+  "reviewSubmission": {
+    "status": "not_submitted"
+  }
+}

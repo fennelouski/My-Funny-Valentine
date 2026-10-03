@@ -1,0 +1,563 @@
+{
+  "revision": "3d6163695296d5d4b822e17513423d46587aafc6",
+  "capturedAtUTC": "2026-10-03T02:10:26.445452+00:00",
+  "fileCount": 111,
+  "sha256": "fa067fb09f19f8268aa133bacaaa29f083d731adb5521ba03c9562b6d0fed4c0",
+  "files": [
+    {
+      "path": "My Funny Valentine.xcodeproj/project.pbxproj",
+      "sha256": "bffe45cf610d17af05b1a471dd437d87362667b68065ab5f03fb37f5395696e5",
+      "bytes": 23904
+    },
+    {
+      "path": "My Funny Valentine.xcodeproj/project.xcworkspace/contents.xcworkspacedata",
+      "sha256": "7f3b00b5c3fdb45242d7b87e1e5c4e25d1fa8129a16c94295ecc4e8ea2235c5f",
+      "bytes": 135
+    },
+    {
+      "path": "My Funny Valentine.xcodeproj/xcuserdata/nathanfennel.xcuserdatad/xcschemes/xcschememanagement.plist",
+      "sha256": "13f0532cf9e8b04e70c1dff466aa707da7e7a307d58b511cbd52fbf9bdb57cf8",
+      "bytes": 353
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AccentColor.colorset/Contents.json",
+      "sha256": "9af65086fa30b49252fae1a1225731691de794f7775af74d71befeb507d12b7c",
+      "bytes": 123
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/Contents.json",
+      "sha256": "8efcd835e3d8a0510a712f52dfc342a08fca91f6cf1f46d35b46d88b7788b912",
+      "bytes": 2013
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-ios-1024-dark.png",
+      "sha256": "296159c24e288e3b9a9e006b1dfd306c0cc6beda2aeb0376ada2a27dcd7a3177",
+      "bytes": 807291
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-ios-1024-tinted.png",
+      "sha256": "9bec9e2991e9746fbc5b87b2ca1b891f7bcd39b5d02a50e6f68381755498610c",
+      "bytes": 378136
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-ios-1024.png",
+      "sha256": "66940ec33e67fe05d9496dbd7136e9923e18dd10054ac98e3c5134e69a332f9f",
+      "bytes": 804427
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-128x128@1x.png",
+      "sha256": "1901a06bdd87520ff97bcf9a8ec83310943e0c2d27b00ed1156a8cd0e9692063",
+      "bytes": 13009
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-128x128@2x.png",
+      "sha256": "c4a51b8c42901ead32b9708deefcd5fb8a3ac78ae37774234d5ab27dedddd74a",
+      "bytes": 43924
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-16x16@1x.png",
+      "sha256": "454d6738fb6302af4042636ec82369b0f358748cf78f37db3ff56622aa1b4f5b",
+      "bytes": 632
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-16x16@2x.png",
+      "sha256": "0354ce24e858f7fba92c57b8a65ddbbe1ca0c1b2e177fd1cc0db3f339ebdd52c",
+      "bytes": 1517
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-256x256@1x.png",
+      "sha256": "c4a51b8c42901ead32b9708deefcd5fb8a3ac78ae37774234d5ab27dedddd74a",
+      "bytes": 43924
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-256x256@2x.png",
+      "sha256": "9de35dabb3d3ecf5a998a1c2c02728baee9706da1621840dda5ffc193e0c6b15",
+      "bytes": 157911
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-32x32@1x.png",
+      "sha256": "0354ce24e858f7fba92c57b8a65ddbbe1ca0c1b2e177fd1cc0db3f339ebdd52c",
+      "bytes": 1517
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-32x32@2x.png",
+      "sha256": "c275e775bd8f58b7ec57b48595b264f66f18b6394c0351fcfe6446fb894245ae",
+      "bytes": 4262
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-512x512@1x.png",
+      "sha256": "9de35dabb3d3ecf5a998a1c2c02728baee9706da1621840dda5ffc193e0c6b15",
+      "bytes": 157911
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-512x512@2x.png",
+      "sha256": "8910ed48984ed4c9d2388c7b20c7f00689c36bc6b38f36022a6b9eafa1e4cc13",
+      "bytes": 591366
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/Contents.json",
+      "sha256": "0fd49ba3c3585c709678e0046a821c3c60685ec7063720d30d3a3448be3a208b",
+      "bytes": 63
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/starter_birds.imageset/Contents.json",
+      "sha256": "2ff8cf16237f91a432fd68708a35b63cebc397cbd3ff2fb7623e4d72546ee985",
+      "bytes": 168
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/starter_birds.imageset/art.png",
+      "sha256": "40276e31f667cc785022a661fc0adf884f1c7aa90853f9f4a587f790c31c856c",
+      "bytes": 2058194
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/starter_dino.imageset/Contents.json",
+      "sha256": "2ff8cf16237f91a432fd68708a35b63cebc397cbd3ff2fb7623e4d72546ee985",
+      "bytes": 168
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/starter_dino.imageset/art.png",
+      "sha256": "f5e49e06c477e2afce4d43b925fa3e1b95ba098586d32212da026e095b83d5bb",
+      "bytes": 1876430
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/starter_disco.imageset/Contents.json",
+      "sha256": "2ff8cf16237f91a432fd68708a35b63cebc397cbd3ff2fb7623e4d72546ee985",
+      "bytes": 168
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/starter_disco.imageset/art.png",
+      "sha256": "9df1b062d49f71ed6108114c7fa918b31ac7d0188d847792fa8666794885c35e",
+      "bytes": 2655236
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/starter_pizza.imageset/Contents.json",
+      "sha256": "2ff8cf16237f91a432fd68708a35b63cebc397cbd3ff2fb7623e4d72546ee985",
+      "bytes": 168
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/starter_pizza.imageset/art.png",
+      "sha256": "99d98d71516e2f4c12e6205c94210c45a1bd0713b85d823139a46383b43e2f0c",
+      "bytes": 2032286
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/starter_space.imageset/Contents.json",
+      "sha256": "2ff8cf16237f91a432fd68708a35b63cebc397cbd3ff2fb7623e4d72546ee985",
+      "bytes": 168
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/starter_space.imageset/art.png",
+      "sha256": "4e791b018a5e41337538225270d9dadd7d3e548c48fd31b3c05a553d46b6496b",
+      "bytes": 2194719
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/starter_sweets.imageset/Contents.json",
+      "sha256": "2ff8cf16237f91a432fd68708a35b63cebc397cbd3ff2fb7623e4d72546ee985",
+      "bytes": 168
+    },
+    {
+      "path": "My Funny Valentine/Assets.xcassets/starter_sweets.imageset/art.png",
+      "sha256": "b6bbbfb842237011ff051c60f67380c010ab097bf979e86f3385c185793e3292",
+      "bytes": 2106581
+    },
+    {
+      "path": "My Funny Valentine/Components/AppTextField.swift",
+      "sha256": "5ecbb9580c0620169c947d48e337d961c58dd0e853d9a7f2b0b0618d013ca5f7",
+      "bytes": 1291
+    },
+    {
+      "path": "My Funny Valentine/Components/CardTileView.swift",
+      "sha256": "88b5ddff6c2e5a0bf2271459f550b6d0a7bbea2a127a54c858ebf0eeb4e3a7d4",
+      "bytes": 976
+    },
+    {
+      "path": "My Funny Valentine/Components/ErrorMessageView.swift",
+      "sha256": "24de69072696b2f08422764bc58c6daba26f59ae415b5844bae469c5bd8fd11d",
+      "bytes": 1006
+    },
+    {
+      "path": "My Funny Valentine/Components/LoadingView.swift",
+      "sha256": "2e4d77eecefc4b27bfc7d28b7896acf5aa7ae01a2576b6884b2dce8e88deb6f1",
+      "bytes": 471
+    },
+    {
+      "path": "My Funny Valentine/Components/PrimaryButtonStyle.swift",
+      "sha256": "6664fbb88f8fa00bff1502d4f12ac2945a0483f8bbdef3e936a55201268c4af6",
+      "bytes": 850
+    },
+    {
+      "path": "My Funny Valentine/ContentView.swift",
+      "sha256": "62b83c35f6f2c1978251fee42f956798090161005cd2857ee498c96f2651b485",
+      "bytes": 4633
+    },
+    {
+      "path": "My Funny Valentine/Extensions/Card+Layout.swift",
+      "sha256": "b46e2029a38cdb9be2e53eb1d4aa203c5f66eea8510c55f9ed67e3cab6da864e",
+      "bytes": 2224
+    },
+    {
+      "path": "My Funny Valentine/Extensions/Card+Sharing.swift",
+      "sha256": "a0c9ab900b8df495d1b81e68a50c189033c6e2871ecfb67125e493f7794c7eb7",
+      "bytes": 832
+    },
+    {
+      "path": "My Funny Valentine/Info.plist",
+      "sha256": "ceb499b10c208cf2e70a9636061a3f391ab1219a830e5a325ed26935c98d4c08",
+      "bytes": 922
+    },
+    {
+      "path": "My Funny Valentine/Models/Card.swift",
+      "sha256": "639530b80a0b6cc30590a238bcb9b92410b2841b4666dff0ecef53b63159124e",
+      "bytes": 4079
+    },
+    {
+      "path": "My Funny Valentine/Models/CardImage.swift",
+      "sha256": "625ea8760bb6ff2d74e2784b272ce70a4c6de5f8731f920e3945f7bd1f26f38b",
+      "bytes": 1749
+    },
+    {
+      "path": "My Funny Valentine/Models/ColorData.swift",
+      "sha256": "60096d059a4ba3d7accbba3e04b63c82aecafa3e532dd159aee85bac5cfbd9cd",
+      "bytes": 1324
+    },
+    {
+      "path": "My Funny Valentine/Models/FaceImage.swift",
+      "sha256": "d538b2f8f9d5641973949f99a8d0a25d6a353a2aee450189abba5fd1e3ddb71f",
+      "bytes": 1596
+    },
+    {
+      "path": "My Funny Valentine/Models/ImageSource.swift",
+      "sha256": "ce4f186c86125cb401dd096b0a7179221715a36e24434ab0922f24a80b43fcff",
+      "bytes": 203
+    },
+    {
+      "path": "My Funny Valentine/Models/StickerReference.swift",
+      "sha256": "df5361a9ea4e11be7d013c208e3eecaed1d63706a8d494b1ba70ffb100feeb82",
+      "bytes": 1440
+    },
+    {
+      "path": "My Funny Valentine/Models/SubscriptionStatus.swift",
+      "sha256": "8ee0819c25ce042dd3746f447b0616fee227063dbf7dd375bf4d36b7a19d08e5",
+      "bytes": 181
+    },
+    {
+      "path": "My Funny Valentine/Models/Template.swift",
+      "sha256": "2020735ee3bc8501073a0712a73be8b9eff30a71a51b492005597f1dd2235cdd",
+      "bytes": 16982
+    },
+    {
+      "path": "My Funny Valentine/Models/UserPreferences.swift",
+      "sha256": "d8c369567254019cb3d9f13f30e23c28e56b645f56400056343864dcba05e4fd",
+      "bytes": 3419
+    },
+    {
+      "path": "My Funny Valentine/My_Funny_Valentine.entitlements",
+      "sha256": "bf94545efb59e13112e162fa94368e95f67a7c186144414f01c97215e63db9d4",
+      "bytes": 561
+    },
+    {
+      "path": "My Funny Valentine/My_Funny_ValentineApp.swift",
+      "sha256": "93ed9f7ea97b47fc7527f01b43768c45595208768408ef55889a6b8c54c4999e",
+      "bytes": 2928
+    },
+    {
+      "path": "My Funny Valentine/PrivacyInfo.xcprivacy",
+      "sha256": "5c20dbcb4ab17c390d6c89c0d6c7f7a274f377c2304159f01bb2ebb88a2cd069",
+      "bytes": 694
+    },
+    {
+      "path": "My Funny Valentine/Services/APIService.swift",
+      "sha256": "51c9d2ae7501a4635f97ed0c8c394de42eecf2184b7d74875ca2b43d136ec4bb",
+      "bytes": 5957
+    },
+    {
+      "path": "My Funny Valentine/Services/CacheService.swift",
+      "sha256": "ed1668191e84ddee9f7ab20e2b6cfc39882d0f1daeb53e002100fb7d5ea4467b",
+      "bytes": 1985
+    },
+    {
+      "path": "My Funny Valentine/Services/CardGenerationService.swift",
+      "sha256": "64a37634d82b4fc6322b5f04a5ae2f80a73e3bf54cf5d265e96d50bcdb4eb34d",
+      "bytes": 2678
+    },
+    {
+      "path": "My Funny Valentine/Services/CloudKitService.swift",
+      "sha256": "c43e8ac40b815f3ee724b3fcdf22f998f796f406ca4627cb4e5e06eae9852b6e",
+      "bytes": 1308
+    },
+    {
+      "path": "My Funny Valentine/Services/CloudKitSyncService.swift",
+      "sha256": "12521b336a85d2af6f8afa9b908ac0b78c230b9be0b95ad4647877a57727ba65",
+      "bytes": 15194
+    },
+    {
+      "path": "My Funny Valentine/Services/FaceDetectionService.swift",
+      "sha256": "fbd93c163232a2491614f534b0aed63a75dab8a568d457ac1f26ed9702af8584",
+      "bytes": 7473
+    },
+    {
+      "path": "My Funny Valentine/Services/GIFExporter.swift",
+      "sha256": "eb30a2c31ba7d0b3b434c2e7fbda90f5a9c7e9475af17dd5e644057ff9665c6e",
+      "bytes": 6164
+    },
+    {
+      "path": "My Funny Valentine/Services/ImageManager.swift",
+      "sha256": "52dbb1ecab37f4f3e463639dd045b6a0fae859b2ea328b41ff94a16aa16b8571",
+      "bytes": 8273
+    },
+    {
+      "path": "My Funny Valentine/Services/ImageOptimizer.swift",
+      "sha256": "8e63d83114c209f77854e0fb1d4d818e84098d01666e6b7a7a6e82c1ab0da26b",
+      "bytes": 8374
+    },
+    {
+      "path": "My Funny Valentine/Services/ImageService.swift",
+      "sha256": "07f5f807fa6937b6a8454c712dc638585757e03f4c9ebb5de99649090c3507e8",
+      "bytes": 1788
+    },
+    {
+      "path": "My Funny Valentine/Services/LocalSayingsGenerator.swift",
+      "sha256": "c2f26f4973c9011e0c985490ad165169a2c0984a737c1f80100a1e7ab74e97f7",
+      "bytes": 2842
+    },
+    {
+      "path": "My Funny Valentine/Services/OnDeviceSayingsGenerator.swift",
+      "sha256": "9b5c8615a26844754d7d72ebec8cf38344f2d0c4a9fd4043ebe0555cf31aeb0a",
+      "bytes": 3884
+    },
+    {
+      "path": "My Funny Valentine/Services/PhotoLibraryManager.swift",
+      "sha256": "5aee5d08b8f39044f81e3d247f76f7d826f6b4f121020f69b4daad607b956637",
+      "bytes": 2206
+    },
+    {
+      "path": "My Funny Valentine/Services/PhotoPickerService.swift",
+      "sha256": "9e3b0928dc5978df9990b03de7aa1cd5216bcc3da36aa09c7fdd16941ccd6d29",
+      "bytes": 4814
+    },
+    {
+      "path": "My Funny Valentine/Services/PlatformPhotoLibrary.swift",
+      "sha256": "264623912915a3ba0901816a58ea87995bcfe40b7dc664d9949f4a5d5d72bf5c",
+      "bytes": 5411
+    },
+    {
+      "path": "My Funny Valentine/Services/PlatformSharing.swift",
+      "sha256": "534e62351d643b2e2383273df5316eceacbceb558e27ebf2d6dae7bf5995d2ea",
+      "bytes": 4270
+    },
+    {
+      "path": "My Funny Valentine/Services/ShareService.swift",
+      "sha256": "ced763f3f7eeffbc252fb603278cd84689cdcf071b3e2ebd41fa48cd964ffb2e",
+      "bytes": 7767
+    },
+    {
+      "path": "My Funny Valentine/Services/SubscriptionManager.swift",
+      "sha256": "046c1bd5b564ee3feb4855dd2beb6b32f01667f7a63f5985d4132d8336309059",
+      "bytes": 7717
+    },
+    {
+      "path": "My Funny Valentine/Services/UsageTracker.swift",
+      "sha256": "6530cf893d10ac2812e0e5851cbf84c85dc36bf5bcdf7511271e743fb9babb76",
+      "bytes": 4174
+    },
+    {
+      "path": "My Funny Valentine/Services/UserPreferencesService.swift",
+      "sha256": "0b45f596c4eb71e5de61a35e619201deaf405582dce488d791ea4057429b88c5",
+      "bytes": 2855
+    },
+    {
+      "path": "My Funny Valentine/Utilities/CardDraft.swift",
+      "sha256": "42b5aa5761f13921e5cdf743c4116561a1ff02c7aabcd4a4ef7591359eea3ceb",
+      "bytes": 6576
+    },
+    {
+      "path": "My Funny Valentine/Utilities/CardRenderer.swift",
+      "sha256": "31d3306e5af86f185a40f8e567790b93b2ad3782ef5b8b135d07298665d10eaa",
+      "bytes": 8486
+    },
+    {
+      "path": "My Funny Valentine/Utilities/MacOSUtilities.swift",
+      "sha256": "91fcee2903b94b2a132d126388cde08cd510854999bfe0be54df5678f72222b2",
+      "bytes": 2749
+    },
+    {
+      "path": "My Funny Valentine/Utilities/PlatformGraphics.swift",
+      "sha256": "a357bc3e895185a71ad69b57c296d19ffff0aa80757224ac577a3adb6ece1ea9",
+      "bytes": 6433
+    },
+    {
+      "path": "My Funny Valentine/Utilities/PlatformImage.swift",
+      "sha256": "35bd8ca3274f29273e235982ff05596136c132b731647ea2019662acf25ce3e8",
+      "bytes": 4055
+    },
+    {
+      "path": "My Funny Valentine/Utilities/PlatformStyle.swift",
+      "sha256": "ad0ac142ad2cd40cc442f19f551f749517e2079a72e0811b32171f1737fb62c2",
+      "bytes": 1821
+    },
+    {
+      "path": "My Funny Valentine/Utilities/ScreenshotSupport.swift",
+      "sha256": "1d629034376c9af9af035ae73922ef0b7c41761ccde69192342df8586cf39157",
+      "bytes": 3170
+    },
+    {
+      "path": "My Funny Valentine/Utilities/VisionOSUtilities.swift",
+      "sha256": "336ecf22c8290d1ccdb3cdaea10f27b6fc671997daf2caba746bcd54c956705d",
+      "bytes": 1506
+    },
+    {
+      "path": "My Funny Valentine/ViewModels/AIGenerationViewModel.swift",
+      "sha256": "731383ede53844c82ba4ad6b4cda879c5ab7ef9095627b8284d89500d8a29035",
+      "bytes": 4138
+    },
+    {
+      "path": "My Funny Valentine/ViewModels/CardViewModel.swift",
+      "sha256": "25bfe76f470343e846e734d7170f0a4a9eca0973a00116f758da674ddb261809",
+      "bytes": 1745
+    },
+    {
+      "path": "My Funny Valentine/ViewModels/ImageGenerationViewModel.swift",
+      "sha256": "23f9b70e6e084b43c1fc6fe7cef74213882f35c997cc5c54f3b0b062ea4275fc",
+      "bytes": 3284
+    },
+    {
+      "path": "My Funny Valentine/ViewModels/ImageManagerViewModel.swift",
+      "sha256": "50c7f693332a3cb41cb7487150d59bc0137fe02e3481d985a141c00ccefa2d58",
+      "bytes": 2096
+    },
+    {
+      "path": "My Funny Valentine/ViewModels/UsageTrackerViewModel.swift",
+      "sha256": "bcd0659568a61f434839f237aebb924c60d6f4f1ab6363d19d6042ddd1522379",
+      "bytes": 1585
+    },
+    {
+      "path": "My Funny Valentine/Views/CardDetailView.swift",
+      "sha256": "d4194b4cb0f1b56e908a16f0c531711d7522eabd515bd51cfdc515d8f2b85a3d",
+      "bytes": 17799
+    },
+    {
+      "path": "My Funny Valentine/Views/CardEditorView.swift",
+      "sha256": "fcdcb572232697e96171f624fd61f6b04de6d725bdbab548e1a0ee317c567006",
+      "bytes": 9705
+    },
+    {
+      "path": "My Funny Valentine/Views/CardGenerationView.swift",
+      "sha256": "c84f947b2002852f60ca3c17bf5382077442f43f5f5c7c9e9cefb14115199ee8",
+      "bytes": 2012
+    },
+    {
+      "path": "My Funny Valentine/Views/CardImageImportView.swift",
+      "sha256": "3a0784ea200a7f61b1fceb2f7b999af493aff5cbb26b7420d08f5d97c6e48fa6",
+      "bytes": 8353
+    },
+    {
+      "path": "My Funny Valentine/Views/CardLibraryView.swift",
+      "sha256": "1aea1b201788ab7cd342210dc3164c024341214a4b64104c47d6c2c14e7651e1",
+      "bytes": 5664
+    },
+    {
+      "path": "My Funny Valentine/Views/CardListView.swift",
+      "sha256": "73d3b8e1b78deef0a479bdd869bff9848995983efe227cee30a06346cd9e2336",
+      "bytes": 3452
+    },
+    {
+      "path": "My Funny Valentine/Views/CardPreviewView.swift",
+      "sha256": "f77940d7307d63fa4c0f3c79e41477740946e0137a7140b255bfbcc81b9059fc",
+      "bytes": 5361
+    },
+    {
+      "path": "My Funny Valentine/Views/ConflictResolutionView.swift",
+      "sha256": "631e800743d25a357661302eab5686c5bdb5d821e504c2c4090d04d05e6caf1c",
+      "bytes": 5075
+    },
+    {
+      "path": "My Funny Valentine/Views/DropTargetView.swift",
+      "sha256": "e92087baafb73721cebc7e410611b627ee66249066f740e2f86439de205ff519",
+      "bytes": 4401
+    },
+    {
+      "path": "My Funny Valentine/Views/EmptyStateView.swift",
+      "sha256": "3510cffa53dd06dd856c531afe2db89086bbc7fff9bbc5a4156db9bbc6afbacc",
+      "bytes": 1287
+    },
+    {
+      "path": "My Funny Valentine/Views/FaceImportView.swift",
+      "sha256": "e12bc6e4b635fe2ab2f68fe8cadc9587ca4c776d6779191187320340a252f1d7",
+      "bytes": 7866
+    },
+    {
+      "path": "My Funny Valentine/Views/FaceSelectionView.swift",
+      "sha256": "c2a4dcfdcafa6acc41ff9dcfe49a30dead1db1118ef33a57a17a65762c0fefbb",
+      "bytes": 3914
+    },
+    {
+      "path": "My Funny Valentine/Views/GIFExportView.swift",
+      "sha256": "b35b0393bae216e7df055f3aa997f46db8e5d89cf8f1c0c0fbc6c31141a5abe1",
+      "bytes": 4146
+    },
+    {
+      "path": "My Funny Valentine/Views/HomeView.swift",
+      "sha256": "cdf1934d100703f96cd7bb15408161118a4ae85fd8e465aa4b140b1884b9d6ff",
+      "bytes": 4360
+    },
+    {
+      "path": "My Funny Valentine/Views/ImageEditorView.swift",
+      "sha256": "88d6cad05c911bbc884ce48642ed9adebf91dc2c59f04716d5a24b72278370f9",
+      "bytes": 4236
+    },
+    {
+      "path": "My Funny Valentine/Views/ImageGenerationView.swift",
+      "sha256": "08c549ce5861693c18b4d1408e1abbc90327ff741bb284f2da4ded94b6074cb3",
+      "bytes": 5187
+    },
+    {
+      "path": "My Funny Valentine/Views/ImagePlaygroundSheetModifier.swift",
+      "sha256": "8dfda73f2e7d39bf0228a29091e1dbbd84643aea71290c2c115aa3810064e01d",
+      "bytes": 2597
+    },
+    {
+      "path": "My Funny Valentine/Views/Onboarding/OnboardingView.swift",
+      "sha256": "9bd0d8229f063156ef3b31a382faacaeac94ed0a893f3378adf6deb25edf51ba",
+      "bytes": 4976
+    },
+    {
+      "path": "My Funny Valentine/Views/PhotoPickerView.swift",
+      "sha256": "5a6d2c808fbd78477116efd0939ef31f58bccb5ccc778bfeac507d7f4e525f0e",
+      "bytes": 3552
+    },
+    {
+      "path": "My Funny Valentine/Views/SayingsGenerationView.swift",
+      "sha256": "2aa868f1edd1374fa5f56b22a2d166ec96101bd536575da1ebe6f98d651392c9",
+      "bytes": 7571
+    },
+    {
+      "path": "My Funny Valentine/Views/SettingsView.swift",
+      "sha256": "2bc00705bb5403cee9cc85bd526e5644e0b74cf19f8c83431dc8033153e50d84",
+      "bytes": 6850
+    },
+    {
+      "path": "My Funny Valentine/Views/SharePreviewView.swift",
+      "sha256": "dc04cc91f7af7f3ed9356d42b85059276f45edc336d7c9649136f36e298389e9",
+      "bytes": 8777
+    },
+    {
+      "path": "My Funny Valentine/Views/ShareSheet.swift",
+      "sha256": "6a9a4e7991a6a27e176e93642b15e85fb67fb058eeda5748f7e46055d036ccaf",
+      "bytes": 3993
+    },
+    {
+      "path": "My Funny Valentine/Views/SyncSettingsView.swift",
+      "sha256": "7d2fb396453dfc6ceae07e866254486f78fb7c465a122615235ec684007f7f25",
+      "bytes": 6157
+    },
+    {
+      "path": "My Funny Valentine/Views/SyncStatusView.swift",
+      "sha256": "9dbfee00815bed41d1ef0d55eea62779136eae5b83014b42cfe8f554831f7427",
+      "bytes": 3566
+    },
+    {
+      "path": "My Funny Valentine/Views/UsageLimitView.swift",
+      "sha256": "3cac903724edf332053161904e4fb5f75537687b8107e93215ef02a1b09edac4",
+      "bytes": 4014
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName" : "MFV Phone QA 20261003",
+        "exportedFileName" : "159E5C36-ED23-42D0-9BAD-468296CC5F2E.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "10-Find-The-Words_0_7E76D4D7-0421-46B0-9D37-81FD1B9E25B9.png",
+        "timestamp" : 1790996905.58
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName" : "MFV Phone QA 20261003",
+        "exportedFileName" : "FAD33E6A-BEF8-40F6-8BE4-863CFC8605B8.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "09-My-Cards_0_4FA033E7-9935-4A04-9747-5A37C42BB009.png",
+        "timestamp" : 1790996875.431
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName" : "MFV Phone QA 20261003",
+        "exportedFileName" : "E04A8120-4BB2-405D-8961-12EBA8EE86D3.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "08-Sweet-Tooth_0_A0D57AC8-AE83-4668-8D30-27B4EBD0D26F.png",
+        "timestamp" : 1790996849.666
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName" : "MFV Phone QA 20261003",
+        "exportedFileName" : "342A84FE-50CF-47D8-921E-33200B3D9277.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "07-Disco-Date_0_3CCD512E-C176-4EE1-B374-57E5DC892DF8.png",
+        "timestamp" : 1790996821.246
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName" : "MFV Phone QA 20261003",
+        "exportedFileName" : "6CC8C5DC-5093-41BF-932A-AF5B1A182A5B.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "06-Dino-Mite_0_E2560791-16A7-4C12-82A2-3EB3A739F214.png",
+        "timestamp" : 1790996792.224
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName" : "MFV Phone QA 20261003",
+        "exportedFileName" : "494C4807-E0CD-484D-9525-002215E95E74.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "05-Lovebirds_0_2F1FD234-6CB5-46E6-AA4D-D3D0F52C4C04.png",
+        "timestamp" : 1790996763.387
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName" : "MFV Phone QA 20261003",
+        "exportedFileName" : "B9D3A8F9-072B-4516-A734-DAC78EDD9ABF.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "04-Cosmic-Love_0_68F71E08-E948-47DF-A0D2-7BF3DB8321C2.png",
+        "timestamp" : 1790996734.859
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName" : "MFV Phone QA 20261003",
+        "exportedFileName" : "6471921F-73D1-4CF8-8AFF-AEAE57E34DF5.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "03-Ready-To-Send-PNG_0_905295DB-A6FB-4C06-A8C7-C9095B8A0C07.png",
+        "timestamp" : 1790996700.977
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName" : "MFV Phone QA 20261003",
+        "exportedFileName" : "195E07F2-22B0-4263-BFBB-C22742583B50.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "02-Personalized-Pizza_0_71D3969D-9441-42BB-91AB-7BCD20C320A2.png",
+        "timestamp" : 1790996692.543
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName" : "MFV Phone QA 20261003",
+        "exportedFileName" : "4CA02333-9C34-47D6-A2B7-3C28DE0A3739.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "01-All-Cards_0_B1AAE62E-0603-48E1-A9E3-B6584DD15BE2.png",
+        "timestamp" : 1790996663.732
+      }
+    ],
+    "testIdentifier" : "ScreenshotUITests/testCaptureAppStoreScreenshots()",
+    "testIdentifierURL" : "test://com.apple.xcode/My%20Funny%20Valentine/My%20Funny%20ValentineUITests/ScreenshotUITests/testCaptureAppStoreScreenshots"
+  }
+]

@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "verifiedAtUTC": "2026-10-03T03:47:46.667089+00:00",
+  "status": "passed",
+  "scope": "Synthetic local SwiftData store written with committed pre-polish model definitions, reopened and saved with committed current model definitions and production CardDraft. No production store or GUI was opened.",
+  "oldRevision": "c1b96c5b7680f3875293492983f63901bfb7d05b",
+  "currentRevision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+  "currentNativeSourceFingerprintSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+  "currentNativeFingerprintFilesChecked": 111,
+  "currentNativeFingerprintFilesChanged": [],
+  "environment": {
+    "host": "current owned Mac",
+    "operatingSystem": "macOS 26.5.2",
+    "operatingSystemBuild": "25F84",
+    "architecture": "arm64",
+    "compiler": "Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0",
+    "execution": "Swift command-line binaries; no xcodebuild, Simulator, app test runner or UI",
+    "temporaryDirectory": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34"
+  },
+  "sources": {
+    "method": "git show at each committed revision; unmodified files copied to separate temporary source directories",
+    "modelFiles": [
+      {
+        "path": "My Funny Valentine/Models/Card.swift",
+        "oldSHA256": "639530b80a0b6cc30590a238bcb9b92410b2841b4666dff0ecef53b63159124e",
+        "currentSHA256": "639530b80a0b6cc30590a238bcb9b92410b2841b4666dff0ecef53b63159124e",
+        "byteIdentical": true,
+        "currentWorkspaceMatchesCommittedSource": true
+      },
+      {
+        "path": "My Funny Valentine/Models/FaceImage.swift",
+        "oldSHA256": "d538b2f8f9d5641973949f99a8d0a25d6a353a2aee450189abba5fd1e3ddb71f",
+        "currentSHA256": "d538b2f8f9d5641973949f99a8d0a25d6a353a2aee450189abba5fd1e3ddb71f",
+        "byteIdentical": true,
+        "currentWorkspaceMatchesCommittedSource": true
+      },
+      {
+        "path": "My Funny Valentine/Models/CardImage.swift",
+        "oldSHA256": "625ea8760bb6ff2d74e2784b272ce70a4c6de5f8731f920e3945f7bd1f26f38b",
+        "currentSHA256": "625ea8760bb6ff2d74e2784b272ce70a4c6de5f8731f920e3945f7bd1f26f38b",
+        "byteIdentical": true,
+        "currentWorkspaceMatchesCommittedSource": true
+      },
+      {
+        "path": "My Funny Valentine/Models/StickerReference.swift",
+        "oldSHA256": "df5361a9ea4e11be7d013c208e3eecaed1d63706a8d494b1ba70ffb100feeb82",
+        "currentSHA256": "df5361a9ea4e11be7d013c208e3eecaed1d63706a8d494b1ba70ffb100feeb82",
+        "byteIdentical": true,
+        "currentWorkspaceMatchesCommittedSource": true
+      },
+      {
+        "path": "My Funny Valentine/Models/UserPreferences.swift",
+        "oldSHA256": "d8c369567254019cb3d9f13f30e23c28e56b645f56400056343864dcba05e4fd",
+        "currentSHA256": "d8c369567254019cb3d9f13f30e23c28e56b645f56400056343864dcba05e4fd",
+        "byteIdentical": true,
+        "currentWorkspaceMatchesCommittedSource": true
+      },
+      {
+        "path": "My Funny Valentine/Models/ImageSource.swift",
+        "oldSHA256": "ce4f186c86125cb401dd096b0a7179221715a36e24434ab0922f24a80b43fcff",
+        "currentSHA256": "ce4f186c86125cb401dd096b0a7179221715a36e24434ab0922f24a80b43fcff",
+        "byteIdentical": true,
+        "currentWorkspaceMatchesCommittedSource": true
+      },
+      {
+        "path": "My Funny Valentine/Models/SubscriptionStatus.swift",
+        "oldSHA256": "8ee0819c25ce042dd3746f447b0616fee227063dbf7dd375bf4d36b7a19d08e5",
+        "currentSHA256": "8ee0819c25ce042dd3746f447b0616fee227063dbf7dd375bf4d36b7a19d08e5",
+        "byteIdentical": true,
+        "currentWorkspaceMatchesCommittedSource": true
+      }
+    ],
+    "schemaEntities": [
+      "Card",
+      "FaceImage",
+      "CardImage",
+      "StickerReference",
+      "UserPreferences"
+    ],
+    "cardDraft": {
+      "version": "current",
+      "source": "My Funny Valentine/Utilities/CardDraft.swift",
+      "sha256": "42b5aa5761f13921e5cdf743c4116561a1ff02c7aabcd4a4ef7591359eea3ceb",
+      "temporaryCopy": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current/CardDraft.swift",
+      "workspaceMatchesCommittedSource": true
+    },
+    "onlyExtractedDependency": "Exact ConflictResolutionStrategy enum copied from CloudKitSyncService.swift at each revision, without the service or its CloudKit operations. All model sources and CardDraft are whole unmodified files.",
+    "compileFlags": [
+      "-swift-version",
+      "5",
+      "-default-isolation",
+      "MainActor",
+      "-target",
+      "arm64-apple-macosx15.1",
+      "-module-name",
+      "My_Funny_Valentine",
+      "-parse-as-library"
+    ]
+  },
+  "fixture": {
+    "store": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/cards.store",
+    "counts": {
+      "Card": 3,
+      "CardImage": 4,
+      "FaceImage": 2,
+      "StickerReference": 2,
+      "UserPreferences": 1
+    },
+    "content": "One full legacy card, one card with nil optional fields and relationships, one simple card with empty text and default layout, and nondefault user preferences.",
+    "cardFields": [
+      "UUID",
+      "persistent SwiftData identity",
+      "templateId",
+      "saying",
+      "customText with Unicode and line breaks",
+      "createdAt",
+      "modifiedAt",
+      "syncedToCloud",
+      "raw layout bytes SHA256",
+      "decoded CardLayoutData"
+    ],
+    "children": [
+      "2 faces with image/thumbnail bytes, detection dates, sync values and fractional/negative geometry",
+      "4 images covering imagePlayground, sticker, smartCutout and photoImport with bytes, identities, geometry, rotation and sync values",
+      "2 stickers with IDs, geometry and rotation, including nil optional data and a 2058194-byte PNG stored through externalStorage"
+    ],
+    "layoutFields": [
+      "backgroundColor",
+      "textPositions including font/color/position/size",
+      "imagePositions",
+      "stickerPositions",
+      "templateLayoutId",
+      "textPositionX",
+      "textPositionY",
+      "textRotation",
+      "imagePlacements"
+    ],
+    "externalStorageFiles": [
+      {
+        "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/.cards_SUPPORT/_EXTERNAL_DATA/437AA12F-35CD-4C6B-9D3D-3803BFE19574",
+        "bytes": 2058194
+      }
+    ]
+  },
+  "runtimeChecks": [
+    {
+      "operation": "legacy-write",
+      "status": "passed",
+      "command": [
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/legacy-writer",
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/cards.store",
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/legacy-snapshot.json",
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/legacy-write-result.json",
+        "/Users/nathan/Documents/GitHub/My-Funny-Valentine/My Funny Valentine/Assets.xcassets/starter_birds.imageset/art.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "operation": "current-reopen-and-save",
+      "status": "passed",
+      "command": [
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-reader",
+        "upgrade-and-save",
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/cards.store",
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/legacy-snapshot.json",
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-saved-snapshot.json",
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-upgrade-result.json",
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-cold-reopen-snapshot.json"
+      ],
+      "exitCode": 0,
+      "assertions": [
+        "Current ModelContainer opened legacy SQLite store.",
+        "Canonical current graph exactly matched old snapshot before edits.",
+        "Actual current CardDraft.copy/save retained all 3 card graphs and their persistent card/child identities during no-op saves.",
+        "Only the deliberate customText edit changed the final graph."
+      ]
+    },
+    {
+      "operation": "separate-process-cold-reopen",
+      "status": "passed",
+      "command": [
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-reader",
+        "verify-cold-reopen",
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/cards.store",
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/legacy-snapshot.json",
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-saved-snapshot.json",
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-upgrade-result.json",
+        "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-cold-reopen-snapshot.json"
+      ],
+      "exitCode": 0,
+      "assertions": [
+        "A new current-code process reopened the saved store.",
+        "Canonical full graph exactly matched the post-edit snapshot."
+      ]
+    }
+  ],
+  "intendedEdit": {
+    "path": "/cards/0/customText",
+    "old": "Keep this note.\nCafé & hearts.",
+    "new": "Edited after upgrade.\nCafé & hearts."
+  },
+  "staticCompatibility": {
+    "storedSchemas": "All five @Model files are byte-identical from c1b96c5 to bff4771. Their persistent attributes, relationship types, cascade delete rules and externalStorage declaration are unchanged.",
+    "layoutCodable": "CardLayoutData, TextPosition, ImagePosition and StickerPosition are byte-identical within Card.swift. Old-encoded layout bytes decoded with actual current definitions and survived CardDraft saves.",
+    "templateCodable": "Template.swift adds optional minimumFaceCount and starter templates. CardTemplate is not a SwiftData entity; persisted cards retain templateId String and CardLayoutData bytes. Legacy CardTemplate JSON was not separately exercised.",
+    "productionIdentity": "Product bundle identifier com.nathanfennel.My-Funny-Valentine and native entitlements are unchanged. Minimum macOS version changed from 26.2 to 15.1.",
+    "defaultStore": {
+      "configurationURLsMatch": true,
+      "containersOpenedForDefaultURLs": false,
+      "currentProductionLocalConfigurationURL": "/Users/nathan/Library/Application Support/default.store",
+      "oldAutomaticConfigurationURL": "/Users/nathan/Library/Application Support/default.store",
+      "oldLocalFallbackConfigurationURL": "/Users/nathan/Library/Application Support/default.store"
+    },
+    "defaultStoreInterpretation": "Both revisions use unnamed nonmemory default ModelConfiguration for normal production local storage. Instantiating configuration objects with the shared schema produced the same default.store URL for former automatic CloudKit, former local fallback and current local configuration. No ModelContainer opened any default URL. App sandbox routing was assessed statically, not opened or read."
+  },
+  "limitations": [
+    "Synthetic local macOS fixture proves compatibility of the supplied model definitions and current CardDraft on macOS 26.5.2. It is not an upgrade of a real user production store or a prior App Store binary.",
+    "No iOS 18 or macOS 15.1 runtime, iCloud/CloudKit-backed store, remote-only card download, entitlement-authenticated sync, UI rendering or photo decoding was exercised.",
+    "The previous launch configuration preferred automatic CloudKit, then local storage, then memory. The current launch uses persistent local storage and reports open failure. Historical memory-only cards were never persistent; this test does not recover such cards or prove CloudKit transition behavior.",
+    "Relationship membership was compared by UUID to avoid treating unspecified SwiftData array order as a persistence contract. Nil and empty relationship arrays were compared by their saved membership. All persisted attributes, byte hashes, decoded layout and persistent identities were compared.",
+    "Both source versions compiled with the installed Swift 6.3.3 compiler in Swift 5 mode and the current 15.1 macOS target. The old deployed toolchain was not reproduced.",
+    "The first old fixture compilation hit a compiler type-check time limit in temporary QA code; splitting that QA expression compiled successfully. No production source changed."
+  ],
+  "safety": {
+    "nativeSourcesModified": false,
+    "productionStoresOpened": false,
+    "defaultStoreContainersOpened": false,
+    "productionDataDeleted": false,
+    "GUIUsed": false,
+    "simulatorUsed": false,
+    "visionOSUsed": false,
+    "externalAPIsOrNetworkUsed": false,
+    "committedOrPushed": false
+  },
+  "evidence": [
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/source-manifest.json",
+      "bytes": 5834,
+      "sha256": "65098ed8d46df29a2289726d6fceaeeec689c0e14fb0cd4bc10bf88661425da8"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/Common.swift",
+      "bytes": 7121,
+      "sha256": "3f22e999a784a49ef426338b862c461db24cc1cb33885cf167a26256f2229cc5"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/LegacyWriter.swift",
+      "bytes": 5490,
+      "sha256": "5f65b6bd80596799790c5ef84940547f3e4936ad17a9e763f97eda502a953a5d"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/CurrentReader.swift",
+      "bytes": 2409,
+      "sha256": "c213e116dacc4edd5432f8515de19520298b891a9e01df2bf219ce658e99b6fb"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/old-compile.log",
+      "bytes": 723,
+      "sha256": "1cd20630a3e04df11f649bab1817bea96ff59cb1b715606a2e3c915c8d6c5d32"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/old-compile-r2.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-compile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/legacy-write.log",
+      "bytes": 193,
+      "sha256": "f7aa731a9118eebb35d99949a3339a367a4263cffb74c0651d085222be2ded4f"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-upgrade.log",
+      "bytes": 339,
+      "sha256": "94c9c14aa925d19c870fef91a2822940289e2f3dd924f0cad23897abf04b5c83"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-cold-reopen.log",
+      "bytes": 94,
+      "sha256": "034b0d6e0ddf659d11508bfb4302dc248f674a99fd9515305a490594162c90db"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/legacy-write-result.json",
+      "bytes": 674,
+      "sha256": "f6f45060ac32b918a9fbb5e0e83e1cc0a84d0015dd220c0d17a5771a1acc12bf"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-upgrade-result.json",
+      "bytes": 855,
+      "sha256": "e91d79062dd46faff9f254de0e7f5fa716ecc2bef758977faa13c666208f88cf"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/legacy-snapshot.json",
+      "bytes": 12339,
+      "sha256": "76391ac85fbce873b9d975da496354af1a43c4fa8fbe08b8a4129cbf11b83c99"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-saved-snapshot.json",
+      "bytes": 12345,
+      "sha256": "e1d7844da1f25dee50726c287c5d902337199b061d3a580fe95c2fc8728bf0db"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-cold-reopen-snapshot.json",
+      "bytes": 12345,
+      "sha256": "e1d7844da1f25dee50726c287c5d902337199b061d3a580fe95c2fc8728bf0db"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/final-checks.json",
+      "bytes": 732,
+      "sha256": "0522bb1d32116cd48be351e5691e50cb75797c8dabe0c9326b056cb4a888e34c"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/legacy-writer",
+      "bytes": 552832,
+      "sha256": "0029365d8ef1b16c5019460146a3a99aa12d4e3a15b609bff2cb34bdb81be044"
+    },
+    {
+      "path": "/tmp/mfv-legacy-upgrade-20261003-a_d85l34/current-reader",
+      "bytes": 567280,
+      "sha256": "a2445ac3de22a295774c5cfd0da7f6ef31170db1d47c3f237590254ccd348310"
+    }
+  ]
+}

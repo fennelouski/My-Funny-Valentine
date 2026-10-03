@@ -1,0 +1,98 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName" : "MFV iPad QA 20261003",
+        "exportedFileName" : "A237A6C3-66E0-47B1-8A73-723D2DE89A21.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "10-Find-The-Words_0_2E34170D-0F07-4387-8DB2-D83E0DCE208D.png",
+        "timestamp" : 1790997270.712
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName" : "MFV iPad QA 20261003",
+        "exportedFileName" : "AAEEE1E7-43B4-4062-AB86-4A1DDC0191ED.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "09-My-Cards_0_AEBC3E94-DEF1-4DE6-8526-2741043568C7.png",
+        "timestamp" : 1790997242.403
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName" : "MFV iPad QA 20261003",
+        "exportedFileName" : "D8C9D3E3-628C-44DB-A8CE-D303776CD6B3.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "08-Sweet-Tooth_0_5B7D2880-B91A-423A-BC01-D21FA5395228.png",
+        "timestamp" : 1790997215.263
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName" : "MFV iPad QA 20261003",
+        "exportedFileName" : "816009FC-5BBB-4930-A4BF-308E42730C47.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "07-Disco-Date_0_C603A6D9-B979-4EDB-A6F7-55F875E785CE.png",
+        "timestamp" : 1790997187.636
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName" : "MFV iPad QA 20261003",
+        "exportedFileName" : "4C709C60-765B-4CE7-85B3-E527AACD0DE2.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "06-Dino-Mite_0_E3ECC67F-3D3D-4E45-B6C5-1AAA6B94AFD2.png",
+        "timestamp" : 1790997159.799
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName" : "MFV iPad QA 20261003",
+        "exportedFileName" : "ADD1730E-500C-473E-8A98-50E0192145C7.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "05-Lovebirds_0_E9506FD5-F365-49FC-AD56-216AE08CFEC6.png",
+        "timestamp" : 1790997132.262
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName" : "MFV iPad QA 20261003",
+        "exportedFileName" : "1D28012E-A498-49B3-BD2A-2D0C604F5ADF.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "04-Cosmic-Love_0_56226DBD-DBB8-4895-A2C2-9A59B2D774FB.png",
+        "timestamp" : 1790997104.516
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName" : "MFV iPad QA 20261003",
+        "exportedFileName" : "0C786462-5787-4FE6-9869-86DA8A38B7A5.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "03-Ready-To-Send-PNG_0_BD2D6B65-AF11-4359-BB48-7F7BEFE0866A.png",
+        "timestamp" : 1790997072.196
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName" : "MFV iPad QA 20261003",
+        "exportedFileName" : "7B4C3F30-9AA8-4E9D-816C-7FF15A5BAEDE.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "02-Personalized-Pizza_0_4B0AA24C-DF2C-4537-8F51-68D319D21BB7.png",
+        "timestamp" : 1790997063.754
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName" : "MFV iPad QA 20261003",
+        "exportedFileName" : "42C6CA20-0CCD-4798-8436-4878BFBAF3E1.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "01-All-Cards_0_20AE6132-B6C5-4E90-AEDC-65D55680DDA2.png",
+        "timestamp" : 1790997036.134
+      }
+    ],
+    "testIdentifier" : "ScreenshotUITests/testCaptureAppStoreScreenshots()",
+    "testIdentifierURL" : "test://com.apple.xcode/My%20Funny%20Valentine/My%20Funny%20ValentineUITests/ScreenshotUITests/testCaptureAppStoreScreenshots"
+  }
+]

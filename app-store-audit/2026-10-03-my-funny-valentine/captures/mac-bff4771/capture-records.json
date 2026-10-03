@@ -1,0 +1,145 @@
+[
+  {
+    "name": "01-All-Cards",
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/01-All-Cards.jpg",
+    "capturedAtUTC": "2026-10-03T03:05:14.265Z",
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+    "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+    "appVersion": "1.0",
+    "appBuild": "1"
+  },
+  {
+    "name": "02-Personalized-Pizza",
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/02-Personalized-Pizza.jpg",
+    "capturedAtUTC": "2026-10-03T03:13:57.981Z",
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+    "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+    "appVersion": "1.0",
+    "appBuild": "1"
+  },
+  {
+    "name": "03-Ready-To-Send-PNG",
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/03-Ready-To-Send-PNG.jpg",
+    "capturedAtUTC": "2026-10-03T03:17:57.489Z",
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+    "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+    "appVersion": "1.0",
+    "appBuild": "1"
+  },
+  {
+    "name": "04-Cosmic-Love",
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/04-Cosmic-Love.jpg",
+    "capturedAtUTC": "2026-10-03T03:18:39.584Z",
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+    "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+    "appVersion": "1.0",
+    "appBuild": "1"
+  },
+  {
+    "name": "05-Lovebirds",
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/05-Lovebirds.jpg",
+    "capturedAtUTC": "2026-10-03T03:18:41.918Z",
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+    "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+    "appVersion": "1.0",
+    "appBuild": "1"
+  },
+  {
+    "name": "06-Dino-Mite",
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/06-Dino-Mite.jpg",
+    "capturedAtUTC": "2026-10-03T03:18:44.303Z",
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+    "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+    "appVersion": "1.0",
+    "appBuild": "1"
+  },
+  {
+    "name": "07-Disco-Date",
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/07-Disco-Date.jpg",
+    "capturedAtUTC": "2026-10-03T03:18:46.696Z",
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+    "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+    "appVersion": "1.0",
+    "appBuild": "1"
+  },
+  {
+    "name": "08-Sweet-Tooth",
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/08-Sweet-Tooth.jpg",
+    "capturedAtUTC": "2026-10-03T03:18:49.184Z",
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+    "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+    "appVersion": "1.0",
+    "appBuild": "1"
+  },
+  {
+    "name": "01-All-Cards-Clean",
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/01-All-Cards-Clean.jpg",
+    "capturedAtUTC": "2026-10-03T03:19:56.456Z",
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+    "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+    "appVersion": "1.0",
+    "appBuild": "1"
+  },
+  {
+    "name": "09-My-Cards",
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/09-My-Cards.jpg",
+    "capturedAtUTC": "2026-10-03T03:25:18.236Z",
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+    "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+    "appVersion": "1.0",
+    "appBuild": "1"
+  },
+  {
+    "name": "10-Find-The-Words",
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/10-Find-The-Words.jpg",
+    "capturedAtUTC": "2026-10-03T03:26:07.186Z",
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+    "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+    "appVersion": "1.0",
+    "appBuild": "1"
+  },
+  {
+    "name": "11-Image-Playground-Imported",
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/11-Image-Playground-Imported.jpg",
+    "capturedAtUTC": "2026-10-03T03:27:35.151Z",
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+    "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+    "appVersion": "1.0",
+    "appBuild": "1"
+  },
+  {
+    "name": "12-Cold-Launch-Preserved",
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/12-Cold-Launch-Preserved.jpg",
+    "capturedAtUTC": "2026-10-03T03:28:24.119Z",
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+    "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+    "appVersion": "1.0",
+    "appBuild": "1"
+  }
+]

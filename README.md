@@ -21,7 +21,7 @@ This repository contains three main components:
 ### 1. Native app (`My Funny Valentine/`)
 
 - **Framework**: SwiftUI + SwiftData
-- **Configured minimums**: iOS/iPadOS 18.0 and macOS 15.1; oldest-OS runtime checks remain pending
+- **Configured minimums**: iOS/iPadOS 18.0 and macOS 15.1; representative iOS18.5 checks passed23/23, exact18.0/macOS15.1 runtimes unavailable
 - **Features**:
   - Card creation and editing
   - Built-in messages and optional on-device Apple Intelligence sayings
@@ -31,7 +31,9 @@ This repository contains three main components:
   - Social sharing
   - Welcome flow replayable from Settings
 
-### 2. Backend API (`api/`, `lib/`)
+### 2. Legacy backend reference (`api/`, `lib/`)
+
+These optional endpoints are not configured in the native release. Their dependencies, model defaults and deployment requirements need separate verification before activation.
 - **Platform**: Vercel Serverless Functions
 - **Runtime**: Node.js 18+
 - **Features**:
@@ -41,7 +43,7 @@ This repository contains three main components:
   - Rate limiting
   - Caching (Vercel KV)
 
-### 3. Marketing Website (`website/`)
+### 3. Historical marketing website (`website/`)
 - **Framework**: Next.js/React
 - **Platform**: Vercel
 - **Purpose**: Marketing and landing page
@@ -104,10 +106,8 @@ This repository contains three main components:
 
    Backend configuration is separate from the current native release. The current release draft is in `app-store/SUBMISSION.md`.
 
-3. **Deploy to Vercel**:
-   ```bash
-   vercel
-   ```
+3. **Deployment**:
+   The backend is outside the current native release and is not configured in the app. Before enabling or deploying it, read the workspace deployment policy and repository deployment record. Verify AWS and Vercel releases from the same committed revision during the parallel-testing period. This repository has no verified backend dual-deployment command yet.
 
 4. **Local development**:
    ```bash
@@ -245,19 +245,16 @@ npm test
 - Configure App Store Connect for distribution
 
 ### Backend API
-- Automatic deployment via Vercel on git push
-- Manual deployment: `vercel --prod`
+
+The current native app has no hosted API configured. Backend release work must follow the workspace AWS migration policy. Implement and verify the repository's dual-deployment command before a hosted release; Git push alone is not deployment evidence.
 
 ### Website
-- Automatic deployment via Vercel on git push
 
-## Cost Optimization
+Current privacy/support pages are maintained in the separate `nathanfennel.com` repository. Its verified command is `npm exec --yes --package=node@22 -- python3 scripts/deploy-app-privacy.py`, run from that repository after its clean committed revision and AWS authentication are verified. Record both AWS and Vercel live checks. The older `website/` directory is not the current release's public policy source.
 
-- **Primary chat model**: `gpt-5-nano` (override with `OPENAI_MODEL`)
-- **Fallback chat model**: `gpt-5.4-nano` (override with `OPENAI_FALLBACK_MODEL`)
-- **Image model**: `gpt-image-2` with `quality: 'medium'` (override with `OPENAI_IMAGE_MODEL`)
-- **Aggressive Caching**: Reduces API calls by ~90%
-- Estimated costs: <$10/month for 1000 unique requests
+## Legacy backend model defaults
+
+The inactive backend code has defaults for `gpt-5-nano`, `gpt-5.4-nano` and `gpt-image-2`, with environment overrides. These values describe the code, not verified current API availability or a budget. Current native cards use bundled starter art, local suggestions and optional Apple generation. There is no developer-hosted generation bill in the configured app flow.
 
 ## Security
 
@@ -270,7 +267,7 @@ npm test
 
 ## Release status and public links
 
-The [current release draft](app-store/SUBMISSION.md) and [listing metadata](app-store-audit/2026-10-03-my-funny-valentine/release-listing.json) record verification and release steps. Native checks, fresh marketing captures, signed archives, uploads, App Store Connect fields and submission remain pending. Cards are saved on this device; sharing sends an exported copy.
+The [current release draft](app-store/SUBMISSION.md) and [listing metadata](app-store-audit/2026-10-03-my-funny-valentine/release-listing.json) record completed checks and remaining release steps. Frozen bff4771 complete iPhone and landscape iPad flows passed; actual Mac gallery, saved-card relaunch, sayings and Image Playground import checks passed. The synthetic pre-polish local saved-card upgrade passed. Both signed release packages and all 30 composed marketing images passed local verification. Xcode failed to create the missing App Store record before transfer. Representative iOS18.5 checks passed all23 tests. App Store fields, live privacy/support pages and review submission remain pending. Cards save on this device; sharing sends an exported copy.
 
 Prospective privacy and support pages are [privacy.html](https://nathanfennel.com/my-funny-valentine/privacy.html) and [support.html](https://nathanfennel.com/my-funny-valentine/support.html). Deployment and live URL checks remain pending. The App Store marketing URL stays unset because there is no app directory marketing page.
 

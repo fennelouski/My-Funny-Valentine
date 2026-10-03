@@ -1,0 +1,124 @@
+{
+  "checked_at_utc": "2026-10-03T02:48:30.694889+00:00",
+  "scope": "Read-only inspection of actual native macOS PNG/GIF exports supplied by root; no UI interaction or build performed by inspector.",
+  "binary_source_revision_reported_by_root": "76d9986bac20552d67842266ef9b925d2fd2edf3",
+  "source_revision_note": "Root reports the running native binary is from 76d9986. Later tint and scroll-ID source edits are not in this binary. Git resolves the short revision to the recorded full SHA; export files do not independently attest the binary revision.",
+  "export_creation_method_reported_by_root": "Actual native macOS app operated through Cua; app-created Share PNG and animated GIF files.",
+  "mac_ui_xctest_status": "Setup failed, not passed. File inspection is separate from native UI interaction and XCTest.",
+  "fictional_qa_face": {
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/qa-face-source.png",
+    "sha256": "036b1f6c301ecd4c3a1d545c7359d1710730bfcdc438d0e0839c7600a0879d36",
+    "provenance_path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/qa-face-source-provenance.json",
+    "identity": "Generated fictional adult; built-in image_gen fixture, not a real user photo."
+  },
+  "files": {
+    "gif": {
+      "original_path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/tmp/Valentine-34F41B0C-D456-4B13-80FD-F69E8F81C98B.gif",
+      "audit_copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/qa-exports/native-mac-face-wiggle.gif",
+      "sha256": "4c1d9741490ff95ea9383ed3342c59b48556823f41d3229265fde1bcc8c986f7",
+      "byte_count": 169313,
+      "pixel_dimensions": [
+        400,
+        600
+      ],
+      "copy_byte_identical": true
+    },
+    "png": {
+      "original_path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/tmp/Valentine-DA431E30-CD11-43AA-AE5D-AD924C914CB8.png",
+      "audit_copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/qa-exports/native-mac-personalized-card.png",
+      "sha256": "f10ba415232d55b18b1d8e68236eaf66a37875abd4b0db6cba38000afffa6ed1",
+      "byte_count": 1596951,
+      "pixel_dimensions": [
+        800,
+        1200
+      ],
+      "copy_byte_identical": true
+    }
+  },
+  "gif_validation": {
+    "frame_count": 32,
+    "unique_decoded_rgb_frames": 17,
+    "frame_durations_ms": [
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130
+    ],
+    "total_cycle_duration_ms": 4160,
+    "loop_value": 0,
+    "loop_meaning": "infinite",
+    "all_decoded_frame_dimensions": [
+      400,
+      600
+    ],
+    "all_encoded_update_bounds_inside_canvas": true,
+    "change_bounds_top_left_pixels_exclusive_max": [
+      149,
+      171,
+      251,
+      270
+    ],
+    "maximum_changed_pixels_vs_first_frame": 4485,
+    "pixels_outside_change_bounds_identical_in_every_frame": true,
+    "whole_image_motion_detected": false,
+    "text_region_top_left_pixels": [
+      0,
+      400,
+      400,
+      600
+    ],
+    "text_region_identical_in_every_frame": true,
+    "text_region_rgb_sha256": "1eb7ac6259a2547946142320ff1b155009155cdce77f0eaa58fd0329669dc3ac",
+    "text_ink_bounds_top_left_pixels_exclusive_max": [
+      61,
+      446,
+      339,
+      549
+    ],
+    "method": "Pillow decodes each composited frame to RGB. Exact per-channel difference against frame 0, with no tolerance threshold; union of nonzero pixels is confined to the visible face. The complete lower text region has one RGB hash across all 32 frames."
+  },
+  "visual_inspection": {
+    "png_and_gif_first_frame_viewed": true,
+    "readable_text": [
+      "You had me at pizza.",
+      "Love, Alex"
+    ],
+    "text_not_clipped_in_inspected_exports": true,
+    "png_text_ink_bounds_top_left_pixels_exclusive_max": [
+      121,
+      893,
+      677,
+      1099
+    ],
+    "observed_artwork": "Two illustrated pizza slices high-fiving, centered fictional portrait, card message and signature.",
+    "limits": "This validates the supplied files. It does not establish final-build QA, Mac UI XCTest success, App Store galleries, uploads or release submission."
+  }
+}

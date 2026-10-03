@@ -1,0 +1,484 @@
+{
+  "recordedAtUTC": "2026-10-03T02:16:18.879910+00:00",
+  "scope": "Historical selected core/storage evidence remains immutable. Current frozen bff4771 builds, final native galleries, signed packages, actual Mac Apple generation and synthetic legacy-store preservation are recorded separately. App Store record creation failed before transfer; no upload or submission verified.",
+  "runs": [
+    {
+      "platform": "iOS",
+      "resultSummary": "/tmp/mfv-ios-core-r2-summary-20261003.json",
+      "status": "Passed",
+      "passedTests": 22,
+      "failedTests": 0,
+      "totalTests": 22,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+              "deviceName": "MFV Phone QA 20261003",
+              "modelName": "iPhone 17 Pro Max",
+              "osBuildNumber": "23F77",
+              "osVersion": "26.5",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 22,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "My Funny Valentine \u00b7 Built with macOS 26.5.2",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1790992776.075,
+        "passedTests": 22,
+        "result": "Passed",
+        "skippedTests": 0,
+        "startTime": 1790992763.659,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - My Funny Valentine",
+        "topInsights": [
+          {
+            "category": "Longest Test Runs",
+            "impact": "53% of duration",
+            "text": "1 longest test run with outlier durations exceeding 0.56s (three standard deviations)"
+          }
+        ],
+        "totalTestCount": 22
+      }
+    },
+    {
+      "platform": "iOS",
+      "resultSummary": "/tmp/mfv-ios-starter-ui-summary-20261003.json",
+      "status": "Passed",
+      "passedTests": 1,
+      "failedTests": 0,
+      "totalTests": 1,
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+              "deviceName": "MFV Phone QA 20261003",
+              "modelName": "iPhone 17 Pro Max",
+              "osBuildNumber": "23F77",
+              "osVersion": "26.5",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "My Funny Valentine \u00b7 Built with macOS 26.5.2",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1790992570.781,
+        "passedTests": 1,
+        "result": "Passed",
+        "skippedTests": 0,
+        "startTime": 1790992537.792,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - My Funny Valentine",
+        "topInsights": [],
+        "totalTestCount": 1
+      }
+    }
+  ],
+  "macOS": {
+    "coreFirstRun": {
+      "status": "20 passed, 1 persistence fixture failed",
+      "resultBundle": "/tmp/mfv-macos-core-20261003.xcresult"
+    },
+    "coreSecondRun": {
+      "status": "20 passed, 1 persistence fixture/readonly failure",
+      "resultBundle": "/tmp/mfv-macos-core-r2-20261003.xcresult"
+    },
+    "draftAfterReadOnlyGuard": {
+      "status": "passed",
+      "resultBundle": "/tmp/mfv-macos-draft-r4-20261003.xcresult"
+    },
+    "unsignedUIAttempt": {
+      "status": "interrupted after runner failed to launch tests; no UI checks completed",
+      "resultBundle": "/tmp/mfv-macos-starter-ui-20261003.xcresult"
+    },
+    "developmentSignedBuild": {
+      "status": "succeeded",
+      "derivedData": "/tmp/mfv-macos-gallery-20261003",
+      "qaCompilationFlags": "DEBUG MFV_QA_STORE",
+      "uiRuntimeStatus": "manual current-bff native flows passed; automated UI runner setup failures preserved separately"
+    },
+    "signedUIAttempt": {
+      "status": "failed during UI runner initialization; no UI tests completed",
+      "error": "Timed out while enabling automation mode.",
+      "resultBundle": "/tmp/mfv-macos-signed-ui-20261003.xcresult",
+      "log": "/tmp/mfv-macos-signed-ui-20261003.log"
+    }
+  },
+  "iOSSimulatorFaceInference": {
+    "device": "MFV Phone QA 20261003",
+    "runtime": "iOS 26.5",
+    "facesDetected": 1,
+    "foregroundMattes": 0,
+    "branch": "supported CPU compute device; bounded photo crop fallback",
+    "testStatus": "passed"
+  },
+  "pending": [
+    "Exact iOS18.0/macOS15.1 runtimes unavailable;18.5representative23/23passed and final binary static availability audit passed",
+    "verified App Store Connect AppID, managed upload, processing and build selection",
+    "published and live-verified privacy/support pages; AWS CLI login expired",
+    "App Store Connect metadata, free pricing, countries and age questionnaire",
+    "owner App Privacy/rights/contact/legal attestations at concrete action",
+    "review submission",
+    "broader accessibility runtime checks; no unsupported accessibility label claims"
+  ],
+  "visionOS": "paused by owner; no builds or runtime checks",
+  "updatedAtUTC": "2026-10-03T04:19:14.864817+00:00",
+  "nativeMacVisualChecks": {
+    "revision": "76d9986bac20552d67842266ef9b925d2fd2edf3",
+    "nativeFingerprint": "native-source-fingerprint-76d9986b.json",
+    "verificationSource": "release owner native Cua checks",
+    "status": "selected checks passed; final current-source platform verification pending",
+    "checks": [
+      "face photo import",
+      "visible foreground alpha",
+      "face Play/Pause",
+      "GIF preparation",
+      "native share menu"
+    ],
+    "exportReceipt": "qa-exports/native-mac-export-receipt.json",
+    "exportReceiptStatus": "Supplied native PNG/GIF payloads inspected; this is separate from owner native UI checks and does not independently attest the binary revision or later source changes.",
+    "scope": "Historical76d9986b selected UI/export checks; current bff4771 manual flow evidence is recorded in currentRuntimeGalleries.macOS."
+  },
+  "iPhoneGalleryAttempts": [
+    {
+      "status": "failed keyboard-dismissal postcondition; no final gallery",
+      "error": "The keyboard must close before a marketing capture",
+      "resultBundle": "/tmp/mfv-iphone-gallery-20261003.xcresult",
+      "log": "/tmp/mfv-iphone-gallery-20261003.log"
+    },
+    {
+      "status": "failed keyboard-dismissal postcondition; no final gallery",
+      "error": "The keyboard must close before a marketing capture",
+      "resultBundle": "/tmp/mfv-iphone-gallery-r2-20261003.xcresult",
+      "log": "/tmp/mfv-iphone-gallery-r2-20261003.log"
+    },
+    {
+      "status": "historical third keyboard-dismissal postcondition failed; superseded by r4 pass after native Done fix",
+      "resultBundle": "/tmp/mfv-iphone-gallery-r3-20261003.xcresult",
+      "log": "/tmp/mfv-iphone-gallery-r3-20261003.log"
+    }
+  ],
+  "websitePages": {
+    "revision": "ec90d6f42769093fa43f0dbd1252fa2150036a1d",
+    "documents": 72,
+    "deploymentStatus": "not deployed",
+    "lastReadOnlyAWSCheck": "2026-10-03 04:06:16 UTC",
+    "lastReadOnlyAWSCheckProfile": "fishbowl-head",
+    "blocker": "expired AWS CLI credentials, rechecked exit255; no deployment writes",
+    "newPrivacyAndSupportURLsLiveVerified": false,
+    "localRenderVerification": "website-local-verification.json; both exact HTML pages passed phone/desktop browser DOM and actual visual checks. Not live deployment proof."
+  },
+  "candidateReleaseArchives": {
+    "revision": "92539752fca5c55206cb2e5ee2159c88e33ee982",
+    "nativeFingerprint": "native-source-fingerprint-92539752.json",
+    "nativeSHA256": "c854e6b2fe8b00cd394212162fd627a6c4858af5022df9107e853b6accd24182",
+    "nativeChangesSince224c921f": "none; screenshot test orientation only",
+    "record": "signed-archives-9253975.json",
+    "iOS": "archive/export succeeded; signed IPA payload verified; iOS18.0 minimum, arm64, device families1/2",
+    "macOS": "archive/export succeeded; archive signature and Apple installer package signature verified; macOS15.1 minimum, universalarm64/x86_64",
+    "runtimeGalleries": "pending",
+    "upload": "not yet attempted for this candidate",
+    "scope": "Historical candidate superseded by bff4771 native keyboard Done fix; never uploaded."
+  },
+  "historicalSourceBuilds224c921f": {
+    "revision": "224c921f10eb110d5ac18911307437df4de64246",
+    "nativeFingerprint": "native-source-fingerprint-224c921f.json",
+    "nativeSourceSHA256": "c854e6b2fe8b00cd394212162fd627a6c4858af5022df9107e853b6accd24182",
+    "verificationSource": "release owner verified successful exits; success markers present in both logs",
+    "iOS": {
+      "status": "build-for-testing succeeded",
+      "log": "/tmp/mfv-ios-build-scrolltarget-20261003.log"
+    },
+    "macOS": {
+      "status": "native build succeeded",
+      "log": "/tmp/mfv-macos-build-scrolltarget-20261003.log"
+    },
+    "signedArchivesAndExports": "pending for this revision"
+  },
+  "currentSourceBuilds": {
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeFingerprint": "native-source-fingerprint.json",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "iOS": {
+      "status": "build-for-testing succeeded",
+      "log": "/tmp/mfv-ios-build-keyboarddone-20261003.log",
+      "fullScreenCaptureHarnessBuild": {
+        "status": "build-for-testing succeeded",
+        "log": "/tmp/mfv-ios-build-screencapture-20261003.log",
+        "derivedData": "/tmp/mfv-ios-screen-capture-20261003",
+        "nativeFilesUnchanged": true,
+        "scope": "Test-only screenshot harness changed to capture actual full device screen, not app bounds."
+      }
+    },
+    "macOS": {
+      "status": "development-signed native QA build succeeded",
+      "log": "/tmp/mfv-macos-build-keyboarddone-20261003.log",
+      "qaCompilationFlags": "DEBUG MFV_QA_STORE"
+    },
+    "signedArchivesAndExports": "Signed local exports verified; signed-archives-bff4771.json. No upload or submission verified."
+  },
+  "currentRuntimeGalleries": {
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeFingerprint": "native-source-fingerprint.json",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "iPhone": {
+      "result": "Passed",
+      "nativeCaptures": 10,
+      "resultBundle": "/tmp/mfv-iphone-gallery-r4-20261003.xcresult",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+              "deviceName": "MFV Phone QA 20261003",
+              "modelName": "iPhone 17 Pro Max",
+              "osBuildNumber": "23F77",
+              "osVersion": "26.5",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "My Funny Valentine \u00b7 Built with macOS 26.5.2",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1790996935.288,
+        "passedTests": 1,
+        "result": "Passed",
+        "skippedTests": 0,
+        "startTime": 1790996651.21,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - My Funny Valentine",
+        "topInsights": [],
+        "totalTestCount": 1
+      }
+    },
+    "iPad": {
+      "result": "Passed",
+      "visualStatus": "Passed:10 full native device-screen captures normalize upright landscape through standard ImageIO EXIF handling, with no black edge strips. Original bytes retained unchanged.",
+      "nativeCaptures": 10,
+      "orientation": "landscapeLeft",
+      "resultBundle": "/tmp/mfv-ipad-screen-gallery-20261003.xcresult",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+              "deviceName": "MFV iPad QA 20261003",
+              "modelName": "iPad Pro 13-inch (M5)",
+              "osBuildNumber": "23F77",
+              "osVersion": "26.5",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "My Funny Valentine \u00b7 Built with macOS 26.5.2",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1790999108.019,
+        "passedTests": 1,
+        "result": "Passed",
+        "skippedTests": 0,
+        "startTime": 1790998794.152,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - My Funny Valentine",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "captureMethod": "XCUIScreen.main.screenshot() in test-only capture harness",
+      "captureDirectory": "captures/ipad-screen-bff4771",
+      "orientationAudit": "marketing-bff4771/inspection/ipad-screen-gallery-orientation-audit.json",
+      "encodedPixelDimensions": [
+        2064,
+        2752
+      ],
+      "metadataOrientation": 8,
+      "normalizedPixelDimensions": [
+        2752,
+        2064
+      ],
+      "nativeLauncherSHA256": "cfc7e667c1452b0b95798c9298cf66ab0e4182e462af3a66045302a61d0354e1",
+      "nativeDebugDylibSHA256": "66af8e6df42616c2bcb755faa1785ab6cc37d2c621f9dd5f1a2767cd0c1d9754",
+      "nativeDebugDylibBytes": 18223312
+    },
+    "macOS": {
+      "result": "manual native flows passed",
+      "nativeCaptures": 10,
+      "captureRecord": "captures/mac-bff4771/capture-records.json",
+      "checks": [
+        "six starter world cards edited and saved through UI",
+        "saved pizza face/note reopened",
+        "native PNG sharing preview",
+        "actual Apple FoundationModels sayings generation/select reaches draft",
+        "actual Image Playground Apple Animation generation imports completed artwork",
+        "Cancel preserves original saved card",
+        "cold launch retained six cards and original face/message/note"
+      ],
+      "automatedUITests": "not passed; runner initialization failed before test execution",
+      "systemGenerationReceipt": "qa-exports/native-mac-system-generation-bff4771.json"
+    }
+  },
+  "privacyLabelProposal": "privacy-label-rationale.json",
+  "finalSignedReleasePackages": {
+    "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "nativeFingerprint": "native-source-fingerprint.json",
+    "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+    "record": "signed-archives-bff4771.json",
+    "iOS": {
+      "status": "signed IPA local checks passed",
+      "sha256": "939b573da8a55cab720a87fb279b0970baf0fd8b7d127ae12358339d6469b5b7",
+      "bytes": 13402412
+    },
+    "macOS": {
+      "status": "signed App Store PKG local checks passed",
+      "sha256": "165a337a40673bd2da406127550d23103f552cff09f7a43d756033cdc78a8d5d",
+      "bytes": 12953607
+    },
+    "uploaded": false
+  },
+  "rejectedHistoricalIPadGallery": {
+    "result": "Passed",
+    "nativeCaptures": 10,
+    "orientation": "landscapeLeft",
+    "resultBundle": "/tmp/mfv-ipad-gallery-20261003.xcresult",
+    "summary": {
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+            "deviceName": "MFV iPad QA 20261003",
+            "modelName": "iPad Pro 13-inch (M5)",
+            "osBuildNumber": "23F77",
+            "osVersion": "26.5",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 1,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "environmentDescription": "My Funny Valentine \u00b7 Built with macOS 26.5.2",
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "finishTime": 1790997301.498,
+      "passedTests": 1,
+      "result": "Passed",
+      "skippedTests": 0,
+      "startTime": 1790997016.642,
+      "statistics": [],
+      "testFailures": [],
+      "title": "Test - My Funny Valentine",
+      "topInsights": [],
+      "totalTestCount": 1
+    },
+    "visualStatus": "Rejected for marketing: app-only XCTest screenshots encode sideways UI and 688black columns; functional flow passed but screenshot capture failed visualQA. Full-screen native recapture pending.",
+    "orientationAudit": "marketing-bff4771/inspection/ipad-orientation-audit.json",
+    "supersededBy": "currentRuntimeGalleries.iPad; corrected full native screen run Passed at bff4771"
+  },
+  "legacyStoreUpgrade": {
+    "status": "Passed",
+    "record": "legacy-upgrade-verification.json",
+    "oldRevision": "c1b96c5b7680f3875293492983f63901bfb7d05b",
+    "currentRevision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "scope": "Synthetic local SwiftData store written with exact old committed model sources, reopened and saved with current committed models/production CardDraft, then reopened in a separate cold process on macOS26.5.2. Persistent identities, child membership, raw media/layout bytes and saved text retained.",
+    "limitations": "No production store opened; no iOS18, macOS15.1 or CloudKit transition verified."
+  },
+  "currentMarketingGalleries": {
+    "manifest": "marketing-bff4771/manifest.json",
+    "provenance": "marketing-bff4771/exports/marketing-provenance.json",
+    "qc": "marketing-bff4771/marketing-qc.json",
+    "images": 30,
+    "byPlatform": {
+      "iphone": 10,
+      "ipad": 10,
+      "mac": 10
+    },
+    "dimensions": {
+      "iphone": [
+        1320,
+        2868
+      ],
+      "ipad": [
+        2752,
+        2064
+      ],
+      "mac": [
+        2560,
+        1600
+      ]
+    },
+    "technicalStatus": "Passed exact dimensions, sRGB, file size and original native hashes",
+    "visualStatus": "Passed technical checks, primary and independent final visual reviews, plus root contact-sheet review.",
+    "uploaded": false,
+    "appleDimensionSource": "https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/"
+  },
+  "managedAppStoreAttempt": {
+    "record": "managed-store-registration-bff4771.json",
+    "status": "failed app record creation before validation/transfer",
+    "appStoreAppID": null,
+    "uploaded": false,
+    "submitted": false
+  },
+  "historicalCoreNativeRevision": "3d6163695296d5d4b822e17513423d46587aafc6",
+  "historicalCoreNativeFingerprint": "native-source-fingerprint-3d616369.json",
+  "minimumOSStaticAudit": {
+    "status": "Passed; no concrete static incompatibility found",
+    "record": "minimum-os-static-verification.json",
+    "scope": "Final signed binary load commands, imported symbol weakness and source use-site availability/readiness gates",
+    "runtimeProof": "iOS18.5 representative23/23passed; exact18.0/macOS15.1 unavailable"
+  },
+  "iOS18RepresentativeCompatibility": {
+    "status": "Passed23/23",
+    "runtime": "18.5",
+    "record": "ios18-compatibility-verification.json",
+    "scope": "oldest installed representative iOS18runtime; exact18.0 not tested"
+  }
+}

@@ -92,6 +92,9 @@ struct LoadedCapture {
     let metadata: Capture
     let url: URL
     let image: CGImage
+    let encodedPixelWidth: Int
+    let encodedPixelHeight: Int
+    let sourceOrientation: Int
 }
 
 enum Palette: String, Codable, CaseIterable {
@@ -155,24 +158,50 @@ func validate(_ manifest: Manifest, beside base: URL, testOnly: Bool = false) th
         }
         try require(validDate(provenance["capturedAtUTC"]!.string!), "\(capture.id): invalid capture timestamp.")
         let url = resolve(capture.path, beside: base)
-        try require(url.pathExtension.lowercased() == "png", "\(capture.id): original captures must be PNG files.")
+        let fileExtension = url.pathExtension.lowercased()
+        try require(["png", "jpg", "jpeg"].contains(fileExtension), "\(capture.id): original captures must be PNG or JPEG files.")
         let data = try Data(contentsOf: url)
-        try require(digest(data) == capture.sha256.lowercased(), "\(capture.id): source PNG hash changed.")
+        try require(digest(data) == capture.sha256.lowercased(), "\(capture.id): source capture hash changed.")
         guard let source = CGImageSourceCreateWithData(data as CFData, nil),
-              CGImageSourceGetType(source) as String? == "public.png",
+              let sourceType = CGImageSourceGetType(source) as String?,
+              (fileExtension == "png" ? sourceType == "public.png" : sourceType == "public.jpeg"),
               CGImageSourceGetCount(source) == 1,
-              let image = CGImageSourceCreateImageAtIndex(source, 0, nil) else {
-            throw MarketingError(message: "\(capture.id): unsupported or unreadable PNG.")
+              let encodedImage = CGImageSourceCreateImageAtIndex(source, 0, nil) else {
+            throw MarketingError(message: "\(capture.id): unsupported or unreadable native capture.")
+        }
+        let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [String: Any]
+        let orientation = (properties?[kCGImagePropertyOrientation as String] as? NSNumber)?.intValue ?? 1
+        try require((1...8).contains(orientation), "\(capture.id): unsupported source orientation metadata.")
+        let image: CGImage
+        if orientation == 1 {
+            image = encodedImage
+        } else {
+            // Honor native screenshot metadata without rewriting, cropping or retouching the original.
+            guard let orientedImage = CGImageSourceCreateThumbnailAtIndex(source, 0, [
+                kCGImageSourceCreateThumbnailFromImageAlways: true,
+                kCGImageSourceCreateThumbnailWithTransform: true,
+                kCGImageSourceThumbnailMaxPixelSize: max(encodedImage.width, encodedImage.height)
+            ] as CFDictionary) else {
+                throw MarketingError(message: "\(capture.id): cannot apply standard source orientation.")
+            }
+            let swapsAxes = (5...8).contains(orientation)
+            try require(orientedImage.width == (swapsAxes ? encodedImage.height : encodedImage.width)
+                        && orientedImage.height == (swapsAxes ? encodedImage.width : encodedImage.height),
+                        "\(capture.id): orientation normalization must retain full native pixel dimensions.")
+            image = orientedImage
         }
         let aspect = CGFloat(image.width) / CGFloat(image.height)
         let appropriateShape: Bool
         switch capture.platform {
         case .phone: appropriateShape = (0.38...0.59).contains(aspect)
         case .pad: appropriateShape = (1.20...1.50).contains(aspect)
-        case .mac: appropriateShape = (1.0...2.6).contains(aspect)
+        // Native Mac export sheets can be portrait even when the app window is wide.
+        case .mac: appropriateShape = (0.60...2.6).contains(aspect)
         }
         try require(appropriateShape, "\(capture.id): source orientation/aspect does not match \(capture.platform.rawValue).")
-        loaded[capture.id] = LoadedCapture(metadata: capture, url: url, image: image)
+        loaded[capture.id] = LoadedCapture(metadata: capture, url: url, image: image,
+                                          encodedPixelWidth: encodedImage.width, encodedPixelHeight: encodedImage.height,
+                                          sourceOrientation: orientation)
     }
     for gallery in manifest.galleries {
         try require(gallery.images.count == 10, "\(gallery.platform.rawValue): exactly 10 marketing images are required.")
@@ -380,6 +409,10 @@ struct SourceProof: Encodable {
     let sha256: String
     let pixelWidth: Int
     let pixelHeight: Int
+    let encodedPixelWidth: Int
+    let encodedPixelHeight: Int
+    let sourceOrientation: Int
+    let standardOrientationApplied: Bool
     let nativeCapture: [String: JSONValue]
 }
 struct OutputProof: Encodable {
@@ -456,7 +489,10 @@ func makeImages(manifestURL: URL, validateOnly: Bool) throws {
     }
     let sources = captures.values.sorted { $0.metadata.id < $1.metadata.id }.map {
         SourceProof(id: $0.metadata.id, path: $0.url.path, platform: $0.metadata.platform, sha256: $0.metadata.sha256,
-                    pixelWidth: $0.image.width, pixelHeight: $0.image.height, nativeCapture: $0.metadata.nativeCapture)
+                    pixelWidth: $0.image.width, pixelHeight: $0.image.height,
+                    encodedPixelWidth: $0.encodedPixelWidth, encodedPixelHeight: $0.encodedPixelHeight,
+                    sourceOrientation: $0.sourceOrientation, standardOrientationApplied: $0.sourceOrientation != 1,
+                    nativeCapture: $0.metadata.nativeCapture)
     }
     let receipt = Receipt(schemaVersion: 1, manifestPath: manifestURL.path, manifestSHA256: digest(manifestData),
                           revision: manifest.revision, sourceBuildRef: manifest.sourceBuildRef,
@@ -526,6 +562,42 @@ func selfTest() throws {
     try rejected({ $0.captures[0].path = "missing.png" }, "missing source")
     try rejected({ $0.captures[0].path = "wrong-format.jpg" }, "unknown source format")
     try rejected({ $0.captures[0].sha256 = String(repeating: "0", count: 64) }, "changed source hash")
+    let rotatedData = NSMutableData()
+    let rotatedDestination = CGImageDestinationCreateWithData(rotatedData, "public.png" as CFString, 1, nil)!
+    let padIndex = captures.firstIndex { $0.platform == .pad }!
+    let fixtureImage = loaded[captures[padIndex].id]!.image
+    CGImageDestinationAddImage(rotatedDestination, fixtureImage, [kCGImagePropertyOrientation: 8] as CFDictionary)
+    try require(CGImageDestinationFinalize(rotatedDestination), "Rotated fixture PNG encoding failed.")
+    let rotatedSource = CGImageSourceCreateWithData(rotatedData, nil)!
+    let rotatedProperties = CGImageSourceCopyPropertiesAtIndex(rotatedSource, 0, nil) as? [String: Any]
+    try require((rotatedProperties?[kCGImagePropertyOrientation as String] as? NSNumber)?.intValue == 8,
+                "Rotated fixture must retain orientation metadata.")
+    let rotatedPath = directory.appendingPathComponent("test-only-orientation-8.png")
+    try (rotatedData as Data).write(to: rotatedPath)
+    try rejected({
+        $0.captures[padIndex].path = rotatedPath.path
+        $0.captures[padIndex].sha256 = digest(rotatedData as Data)
+    }, "orientation normalization yielding the wrong platform aspect")
+    let portraitContext = CGContext(data: nil, width: fixtureImage.height, height: fixtureImage.width,
+                                    bitsPerComponent: 8, bytesPerRow: 0, space: CGColorSpace(name: CGColorSpace.sRGB)!,
+                                    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
+    portraitContext.setFillColor(color(1, 0, 0).cgColor)
+    portraitContext.fill(CGRect(x: 0, y: 0, width: fixtureImage.height, height: fixtureImage.width))
+    let validOrientedData = NSMutableData()
+    let validOrientedDestination = CGImageDestinationCreateWithData(validOrientedData, "public.png" as CFString, 1, nil)!
+    CGImageDestinationAddImage(validOrientedDestination, portraitContext.makeImage()!, [kCGImagePropertyOrientation: 8] as CFDictionary)
+    try require(CGImageDestinationFinalize(validOrientedDestination), "Valid oriented fixture PNG encoding failed.")
+    let validOrientedPath = directory.appendingPathComponent("test-only-valid-pad-orientation-8.png")
+    try (validOrientedData as Data).write(to: validOrientedPath)
+    var validOrientedManifest = manifest
+    validOrientedManifest.captures[padIndex].path = validOrientedPath.path
+    validOrientedManifest.captures[padIndex].sha256 = digest(validOrientedData as Data)
+    let normalized = try validate(validOrientedManifest, beside: directory, testOnly: true)[captures[padIndex].id]!
+    try require(normalized.sourceOrientation == 8 && normalized.image.width == fixtureImage.width
+                && normalized.image.height == fixtureImage.height, "Standard source orientation must produce full landscape pixels.")
+    let unchangedOrientedData = try Data(contentsOf: validOrientedPath)
+    try require(digest(unchangedOrientedData) == digest(validOrientedData as Data),
+                "Source orientation normalization must preserve original file bytes.")
     try rejected({ $0.captures[1].nativeCapture["device"] = .string("DIFFERENT TEST DEVICE") }, "cross-device fan")
     try rejected({ $0.galleries[0].images[0].hero = "mac-hero" }, "cross-platform layer")
     try rejected({ $0.galleries[0].images.removeLast() }, "incomplete gallery")

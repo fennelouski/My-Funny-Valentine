@@ -1,0 +1,71 @@
+{
+  "checkedAtUTC": "2026-10-03T04:14:24.173204+00:00",
+  "websiteRevision": "ec90d6f42769093fa43f0dbd1252fa2150036a1d",
+  "scope": "Local native browser rendering of exact prepared public HTML; no deployment or live URL proof.",
+  "method": "Cua in-app browser, public-only127.0.0.1:8763server;320x900and1280x900 viewport checks; standard fullPage screenshots.",
+  "pages": [
+    {
+      "path": "/Users/nathan/Documents/GitHub/nathanfennel.com/public/my-funny-valentine/privacy.html",
+      "htmlSHA256": "440ce9b8bb0da71d8e6660155b865fc820999abe258f56d516c42774e5b2e84a",
+      "robots": "noindex, nofollow, noarchive",
+      "headingSizesCSSPixels": [
+        32,
+        24
+      ],
+      "bodyFontCSSPixels": 16.8,
+      "captures": [
+        {
+          "viewportWidth": 320,
+          "horizontalOverflow": false,
+          "screenshot": "website-preview/privacy-320.png",
+          "sha256": "9f0ba9744c51d59f92b3ba2f7d34efdbd43b49fbdc1de21bc51fb5cad591470e"
+        },
+        {
+          "viewportWidth": 1280,
+          "horizontalOverflow": false,
+          "screenshot": "website-preview/privacy-1280.png",
+          "sha256": "7e2d78380d8a2165f661033e391e3ca8cec2e64531eea83cde82a8b9d5d4342a"
+        }
+      ]
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/nathanfennel.com/public/my-funny-valentine/support.html",
+      "htmlSHA256": "a436417d51ed9a87736702684042242ad264b2847805cfc33fd841860f6dedd8",
+      "robots": "noindex, nofollow, noarchive",
+      "headingSizesCSSPixels": [
+        32,
+        24
+      ],
+      "bodyFontCSSPixels": 16.8,
+      "captures": [
+        {
+          "viewportWidth": 320,
+          "horizontalOverflow": false,
+          "screenshot": "website-preview/support-320.png",
+          "sha256": "d4c32e14015d3c7361e6627afae357b7b260652bc1aef3b005e13e8c13337514"
+        },
+        {
+          "viewportWidth": 1280,
+          "horizontalOverflow": false,
+          "screenshot": "website-preview/support-1280.png",
+          "sha256": "33aacd6ba4918ae80882fdabdba67318f2534d785506a7efb5744a52114e3e1e"
+        }
+      ]
+    }
+  ],
+  "status": "Passed DOM layout and actual screenshot visual review at320and1280px for both pages",
+  "productionLiveVerified": false,
+  "viewportOverrideReset": true,
+  "visualReview": {
+    "reviewer": "root",
+    "status": "Passed",
+    "findings": [],
+    "checked": [
+      "full heading and body text wrap without clipping",
+      "clear32/24/16.8 type hierarchy",
+      "no horizontal overflow at320or1280px",
+      "underlined links visible",
+      "all policy/support sections visible in full-page originals"
+    ]
+  }
+}

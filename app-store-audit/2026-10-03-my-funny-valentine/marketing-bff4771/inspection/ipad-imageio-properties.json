@@ -1,0 +1,432 @@
+[
+  {
+    "filename" : "01-All-Cards.png",
+    "imageIOPixelHeight" : 2064,
+    "imageIOPixelWidth" : 2752,
+    "imageIOProperties" : {
+      "{Exif}" : {
+        "PixelXDimension" : 2752,
+        "PixelYDimension" : 2064,
+        "UserComment" : "Screenshot"
+      },
+      "{IPTC}" : {
+        "Caption\/Abstract" : "Screenshot"
+      },
+      "{PNG}" : {
+        "Chromaticities" : [
+          0.31270000000000003,
+          0.32900000000000001,
+          0.64000000000000001,
+          0.33000000000000002,
+          0.30000000000000004,
+          0.60000000000000009,
+          0.15000000000000002,
+          0.060000000000000005
+        ],
+        "Description" : "Screenshot",
+        "Gamma" : 0.45455000000000001,
+        "InterlaceType" : 0,
+        "sRGBIntent" : 0
+      },
+      "{TIFF}" : {
+        "ImageDescription" : "Screenshot",
+        "Orientation" : 8
+      },
+      "ColorModel" : "RGB",
+      "Depth" : 8,
+      "Orientation" : 8,
+      "PixelHeight" : 2064,
+      "PixelWidth" : 2752,
+      "ProfileName" : "sRGB IEC61966-2.1"
+    },
+    "imageIOStandardTransformedHeight" : 2752,
+    "imageIOStandardTransformedWidth" : 2064
+  },
+  {
+    "filename" : "02-Personalized-Pizza.png",
+    "imageIOPixelHeight" : 2064,
+    "imageIOPixelWidth" : 2752,
+    "imageIOProperties" : {
+      "{Exif}" : {
+        "PixelXDimension" : 2752,
+        "PixelYDimension" : 2064,
+        "UserComment" : "Screenshot"
+      },
+      "{IPTC}" : {
+        "Caption\/Abstract" : "Screenshot"
+      },
+      "{PNG}" : {
+        "Chromaticities" : [
+          0.31270000000000003,
+          0.32900000000000001,
+          0.64000000000000001,
+          0.33000000000000002,
+          0.30000000000000004,
+          0.60000000000000009,
+          0.15000000000000002,
+          0.060000000000000005
+        ],
+        "Description" : "Screenshot",
+        "Gamma" : 0.45455000000000001,
+        "InterlaceType" : 0,
+        "sRGBIntent" : 0
+      },
+      "{TIFF}" : {
+        "ImageDescription" : "Screenshot",
+        "Orientation" : 8
+      },
+      "ColorModel" : "RGB",
+      "Depth" : 8,
+      "Orientation" : 8,
+      "PixelHeight" : 2064,
+      "PixelWidth" : 2752,
+      "ProfileName" : "sRGB IEC61966-2.1"
+    },
+    "imageIOStandardTransformedHeight" : 2752,
+    "imageIOStandardTransformedWidth" : 2064
+  },
+  {
+    "filename" : "03-Ready-To-Send-PNG.png",
+    "imageIOPixelHeight" : 2064,
+    "imageIOPixelWidth" : 2752,
+    "imageIOProperties" : {
+      "{Exif}" : {
+        "PixelXDimension" : 2752,
+        "PixelYDimension" : 2064,
+        "UserComment" : "Screenshot"
+      },
+      "{IPTC}" : {
+        "Caption\/Abstract" : "Screenshot"
+      },
+      "{PNG}" : {
+        "Chromaticities" : [
+          0.31270000000000003,
+          0.32900000000000001,
+          0.64000000000000001,
+          0.33000000000000002,
+          0.30000000000000004,
+          0.60000000000000009,
+          0.15000000000000002,
+          0.060000000000000005
+        ],
+        "Description" : "Screenshot",
+        "Gamma" : 0.45455000000000001,
+        "InterlaceType" : 0,
+        "sRGBIntent" : 0
+      },
+      "{TIFF}" : {
+        "ImageDescription" : "Screenshot",
+        "Orientation" : 8
+      },
+      "ColorModel" : "RGB",
+      "Depth" : 8,
+      "Orientation" : 8,
+      "PixelHeight" : 2064,
+      "PixelWidth" : 2752,
+      "ProfileName" : "sRGB IEC61966-2.1"
+    },
+    "imageIOStandardTransformedHeight" : 2752,
+    "imageIOStandardTransformedWidth" : 2064
+  },
+  {
+    "filename" : "04-Cosmic-Love.png",
+    "imageIOPixelHeight" : 2064,
+    "imageIOPixelWidth" : 2752,
+    "imageIOProperties" : {
+      "{Exif}" : {
+        "PixelXDimension" : 2752,
+        "PixelYDimension" : 2064,
+        "UserComment" : "Screenshot"
+      },
+      "{IPTC}" : {
+        "Caption\/Abstract" : "Screenshot"
+      },
+      "{PNG}" : {
+        "Chromaticities" : [
+          0.31270000000000003,
+          0.32900000000000001,
+          0.64000000000000001,
+          0.33000000000000002,
+          0.30000000000000004,
+          0.60000000000000009,
+          0.15000000000000002,
+          0.060000000000000005
+        ],
+        "Description" : "Screenshot",
+        "Gamma" : 0.45455000000000001,
+        "InterlaceType" : 0,
+        "sRGBIntent" : 0
+      },
+      "{TIFF}" : {
+        "ImageDescription" : "Screenshot",
+        "Orientation" : 8
+      },
+      "ColorModel" : "RGB",
+      "Depth" : 8,
+      "Orientation" : 8,
+      "PixelHeight" : 2064,
+      "PixelWidth" : 2752,
+      "ProfileName" : "sRGB IEC61966-2.1"
+    },
+    "imageIOStandardTransformedHeight" : 2752,
+    "imageIOStandardTransformedWidth" : 2064
+  },
+  {
+    "filename" : "05-Lovebirds.png",
+    "imageIOPixelHeight" : 2064,
+    "imageIOPixelWidth" : 2752,
+    "imageIOProperties" : {
+      "{Exif}" : {
+        "PixelXDimension" : 2752,
+        "PixelYDimension" : 2064,
+        "UserComment" : "Screenshot"
+      },
+      "{IPTC}" : {
+        "Caption\/Abstract" : "Screenshot"
+      },
+      "{PNG}" : {
+        "Chromaticities" : [
+          0.31270000000000003,
+          0.32900000000000001,
+          0.64000000000000001,
+          0.33000000000000002,
+          0.30000000000000004,
+          0.60000000000000009,
+          0.15000000000000002,
+          0.060000000000000005
+        ],
+        "Description" : "Screenshot",
+        "Gamma" : 0.45455000000000001,
+        "InterlaceType" : 0,
+        "sRGBIntent" : 0
+      },
+      "{TIFF}" : {
+        "ImageDescription" : "Screenshot",
+        "Orientation" : 8
+      },
+      "ColorModel" : "RGB",
+      "Depth" : 8,
+      "Orientation" : 8,
+      "PixelHeight" : 2064,
+      "PixelWidth" : 2752,
+      "ProfileName" : "sRGB IEC61966-2.1"
+    },
+    "imageIOStandardTransformedHeight" : 2752,
+    "imageIOStandardTransformedWidth" : 2064
+  },
+  {
+    "filename" : "06-Dino-Mite.png",
+    "imageIOPixelHeight" : 2064,
+    "imageIOPixelWidth" : 2752,
+    "imageIOProperties" : {
+      "{Exif}" : {
+        "PixelXDimension" : 2752,
+        "PixelYDimension" : 2064,
+        "UserComment" : "Screenshot"
+      },
+      "{IPTC}" : {
+        "Caption\/Abstract" : "Screenshot"
+      },
+      "{PNG}" : {
+        "Chromaticities" : [
+          0.31270000000000003,
+          0.32900000000000001,
+          0.64000000000000001,
+          0.33000000000000002,
+          0.30000000000000004,
+          0.60000000000000009,
+          0.15000000000000002,
+          0.060000000000000005
+        ],
+        "Description" : "Screenshot",
+        "Gamma" : 0.45455000000000001,
+        "InterlaceType" : 0,
+        "sRGBIntent" : 0
+      },
+      "{TIFF}" : {
+        "ImageDescription" : "Screenshot",
+        "Orientation" : 8
+      },
+      "ColorModel" : "RGB",
+      "Depth" : 8,
+      "Orientation" : 8,
+      "PixelHeight" : 2064,
+      "PixelWidth" : 2752,
+      "ProfileName" : "sRGB IEC61966-2.1"
+    },
+    "imageIOStandardTransformedHeight" : 2752,
+    "imageIOStandardTransformedWidth" : 2064
+  },
+  {
+    "filename" : "07-Disco-Date.png",
+    "imageIOPixelHeight" : 2064,
+    "imageIOPixelWidth" : 2752,
+    "imageIOProperties" : {
+      "{Exif}" : {
+        "PixelXDimension" : 2752,
+        "PixelYDimension" : 2064,
+        "UserComment" : "Screenshot"
+      },
+      "{IPTC}" : {
+        "Caption\/Abstract" : "Screenshot"
+      },
+      "{PNG}" : {
+        "Chromaticities" : [
+          0.31270000000000003,
+          0.32900000000000001,
+          0.64000000000000001,
+          0.33000000000000002,
+          0.30000000000000004,
+          0.60000000000000009,
+          0.15000000000000002,
+          0.060000000000000005
+        ],
+        "Description" : "Screenshot",
+        "Gamma" : 0.45455000000000001,
+        "InterlaceType" : 0,
+        "sRGBIntent" : 0
+      },
+      "{TIFF}" : {
+        "ImageDescription" : "Screenshot",
+        "Orientation" : 8
+      },
+      "ColorModel" : "RGB",
+      "Depth" : 8,
+      "Orientation" : 8,
+      "PixelHeight" : 2064,
+      "PixelWidth" : 2752,
+      "ProfileName" : "sRGB IEC61966-2.1"
+    },
+    "imageIOStandardTransformedHeight" : 2752,
+    "imageIOStandardTransformedWidth" : 2064
+  },
+  {
+    "filename" : "08-Sweet-Tooth.png",
+    "imageIOPixelHeight" : 2064,
+    "imageIOPixelWidth" : 2752,
+    "imageIOProperties" : {
+      "{Exif}" : {
+        "PixelXDimension" : 2752,
+        "PixelYDimension" : 2064,
+        "UserComment" : "Screenshot"
+      },
+      "{IPTC}" : {
+        "Caption\/Abstract" : "Screenshot"
+      },
+      "{PNG}" : {
+        "Chromaticities" : [
+          0.31270000000000003,
+          0.32900000000000001,
+          0.64000000000000001,
+          0.33000000000000002,
+          0.30000000000000004,
+          0.60000000000000009,
+          0.15000000000000002,
+          0.060000000000000005
+        ],
+        "Description" : "Screenshot",
+        "Gamma" : 0.45455000000000001,
+        "InterlaceType" : 0,
+        "sRGBIntent" : 0
+      },
+      "{TIFF}" : {
+        "ImageDescription" : "Screenshot",
+        "Orientation" : 8
+      },
+      "ColorModel" : "RGB",
+      "Depth" : 8,
+      "Orientation" : 8,
+      "PixelHeight" : 2064,
+      "PixelWidth" : 2752,
+      "ProfileName" : "sRGB IEC61966-2.1"
+    },
+    "imageIOStandardTransformedHeight" : 2752,
+    "imageIOStandardTransformedWidth" : 2064
+  },
+  {
+    "filename" : "09-My-Cards.png",
+    "imageIOPixelHeight" : 2064,
+    "imageIOPixelWidth" : 2752,
+    "imageIOProperties" : {
+      "{Exif}" : {
+        "PixelXDimension" : 2752,
+        "PixelYDimension" : 2064,
+        "UserComment" : "Screenshot"
+      },
+      "{IPTC}" : {
+        "Caption\/Abstract" : "Screenshot"
+      },
+      "{PNG}" : {
+        "Chromaticities" : [
+          0.31270000000000003,
+          0.32900000000000001,
+          0.64000000000000001,
+          0.33000000000000002,
+          0.30000000000000004,
+          0.60000000000000009,
+          0.15000000000000002,
+          0.060000000000000005
+        ],
+        "Description" : "Screenshot",
+        "Gamma" : 0.45455000000000001,
+        "InterlaceType" : 0,
+        "sRGBIntent" : 0
+      },
+      "{TIFF}" : {
+        "ImageDescription" : "Screenshot",
+        "Orientation" : 8
+      },
+      "ColorModel" : "RGB",
+      "Depth" : 8,
+      "Orientation" : 8,
+      "PixelHeight" : 2064,
+      "PixelWidth" : 2752,
+      "ProfileName" : "sRGB IEC61966-2.1"
+    },
+    "imageIOStandardTransformedHeight" : 2752,
+    "imageIOStandardTransformedWidth" : 2064
+  },
+  {
+    "filename" : "10-Find-The-Words.png",
+    "imageIOPixelHeight" : 2064,
+    "imageIOPixelWidth" : 2752,
+    "imageIOProperties" : {
+      "{Exif}" : {
+        "PixelXDimension" : 2752,
+        "PixelYDimension" : 2064,
+        "UserComment" : "Screenshot"
+      },
+      "{IPTC}" : {
+        "Caption\/Abstract" : "Screenshot"
+      },
+      "{PNG}" : {
+        "Chromaticities" : [
+          0.31270000000000003,
+          0.32900000000000001,
+          0.64000000000000001,
+          0.33000000000000002,
+          0.30000000000000004,
+          0.60000000000000009,
+          0.15000000000000002,
+          0.060000000000000005
+        ],
+        "Description" : "Screenshot",
+        "Gamma" : 0.45455000000000001,
+        "InterlaceType" : 0,
+        "sRGBIntent" : 0
+      },
+      "{TIFF}" : {
+        "ImageDescription" : "Screenshot",
+        "Orientation" : 8
+      },
+      "ColorModel" : "RGB",
+      "Depth" : 8,
+      "Orientation" : 8,
+      "PixelHeight" : 2064,
+      "PixelWidth" : 2752,
+      "ProfileName" : "sRGB IEC61966-2.1"
+    },
+    "imageIOStandardTransformedHeight" : 2752,
+    "imageIOStandardTransformedWidth" : 2064
+  }
+]

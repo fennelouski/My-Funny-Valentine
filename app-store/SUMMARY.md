@@ -1,5 +1,7 @@
 # App Store Preparation Summary
 
+> Historical preparation notes. Subscription pricing, quotas, sync claims and older assets below are superseded. The current release is free with no in-app purchases; [SUBMISSION.md](SUBMISSION.md) records its actual features and remaining release checks.
+
 This document provides an overview of all App Store preparation materials created for **My Funny Valentine**.
 
 ## What's Been Created

@@ -1,0 +1,53 @@
+{
+  "checkedAtUTC": "2026-10-03T02:55:46.725459+00:00",
+  "sourceRevision": "92539752fca5c55206cb2e5ee2159c88e33ee982",
+  "sourceFingerprint": "native-source-fingerprint-92539752.json",
+  "nativeSourceSHA256": "c854e6b2fe8b00cd394212162fd627a6c4858af5022df9107e853b6accd24182",
+  "status": "Historical signed exports verified; multiline keyboard issue was subsequently fixed in bff4771. Not the final release candidate.",
+  "platforms": {
+    "iOS": {
+      "archive": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-9253975/iOS/My Funny Valentine.xcarchive",
+      "archiveAppSignature": "codesign --verify --deep --strict passed",
+      "version": "1.0",
+      "build": "1",
+      "minimumOS": "18.0",
+      "architectures": [
+        "arm64"
+      ],
+      "privacyManifestMatchesSource": true,
+      "cloudKitOrPushEntitlements": false,
+      "exportPath": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-9253975/iOS/Export/My Funny Valentine.ipa",
+      "bytes": 13398904,
+      "sha256": "fc12597f9e589efb5eb8a3c391ead9b48166a0fbfaa5858da75d122663c6412e",
+      "exportedPayloadSignature": "passed",
+      "supportedDeviceFamily": [
+        1,
+        2
+      ]
+    },
+    "macOS": {
+      "archive": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-9253975/macOS/My Funny Valentine.xcarchive",
+      "archiveAppSignature": "codesign --verify --deep --strict passed",
+      "version": "1.0",
+      "build": "1",
+      "minimumOS": "15.1",
+      "architectures": [
+        "x86_64",
+        "arm64"
+      ],
+      "privacyManifestMatchesSource": true,
+      "cloudKitOrPushEntitlements": false,
+      "exportPath": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-1-20261003/Revision-9253975/macOS/Export/My Funny Valentine.pkg",
+      "bytes": 12952169,
+      "sha256": "4649a539ed2c1dd30f9e4cb31c8baa4237440fbb175da97dd09984b0a3fb4c37",
+      "installerPackageSignature": {
+        "check": "pkgutil --check-signature exited 0",
+        "status": "Status: signed by a developer certificate issued by Apple (Development)",
+        "certificateType": "3rd Party Mac Developer Installer",
+        "root": "Apple Root CA"
+      },
+      "sandbox": true,
+      "fileImporterScope": "user-selected read-only"
+    }
+  }
+}

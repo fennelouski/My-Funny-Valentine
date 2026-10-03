@@ -1,0 +1,18 @@
+{
+  "availability" : "available",
+  "count" : 9,
+  "implementation" : "actual OnDeviceSayingsGenerator source",
+  "maxCharacters" : 73,
+  "prompt" : "pizza and a cozy movie night",
+  "sayings" : [
+    "You're my favorite topping on my heart pizza.",
+    "I'd love to make you my next movie night.",
+    "You're the best pizza in the world, and I love you even more.",
+    "You're my favorite pizza topping, and I'm so glad you're mine.",
+    "I'd love to make you a pizza night, and we can watch our favorite movies.",
+    "You're my favorite pizza topping, and I'm so glad you're mine.",
+    "I'd love to make you a pizza night, and we can watch our favorite movies.",
+    "You're my favorite pizza topping, and I'm so glad you're mine.",
+    "I'd love to make you a pizza night, and we can watch our favorite movies."
+  ]
+}

@@ -1,0 +1,1106 @@
+{
+  "recordedAtUTC": "2026-10-03T03:32:20.568400+00:00",
+  "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+  "sourceBuildRef": "native-source-sha256:ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+  "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+  "scope": "Byte-identical copies of10selected iPhone originals,10rejected old iPad originals and10valid replacement full-screen iPad originals;10selected original Mac JPEGs referenced directly. Final manifest uses30accepted originals only. No source capture retouching.",
+  "binaries": {
+    "simulator": {
+      "path": "/tmp/mfv-ios-20261003/Build/Products/Debug-iphonesimulator/My Funny Valentine.app",
+      "launcherSHA256": "09742e1d0f27522e453c287ded297b2317960d6968f30acaa1b57c752bf20155",
+      "debugDylibSHA256": "ae6fb5865dc17dd7405df8f9412b8327427e8cc019d7522758448a0acdbb56a3",
+      "debugDylibBytes": 18158624,
+      "buildLog": "/tmp/mfv-ios-build-keyboarddone-20261003.log",
+      "variant": "DEBUG Simulator QA; isolated QA library through launch argument",
+      "appVersion": "1.0",
+      "appBuild": "1",
+      "bundleId": "com.nathanfennel.My-Funny-Valentine",
+      "binaryHashesIndependentlyChecked": true
+    },
+    "mac": {
+      "path": "/tmp/mfv-macos-gallery-20261003/Build/Products/Debug/My Funny Valentine.app",
+      "launcherSHA256": "c33a1dfc513d0ceadf2bb4de7c60d965a8e2574416a0fc15e39addcdc93063d7",
+      "debugDylibSHA256": "73647ab35cf794c2ec5a274208176da03129842f1c74ec2ce9f822cf2bd8bd8a",
+      "debugDylibBytes": 9040144,
+      "variant": "DEBUG development-signed Mac QA with MFV_QA_STORE isolated library",
+      "appVersion": "1.0",
+      "appBuild": "1",
+      "bundleId": "com.nathanfennel.My-Funny-Valentine",
+      "binaryHashesIndependentlyChecked": true
+    },
+    "ipadScreenCapture": {
+      "path": "/tmp/mfv-ios-screen-capture-20261003/Build/Products/Debug-iphonesimulator/My Funny Valentine.app",
+      "launcherSHA256": "cfc7e667c1452b0b95798c9298cf66ab0e4182e462af3a66045302a61d0354e1",
+      "debugDylibSHA256": "66af8e6df42616c2bcb755faa1785ab6cc37d2c621f9dd5f1a2767cd0c1d9754",
+      "debugDylibBytes": 18223312,
+      "variant": "DEBUG Simulator QA; isolated QA library through launch argument",
+      "appVersion": "1.0",
+      "appBuild": "1",
+      "bundleId": "com.nathanfennel.My-Funny-Valentine",
+      "binaryHashesIndependentlyChecked": true,
+      "captureTestResult": "/tmp/mfv-ipad-screen-gallery-20261003.xcresult",
+      "sourceIdentityNote": "Release owner reports frozen bff native111-file fingerprint unchanged; screenshot test capture method changed to full XCUIScreen only."
+    }
+  },
+  "copiedOriginals": [
+    {
+      "source": "/tmp/mfv-iphone-gallery-r4-attachments-20261003/4CA02333-9C34-47D6-A2B7-3C28DE0A3739.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/iphone-bff4771/01-All-Cards.png",
+      "sha256": "1a9929cd9ece78e1abefb57ccc1ba2529000e5c25f8cd5c87682369b26ce107f",
+      "byteCount": 2862622,
+      "capturedAtUTC": "2026-10-03T03:04:23.732Z",
+      "deviceIdentifier": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName": "MFV Phone QA 20261003",
+        "exportedFileName": "4CA02333-9C34-47D6-A2B7-3C28DE0A3739.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "01-All-Cards_0_B1AAE62E-0603-48E1-A9E3-B6584DD15BE2.png",
+        "timestamp": 1790996663.732
+      }
+    },
+    {
+      "source": "/tmp/mfv-iphone-gallery-r4-attachments-20261003/195E07F2-22B0-4263-BFBB-C22742583B50.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/iphone-bff4771/02-Personalized-Pizza.png",
+      "sha256": "02aa4d9402e45d8458664b9dbdbadd2b9a3dc300bf59b28986de80033c2b094b",
+      "byteCount": 1719158,
+      "capturedAtUTC": "2026-10-03T03:04:52.543Z",
+      "deviceIdentifier": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName": "MFV Phone QA 20261003",
+        "exportedFileName": "195E07F2-22B0-4263-BFBB-C22742583B50.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "02-Personalized-Pizza_0_71D3969D-9441-42BB-91AB-7BCD20C320A2.png",
+        "timestamp": 1790996692.543
+      }
+    },
+    {
+      "source": "/tmp/mfv-iphone-gallery-r4-attachments-20261003/6471921F-73D1-4CF8-8AFF-AEAE57E34DF5.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/iphone-bff4771/03-Ready-To-Send-PNG.png",
+      "sha256": "f79147cee3d914ba8117ccc2bf6dfcf29e2869654ab6a1dffca5b00ea9b51772",
+      "byteCount": 1544687,
+      "capturedAtUTC": "2026-10-03T03:05:00.977Z",
+      "deviceIdentifier": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName": "MFV Phone QA 20261003",
+        "exportedFileName": "6471921F-73D1-4CF8-8AFF-AEAE57E34DF5.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "03-Ready-To-Send-PNG_0_905295DB-A6FB-4C06-A8C7-C9095B8A0C07.png",
+        "timestamp": 1790996700.977
+      }
+    },
+    {
+      "source": "/tmp/mfv-iphone-gallery-r4-attachments-20261003/B9D3A8F9-072B-4516-A734-DAC78EDD9ABF.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/iphone-bff4771/04-Cosmic-Love.png",
+      "sha256": "cae2b9b1c81a81d9aa39c2524ef6d05525b8fdaca6f7c2bcb76901c026d61422",
+      "byteCount": 1805550,
+      "capturedAtUTC": "2026-10-03T03:05:34.859Z",
+      "deviceIdentifier": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName": "MFV Phone QA 20261003",
+        "exportedFileName": "B9D3A8F9-072B-4516-A734-DAC78EDD9ABF.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "04-Cosmic-Love_0_68F71E08-E948-47DF-A0D2-7BF3DB8321C2.png",
+        "timestamp": 1790996734.859
+      }
+    },
+    {
+      "source": "/tmp/mfv-iphone-gallery-r4-attachments-20261003/494C4807-E0CD-484D-9525-002215E95E74.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/iphone-bff4771/05-Lovebirds.png",
+      "sha256": "ad7a38a2efc904a3cfdc59ad30266e0b337de02f269b41752805391a79bc388f",
+      "byteCount": 1751451,
+      "capturedAtUTC": "2026-10-03T03:06:03.387Z",
+      "deviceIdentifier": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName": "MFV Phone QA 20261003",
+        "exportedFileName": "494C4807-E0CD-484D-9525-002215E95E74.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "05-Lovebirds_0_2F1FD234-6CB5-46E6-AA4D-D3D0F52C4C04.png",
+        "timestamp": 1790996763.387
+      }
+    },
+    {
+      "source": "/tmp/mfv-iphone-gallery-r4-attachments-20261003/6CC8C5DC-5093-41BF-932A-AF5B1A182A5B.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/iphone-bff4771/06-Dino-Mite.png",
+      "sha256": "7da5021d3a75d07eca89606cb0a066b030d89d92c0c17c8d982d113760ee0a3b",
+      "byteCount": 1621257,
+      "capturedAtUTC": "2026-10-03T03:06:32.224Z",
+      "deviceIdentifier": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName": "MFV Phone QA 20261003",
+        "exportedFileName": "6CC8C5DC-5093-41BF-932A-AF5B1A182A5B.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "06-Dino-Mite_0_E2560791-16A7-4C12-82A2-3EB3A739F214.png",
+        "timestamp": 1790996792.224
+      }
+    },
+    {
+      "source": "/tmp/mfv-iphone-gallery-r4-attachments-20261003/342A84FE-50CF-47D8-921E-33200B3D9277.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/iphone-bff4771/07-Disco-Date.png",
+      "sha256": "235dd2bf222b9b6b91755f9d2fe505a60c7e6da71fdd29e5cc88dc65ba20da65",
+      "byteCount": 1998638,
+      "capturedAtUTC": "2026-10-03T03:07:01.246Z",
+      "deviceIdentifier": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName": "MFV Phone QA 20261003",
+        "exportedFileName": "342A84FE-50CF-47D8-921E-33200B3D9277.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "07-Disco-Date_0_3CCD512E-C176-4EE1-B374-57E5DC892DF8.png",
+        "timestamp": 1790996821.246
+      }
+    },
+    {
+      "source": "/tmp/mfv-iphone-gallery-r4-attachments-20261003/E04A8120-4BB2-405D-8961-12EBA8EE86D3.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/iphone-bff4771/08-Sweet-Tooth.png",
+      "sha256": "530ebd58e3bab63b5b1c4a89664c4b43de64edb35d313bfb3b8154b64ae9e6b1",
+      "byteCount": 1732888,
+      "capturedAtUTC": "2026-10-03T03:07:29.666Z",
+      "deviceIdentifier": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName": "MFV Phone QA 20261003",
+        "exportedFileName": "E04A8120-4BB2-405D-8961-12EBA8EE86D3.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "08-Sweet-Tooth_0_A0D57AC8-AE83-4668-8D30-27B4EBD0D26F.png",
+        "timestamp": 1790996849.666
+      }
+    },
+    {
+      "source": "/tmp/mfv-iphone-gallery-r4-attachments-20261003/FAD33E6A-BEF8-40F6-8BE4-863CFC8605B8.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/iphone-bff4771/09-My-Cards.png",
+      "sha256": "aa63362ee2ced0c0f54b08c8b2549253e8314d43a25a3f83655f5abff9800335",
+      "byteCount": 3518302,
+      "capturedAtUTC": "2026-10-03T03:07:55.431Z",
+      "deviceIdentifier": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName": "MFV Phone QA 20261003",
+        "exportedFileName": "FAD33E6A-BEF8-40F6-8BE4-863CFC8605B8.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "09-My-Cards_0_4FA033E7-9935-4A04-9747-5A37C42BB009.png",
+        "timestamp": 1790996875.431
+      }
+    },
+    {
+      "source": "/tmp/mfv-iphone-gallery-r4-attachments-20261003/159E5C36-ED23-42D0-9BAD-468296CC5F2E.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/iphone-bff4771/10-Find-The-Words.png",
+      "sha256": "c4de4738f718b15bd7db9cf3644b71645eb00de0d07c9cd9c8537dadc65474ac",
+      "byteCount": 330338,
+      "capturedAtUTC": "2026-10-03T03:08:25.580Z",
+      "deviceIdentifier": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1BDA0422-6456-4D92-8362-8B01C6A2726C",
+        "deviceName": "MFV Phone QA 20261003",
+        "exportedFileName": "159E5C36-ED23-42D0-9BAD-468296CC5F2E.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "10-Find-The-Words_0_7E76D4D7-0421-46B0-9D37-81FD1B9E25B9.png",
+        "timestamp": 1790996905.58
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-gallery-attachments-20261003/42C6CA20-0CCD-4798-8436-4878BFBAF3E1.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-bff4771/01-All-Cards.png",
+      "sha256": "36b1e59ab5bf81a36b89021342dd4993017723da694ac2865d28a9161c7cd32c",
+      "byteCount": 1887256,
+      "capturedAtUTC": "2026-10-03T03:10:36.134Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "42C6CA20-0CCD-4798-8436-4878BFBAF3E1.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "01-All-Cards_0_20AE6132-B6C5-4E90-AEDC-65D55680DDA2.png",
+        "timestamp": 1790997036.134
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-gallery-attachments-20261003/7B4C3F30-9AA8-4E9D-816C-7FF15A5BAEDE.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-bff4771/02-Personalized-Pizza.png",
+      "sha256": "5d509c62c15940b3df0a0274e2ab6ca419f60252e6c327b19d1fb1faa2ce9a64",
+      "byteCount": 1040920,
+      "capturedAtUTC": "2026-10-03T03:11:03.754Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "7B4C3F30-9AA8-4E9D-816C-7FF15A5BAEDE.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "02-Personalized-Pizza_0_4B0AA24C-DF2C-4537-8F51-68D319D21BB7.png",
+        "timestamp": 1790997063.754
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-gallery-attachments-20261003/0C786462-5787-4FE6-9869-86DA8A38B7A5.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-bff4771/03-Ready-To-Send-PNG.png",
+      "sha256": "414b5593d30fbb9a8985c23fb64c1ba1a89f28c365fd85b93093787c18f628c1",
+      "byteCount": 1203514,
+      "capturedAtUTC": "2026-10-03T03:11:12.196Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "0C786462-5787-4FE6-9869-86DA8A38B7A5.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "03-Ready-To-Send-PNG_0_BD2D6B65-AF11-4359-BB48-7F7BEFE0866A.png",
+        "timestamp": 1790997072.196
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-gallery-attachments-20261003/1D28012E-A498-49B3-BD2A-2D0C604F5ADF.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-bff4771/04-Cosmic-Love.png",
+      "sha256": "9cd0a5457f95502693d18d6d633871f3000c4b2b181b1e629c924f675860f72f",
+      "byteCount": 1104173,
+      "capturedAtUTC": "2026-10-03T03:11:44.516Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "1D28012E-A498-49B3-BD2A-2D0C604F5ADF.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "04-Cosmic-Love_0_56226DBD-DBB8-4895-A2C2-9A59B2D774FB.png",
+        "timestamp": 1790997104.516
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-gallery-attachments-20261003/ADD1730E-500C-473E-8A98-50E0192145C7.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-bff4771/05-Lovebirds.png",
+      "sha256": "579f73e40336f126c7e9577451306b32a37f398b82a1066e0ff757a369718f08",
+      "byteCount": 1066444,
+      "capturedAtUTC": "2026-10-03T03:12:12.262Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "ADD1730E-500C-473E-8A98-50E0192145C7.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "05-Lovebirds_0_E9506FD5-F365-49FC-AD56-216AE08CFEC6.png",
+        "timestamp": 1790997132.262
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-gallery-attachments-20261003/4C709C60-765B-4CE7-85B3-E527AACD0DE2.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-bff4771/06-Dino-Mite.png",
+      "sha256": "6735149147cb0b426cd3f9e7ae955b249aca976265f9412c5184e59db72aa557",
+      "byteCount": 999775,
+      "capturedAtUTC": "2026-10-03T03:12:39.799Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "4C709C60-765B-4CE7-85B3-E527AACD0DE2.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "06-Dino-Mite_0_E3ECC67F-3D3D-4E45-B6C5-1AAA6B94AFD2.png",
+        "timestamp": 1790997159.799
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-gallery-attachments-20261003/816009FC-5BBB-4930-A4BF-308E42730C47.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-bff4771/07-Disco-Date.png",
+      "sha256": "da872e667730aec26fa2aef89c144f9f8409ad79de65d89f594e9aa8ae9a9a70",
+      "byteCount": 1198986,
+      "capturedAtUTC": "2026-10-03T03:13:07.636Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "816009FC-5BBB-4930-A4BF-308E42730C47.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "07-Disco-Date_0_C603A6D9-B979-4EDB-A6F7-55F875E785CE.png",
+        "timestamp": 1790997187.636
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-gallery-attachments-20261003/D8C9D3E3-628C-44DB-A8CE-D303776CD6B3.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-bff4771/08-Sweet-Tooth.png",
+      "sha256": "f8bc69de97c14bffde04ce4a374dd362efdbde6eb9eeb209d17534f27a68e473",
+      "byteCount": 1059715,
+      "capturedAtUTC": "2026-10-03T03:13:35.263Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "D8C9D3E3-628C-44DB-A8CE-D303776CD6B3.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "08-Sweet-Tooth_0_5B7D2880-B91A-423A-BC01-D21FA5395228.png",
+        "timestamp": 1790997215.263
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-gallery-attachments-20261003/AAEEE1E7-43B4-4062-AB86-4A1DDC0191ED.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-bff4771/09-My-Cards.png",
+      "sha256": "9e4580006796a3dfabfea11fed6a909f13aa0bf813d6af403cea4860c302e52b",
+      "byteCount": 1581785,
+      "capturedAtUTC": "2026-10-03T03:14:02.403Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "AAEEE1E7-43B4-4062-AB86-4A1DDC0191ED.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "09-My-Cards_0_AEBC3E94-DEF1-4DE6-8526-2741043568C7.png",
+        "timestamp": 1790997242.403
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-gallery-attachments-20261003/A237A6C3-66E0-47B1-8A73-723D2DE89A21.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-bff4771/10-Find-The-Words.png",
+      "sha256": "22d4fd6cea34b82d2bef36dc27c788eb7dafd61358bc5bc42781ef91648b67d5",
+      "byteCount": 506557,
+      "capturedAtUTC": "2026-10-03T03:14:30.712Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "A237A6C3-66E0-47B1-8A73-723D2DE89A21.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "10-Find-The-Words_0_2E34170D-0F07-4387-8DB2-D83E0DCE208D.png",
+        "timestamp": 1790997270.712
+      }
+    }
+  ],
+  "selectedMacOriginals": [
+    {
+      "id": "mac-01-All-Cards-Clean",
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/01-All-Cards-Clean.jpg",
+      "platform": "mac",
+      "sha256": "01fda3ce5f85400433fb621179d994ece1366771ccd67245563bc1476d29bda1",
+      "nativeCapture": {
+        "kind": "native-screenshot",
+        "platform": "mac",
+        "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+        "sourceBuildRef": "native-source-sha256:ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+        "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+        "capturedAtUTC": "2026-10-03T03:19:56.456Z",
+        "appVersion": "1.0",
+        "appBuild": "1",
+        "nativeBinary": {
+          "path": "/tmp/mfv-macos-gallery-20261003/Build/Products/Debug/My Funny Valentine.app",
+          "launcherSHA256": "c33a1dfc513d0ceadf2bb4de7c60d965a8e2574416a0fc15e39addcdc93063d7",
+          "debugDylibSHA256": "73647ab35cf794c2ec5a274208176da03129842f1c74ec2ce9f822cf2bd8bd8a",
+          "debugDylibBytes": 9040144,
+          "variant": "DEBUG development-signed Mac QA with MFV_QA_STORE isolated library",
+          "appVersion": "1.0",
+          "appBuild": "1",
+          "bundleId": "com.nathanfennel.My-Funny-Valentine",
+          "binaryHashesIndependentlyChecked": true
+        },
+        "originalCaptureRecord": {
+          "name": "01-All-Cards-Clean",
+          "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/01-All-Cards-Clean.jpg",
+          "capturedAtUTC": "2026-10-03T03:19:56.456Z",
+          "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+          "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+          "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+          "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+          "appVersion": "1.0",
+          "appBuild": "1"
+        },
+        "pixelWidth": 2560,
+        "pixelHeight": 1600,
+        "exifOrientation": 1,
+        "qaDataNote": "Isolated QA library; generic fictional adult face fixture; example messages and saved cards are not private user data.",
+        "sourceIdentityNote": "Frozen source/build identity established by release owner through native fingerprint, build logs and native controls; screenshot pixels do not independently attest a Git revision."
+      }
+    },
+    {
+      "id": "mac-02-Personalized-Pizza",
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/02-Personalized-Pizza.jpg",
+      "platform": "mac",
+      "sha256": "e426e2c0027c60bae0d45aa4ca43962ca16e5b83a02f8d3c7704a695ce789c9f",
+      "nativeCapture": {
+        "kind": "native-screenshot",
+        "platform": "mac",
+        "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+        "sourceBuildRef": "native-source-sha256:ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+        "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+        "capturedAtUTC": "2026-10-03T03:13:57.981Z",
+        "appVersion": "1.0",
+        "appBuild": "1",
+        "nativeBinary": {
+          "path": "/tmp/mfv-macos-gallery-20261003/Build/Products/Debug/My Funny Valentine.app",
+          "launcherSHA256": "c33a1dfc513d0ceadf2bb4de7c60d965a8e2574416a0fc15e39addcdc93063d7",
+          "debugDylibSHA256": "73647ab35cf794c2ec5a274208176da03129842f1c74ec2ce9f822cf2bd8bd8a",
+          "debugDylibBytes": 9040144,
+          "variant": "DEBUG development-signed Mac QA with MFV_QA_STORE isolated library",
+          "appVersion": "1.0",
+          "appBuild": "1",
+          "bundleId": "com.nathanfennel.My-Funny-Valentine",
+          "binaryHashesIndependentlyChecked": true
+        },
+        "originalCaptureRecord": {
+          "name": "02-Personalized-Pizza",
+          "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/02-Personalized-Pizza.jpg",
+          "capturedAtUTC": "2026-10-03T03:13:57.981Z",
+          "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+          "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+          "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+          "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+          "appVersion": "1.0",
+          "appBuild": "1"
+        },
+        "pixelWidth": 2560,
+        "pixelHeight": 1600,
+        "exifOrientation": 1,
+        "qaDataNote": "Isolated QA library; generic fictional adult face fixture; example messages and saved cards are not private user data.",
+        "sourceIdentityNote": "Frozen source/build identity established by release owner through native fingerprint, build logs and native controls; screenshot pixels do not independently attest a Git revision."
+      }
+    },
+    {
+      "id": "mac-03-Ready-To-Send-PNG",
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/03-Ready-To-Send-PNG.jpg",
+      "platform": "mac",
+      "sha256": "c14365baffb8548d7ffd568b6e86e13c04057dfbf0b5d3d02a986b88aa28962e",
+      "nativeCapture": {
+        "kind": "native-screenshot",
+        "platform": "mac",
+        "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+        "sourceBuildRef": "native-source-sha256:ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+        "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+        "capturedAtUTC": "2026-10-03T03:17:57.489Z",
+        "appVersion": "1.0",
+        "appBuild": "1",
+        "nativeBinary": {
+          "path": "/tmp/mfv-macos-gallery-20261003/Build/Products/Debug/My Funny Valentine.app",
+          "launcherSHA256": "c33a1dfc513d0ceadf2bb4de7c60d965a8e2574416a0fc15e39addcdc93063d7",
+          "debugDylibSHA256": "73647ab35cf794c2ec5a274208176da03129842f1c74ec2ce9f822cf2bd8bd8a",
+          "debugDylibBytes": 9040144,
+          "variant": "DEBUG development-signed Mac QA with MFV_QA_STORE isolated library",
+          "appVersion": "1.0",
+          "appBuild": "1",
+          "bundleId": "com.nathanfennel.My-Funny-Valentine",
+          "binaryHashesIndependentlyChecked": true
+        },
+        "originalCaptureRecord": {
+          "name": "03-Ready-To-Send-PNG",
+          "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/03-Ready-To-Send-PNG.jpg",
+          "capturedAtUTC": "2026-10-03T03:17:57.489Z",
+          "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+          "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+          "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+          "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+          "appVersion": "1.0",
+          "appBuild": "1"
+        },
+        "pixelWidth": 940,
+        "pixelHeight": 1434,
+        "exifOrientation": 1,
+        "qaDataNote": "Isolated QA library; generic fictional adult face fixture; example messages and saved cards are not private user data.",
+        "sourceIdentityNote": "Frozen source/build identity established by release owner through native fingerprint, build logs and native controls; screenshot pixels do not independently attest a Git revision."
+      }
+    },
+    {
+      "id": "mac-04-Cosmic-Love",
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/04-Cosmic-Love.jpg",
+      "platform": "mac",
+      "sha256": "f033d3f0238aa95a6fd6916245fc8fa3391ba946fc8fa336a2a945419b3d3a5d",
+      "nativeCapture": {
+        "kind": "native-screenshot",
+        "platform": "mac",
+        "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+        "sourceBuildRef": "native-source-sha256:ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+        "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+        "capturedAtUTC": "2026-10-03T03:18:39.584Z",
+        "appVersion": "1.0",
+        "appBuild": "1",
+        "nativeBinary": {
+          "path": "/tmp/mfv-macos-gallery-20261003/Build/Products/Debug/My Funny Valentine.app",
+          "launcherSHA256": "c33a1dfc513d0ceadf2bb4de7c60d965a8e2574416a0fc15e39addcdc93063d7",
+          "debugDylibSHA256": "73647ab35cf794c2ec5a274208176da03129842f1c74ec2ce9f822cf2bd8bd8a",
+          "debugDylibBytes": 9040144,
+          "variant": "DEBUG development-signed Mac QA with MFV_QA_STORE isolated library",
+          "appVersion": "1.0",
+          "appBuild": "1",
+          "bundleId": "com.nathanfennel.My-Funny-Valentine",
+          "binaryHashesIndependentlyChecked": true
+        },
+        "originalCaptureRecord": {
+          "name": "04-Cosmic-Love",
+          "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/04-Cosmic-Love.jpg",
+          "capturedAtUTC": "2026-10-03T03:18:39.584Z",
+          "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+          "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+          "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+          "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+          "appVersion": "1.0",
+          "appBuild": "1"
+        },
+        "pixelWidth": 2560,
+        "pixelHeight": 1600,
+        "exifOrientation": 1,
+        "qaDataNote": "Isolated QA library; generic fictional adult face fixture; example messages and saved cards are not private user data.",
+        "sourceIdentityNote": "Frozen source/build identity established by release owner through native fingerprint, build logs and native controls; screenshot pixels do not independently attest a Git revision."
+      }
+    },
+    {
+      "id": "mac-05-Lovebirds",
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/05-Lovebirds.jpg",
+      "platform": "mac",
+      "sha256": "6a207c57b70259c22e7434d5e4d8b6cc6b84e37ba7028fdce1fef031f89680f6",
+      "nativeCapture": {
+        "kind": "native-screenshot",
+        "platform": "mac",
+        "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+        "sourceBuildRef": "native-source-sha256:ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+        "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+        "capturedAtUTC": "2026-10-03T03:18:41.918Z",
+        "appVersion": "1.0",
+        "appBuild": "1",
+        "nativeBinary": {
+          "path": "/tmp/mfv-macos-gallery-20261003/Build/Products/Debug/My Funny Valentine.app",
+          "launcherSHA256": "c33a1dfc513d0ceadf2bb4de7c60d965a8e2574416a0fc15e39addcdc93063d7",
+          "debugDylibSHA256": "73647ab35cf794c2ec5a274208176da03129842f1c74ec2ce9f822cf2bd8bd8a",
+          "debugDylibBytes": 9040144,
+          "variant": "DEBUG development-signed Mac QA with MFV_QA_STORE isolated library",
+          "appVersion": "1.0",
+          "appBuild": "1",
+          "bundleId": "com.nathanfennel.My-Funny-Valentine",
+          "binaryHashesIndependentlyChecked": true
+        },
+        "originalCaptureRecord": {
+          "name": "05-Lovebirds",
+          "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/05-Lovebirds.jpg",
+          "capturedAtUTC": "2026-10-03T03:18:41.918Z",
+          "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+          "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+          "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+          "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+          "appVersion": "1.0",
+          "appBuild": "1"
+        },
+        "pixelWidth": 2560,
+        "pixelHeight": 1600,
+        "exifOrientation": 1,
+        "qaDataNote": "Isolated QA library; generic fictional adult face fixture; example messages and saved cards are not private user data.",
+        "sourceIdentityNote": "Frozen source/build identity established by release owner through native fingerprint, build logs and native controls; screenshot pixels do not independently attest a Git revision."
+      }
+    },
+    {
+      "id": "mac-06-Dino-Mite",
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/06-Dino-Mite.jpg",
+      "platform": "mac",
+      "sha256": "f2fe56e2c9792046ba28c84d71b515f3be5cb32af9d0293f2d155215d8710f5c",
+      "nativeCapture": {
+        "kind": "native-screenshot",
+        "platform": "mac",
+        "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+        "sourceBuildRef": "native-source-sha256:ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+        "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+        "capturedAtUTC": "2026-10-03T03:18:44.303Z",
+        "appVersion": "1.0",
+        "appBuild": "1",
+        "nativeBinary": {
+          "path": "/tmp/mfv-macos-gallery-20261003/Build/Products/Debug/My Funny Valentine.app",
+          "launcherSHA256": "c33a1dfc513d0ceadf2bb4de7c60d965a8e2574416a0fc15e39addcdc93063d7",
+          "debugDylibSHA256": "73647ab35cf794c2ec5a274208176da03129842f1c74ec2ce9f822cf2bd8bd8a",
+          "debugDylibBytes": 9040144,
+          "variant": "DEBUG development-signed Mac QA with MFV_QA_STORE isolated library",
+          "appVersion": "1.0",
+          "appBuild": "1",
+          "bundleId": "com.nathanfennel.My-Funny-Valentine",
+          "binaryHashesIndependentlyChecked": true
+        },
+        "originalCaptureRecord": {
+          "name": "06-Dino-Mite",
+          "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/06-Dino-Mite.jpg",
+          "capturedAtUTC": "2026-10-03T03:18:44.303Z",
+          "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+          "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+          "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+          "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+          "appVersion": "1.0",
+          "appBuild": "1"
+        },
+        "pixelWidth": 2560,
+        "pixelHeight": 1600,
+        "exifOrientation": 1,
+        "qaDataNote": "Isolated QA library; generic fictional adult face fixture; example messages and saved cards are not private user data.",
+        "sourceIdentityNote": "Frozen source/build identity established by release owner through native fingerprint, build logs and native controls; screenshot pixels do not independently attest a Git revision."
+      }
+    },
+    {
+      "id": "mac-07-Disco-Date",
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/07-Disco-Date.jpg",
+      "platform": "mac",
+      "sha256": "759b390be6b7fc0d63cfa9ff84910ce5587665fdb96742637554420975ba278b",
+      "nativeCapture": {
+        "kind": "native-screenshot",
+        "platform": "mac",
+        "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+        "sourceBuildRef": "native-source-sha256:ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+        "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+        "capturedAtUTC": "2026-10-03T03:18:46.696Z",
+        "appVersion": "1.0",
+        "appBuild": "1",
+        "nativeBinary": {
+          "path": "/tmp/mfv-macos-gallery-20261003/Build/Products/Debug/My Funny Valentine.app",
+          "launcherSHA256": "c33a1dfc513d0ceadf2bb4de7c60d965a8e2574416a0fc15e39addcdc93063d7",
+          "debugDylibSHA256": "73647ab35cf794c2ec5a274208176da03129842f1c74ec2ce9f822cf2bd8bd8a",
+          "debugDylibBytes": 9040144,
+          "variant": "DEBUG development-signed Mac QA with MFV_QA_STORE isolated library",
+          "appVersion": "1.0",
+          "appBuild": "1",
+          "bundleId": "com.nathanfennel.My-Funny-Valentine",
+          "binaryHashesIndependentlyChecked": true
+        },
+        "originalCaptureRecord": {
+          "name": "07-Disco-Date",
+          "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/07-Disco-Date.jpg",
+          "capturedAtUTC": "2026-10-03T03:18:46.696Z",
+          "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+          "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+          "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+          "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+          "appVersion": "1.0",
+          "appBuild": "1"
+        },
+        "pixelWidth": 2560,
+        "pixelHeight": 1600,
+        "exifOrientation": 1,
+        "qaDataNote": "Isolated QA library; generic fictional adult face fixture; example messages and saved cards are not private user data.",
+        "sourceIdentityNote": "Frozen source/build identity established by release owner through native fingerprint, build logs and native controls; screenshot pixels do not independently attest a Git revision."
+      }
+    },
+    {
+      "id": "mac-08-Sweet-Tooth",
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/08-Sweet-Tooth.jpg",
+      "platform": "mac",
+      "sha256": "b9456c8d54b8fbdfd5e276a983f226241b8b670ef461430807842b8acf1f8c03",
+      "nativeCapture": {
+        "kind": "native-screenshot",
+        "platform": "mac",
+        "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+        "sourceBuildRef": "native-source-sha256:ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+        "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+        "capturedAtUTC": "2026-10-03T03:18:49.184Z",
+        "appVersion": "1.0",
+        "appBuild": "1",
+        "nativeBinary": {
+          "path": "/tmp/mfv-macos-gallery-20261003/Build/Products/Debug/My Funny Valentine.app",
+          "launcherSHA256": "c33a1dfc513d0ceadf2bb4de7c60d965a8e2574416a0fc15e39addcdc93063d7",
+          "debugDylibSHA256": "73647ab35cf794c2ec5a274208176da03129842f1c74ec2ce9f822cf2bd8bd8a",
+          "debugDylibBytes": 9040144,
+          "variant": "DEBUG development-signed Mac QA with MFV_QA_STORE isolated library",
+          "appVersion": "1.0",
+          "appBuild": "1",
+          "bundleId": "com.nathanfennel.My-Funny-Valentine",
+          "binaryHashesIndependentlyChecked": true
+        },
+        "originalCaptureRecord": {
+          "name": "08-Sweet-Tooth",
+          "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/08-Sweet-Tooth.jpg",
+          "capturedAtUTC": "2026-10-03T03:18:49.184Z",
+          "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+          "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+          "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+          "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+          "appVersion": "1.0",
+          "appBuild": "1"
+        },
+        "pixelWidth": 2560,
+        "pixelHeight": 1600,
+        "exifOrientation": 1,
+        "qaDataNote": "Isolated QA library; generic fictional adult face fixture; example messages and saved cards are not private user data.",
+        "sourceIdentityNote": "Frozen source/build identity established by release owner through native fingerprint, build logs and native controls; screenshot pixels do not independently attest a Git revision."
+      }
+    },
+    {
+      "id": "mac-09-My-Cards",
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/09-My-Cards.jpg",
+      "platform": "mac",
+      "sha256": "81ebf00484802664a1236b9794bdc0c9d569af4cc721b33cc1f6565a31158e73",
+      "nativeCapture": {
+        "kind": "native-screenshot",
+        "platform": "mac",
+        "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+        "sourceBuildRef": "native-source-sha256:ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+        "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+        "capturedAtUTC": "2026-10-03T03:25:18.236Z",
+        "appVersion": "1.0",
+        "appBuild": "1",
+        "nativeBinary": {
+          "path": "/tmp/mfv-macos-gallery-20261003/Build/Products/Debug/My Funny Valentine.app",
+          "launcherSHA256": "c33a1dfc513d0ceadf2bb4de7c60d965a8e2574416a0fc15e39addcdc93063d7",
+          "debugDylibSHA256": "73647ab35cf794c2ec5a274208176da03129842f1c74ec2ce9f822cf2bd8bd8a",
+          "debugDylibBytes": 9040144,
+          "variant": "DEBUG development-signed Mac QA with MFV_QA_STORE isolated library",
+          "appVersion": "1.0",
+          "appBuild": "1",
+          "bundleId": "com.nathanfennel.My-Funny-Valentine",
+          "binaryHashesIndependentlyChecked": true
+        },
+        "originalCaptureRecord": {
+          "name": "09-My-Cards",
+          "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/09-My-Cards.jpg",
+          "capturedAtUTC": "2026-10-03T03:25:18.236Z",
+          "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+          "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+          "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+          "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+          "appVersion": "1.0",
+          "appBuild": "1"
+        },
+        "pixelWidth": 2560,
+        "pixelHeight": 1600,
+        "exifOrientation": 1,
+        "qaDataNote": "Isolated QA library; generic fictional adult face fixture; example messages and saved cards are not private user data.",
+        "sourceIdentityNote": "Frozen source/build identity established by release owner through native fingerprint, build logs and native controls; screenshot pixels do not independently attest a Git revision."
+      }
+    },
+    {
+      "id": "mac-10-Find-The-Words",
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/10-Find-The-Words.jpg",
+      "platform": "mac",
+      "sha256": "957b6a31bef7f751e97059e997b549ccf76bdf7930e4982051524ca48a3d2c16",
+      "nativeCapture": {
+        "kind": "native-screenshot",
+        "platform": "mac",
+        "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+        "sourceBuildRef": "native-source-sha256:ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+        "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+        "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+        "capturedAtUTC": "2026-10-03T03:26:07.186Z",
+        "appVersion": "1.0",
+        "appBuild": "1",
+        "nativeBinary": {
+          "path": "/tmp/mfv-macos-gallery-20261003/Build/Products/Debug/My Funny Valentine.app",
+          "launcherSHA256": "c33a1dfc513d0ceadf2bb4de7c60d965a8e2574416a0fc15e39addcdc93063d7",
+          "debugDylibSHA256": "73647ab35cf794c2ec5a274208176da03129842f1c74ec2ce9f822cf2bd8bd8a",
+          "debugDylibBytes": 9040144,
+          "variant": "DEBUG development-signed Mac QA with MFV_QA_STORE isolated library",
+          "appVersion": "1.0",
+          "appBuild": "1",
+          "bundleId": "com.nathanfennel.My-Funny-Valentine",
+          "binaryHashesIndependentlyChecked": true
+        },
+        "originalCaptureRecord": {
+          "name": "10-Find-The-Words",
+          "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/mac-bff4771/10-Find-The-Words.jpg",
+          "capturedAtUTC": "2026-10-03T03:26:07.186Z",
+          "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+          "nativeSourceSHA256": "ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf",
+          "captureMethod": "Cua native App.getScreenshot original JPEG bytes",
+          "device": "Mac native macOS26.5.2, development-signed isolated QA library",
+          "appVersion": "1.0",
+          "appBuild": "1"
+        },
+        "pixelWidth": 940,
+        "pixelHeight": 1520,
+        "exifOrientation": 1,
+        "qaDataNote": "Isolated QA library; generic fictional adult face fixture; example messages and saved cards are not private user data.",
+        "sourceIdentityNote": "Frozen source/build identity established by release owner through native fingerprint, build logs and native controls; screenshot pixels do not independently attest a Git revision."
+      }
+    }
+  ],
+  "excludedMacCaptures": [
+    "01-All-Cards.jpg",
+    "11-Image-Playground-Imported.jpg",
+    "12-Cold-Launch-Preserved.jpg"
+  ],
+  "qaFixtureProvenancePath": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/qa-face-source-provenance.json",
+  "originalVisualReview": {
+    "recordedAtUTC": "2026-10-03T03:38:35.928275+00:00",
+    "iphone-6.9": {
+      "status": "PASS",
+      "count": 10,
+      "method": "full encoded original-pixel contact sheet inspected with view_image; final keyboard dismissed",
+      "contactSheet": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/inspection/iphone-originals-contact.png"
+    },
+    "mac": {
+      "status": "PASS",
+      "count": 10,
+      "method": "independent read-only original-resolution review of10 selected JPEGs",
+      "reviewer": "/root/mindglyph_canvas_review/apple_privacy_flows"
+    },
+    "ipad-13": {
+      "status": "PASS",
+      "count": 10,
+      "method": "Full-screen native original metadata orientation applied only in review derivatives and compositor memory. All10 normalized originals inspected through contact sheet.",
+      "encodedPixelDimensions": [
+        2064,
+        2752
+      ],
+      "sourceOrientation": 8,
+      "standardOrientedPixelDimensions": [
+        2752,
+        2064
+      ],
+      "blackEdgePixels": 0,
+      "directory": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-screen-bff4771",
+      "contactSheet": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/inspection/ipad-screen-originals-oriented-contact.png",
+      "historicalRejectedCaptures": "Retained under captures/ipad-bff4771 and rejectedOriginalVisualReview.ipad-app-bounds"
+    }
+  },
+  "compositorOrientationGuard": {
+    "requirement": "Known EXIF1...8 honored through standard ImageIO transform at full native dimensions, followed by normalized platform-aspect validation",
+    "selfTestResult": "PASS; valid portrait-encoded Pad8 accepted; malformed landscape-encoded Pad8 rejected; original bytes unchanged",
+    "rejectedOriginalManifestResult": "expected exit1 on normalized platform aspect; no old-Pad outputs"
+  },
+  "selectedReplacementPadOriginals": [
+    {
+      "source": "/tmp/mfv-ipad-screen-gallery-attachments-20261003/C19F0E75-E34A-498D-8CD8-6F15FB5A31EE.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-screen-bff4771/01-All-Cards.png",
+      "sha256": "cc8b976c70ee9fdeac3bf14eba7af3745c8335bad8f309d79ef72987d6047c4d",
+      "byteCount": 2243201,
+      "capturedAtUTC": "2026-10-03T03:40:36.280Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "C19F0E75-E34A-498D-8CD8-6F15FB5A31EE.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "01-All-Cards_0_05D57A44-1AF7-4F9E-B5DA-692503D23466.png",
+        "timestamp": 1790998836.28
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-screen-gallery-attachments-20261003/E53BE9CE-B5A6-4FA6-9DC8-2A5715971633.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-screen-bff4771/02-Personalized-Pizza.png",
+      "sha256": "72008e0d3d689917bbacd5fa8f2a8182402a4301f309c532e3fe22650945ad51",
+      "byteCount": 1047574,
+      "capturedAtUTC": "2026-10-03T03:41:04.647Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "E53BE9CE-B5A6-4FA6-9DC8-2A5715971633.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "02-Personalized-Pizza_0_6AB72BB4-ABF8-49B8-BFED-FC2032B1EC6E.png",
+        "timestamp": 1790998864.647
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-screen-gallery-attachments-20261003/4BDC7C50-AFB7-4356-B7E5-E15540741C6F.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-screen-bff4771/03-Ready-To-Send-PNG.png",
+      "sha256": "e9f244cfdd88fd4f4c00da3d637e0639b9e0bca90468df841ceec93293954ec4",
+      "byteCount": 1217195,
+      "capturedAtUTC": "2026-10-03T03:41:13.148Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "4BDC7C50-AFB7-4356-B7E5-E15540741C6F.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "03-Ready-To-Send-PNG_0_DF48E3B5-C5D7-47A3-8ECF-FCD0F9C39436.png",
+        "timestamp": 1790998873.148
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-screen-gallery-attachments-20261003/E00E6517-3D13-47C4-8369-B5B91D591104.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-screen-bff4771/04-Cosmic-Love.png",
+      "sha256": "0186f2301f63c9b8e21ede65077f4cd00f6d9fc4436980625359167f1a73151a",
+      "byteCount": 1111530,
+      "capturedAtUTC": "2026-10-03T03:41:45.979Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "E00E6517-3D13-47C4-8369-B5B91D591104.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "04-Cosmic-Love_0_C1ADB9F5-300F-435C-B47A-3605D1CF0093.png",
+        "timestamp": 1790998905.979
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-screen-gallery-attachments-20261003/61FD790A-548D-4283-9CB2-F90EFE47BA38.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-screen-bff4771/05-Lovebirds.png",
+      "sha256": "cf77e69d4a9383945ba49eac4e2730bea3f1726e07131c7ff7539fb61f817114",
+      "byteCount": 1076634,
+      "capturedAtUTC": "2026-10-03T03:42:14.395Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "61FD790A-548D-4283-9CB2-F90EFE47BA38.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "05-Lovebirds_0_279E82CD-7828-4685-B0AF-66EB7882118F.png",
+        "timestamp": 1790998934.395
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-screen-gallery-attachments-20261003/43471C39-714C-494A-96A1-4F37400AE053.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-screen-bff4771/06-Dino-Mite.png",
+      "sha256": "1f3d53fd7e131232f242ac731a899945a16855d57f6739fb6b611cfe6dbd834d",
+      "byteCount": 1009623,
+      "capturedAtUTC": "2026-10-03T03:42:42.261Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "43471C39-714C-494A-96A1-4F37400AE053.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "06-Dino-Mite_0_DC800B08-613E-414D-8D09-C238BFCD7698.png",
+        "timestamp": 1790998962.261
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-screen-gallery-attachments-20261003/4BDA9198-7FAC-482C-8C33-6E6859DA29B6.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-screen-bff4771/07-Disco-Date.png",
+      "sha256": "7e66c388efb201d90c54b62bd6f143a95e6bd025b2c8312b33eb742c717c2e01",
+      "byteCount": 1206682,
+      "capturedAtUTC": "2026-10-03T03:43:10.471Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "4BDA9198-7FAC-482C-8C33-6E6859DA29B6.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "07-Disco-Date_0_FECC2617-0044-4DFD-9295-842492946FEF.png",
+        "timestamp": 1790998990.471
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-screen-gallery-attachments-20261003/6A041C53-CD63-40E9-9A12-386F4D5E1948.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-screen-bff4771/08-Sweet-Tooth.png",
+      "sha256": "3bb686674cdbdc2253bca3103e2b7138cdc10d13caedfe7caa26ac260397ed2c",
+      "byteCount": 1068946,
+      "capturedAtUTC": "2026-10-03T03:43:38.210Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "6A041C53-CD63-40E9-9A12-386F4D5E1948.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "08-Sweet-Tooth_0_C151D07E-BC9F-4B4D-87D2-903731CD42AA.png",
+        "timestamp": 1790999018.21
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-screen-gallery-attachments-20261003/90FCF305-91C8-4B71-BD54-446476E4706B.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-screen-bff4771/09-My-Cards.png",
+      "sha256": "30b3df367c9a99cc7e82e51e919d5f1f72ef2bc1e6acec5026402fe85a71815a",
+      "byteCount": 1900870,
+      "capturedAtUTC": "2026-10-03T03:44:05.419Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "90FCF305-91C8-4B71-BD54-446476E4706B.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "09-My-Cards_0_4E00BD65-30AC-494D-BA84-822538A5BD69.png",
+        "timestamp": 1790999045.419
+      }
+    },
+    {
+      "source": "/tmp/mfv-ipad-screen-gallery-attachments-20261003/8345CA16-B8B0-4BDB-998F-BE292B4C598E.png",
+      "copy": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/captures/ipad-screen-bff4771/10-Find-The-Words.png",
+      "sha256": "363ca68978384c49250632d171e8d90946061b178bbf38de125f1d73880db3ce",
+      "byteCount": 514405,
+      "capturedAtUTC": "2026-10-03T03:44:35.189Z",
+      "deviceIdentifier": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+      "byteIdentical": true,
+      "originalAttachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "52F1885D-0E89-4B8E-9FF9-2679F1614B65",
+        "deviceName": "MFV iPad QA 20261003",
+        "exportedFileName": "8345CA16-B8B0-4BDB-998F-BE292B4C598E.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "10-Find-The-Words_0_C26C308F-715F-467F-AE79-70ACF12D0699.png",
+        "timestamp": 1790999075.189
+      }
+    }
+  ],
+  "rejectedPadOriginalsPreserved": true,
+  "finalManifestPath": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/manifest.json",
+  "finalProvenancePath": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/marketing-provenance.json",
+  "finalOutputCount": 30,
+  "rejectedOriginalVisualReview": {
+    "ipad-app-bounds": {
+      "status": "REJECTED",
+      "count": 10,
+      "reason": "All encoded2752x2064 PNGs contain sideways app content with EXIF8 and688 black right columns; standard normalization yields2064x2752 with688 black top rows. Native landscape recapture required.",
+      "imageIOEvidencePath": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/inspection/ipad-imageio-properties.json",
+      "pixelBoundsEvidencePath": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/inspection/ipad-orientation-audit.json",
+      "finalComposition": "NOT RUN; excluded from final manifest"
+    }
+  },
+  "finalMarketingVisualReview": {
+    "status": "PASS BOTH REVIEWERS",
+    "outputCount": 30,
+    "recordedAtUTC": "2026-10-03T04:00:33.596278+00:00",
+    "qcPath": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/marketing-qc.json",
+    "uploaded": false
+  }
+}

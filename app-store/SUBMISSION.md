@@ -1,6 +1,6 @@
 # My Funny Valentine release draft
 
-Updated 2026-10-03. This file describes the current source and proposed App Store copy. It is not a submission receipt. The final signed build, native captures and App Store Connect fields still need verification.
+Updated 2026-10-03. This file describes frozen native revision `bff4771b52f9b13eb7a44af88be8311496bd412b` and proposed App Store copy. Signed iOS/Mac packages and 30 composed marketing images passed local verification. Native save/relaunch flows, actual Mac Apple generation and a synthetic pre-polish saved-card upgrade passed. Xcode could not create the missing App Store record, so no upload, processing or review submission is verified.
 
 ## Release scope
 
@@ -12,7 +12,7 @@ Built-in cards, manual editing and built-in message suggestions work offline. Op
 
 Optional artwork uses the interactive Image Playground system sheet. Apple manages availability, processing and usage limits, and the sheet may use Private Cloud Compute. Artwork generation must not be described as guaranteed offline, entirely on-device or unlimited. The app uses the sheet rather than the discontinued ImageCreator class. See [Apple's migration notice](https://developer.apple.com/news/?id=dz9wvq0r) and [Image Playground guidance](https://developer.apple.com/videos/play/wwdc2026/375/).
 
-Saved cards, photos and settings use persistent local SwiftData storage. The existing schema and default store location are preserved. There is no automatic cross-device sync. A storage-open failure displays a retry screen; the app does not report successful saves into a temporary memory store.
+Saved cards, photos and settings use persistent local storage. Cards use SwiftData; the welcome preference uses UserDefaults. The existing card schema and default store location are preserved. There is no automatic cross-device sync. A storage-open failure displays a retry screen; the app does not report successful saves into a temporary memory store.
 
 The default app has no hosted backend configured. It is free with no in-app purchases, ads or app account. visionOS work remains paused by the owner's instruction.
 
@@ -22,16 +22,16 @@ The default app has no hosted backend configured. It is free with no in-app purc
 |---|---|---|
 | Name | My Funny Valentine | App Store Connect pending |
 | Bundle ID | com.nathanfennel.My-Funny-Valentine | Current project |
-| Development team | EJLR2RPSV2 | Current project, archive signing pending |
-| Version and build | 1.0, build 1 | Current project, release numbering pending |
-| Platforms | iPhone, iPad, Mac | Current project, native checks pending |
-| iOS and iPadOS minimum | 18.0 | Current project, oldest-OS runtime check pending |
-| macOS minimum | 15.1 | Newly configured, latest compilation and 15.1 runtime check pending |
+| Development team | EJLR2RPSV2 | Final bff4771 distribution signatures verified |
+| Version and build | 1.0, build 1 | Final exported payloads verified; App Store record pending |
+| Platforms | iPhone, iPad, Mac | Complete Phone/Pad flows and manual native Mac checks passed |
+| iOS and iPadOS minimum | 18.0 | Final payload verified; representative18.5 runtime23/23 passed. Exact18.0 unavailable |
+| macOS minimum | 15.1 | Final payload and static framework availability verified; exact15.1 runtime unavailable |
 | Primary category | Photo & Video | Proposed, App Store Connect pending |
 | Secondary category | Lifestyle | Proposed, App Store Connect pending |
 | Price | Free in every enabled storefront | App Store Connect pending |
 | Availability | All supported storefronts Apple permits | App Store Connect pending |
-| In-app purchases | None | Verify final signed build and App Store Connect |
+| In-app purchases | None | Current native flow has none; App Store Connect verification pending |
 | Age rating | Complete the questionnaire for the signed build | Pending |
 | App ID, SKU and review contact | Read the owner's actual App Store Connect record | Pending |
 
@@ -108,42 +108,58 @@ The App Store marketing URL stays unset because there is no app directory market
 
 The privacy page must describe local saved cards, on-device face detection and the optional Apple generation paths accurately. Publishing and live URL verification remain separate release work. This native release draft does not deploy a website.
 
-Prepare App Privacy answers from the final signed build before publishing the label. There is no configured hosted generation service in this build. Do not copy the older subscription, backend-upload or CloudKit claims. Apple-managed processing in Image Playground is distinct from developer collection and needs accurate wording.
+The 72 website pages are committed at `ec90d6f42769093fa43f0dbd1252fa2150036a1d` and are not deployed. The read-only `fishbowl-head` AWS check at 04:06:16 UTC on October 3 reported expired CLI credentials. Neither new release URL is verified live. Use the website repository's verified dual-deployment command after authentication is restored; a Vercel-only release or Git push does not satisfy the workspace policy.
+
+The proposed label is Data Not Collected, with its final-build and Apple-framework rationale in [privacy-label-rationale.json](../app-store-audit/2026-10-03-my-funny-valentine/privacy-label-rationale.json). This proposal is unpublished. There is no configured hosted generation service in this build. Apple-managed processing in Image Playground is distinct from developer collection; the privacy page describes it. Owner publication and any legal attestation remain action-time steps.
 
 Review contact details must come from the owner's existing record. Apple agreements, export-compliance answers and any required owner attestations remain pending until the corresponding release information is reviewable and verified.
 
 ## Galleries
 
-Replace the July 21 galleries. Their iCloud captions and old Settings screens are obsolete. Current files have six Phone, six iPad and three Mac images; they are not current release evidence.
+The July 21 galleries have obsolete iCloud captions and old Settings screens. Preserve them as historical files; do not upload them for this release.
 
-Prepare ten composed marketing images for each Phone, iPad and Mac gallery. Each must use that platform's actual native capture from the frozen build. Use short centered top copy, one to three real app captures, an upright centered hero and outward supporting fans when present. Rotate three to four distinct background designs between adjacent images.
+Ten composed marketing images are complete for each Phone, iPad and Mac gallery. Each uses that platform's actual native captures from frozen bff4771. They have short centered top copy, three real app captures, an upright centered hero, outward supporting fans and four alternating background designs.
 
-The first three images should show choosing a starter, editing a message and the finished share preview. Photo and face-animation images need genuine native results. Do not present a Simulator placeholder as successful Apple Intelligence or Image Playground generation. Validate Apple's accepted dimensions and inspect the actual uploaded gallery before submission.
+The first three images show choosing a starter, editing a message and the finished share preview. The Mac editor/share images include the actual fictional-face cutout. Simulator sayings show built-in suggestions; the Mac sayings image shows actual FoundationModels output. Final dimensions are 1320 by 2868 for iPhone, 2752 by 2064 for landscape iPad and 2560 by 1600 for Mac, checked against [Apple's screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/). App Store acceptance and the actual uploaded gallery remain unverified.
 
-Fresh capture, composition, gallery review and upload are pending.
+Ten accepted originals each for iPhone, landscape iPad and Mac are captured from frozen bff4771. The complete Phone/Pad flows passed actual message entry, native keyboard Done, save, relaunch and selected sayings. The Mac gallery comes from actual native controls; its library, face, share preview, sayings and Image Playground import were checked manually. All 30 final JPEGs passed technical and two visual reviews. [The manifest](../app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/manifest.json), [provenance](../app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/exports/marketing-provenance.json) and [QC receipt](../app-store-audit/2026-10-03-my-funny-valentine/marketing-bff4771/marketing-qc.json) identify every accepted original and output.
+
+The first iPad functional flow passed, but its app-bounds captures encoded sideways content and a black strip. Those originals remain rejected diagnostics. The replacement full device-screen flow passed and captured complete native screens. Standard ImageIO handling of their EXIF orientation produces upright landscape images; no source pixels were repaired or replaced, and original bytes remain unchanged.
+
+Three earlier iPhone attempts failed the keyboard-dismissal postcondition. The native multiline field now has a Done control; the unchanged postcondition passed on both iPhone and iPad. Keep those failed attempts as historical evidence.
 
 ## Verification and release gates
 
 | Check | Current evidence |
 |---|---|
-| iOS build-for-testing | Release owner reports success before the latest storage and minimum-OS edits |
-| macOS build-for-testing | Release owner reports success before the latest storage and minimum-OS edits |
-| Latest-source builds | Pending |
-| Native test execution | Pending |
-| Save, Cancel, failed-save and relaunch behavior | Pending current native verification |
-| Existing saved-card preservation | Schema and store path unchanged; upgrade/reopen verification pending |
-| iPhone, iPad and Mac visual checks | Pending |
-| Large text, light/dark appearance and narrow windows | Pending |
-| Face crop, foreground matte and GIF result | Pending native verification |
-| Apple generation on eligible hardware | Pending |
-| macOS 15.1 runtime compatibility | Pending |
-| Fresh native marketing galleries | Pending |
-| Signed archives and icons | Pending final archive verification |
-| Build upload and processing | Pending |
+| Frozen-source iOS build-for-testing | bff4771 succeeded; `/tmp/mfv-ios-build-keyboarddone-20261003.log` |
+| Frozen-source macOS native build | bff4771 development-signed QA build succeeded; `/tmp/mfv-macos-build-keyboarddone-20261003.log` |
+| Earlier selected native tests | iOS 22 core checks and one starter UI flow passed. Mac 20 other core checks passed, then the corrected draft-lifecycle test passed separately |
+| Mac automated UI checks | Both unsigned and signed runner setups failed before tests; signed setup timed out enabling automation mode |
+| Current saved cards and relaunch | Full Phone/Pad gallery flows passed save/reopen/relaunch. Manual Mac cold launch retained six saved cards and the original face/message/note after cancelled exploration |
+| Existing pre-polish saved-card preservation | Synthetic old committed local model store reopened/saved/cold-reopened with current models and production CardDraft on Mac 26.5.2. Persistent identities, membership, text and raw media/layout bytes retained. No real production or CloudKit upgrade verified |
+| iPhone, landscape iPad and Mac visual checks | Ten accepted originals per platform and all 30 composed outputs passed; rejected first iPad captures retained separately |
+| Large text, light/dark appearance and narrow windows | Broader runtime checks pending |
+| Face crop, foreground matte and GIF result | Simulator CPU face inference/crop passed. Actual Mac face import and visible alpha passed; native PNG/GIF payload proof at 76d9986b is retained with its exact earlier-source scope |
+| Apple generation on eligible hardware | Native Mac FoundationModels suggestions generated and selected into draft; system Image Playground Apple Animation image generated and imported at bff4771 |
+| iOS18/macOS15.1 compatibility | Representative iOS18.5 run passed23/23 on frozen native source. Final signed binaries and use-site gates passed static audit. Exact18.0/Mac15.1 runtimes unavailable |
+| Fresh native marketing galleries | 30 final JPEGs passed dimensions, sRGB, hashes, size and two visual reviews; upload verification pending |
+| Signed archives and icons | Final bff4771 iOS IPA and universal Mac PKG local signatures, manifests, metadata and hashes verified; prior3d616369/9253975 retained historically |
+| Build upload and processing | Historical CLI attempts failed before transfer. Final bff4771 Xcode validation could not create the missing app record, reporting DistributionAppRecordProviderError0. No app ID, transferred/selectable build or processing verified |
 | App Store Connect metadata, pricing and countries | Pending |
-| Privacy label, legal fields and live URLs | Pending |
+| Privacy label, legal fields and live URLs | Pages prepared, deployment blocked by expired AWS CLI login; owner label/rights/legal/contact steps pending |
 | Review submission | Pending |
 
-The old 89-test and zero-warning claims are removed. Empty CloudKit, API and critical-flow test bodies do not verify those capabilities. Current storage and catalog tests need recorded execution, not just successful compilation.
+The old 89-test and zero-warning claims are removed. Empty CloudKit, API and critical-flow test bodies do not verify those capabilities. [native-verification.json](../app-store-audit/2026-10-03-my-funny-valentine/native-verification.json) retains historical core/storage results and the current bff4771 gallery results. The [source fingerprint](../app-store-audit/2026-10-03-my-funny-valentine/native-source-fingerprint.json) records all111 native files and aggregate SHA256 `ac605b6b0f9fbec8ff02f1ed856bbdad9d91bdae3c055fa4a08d6c3a0817a1cf`.
 
-The release owner will append exact source revision, commands, result bundles, signed archive identities, native capture provenance, upload processing and App Store Connect verification after the source freeze. No build or submission status should be inferred from this draft.
+[signed-archives.json](../app-store-audit/2026-10-03-my-funny-valentine/signed-archives.json) records the historical3d616369 packages and failed upload attempts. [signed-archives-9253975.json](../app-store-audit/2026-10-03-my-funny-valentine/signed-archives-9253975.json) preserves the superseded9253975 packages. Neither was successfully uploaded.
+
+The [native Mac export receipt](../app-store-audit/2026-10-03-my-funny-valentine/qa-exports/native-mac-export-receipt.json) inspects actual PNG/GIF payloads from the76d9986b binary. Visible text remains complete; animation differences are confined to the face. That earlier payload proof does not establish a successful Mac UI XCTest run or later binary export verification.
+
+The [current native system-generation receipt](../app-store-audit/2026-10-03-my-funny-valentine/qa-exports/native-mac-system-generation-bff4771.json) records real Mac sayings selection, completed Image Playground artwork import and Cancel/cold-launch preservation. Only a generic food phrase was supplied to Apple; no personal suggestion, source photo or external provider was selected. Availability on that Mac does not prove availability on other hardware or minimum operating systems.
+
+The [final signed-package receipt](../app-store-audit/2026-10-03-my-funny-valentine/signed-archives-bff4771.json) identifies the distribution IPA and universal Mac App Store PKG. The [legacy-upgrade receipt](../app-store-audit/2026-10-03-my-funny-valentine/legacy-upgrade-verification.json) records the synthetic local test and its limits. The [managed registration receipt](../app-store-audit/2026-10-03-my-funny-valentine/managed-store-registration-bff4771.json) records Apple's failed app-record creation before transfer; its cause is not established.
+
+Chrome is blocked by an existing unsaved-page warning. Safe Cancel actions did not dismiss it. The owner was asked to click Cancel to preserve that page and sign in to App Store Connect in a separate tab. No draft was discarded. Append upload processing and App Store Connect verification when access is restored. Successful compilation or packaging never implies submission.
+
+The [iOS18.5 compatibility receipt](../app-store-audit/2026-10-03-my-funny-valentine/ios18-compatibility-verification.json) records all23 passing checks on the oldest installed representative iOS runtime. The [static minimum-OS receipt](../app-store-audit/2026-10-03-my-funny-valentine/minimum-os-static-verification.json) verifies final signed framework loading and source gates. The [local website receipt](../app-store-audit/2026-10-03-my-funny-valentine/website-local-verification.json) records complete phone/desktop page rendering; neither local rendering nor prepared files prove live deployment. A separate working Codex Apple sign-in tab is marked for owner handoff.

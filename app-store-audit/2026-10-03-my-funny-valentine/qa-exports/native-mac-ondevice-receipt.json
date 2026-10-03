@@ -1,0 +1,14 @@
+{
+  "checkedAtUTC": "2026-10-03T03:00:12.847486+00:00",
+  "sourceRevision": "92539752fca5c55206cb2e5ee2159c88e33ee982",
+  "sourceFile": "My Funny Valentine/Services/OnDeviceSayingsGenerator.swift",
+  "sourceSHA256": "9b5c8615a26844754d7d72ebec8cf38344f2d0c4a9fd4043ebe0555cf31aeb0a",
+  "method": "Actual production OnDeviceSayingsGenerator source compiled with xcrun swiftc and invoked by an async CLI harness on this Mac. No stub, remote API or app UI involved.",
+  "modelAvailability": "available",
+  "actualSayings": 9,
+  "maxCharacters": 73,
+  "prompt": "pizza and a cozy movie night",
+  "output": "native-mac-ondevice-sayings.json",
+  "outputSHA256": "72600e9a469f8c6850ec6d559230b1368ca9d9108f887c85aad40abb587f5378",
+  "limits": "This verifies the actual generation implementation on macOS26.5.2, not the app UI, Image Playground, iOS hardware, or minimum macOS15.1."
+}

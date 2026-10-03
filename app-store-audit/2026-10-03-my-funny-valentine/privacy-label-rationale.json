@@ -1,0 +1,40 @@
+{
+  "reviewedAtUTC": "2026-10-03T03:33:44.037327+00:00",
+  "revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+  "proposal": "Data Not Collected",
+  "published": false,
+  "ownerAttestation": "pending at actual Publish dialog",
+  "basis": [
+    "Default released app stores cards and images locally and has no configured hosted API, analytics, advertising, active CloudKit synchronization or third-party SDK.",
+    "Face detection and masking use local Vision processing; FoundationModels sayings use the on-device model.",
+    "Image Playground is an Apple system sheet. The app receives the completed image; Apple controls processing and any explicit user-selected external style. Privacy policy describes these system services separately.",
+    "Apple guidance says developers report data they collect from Apple frameworks, while Apple itself handles its own collection disclosures. Local-only processing falls outside the label collection definition."
+  ],
+  "sources": [
+    {
+      "url": "https://developer.apple.com/app-store/app-privacy-details/",
+      "sections": [
+        "Data collection",
+        "You use Apple frameworks or services",
+        "You use location, device identifiers, and other sensitive data, but only on device"
+      ]
+    },
+    {
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/manage-app-privacy/",
+      "sections": [
+        "Answering app privacy questions"
+      ]
+    },
+    {
+      "url": "https://developer.apple.com/videos/play/wwdc2026/375/",
+      "sections": [
+        "Availability and system-sheet adoption"
+      ]
+    }
+  ],
+  "limitations": [
+    "This is a reasoned proposal from actual default app behavior, not a published legal attestation.",
+    "A future backend, collection SDK, CloudKit developer-accessible use or direct external AI integration requires a new privacy review.",
+    "Native runtime checks used generic nonprivate fictional fixtures; no user/person Image Playground suggestion was selected."
+  ]
+}
