@@ -22,10 +22,16 @@ swift scripts/make-marketing-images.swift --validate app-store-audit/2026-10-03-
 
 To reproduce composition, copy the manifest and set a new empty output directory within `app-store-audit`, then run the same command without `--validate`. Existing output files are preserved.
 
-## Outstanding release work
+## App Store Connect progress, October 3
 
-Xcode reported that no App Store record exists for this bundle and failed to create it before validation or binary transfer. See [managed-store-registration-bff4771.json](managed-store-registration-bff4771.json). Its underlying cause is not established. Chrome's existing unsaved-page warning was preserved; a separate working Codex Apple sign-in tab is waiting for the owner.
+Normal browser access recovered and confirmed App Store Connect record `6818700756`, bundle and SKU `com.nathanfennel.My-Funny-Valentine`. The earlier registration failure is historical. The iOS 1.0 (1) package uploaded, processed and was selected and saved.
 
-The privacy and support pages passed local phone/desktop rendering, but remain undeployed at website revision `ec90d6f42769093fa43f0dbd1252fa2150036a1d`. AWS CLI profile `fishbowl-head` is expired. The website must use its verified AWS and Vercel deployment command from one clean committed revision.
+Apple rejected the original Mac package before transfer because its category key was missing. Revision `c8312d107cfd1040db30b07036d81896d1fdf7e3` adds only `LSApplicationCategoryType=public.app-category.photography` to the native source. Mac 1.0 (2) uploaded, processed and was selected and saved. The original captures still match all display source and assets; the category change is recorded separately from their frozen provenance.
 
-App Store metadata, free pricing, all permitted storefronts, build processing, gallery acceptance, owner legal/privacy/contact attestations and review submission remain unverified. The source and local packages are ready for those steps; this folder is not a submission receipt.
+All 30 marketing JPEGs are uploaded, saved in order and visually checked against Apple's hosted previews: ten iPhone, ten iPad and ten Mac. Four backgrounds alternate and adjacent hero artwork differs. Source-backed descriptions, support links, review notes and the owner's supplied review contact are saved. Sign-in is not required. Categories, subtitle and the content questionnaire are saved. Pricing is Free and all 175 available storefronts are enabled for release after approval.
+
+Unlisted support and privacy pages are deployed on AWS and Vercel from website revision `5c00d3f8ddbc48fa62f8504c527128a0ae8fa75b`. The website deployment receipt verifies HTTP 200 and identical source hashes on both hosts. The earlier expired-AWS and undeployed-page statements are superseded.
+
+Both platform Add for Review checks report one remaining App Store Connect requirement: publish App Privacy. The reviewed Data Not Collected draft and policy URL are saved. A precise owner accuracy/compliance approval question is pending; do not repeat it or publish without its answer. Neither platform has been submitted for review.
+
+Current upload, capture-parity, gallery and final validation receipts are in `/Users/nathan/Documents/GitHub/app-store-audit/2026-09-27-release/goal-release-2026-10-02/valentine-*2026-10-03.json`. The authoritative account reconciliation and pending approval are in that release ledger. This packet is preparation and validation evidence, not a review-submission receipt.

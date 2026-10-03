@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at_utc": "2026-10-03T04:19:14.864817+00:00",
-  "status": "signed_local_packages_and_native_galleries_verified_store_registration_failed_website_auth_pending",
+  "updated_at_utc": "2026-10-03T10:53:02.617373+00:00",
+  "status": "both_builds_uploaded_processed_selected_saved_metadata_and_30_galleries_complete_pending_owner_privacy_publication",
   "source_basis": "Frozen native bff4771 builds, signed iOS/Mac exports, complete native Phone/Pad flows, manual Mac checks and synthetic legacy-store preservation passed.30 composed marketing images passed technical and two final visual reviews. No App Store upload/submission verified.",
   "identity": {
     "name": "My Funny Valentine",
@@ -9,15 +9,19 @@
     "development_team_id": "EJLR2RPSV2",
     "configured_version": "1.0",
     "configured_build": "1",
-    "app_store_app_id": null,
-    "sku": null,
-    "app_store_connect_verified": false,
+    "app_store_app_id": "6818700756",
+    "sku": "com.nathanfennel.My-Funny-Valentine",
+    "app_store_connect_verified": true,
     "supported_platforms": [
       "iOS",
       "iPadOS",
       "macOS"
     ],
-    "visionos_work": "paused_by_owner"
+    "visionos_work": "paused_by_owner",
+    "platform_builds": {
+      "iOS": "1.0(1)",
+      "macOS": "1.0(2)"
+    }
   },
   "minimum_os": {
     "ios_configured": "18.0",
@@ -31,7 +35,7 @@
     "locale": "en-US",
     "subtitle": "Funny cards, made yours",
     "promotional_text": "Pick a playful card, make the message yours, and send a smile. Thirty editable starters, optional photos and face animation. Free, with no in-app purchases.",
-    "description": "Send a card that sounds like you.\n\nStart with one of 30 editable cards across six playful collections: Pizza Crush, Cosmic Love, Lovebirds, Dino-mite, Disco Date and Sweet Tooth. Each collection has original illustrated artwork and five different messages. Pick your favorite and make the words yours.\n\nMAKE IT PERSONAL\n\u2022 Edit the message and add a personal note\n\u2022 Add a photo, or choose a face from your photo\n\u2022 Make and save cards without adding a photo\n\u2022 Find a message with built-in suggestions or optional Apple Intelligence on compatible devices\n\nREADY TO SEND\n\u2022 Preview your card before sharing\n\u2022 Share a card image with the native share sheet\n\u2022 Add a playful face animation and share it as a GIF\n\nYOUR CARD LIBRARY\n\u2022 Save cards on the device where you make them\n\u2022 Reopen a card to edit it or send it again\n\u2022 Browse the starter cards and edit your own messages offline\n\nOptional Image Playground artwork is available on supported Apple Intelligence devices. Apple manages its availability, processing and usage limits. Built-in cards, your own messages and photo editing remain available without it.\n\nMy Funny Valentine is free, with no in-app purchases, ads or app account.",
+    "description": "Send a card that sounds like you.\n\nStart with one of 30 editable cards across six playful collections: Pizza Crush, Cosmic Love, Lovebirds, Dino-mite, Disco Date and Sweet Tooth. Each collection has original illustrated artwork and five different messages. Pick your favorite and make the words yours.\n\nMAKE IT PERSONAL\n• Edit the message and add a personal note\n• Add a photo, or choose a face from your photo\n• Make and save cards without adding a photo\n• Find a message with built-in suggestions or optional Apple Intelligence on compatible devices\n\nREADY TO SEND\n• Preview your card before sharing\n• Share a card image with the native share sheet\n• Add a playful face animation and share it as a GIF\n\nYOUR CARD LIBRARY\n• Save cards on the device where you make them\n• Reopen a card to edit it or send it again\n• Browse the starter cards and edit your own messages offline\n\nOptional Image Playground artwork is available on supported Apple Intelligence devices. Apple manages its availability, processing and usage limits. Built-in cards, your own messages and photo editing remain available without it.\n\nMy Funny Valentine is free, with no in-app purchases, ads or app account.",
     "keywords": "valentine,card,greeting,love,funny,romantic,photo,face,gif,anniversary,message,art",
     "whats_new": null,
     "primary_category": "Photo & Video",
@@ -47,13 +51,14 @@
     "in_app_purchases": false,
     "ads": false,
     "app_account_required": false,
-    "app_store_connect_pricing_and_availability_verified": false
+    "app_store_connect_pricing_and_availability_verified": true,
+    "saved_storefront_count": 175
   },
   "urls": {
     "privacy": "https://nathanfennel.com/my-funny-valentine/privacy.html",
     "support": "https://nathanfennel.com/my-funny-valentine/support.html",
     "marketing": null,
-    "status": "72 website pages committed at ec90d6f42769093fa43f0dbd1252fa2150036a1d, not deployed. Read-only fishbowl-head AWS CLI check at2026-10-03 04:06:16 UTC reported expired credentials. Neither new URL verified live.",
+    "status": "AWS and Vercel support/privacy HTTP200 exact-source hashes verified at website revision5c00d3f8ddbc48fa62f8504c527128a0ae8fa75b; deployment receipt in nathanfennel.com/docs/app-policy-pages-deployment-2026-10-03.json",
     "local_render_verification": "website-local-verification.json; local320/1280px rendering passed; no live URL proof"
   },
   "review_contact": {
@@ -130,9 +135,9 @@
     }
   },
   "privacy": {
-    "app_privacy_answers": null,
+    "app_privacy_answers": "Data Not Collected draft saved",
     "label_published": false,
-    "verification_status": "Required-reason manifest included and signature-verified in final bff distribution IPA/Mac payloads. Data Not Collected proposal and Apple framework rationale in privacy-label-rationale.json. Live policy and owner publication/rights/legal attestations pending.",
+    "verification_status": "Required-reason manifests verified, source-grounded policy deployed, draft saved. Owner final accuracy/compliance agreement question pending once; not published.",
     "basis": [
       "Cards and photos saved locally on this device",
       "Face detection runs locally",
@@ -143,7 +148,7 @@
     "proposal_record": "privacy-label-rationale.json"
   },
   "gallery": {
-    "status": "30 final JPEGs passed technical, primary and independent visual reviews; none uploaded",
+    "status": "All30 accepted and saved01..10per device; Apple-hosted individual visual checks PASS",
     "target_images_per_platform": {
       "iphone": 10,
       "ipad": 10,
@@ -163,7 +168,7 @@
         1600
       ]
     },
-    "dimension_verification": "Exact final payload dimensions match Apple screenshot specifications checked2026-10-03. Phone6.9portrait, Pad13landscape and Mac16:10; actual App Store acceptance pending.",
+    "dimension_verification": "All30 final JPEGs accepted by App Store Connect at the specified dimensions; CDN previews verified.",
     "obsolete_gallery_date": "2026-07-21",
     "obsolete_gallery_counts": {
       "iphone": 6,
@@ -187,7 +192,7 @@
       "edit a message",
       "finished share preview"
     ],
-    "uploaded_gallery_verified": false,
+    "uploaded_gallery_verified": true,
     "manifest": "marketing-bff4771/manifest.json",
     "provenance": "marketing-bff4771/exports/marketing-provenance.json",
     "qc": "marketing-bff4771/marketing-qc.json",
@@ -212,11 +217,11 @@
     "existing_store_reopen_or_upgrade": "Current named QA library relaunch/reopen passed across all platforms. Synthetic old committed local SwiftData model store reopened/saved/cold-reopened with current models/CardDraft on Mac26.5.2; persisted identities/raw bytes/text retained. No production/CloudKit upgrade verified.",
     "oldest_supported_os_runtime": "Passed23/23 on oldest installed iOS18.5 representative runtime; exact18.0/macOS15.1 unavailable. Static final signed binary availability audit passed.",
     "eligible_device_apple_generation": "Passed actual Mac native sayings generation/select and Image Playground Apple Animation image import at bff; oldestOS/iOS availability not verified.",
-    "signed_archives": "Final bff4771 iOS IPA/macOS PKG strict signatures, versions, minimums, architectures, privacy manifests and exact hashes verified in signed-archives-bff4771.json; notuploaded.",
-    "upload_and_processing": "Historical CLI attempts failed before transfer. Final bff managed Xcode validation failed during missing app-record creation with DistributionAppRecordProviderError0, before binary transfer; no AppID/processing/selectable build/submission verified.",
-    "app_store_connect_fields": "pending",
-    "privacy_label_and_legal_attestations": "pending",
-    "review_submission": "pending",
+    "signed_archives": "iOS1 bff4771 archive uploaded; Mac2 c8312d1 corrects only category Info.plist and passed strict signature/architecture/category checks before successful upload.",
+    "upload_and_processing": "iOS1 and Mac2 official managed Xcode uploads succeeded; both processed/selectable, attached and saved in normal ASC UI.",
+    "app_store_connect_fields": "Source-backed metadata, categories,4+ rating, content questionnaire, Free175, review notes and owner-provided review contact saved. Private contact values omitted from this public record.",
+    "privacy_label_and_legal_attestations": "Reviewed Data Not Collected draft saved; final Publish accuracy/compliance agreement pending owner answer once.",
+    "review_submission": "Not submitted. Both Add for Review validators report unpublished App Privacy as sole missing ASC item.",
     "source_revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
     "source_freeze_record": "native-source-fingerprint.json",
     "native_source_fingerprint": "native-source-fingerprint.json",
@@ -232,7 +237,14 @@
     "managed_registration_record": "managed-store-registration-bff4771.json",
     "legacy_upgrade_record": "legacy-upgrade-verification.json",
     "minimum_os_static_audit": "Final exported binaries and source availability gates passed; minimum-os-static-verification.json. Exact minimum runtime launch not verified.",
-    "ios18_compatibility_record": "ios18-compatibility-verification.json"
+    "ios18_compatibility_record": "ios18-compatibility-verification.json",
+    "historical_before_asc_completion": {
+      "signed_archives": "Final bff4771 iOS IPA/macOS PKG strict signatures, versions, minimums, architectures, privacy manifests and exact hashes verified in signed-archives-bff4771.json; notuploaded.",
+      "upload_and_processing": "Historical CLI attempts failed before transfer. Final bff managed Xcode validation failed during missing app-record creation with DistributionAppRecordProviderError0, before binary transfer; no AppID/processing/selectable build/submission verified.",
+      "app_store_connect_fields": "pending",
+      "privacy_label_and_legal_attestations": "pending"
+    },
+    "macos_source_revision": "c8312d107cfd1040db30b07036d81896d1fdf7e3"
   },
   "apple_sources": [
     {
