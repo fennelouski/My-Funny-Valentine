@@ -40,11 +40,10 @@ final class ScreenshotUITests: XCTestCase {
         note.typeText(personalNote)
         XCTAssertEqual(note.value as? String, personalNote)
 
-        // Closing the preview can restore note-field focus. Scroll before
-        // checking dismissal so the editor's native gesture handles the keyboard.
+        // Multiline editing keeps Return for a newline. Use the native keyboard
+        // toolbar to finish typing before returning to the card preview.
         if app.keyboards.firstMatch.exists {
-            try openSharePreview()
-            try closeSharePreview()
+            try tap(app.buttons["editor.dismissKeyboard"], "Finish typing the personal note")
         }
         try scrollToTop()
         try waitForKeyboardToClose()

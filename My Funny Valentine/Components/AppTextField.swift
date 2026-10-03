@@ -11,6 +11,7 @@ struct AppTextField: View {
     var placeholder: String = ""
     var characterLimit: Int?
     var axis: Axis = .horizontal
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -21,6 +22,7 @@ struct AppTextField: View {
             
             TextField(placeholder, text: $text, axis: axis)
                 .textFieldStyle(.roundedBorder)
+                .focused($isFocused)
                 .lineLimit(axis == .vertical ? 3...6 : 1...1)
                 .onChange(of: text) { _, newValue in
                     if let limit = characterLimit, newValue.count > limit {
@@ -34,6 +36,17 @@ struct AppTextField: View {
                     .foregroundStyle(.tertiary)
             }
         }
+        #if os(iOS)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                if isFocused {
+                    Spacer()
+                    Button("Done") { isFocused = false }
+                        .accessibilityIdentifier("editor.dismissKeyboard")
+                }
+            }
+        }
+        #endif
     }
 }
 
