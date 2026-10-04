@@ -4,10 +4,11 @@ import SwiftData
 struct HomeView: View {
     @Query(sort: \Card.modifiedAt, order: .reverse) private var recentCards: [Card]
     @State private var collection = "all"
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     private let collections = [
-        ("all", "All cards"), ("pizza", "Pizza crush"), ("space", "Cosmic love"),
-        ("birds", "Lovebirds"), ("dino", "Dino-mite"), ("disco", "Disco date"), ("sweets", "Sweet tooth")
+        ("all", "All cards"), ("pizza", "Comic crush"), ("space", "Cosmic love"),
+        ("birds", "Love letters"), ("dino", "Pop-up hearts"), ("disco", "Photo booth"), ("sweets", "Confetti party")
     ]
     private var starters: [CardTemplate] {
         let templates = TemplateManager.shared.getStarterTemplates()
@@ -23,21 +24,35 @@ struct HomeView: View {
         }
     }
 
+    private var writeButton: some View {
+        Button { NotificationCenter.default.post(name: NSNotification.Name("NewCard"), object: nil) } label: {
+            Label("Write", systemImage: "square.and.pencil")
+                .fixedSize(horizontal: true, vertical: true)
+                .frame(minHeight: 44)
+        }
+        .buttonStyle(.bordered)
+        .accessibilityIdentifier("home.createCard")
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    HStack(alignment: .top) {
-                        Text("Pick a card.\nMake it yours.")
-                            .font(.largeTitle.bold())
-                            .fixedSize(horizontal: false, vertical: true)
-                        Spacer(minLength: 12)
-                        Button { NotificationCenter.default.post(name: NSNotification.Name("NewCard"), object: nil) } label: {
-                            Label("Write", systemImage: "square.and.pencil")
-                                .frame(minHeight: 44)
+                    if dynamicTypeSize.isAccessibilitySize {
+                        VStack(alignment: .leading, spacing: 20) {
+                            writeButton
+                            Text("Pick a card.\nMake it yours.")
+                                .font(.title2.bold())
+                                .fixedSize(horizontal: false, vertical: true)
                         }
-                        .buttonStyle(.bordered)
-                        .accessibilityIdentifier("home.createCard")
+                    } else {
+                        HStack(alignment: .top) {
+                            Text("Pick a card.\nMake it yours.")
+                                .font(.largeTitle.bold())
+                                .fixedSize(horizontal: false, vertical: true)
+                            Spacer(minLength: 12)
+                            writeButton
+                        }
                     }
                     if !recentCards.isEmpty {
                         Text("Your latest").font(.title2.bold())
@@ -94,10 +109,18 @@ private struct StarterCardLink: View {
         NavigationLink {
             CardDetailView(card: nil, starter: draft)
         } label: {
-            GeometryReader { geometry in
-                CardTileView(card: draft, size: geometry.size)
+            VStack(alignment: .leading, spacing: 10) {
+                GeometryReader { geometry in
+                    CardTileView(card: draft, size: geometry.size)
+                }
+                .aspectRatio(2.0 / 3.0, contentMode: .fit)
+                if let family = draft.getLayoutData()?.composition?.family {
+                    Label(family.title, systemImage: family.symbol)
+                        .font(.subheadline.bold())
+                        .fixedSize(horizontal: false, vertical: true)
+                        .foregroundStyle(.primary)
+                }
             }
-            .aspectRatio(2.0 / 3.0, contentMode: .fit)
         }
         .buttonStyle(.plain)
         .accessibilityLabel(template.textAreas.first?.defaultText ?? template.name)

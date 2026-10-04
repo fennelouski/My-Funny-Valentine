@@ -1,0 +1,31 @@
+Window: "", App: My Funny Valentine.
+0 sheet Secondary Actions: Raise
+	1 container
+		2 text Value: Ready to send, Secondary Actions: Cancel
+		3 scroll area ID: cardShare.scroll, Secondary Actions: Scroll Up, Scroll Down, Cancel
+			4 button Description: Card preview. A little card for my favorite person, Value: Front, ID: cardDetail.preview, Secondary Actions: Open card
+			5 button Description: Open card, ID: cardDetail.openCard
+			6 button Description: Share card front, ID: cardDetail.sharePNG
+			7 button Description: Share animation, ID: cardDetail.shareGIF
+			8 button Description: Share Inside message PNG, ID: cardDetail.share.inside
+			9 button Description: Share Printable PDF, ID: cardDetail.share.pdf
+			10 button Description: Share Chat sticker PNG, ID: cardDetail.share.sticker
+			11 button Description: Share Interactive browser card, ID: cardDetail.share.html
+			12 button (disabled) Description: Print card, ID: cardDetail.print
+			13 text Mail and chat apps appear in your device's share menu.
+			14 scroll bar (settable, float) 0.8182912154031288
+				15 value indicator (settable, float) 0.8182912154031288
+				16 increment arrow button
+				17 decrement arrow button
+				18 increment page button
+				19 decrement page button
+		20 button Done
+21 menu bar
+	22 My Funny Valentine
+	23 File
+	24 Edit
+	25 View
+	26 Window
+	27 Help
+
+The focused UI element is 0 sheet Secondary Actions: Raise

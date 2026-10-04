@@ -1,0 +1,32 @@
+{
+  "enabledCount": 26,
+  "errors": [],
+  "identifiers": [
+    "My Funny ValentineTests/CardDraftTests/testFullDraftLifecycle()",
+    "My Funny ValentineTests/CardPersistenceRegressionTests/testFullCardGraphPersists()",
+    "My Funny ValentineTests/CardPersistenceRegressionTests/testGeometryMutationPersists()",
+    "My Funny ValentineTests/CardRendererTests/consistentRendering()",
+    "My Funny ValentineTests/CardRendererTests/starterAndGIF()",
+    "My Funny ValentineTests/CreativeCardExportTests/asyncExportsKeepFormatContracts()",
+    "My Funny ValentineTests/CreativeCardExportTests/backwardCompatibleLayoutsAndStarters()",
+    "My Funny ValentineTests/CreativeCardExportTests/calmMotionAndOpening()",
+    "My Funny ValentineTests/CreativeCardExportTests/cancelledAsyncExportsDoNotReturnFiles()",
+    "My Funny ValentineTests/CreativeCardExportTests/fullCardAnimation()",
+    "My Funny ValentineTests/CreativeCardExportTests/obsoleteExportCannotCommitOrFinishNewJob()",
+    "My Funny ValentineTests/CreativeCardExportTests/printablePDF()",
+    "My Funny ValentineTests/CreativeCardExportTests/safeOfflineBrowserCard()",
+    "My Funny ValentineTests/CreativeCardExportTests/snapshotDoesNotReadLiveDraft()",
+    "My Funny ValentineTests/CreativeCardExportTests/transparentSticker()",
+    "My Funny ValentineTests/CreativeCardExportTests/twoFaceCompositionsStayDistinctAndFrozen()",
+    "My Funny ValentineTests/MFVRuntimeIsolationTests/actualPrivateUnitPaths()",
+    "My Funny ValentineTests/MFVRuntimeIsolationTests/conflictingRequests()",
+    "My Funny ValentineTests/MFVRuntimeIsolationTests/malformedPrivateRequests()",
+    "My Funny ValentineTests/MFVRuntimeIsolationTests/ordinaryAndForcedModes()",
+    "My Funny ValentineTests/MFVRuntimeIsolationTests/unitHostsAreBlank()",
+    "My Funny ValentineTests/MFVRuntimeIsolationTests/validUISession()",
+    "My Funny ValentineTests/StarterTemplateCatalogTests/draftsStayUnsaved()",
+    "My Funny ValentineTests/StarterTemplateCatalogTests/legacyTemplatesRemainCompatible()",
+    "My Funny ValentineTests/StarterTemplateCatalogTests/starterGeometryFits()",
+    "My Funny ValentineTests/StarterTemplateCatalogTests/startersAreComplete()"
+  ]
+}

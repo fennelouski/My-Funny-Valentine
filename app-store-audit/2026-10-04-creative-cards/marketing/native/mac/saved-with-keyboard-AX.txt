@@ -1,0 +1,72 @@
+Window: "My Funny Valentine", App: My Funny Valentine.
+0 standard window My Funny Valentine, Secondary Actions: Raise, ID: SwiftUI._ConditionalContent<SwiftUI._ConditionalContent<SwiftUI._ConditionalContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<My_Funny_Valentine.ContentView, _SwiftData_SwiftUI.(unknown context at $235a26f4c).PassthroughModelContainerViewModifier>, SwiftUI._EnvironmentKeyWritingModifier<__C.NSUserDefaults>>, SwiftUI.AccessibilityContainerModifier>, SwiftUI.AccessibilityAttachmentModifier>, SwiftUI.ModifiedContent<My_Funny_Valentine.ContentView, _SwiftDat
+	1 split group SwiftUI._ConditionalContent<SwiftUI._ConditionalContent<SwiftUI._ConditionalContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<My_Funny_Valentine.ContentView, _SwiftData_SwiftUI.(unknown context at $235a26f4c).PassthroughModelContainerViewModifier>, SwiftUI._EnvironmentKeyWritingModifier<__C.NSUserDefaults>>, SwiftUI.AccessibilityContainerModifier>, SwiftUI.AccessibilityAttachmentModifier>, SwiftUI.ModifiedContent<My_Funny_Valentine.ContentView, _SwiftDat
+		2 scroll area
+			3 list Sidebar
+				4 row (selected) Home
+				5 row (selectable) My Cards
+				6 row (selectable) Settings
+				7 row (selectable) Generation
+				8 row (selectable) Storage
+				9 row (selectable) About
+		10 splitter (disabled, settable, float) 258
+		11 scroll area Secondary Actions: Scroll Up, Scroll Down, Cancel
+			12 text Pick a card.
+Make it yours.
+			13 button Description: Write, ID: home.createCard
+			14 text Your latest
+			15 scroll area
+				16 button A little card for my favorite person. You make ordinary days wonderful. Love, Sam.
+			17 pop up button Collection, Value: All cards, ID: home.collection
+			18 collection Secondary Actions: AXScrollToTop, AXScrollToBottom
+				19 button Description: You had me at pizza., Help: Personalize this card, ID: starter.starter_pizza_1
+				20 button Description: You're the center of my universe., Help: Personalize this card, ID: starter.starter_space_1
+				21 button Description: You're my favorite person to perch beside., Help: Personalize this card, ID: starter.starter_birds_1
+				22 button Description: You're dino-mite, Valentine., Help: Personalize this card, ID: starter.starter_dino_1
+				23 button Description: You and me? Same groove., Help: Personalize this card, ID: starter.starter_disco_1
+				24 button Description: I'm sweet on you., Help: Personalize this card, ID: starter.starter_sweets_1
+				25 button Description: You're my perfect slice., Help: Personalize this card, ID: starter.starter_pizza_2
+				26 button Description: Our chemistry is out of this world., Help: Personalize this card, ID: starter.starter_space_2
+				27 button Description: You make my heart take flight., Help: Personalize this card, ID: starter.starter_birds_2
+				28 button Description: Tiny arms. Giant love., Help: Personalize this card, ID: starter.starter_dino_2
+				29 button Description: You light up my dance floor., Help: Personalize this card, ID: starter.starter_disco_2
+				30 button Description: You're my favorite kind of sweet., Help: Personalize this card, ID: starter.starter_sweets_2
+				31 button Description: I love you, extra cheese and all., Help: Personalize this card, ID: starter.starter_pizza_3
+				32 button Description: I love you to the moon and snack., Help: Personalize this card, ID: starter.starter_space_3
+				33 button Description: I've got a crush worth tweeting about., Help: Personalize this card, ID: starter.starter_birds_3
+				34 button Description: You make my Jurassic heart race., Help: Personalize this card, ID: starter.starter_dino_3
+				35 button Description: Be my date under the disco ball., Help: Personalize this card, ID: starter.starter_disco_3
+				36 button Description: You make life sweeter, one sprinkle at a time., Help: Personalize this card, ID: starter.starter_sweets_3
+				37 button Description: In crust we trust. In you, I swoon., Help: Personalize this card, ID: starter.starter_pizza_4
+				38 button Description: You make my stars align., Help: Personalize this card, ID: starter.starter_space_4
+				39 button Description: Two little lovebirds. One big love., Help: Personalize this card, ID: starter.starter_birds_4
+				40 button Description: My crush on you is prehistoric., Help: Personalize this card, ID: starter.starter_dino_4
+				41 button Description: Our love deserves an encore., Help: Personalize this card, ID: starter.starter_disco_4
+				42 button Description: I like you more than chocolate. That's serious., Help: Personalize this card, ID: starter.starter_sweets_4
+				43 button Description: I'd save you the last slice., Help: Personalize this card, ID: starter.starter_pizza_5
+				44 button Description: There's always space for you., Help: Personalize this card, ID: starter.starter_space_5
+				45 button Description: You're the best thing in my nest., Help: Personalize this card, ID: starter.starter_birds_5
+				46 button Description: I love you more than I can roar., Help: Personalize this card, ID: starter.starter_dino_5
+				47 button Description: Let's boogie into forever., Help: Personalize this card, ID: starter.starter_disco_5
+				48 button Description: You give my heart a sugar rush., Help: Personalize this card, ID: starter.starter_sweets_5
+			49 scroll bar (settable, float) 0
+				50 value indicator (settable, float) 0
+				51 increment arrow button
+				52 decrement arrow button
+				53 increment page button
+				54 decrement page button
+	55 toolbar
+		56 button Description: Hide Sidebar, Secondary Actions: Increment, Decrement, Delete, Cancel
+	57 close button
+	58 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	59 minimize button
+	60 text My Funny Valentine
+61 menu bar
+	62 My Funny Valentine
+	63 File
+	64 Edit
+	65 View
+	66 Window
+	67 Help
+
+The focused UI element is 0 standard window My Funny Valentine, Secondary Actions: Raise, ID: SwiftUI._ConditionalContent<SwiftUI._ConditionalContent<SwiftUI._ConditionalContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<My_Funny_Valentine.ContentView, _SwiftData_SwiftUI.(unknown context at $235a26f4c).PassthroughModelContainerViewModifier>, SwiftUI._EnvironmentKeyWritingModifier<__C.NSUserDefaults>>, SwiftUI.AccessibilityContainerModifier>, SwiftUI.AccessibilityAttachmentModifier>, SwiftUI.ModifiedContent<My_Funny_Valentine.ContentView, _SwiftDat

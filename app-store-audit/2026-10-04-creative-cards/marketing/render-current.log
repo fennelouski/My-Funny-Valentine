@@ -1,0 +1,3 @@
+Error: Native PNG required
+    at pngSize (/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/marketing/render-marketing.cjs:8:95)
+    at main (/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/marketing/render-marketing.cjs:28:89)

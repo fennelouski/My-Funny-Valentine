@@ -99,6 +99,7 @@ nonisolated struct CardLayoutData: Codable {
     var textPositionY: CGFloat?
     var textRotation: Double?
     var imagePlacements: [ImagePosition]?
+    var composition: CardComposition?
 
     init(
         backgroundColor: String = "#FFFFFF",
@@ -109,7 +110,8 @@ nonisolated struct CardLayoutData: Codable {
         textPositionX: CGFloat? = nil,
         textPositionY: CGFloat? = nil,
         textRotation: Double? = nil,
-        imagePlacements: [ImagePosition]? = nil
+        imagePlacements: [ImagePosition]? = nil,
+        composition: CardComposition? = nil
     ) {
         self.backgroundColor = backgroundColor
         self.textPositions = textPositions
@@ -120,6 +122,27 @@ nonisolated struct CardLayoutData: Codable {
         self.textPositionY = textPositionY
         self.textRotation = textRotation
         self.imagePlacements = imagePlacements
+        self.composition = composition
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case backgroundColor, textPositions, imagePositions, stickerPositions, templateLayoutId
+        case textPositionX, textPositionY, textRotation, imagePlacements, composition
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        backgroundColor = try values.decode(String.self, forKey: .backgroundColor)
+        textPositions = try values.decode([TextPosition].self, forKey: .textPositions)
+        imagePositions = try values.decode([ImagePosition].self, forKey: .imagePositions)
+        stickerPositions = try values.decode([StickerPosition].self, forKey: .stickerPositions)
+        templateLayoutId = try values.decodeIfPresent(String.self, forKey: .templateLayoutId)
+        textPositionX = try values.decodeIfPresent(CGFloat.self, forKey: .textPositionX)
+        textPositionY = try values.decodeIfPresent(CGFloat.self, forKey: .textPositionY)
+        textRotation = try values.decodeIfPresent(Double.self, forKey: .textRotation)
+        imagePlacements = try values.decodeIfPresent([ImagePosition].self, forKey: .imagePlacements)
+        // A future design family must not discard a saved classic layout.
+        composition = try? values.decodeIfPresent(CardComposition.self, forKey: .composition)
     }
 }
 

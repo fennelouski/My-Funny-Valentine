@@ -1,0 +1,61 @@
+[
+  {
+    "argv": [
+      "/opt/homebrew/bin/ffprobe",
+      "-v",
+      "error",
+      "-count_frames",
+      "-show_entries",
+      "stream=codec_name,width,height,nb_frames,nb_read_frames,duration,avg_frame_rate",
+      "-show_entries",
+      "format=duration,size",
+      "-of",
+      "json",
+      "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/iphone-final-r8/Valentine-62DD536A-E977-4247-817B-06485B2EB8A4.gif"
+    ],
+    "exitCode": 0,
+    "stdoutPath": "gif-ffprobe.json",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Users/nathan/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override/pdfinfo",
+      "-box",
+      "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/iphone-final-r8/Valentine-44F60F4F-1939-4206-8AD6-7E4354BC353F.pdf"
+    ],
+    "exitCode": 0,
+    "stdoutPath": "pdfinfo.txt",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/opt/homebrew/bin/ffmpeg",
+      "-hide_banner",
+      "-loglevel",
+      "error",
+      "-i",
+      "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/iphone-final-r8/Valentine-62DD536A-E977-4247-817B-06485B2EB8A4.gif",
+      "-vf",
+      "select=eq(n\\,0)+eq(n\\,15)+eq(n\\,29)",
+      "-fps_mode",
+      "vfr",
+      "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/iphone-final-r8/qa/gif-selected-%02d.png"
+    ],
+    "exitCode": 0,
+    "stdoutPath": "ffmpeg.stdout.txt",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Users/nathan/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override/pdftoppm",
+      "-png",
+      "-r",
+      "150",
+      "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/iphone-final-r8/Valentine-44F60F4F-1939-4206-8AD6-7E4354BC353F.pdf",
+      "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/iphone-final-r8/qa/pdf-page"
+    ],
+    "exitCode": 0,
+    "stdoutPath": "pdftoppm.stdout.txt",
+    "stderr": ""
+  }
+]

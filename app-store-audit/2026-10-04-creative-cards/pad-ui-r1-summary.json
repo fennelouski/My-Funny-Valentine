@@ -1,0 +1,49 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "F69EE4E7-DFEE-41C7-A753-41F27FB5AB7D",
+        "deviceName" : "Mouse Character QA iPad 20261004",
+        "modelName" : "iPad Pro 13-inch (M5)",
+        "osBuildNumber" : "23F77",
+        "osVersion" : "26.5",
+        "platform" : "iOS Simulator"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 1,
+      "passedTests" : 1,
+      "skippedTests" : 0,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "My Funny Valentine · Built with macOS 26.5.2",
+  "expectedFailures" : 0,
+  "failedTests" : 1,
+  "finishTime" : 1791153692.653,
+  "passedTests" : 1,
+  "result" : "Failed",
+  "skippedTests" : 0,
+  "startTime" : 1791153462.034,
+  "statistics" : [
+
+  ],
+  "testFailures" : [
+    {
+      "failureText" : "Failed to get matching snapshot: Find single matching element. Multiple matching elements found for <XCUIElementQuery: 0x11680c870>.\nSparse tree of matches:\n→Application, pid: 1382, label: 'My Funny Valentine'\n  ↳Window (Main)\n    ↳Other\n    ⋅ ↳Other, identifier: 'PopoverDismissRegion', label: 'dismiss popup'\n    ↳Other\n    ⋅ ↳Other, identifier: 'PopoverDismissRegion', label: 'dismiss popup'\n    ↳Other\n      ↳Other\n        ↳Other\n          ↳Other, identifier: 'PopoverDismissRegion', label: 'dismiss popup'\nPossibly caused by runtime issues:\nAutomation type mismatch: computed Other from legacy attributes vs Popover from modern attribute. Input attributes and values: {\n    \"XC_kAXXCAttributeAutomationType\" = 18;\n    \"XC_kAXXCAttributeElementBaseType\" = \"_UIPopoverView\";\n    \"XC_kAXXCAttributeElementType\" = \"_UIPopoverView\";\n    \"XC_kAXXCAttributeTraits\" = 0;\n}\nAutomation type mismatch: computed Other from legacy attributes vs StaticText from modern attribute. Input attributes and values: {\n    \"XC_kAXXCAttributeAutomationType\" = 48;\n    \"XC_kAXXCAttributeElementBaseType\" = UILabel;\n    \"XC_kAXXCAttributeElementType\" = UILabel;\n    \"XC_kAXXCAttributeTraits\" = 8590000128;\n}\nSee test report attachments for more detail.",
+      "targetName" : "My Funny ValentineUITests",
+      "testIdentifier" : 1,
+      "testIdentifierString" : "CreativeCardsUITests/testSavedMotionChoiceAndLocalExportSheet()",
+      "testIdentifierURL" : "test://com.apple.xcode/My%20Funny%20Valentine/My%20Funny%20ValentineUITests/CreativeCardsUITests/testSavedMotionChoiceAndLocalExportSheet",
+      "testName" : "testSavedMotionChoiceAndLocalExportSheet()"
+    }
+  ],
+  "title" : "Test - My Funny Valentine",
+  "topInsights" : [
+
+  ],
+  "totalTestCount" : 2
+}

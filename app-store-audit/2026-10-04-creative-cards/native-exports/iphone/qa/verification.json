@@ -1,0 +1,379 @@
+{
+  "status": "Format/text verification passed; actual bundled-bird artwork crop requires correction/owner visual decision",
+  "reviewedAtUTC": "2026-10-04T22:19:44.731425+00:00",
+  "sourceFreeze": "app-store-audit/2026-10-04-creative-cards/source-freeze.root-r6.json",
+  "sourceFreezeSHA256": "bf7e44e739cafaabdbdf67c84b3b9da227c1baebcb3eebd6152a9e579fc658b6",
+  "manifest": "app-store-audit/2026-10-04-creative-cards/native-exports/iphone/export-artifacts.json",
+  "manifestSHA256": "34e64e87ac5cfe03ddfa98907845355cba49f0d67a885c6caa63b33f9d99dbc3",
+  "version": "1.0",
+  "build": "3",
+  "originalPrivateSession": "051A87D7-86DB-4C70-B3C9-6A0D71EA34DD",
+  "originalProducedBy": "Actual editable saved-card UI flow phone-ui-r5.xcresult; fictional Sam message",
+  "sourceFiles": [
+    {
+      "path": "app-store-audit/2026-10-04-creative-cards/native-exports/iphone/Valentine-0A9F3987-1BD0-4730-9405-C8D7AA47E4A2.png",
+      "sha256": "a48b2d32ea421e291a6450586f568d84f3b392b11f8ddef5f62ed990b4253a76",
+      "originalManifestSHA256": "a48b2d32ea421e291a6450586f568d84f3b392b11f8ddef5f62ed990b4253a76",
+      "byteCount": 811037,
+      "matches": true
+    },
+    {
+      "path": "app-store-audit/2026-10-04-creative-cards/native-exports/iphone/Valentine-70BCF893-147B-4D4D-AFFE-B4BF38C2D610.gif",
+      "sha256": "68a463770afacdeaac0eeb617c5a4200f6163694e70b487d6bade1360f705e20",
+      "originalManifestSHA256": "68a463770afacdeaac0eeb617c5a4200f6163694e70b487d6bade1360f705e20",
+      "byteCount": 999315,
+      "matches": true
+    },
+    {
+      "path": "app-store-audit/2026-10-04-creative-cards/native-exports/iphone/Valentine-F02ECDB1-8E7B-45C3-A136-75EEB7575C3C.png",
+      "sha256": "e56354025485a0b5c6253c88711e10f6f6b2f980c2a1ce534ba7fc66905d2f9d",
+      "originalManifestSHA256": "e56354025485a0b5c6253c88711e10f6f6b2f980c2a1ce534ba7fc66905d2f9d",
+      "byteCount": 56209,
+      "matches": true
+    },
+    {
+      "path": "app-store-audit/2026-10-04-creative-cards/native-exports/iphone/Valentine-498AB1AF-1390-4DC3-8634-8442523D28FC.pdf",
+      "sha256": "b055043e42077d422b27b7b1af61ac54f531a98f4b2e6b257e9e1d7e4c29296b",
+      "originalManifestSHA256": "b055043e42077d422b27b7b1af61ac54f531a98f4b2e6b257e9e1d7e4c29296b",
+      "byteCount": 2830820,
+      "matches": true
+    },
+    {
+      "path": "app-store-audit/2026-10-04-creative-cards/native-exports/iphone/Valentine-B583BE85-AE0E-4055-8E72-DAA1F85A367F.png",
+      "sha256": "f2999b25690d011e7eab038333fd436fd13cdcfe8ad48ceccae7bddbd61ba1d8",
+      "originalManifestSHA256": "f2999b25690d011e7eab038333fd436fd13cdcfe8ad48ceccae7bddbd61ba1d8",
+      "byteCount": 27319,
+      "matches": true
+    },
+    {
+      "path": "app-store-audit/2026-10-04-creative-cards/native-exports/iphone/Valentine-1D70FCB6-DBEE-4965-8DF3-EE5ECE0F3813.html",
+      "sha256": "a611748e039f4df009ae9d2d4d510dbdff95f01d760fe4fa6841e86b2361f460",
+      "originalManifestSHA256": "a611748e039f4df009ae9d2d4d510dbdff95f01d760fe4fa6841e86b2361f460",
+      "byteCount": 3009486,
+      "matches": true
+    }
+  ],
+  "pngInspection": {
+    "frontDimensions": [
+      800,
+      1200
+    ],
+    "insideDimensions": [
+      800,
+      1200
+    ],
+    "reviewedFiles": [
+      "Valentine-0A9F3987-1BD0-4730-9405-C8D7AA47E4A2.png",
+      "Valentine-F02ECDB1-8E7B-45C3-A136-75EEB7575C3C.png",
+      "Valentine-B583BE85-AE0E-4055-8E72-DAA1F85A367F.png"
+    ],
+    "text": "All displayed front/inside/sticker wording readable and complete; no text overlap/truncation in this actual short-message fixture.",
+    "defect": "The love-letter front illustration visibly cuts the birds eye/head tops; repeated in GIF front frames and PDF front page."
+  },
+  "gif": {
+    "dimensions": [
+      400,
+      600
+    ],
+    "frameCount": 30,
+    "frameDurationsMilliseconds": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "durationMilliseconds": 3000,
+    "loop": 0,
+    "reviewedFramesZeroBased": [
+      0,
+      15,
+      29
+    ],
+    "derivedPreviewNames": [
+      "gif-selected-01.png",
+      "gif-selected-02.png",
+      "gif-selected-03.png"
+    ]
+  },
+  "sticker": {
+    "dimensions": [
+      618,
+      618
+    ],
+    "byteCount": 27319,
+    "under500000Bytes": true,
+    "transparentPixels": 239326,
+    "opaquePixels": 140310,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  "pdf": {
+    "pageCount": 2,
+    "mediaBoxPoints": [
+      0,
+      0,
+      288,
+      432
+    ],
+    "renderDPI": 150,
+    "reviewedFullPagePreviews": [
+      "pdf-page-1.png",
+      "pdf-page-2.png"
+    ],
+    "fullMessageExtracted": true,
+    "visual": "Both full pages upright and readable. Front illustration has same cropped bird heads; page2 complete front phrase and full note, no text clipping.",
+    "textEvidence": "source-artifact-inspection.json"
+  },
+  "htmlSource": {
+    "embeddedFrames": 16,
+    "frameRecords": [
+      {
+        "frame": 0,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 219460,
+        "sha256": "853eed43f886a162b7fcc0d31f71f72dd33facbb96d89c251da7879db3845290"
+      },
+      {
+        "frame": 1,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 216810,
+        "sha256": "f02c5c7338fa038176dda8aefb2b5b15131ce913ad03f0295231b04c4dda698e"
+      },
+      {
+        "frame": 2,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 210015,
+        "sha256": "f7792788fa95b9774acf09058a272f1a883a3dcc3dad839db0fb4a44ccfbc299"
+      },
+      {
+        "frame": 3,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 199612,
+        "sha256": "b10df11a7e11ee55619e7e70e9a2692a8597e59bda810b48725bc14918726ccb"
+      },
+      {
+        "frame": 4,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 186937,
+        "sha256": "89f2becc2e1a4bf3c3af73af7f16dcc9d5ddbdcb0b48d015a67e236a981203ed"
+      },
+      {
+        "frame": 5,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 172465,
+        "sha256": "a22a34fdc5078ef4e68df6d87f604de5994e3a215ffff03e3a2877c62f2ecc3e"
+      },
+      {
+        "frame": 6,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 154894,
+        "sha256": "ef282f838f051e3dfe3101d002f9b0d7b7378a4c0c203893565af477f38ea72d"
+      },
+      {
+        "frame": 7,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 138795,
+        "sha256": "3384a97211aaca5f76a01358adb7d68685019db4b62db357878a666393d843c5"
+      },
+      {
+        "frame": 8,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 121810,
+        "sha256": "eea5325fbd08e698cf889f5531251a21f1ddf64d791e6c71d85047ec8c3433f6"
+      },
+      {
+        "frame": 9,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 102576,
+        "sha256": "e41e6b05039df9a52c251a49664c6c722e06a393e9ea53a31a1e06a52ea2c616"
+      },
+      {
+        "frame": 10,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 83807,
+        "sha256": "7bc2a13f317c8e727e92c41ea781bba736809c608e1643eb00621e2c3ac1e4e8"
+      },
+      {
+        "frame": 11,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 66280,
+        "sha256": "1addbe2187e4b1fd5feae3457d3a3296bf96521850f2981f9eb322430f82dc1c"
+      },
+      {
+        "frame": 12,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 50008,
+        "sha256": "2f65ddc3d39b03766576c4e27c72bc4362bbeacacd172f7cd481a4fd59b40388"
+      },
+      {
+        "frame": 13,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 36220,
+        "sha256": "0d96c6efbddb7cb191b3d08b596327f6a0c8523fb2e2e903ebdf09d14e19a1a9"
+      },
+      {
+        "frame": 14,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 25775,
+        "sha256": "49ba12c5b48a980b7e3e3becf961dbb957e1c38f0ff4e4bd2750a1d98c0b4eca"
+      },
+      {
+        "frame": 15,
+        "type": "data:image/png;base64",
+        "dimensions": [
+          400,
+          600
+        ],
+        "byteCount": 19919,
+        "sha256": "058cd36e82831350bea9a8720b4e4a3a2c4d0d1fad5906132ad325ca7877b767"
+      }
+    ],
+    "csp": "default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'",
+    "resources": [
+      {
+        "tag": "img",
+        "attribute": "src",
+        "value": "data: inline image"
+      }
+    ],
+    "externalResourceAttributes": false,
+    "httpURLTextFound": false,
+    "externalNetworkCallsFound": false,
+    "fullFrontTextPresent": true,
+    "fullInsideTextPresent": true,
+    "readMessageDisclosure": true,
+    "reducedMotionConditionPresent": true,
+    "userMotionOffConditionPresent": true,
+    "sourceOnly": "No browser execution or arbitrary unsafe-text fixture in this actual export."
+  },
+  "findings": [
+    {
+      "priority": "P2",
+      "kind": "actual exported pixels",
+      "description": "Known original bundled bird artwork loses eye/head tops in love-letter front, GIF front and PDF front. This extends prior source-backed dino/disco subject-crop finding.",
+      "ownerNotified": true,
+      "sourceAssetsNotEdited": true
+    }
+  ],
+  "limits": [
+    "Only this actual saved-card fixture reviewed. No arbitrary long-text visual preservation claim.",
+    "GIF first/middle/last frames individually inspected; metadata confirms all30 frames, no full playback interaction claim.",
+    "HTML source and embedded PNG metadata inspected; browser opening/drag/keyboard interaction remains root-owned.",
+    "No print job, provider call, recipient selection or sending performed."
+  ],
+  "derivedPreviews": [
+    {
+      "path": "gif-selected-01.png",
+      "sha256": "53aeaae4cfb45bd33a26c0b1477a43c052d27028ecb82f2ec2ff4882053e3945",
+      "byteCount": 118743
+    },
+    {
+      "path": "gif-selected-02.png",
+      "sha256": "4f912fa32a52aba49e3fcac4e3057fa653037d70800bce0556c194ed36a7f4fd",
+      "byteCount": 14193
+    },
+    {
+      "path": "gif-selected-03.png",
+      "sha256": "3d1a6a374c73e4bb3433037fff9b05e45216311710bb691338207da1612e114a",
+      "byteCount": 114673
+    },
+    {
+      "path": "pdf-page-1.png",
+      "sha256": "ed99b08910ea739ef6f62c0ced663b683545acd058294a927feff598ea009253",
+      "byteCount": 294372
+    },
+    {
+      "path": "pdf-page-2.png",
+      "sha256": "5627ac7e5b4d4969abdec3e4897431bc2f5aca7ed3b9cedefebbbf3ca126777e",
+      "byteCount": 26792
+    }
+  ]
+}

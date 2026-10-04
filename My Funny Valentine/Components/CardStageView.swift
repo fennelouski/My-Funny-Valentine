@@ -1,0 +1,177 @@
+import SwiftUI
+#if os(iOS)
+import UIKit
+#endif
+
+/// The clock stays inside the preview instead of invalidating the text editor.
+struct CardStageView: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    let snapshot: CardRenderSnapshot
+    var size = CGSize(width: 280, height: 420)
+    @Binding var opening: Double
+    var motionEnabled: Bool
+    @State private var startedAt = Date()
+    @State private var dragStart: Double?
+    @State private var dragIsHorizontal: Bool?
+    @State private var openingTask: Task<Void, Never>?
+
+    var body: some View {
+        VStack(spacing: 14) {
+            TimelineView(.animation(minimumInterval: 1.0 / 10, paused: reduceMotion || !motionEnabled)) { timeline in
+                let phase = reduceMotion || !motionEnabled ? nil : CardMotion.phase(elapsed: timeline.date.timeIntervalSince(startedAt))
+                if let image = CardRenderer.shared.render(snapshot, size: CGSize(width: size.width * 2, height: size.height * 2),
+                                                           phase: phase, opening: opening) {
+                    interactivePreview(
+                        PlatformImageUtils.swiftUIImage(from: image)
+                            .resizable().scaledToFit()
+                            .frame(width: size.width, height: size.height)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .shadow(color: .black.opacity(0.18), radius: 16, x: 0, y: 10)
+                            .contentShape(Rectangle())
+                    )
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel("Card preview. " + (opening > 0.5 && !snapshot.note.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? snapshot.note : snapshot.saying))
+                        .accessibilityValue(opening > 0.5 ? "Inside" : "Front")
+                        .accessibilityAddTraits(.isButton)
+                        .accessibilityIdentifier("cardDetail.preview")
+                        .accessibilityAction { toggleOpening() }
+                        .accessibilityAction(named: opening > 0.5 ? "Close card" : "Open card") { toggleOpening() }
+                }
+            }
+            Button(action: toggleOpening) {
+                Label(opening > 0.5 ? "Close card" : "Open card", systemImage: opening > 0.5 ? "envelope" : "envelope.open.fill")
+                    .font(.headline).frame(minHeight: 44)
+            }
+            .buttonStyle(.bordered)
+            .accessibilityIdentifier("cardDetail.openCard")
+        }
+        .onDisappear { openingTask?.cancel() }
+    }
+
+    @ViewBuilder
+    private func interactivePreview<Content: View>(_ preview: Content) -> some View {
+        #if os(iOS)
+        preview.overlay {
+            CardPreviewGestureBridge(opening: $opening,
+                                     onPanBegan: { openingTask?.cancel() },
+                                     onTap: toggleOpening)
+                .accessibilityHidden(true)
+        }
+        #else
+        preview
+            .onTapGesture(perform: toggleOpening)
+            .simultaneousGesture(DragGesture(minimumDistance: 12).onChanged { value in
+                if dragIsHorizontal == nil {
+                    dragIsHorizontal = abs(value.translation.width) > abs(value.translation.height)
+                }
+                guard dragIsHorizontal == true else { return }
+                openingTask?.cancel()
+                if dragStart == nil { dragStart = opening }
+                opening = min(max((dragStart ?? opening) - Double(value.translation.width / max(1, size.width)), 0), 1)
+            }.onEnded { _ in dragStart = nil; dragIsHorizontal = nil })
+        #endif
+    }
+
+    private func toggleOpening() {
+        openingTask?.cancel()
+        let target = opening > 0.5 ? 0.0 : 1.0
+        if reduceMotion || !motionEnabled { opening = target; return }
+        let start = opening
+        openingTask = Task { @MainActor in
+            for step in 1...12 {
+                guard !Task.isCancelled else { return }
+                let p = Double(step) / 12
+                opening = start + (target - start) * (1 - pow(1 - p, 3))
+                try? await Task.sleep(for: .milliseconds(45))
+            }
+        }
+    }
+}
+
+#if os(iOS)
+/// Rejects vertical intent before recognition so the enclosing ScrollView can scroll.
+@MainActor
+private struct CardPreviewGestureBridge: UIViewRepresentable {
+    @Binding var opening: Double
+    var onPanBegan: () -> Void
+    var onTap: () -> Void
+
+    func makeCoordinator() -> Coordinator { Coordinator(self) }
+
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.isOpaque = false
+        view.isAccessibilityElement = false
+
+        let pan = UIPanGestureRecognizer(target: context.coordinator,
+                                         action: #selector(Coordinator.handlePan(_:)))
+        pan.maximumNumberOfTouches = 1
+        pan.delegate = context.coordinator
+        view.addGestureRecognizer(pan)
+
+        let tap = UITapGestureRecognizer(target: context.coordinator,
+                                         action: #selector(Coordinator.handleTap(_:)))
+        tap.require(toFail: pan)
+        view.addGestureRecognizer(tap)
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {
+        context.coordinator.parent = self
+    }
+
+    @MainActor
+    final class Coordinator: NSObject, UIGestureRecognizerDelegate {
+        var parent: CardPreviewGestureBridge
+        private var startingOpening: Double?
+
+        init(_ parent: CardPreviewGestureBridge) { self.parent = parent }
+
+        func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+            guard let pan = gestureRecognizer as? UIPanGestureRecognizer else { return true }
+            let velocity = pan.velocity(in: pan.view)
+            return abs(velocity.x) > abs(velocity.y)
+        }
+
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                               shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+            guard gestureRecognizer is UIPanGestureRecognizer,
+                  let scrollView = otherGestureRecognizer.view as? UIScrollView,
+                  otherGestureRecognizer === scrollView.panGestureRecognizer,
+                  let preview = gestureRecognizer.view else { return false }
+            // Only the enclosing scroll pan waits for this direction decision.
+            return preview.isDescendant(of: scrollView)
+        }
+
+        @objc func handlePan(_ pan: UIPanGestureRecognizer) {
+            switch pan.state {
+            case .began:
+                parent.onPanBegan()
+                startingOpening = parent.opening
+                updateOpening(pan)
+            case .changed:
+                updateOpening(pan)
+            case .ended:
+                updateOpening(pan)
+                startingOpening = nil
+            case .cancelled, .failed:
+                startingOpening = nil
+            default:
+                break
+            }
+        }
+
+        private func updateOpening(_ pan: UIPanGestureRecognizer) {
+            guard let start = startingOpening, let view = pan.view else { return }
+            let delta = Double(pan.translation(in: view).x / max(1, view.bounds.width))
+            parent.opening = min(max(start - delta, 0), 1)
+        }
+
+        @objc func handleTap(_ tap: UITapGestureRecognizer) {
+            guard tap.state == .ended else { return }
+            parent.onTap()
+        }
+    }
+}
+#endif

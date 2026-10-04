@@ -1,0 +1,29 @@
+{
+  "count": 22,
+  "enabledTests": [
+    "My Funny ValentineTests/CardDraftTests/testFullDraftLifecycle()",
+    "My Funny ValentineTests/CardPersistenceRegressionTests/testFullCardGraphPersists()",
+    "My Funny ValentineTests/CardPersistenceRegressionTests/testGeometryMutationPersists()",
+    "My Funny ValentineTests/CardRendererTests/consistentRendering()",
+    "My Funny ValentineTests/CardRendererTests/starterAndGIF()",
+    "My Funny ValentineTests/CreativeCardExportTests/backwardCompatibleLayoutsAndStarters()",
+    "My Funny ValentineTests/CreativeCardExportTests/calmMotionAndOpening()",
+    "My Funny ValentineTests/CreativeCardExportTests/fullCardAnimation()",
+    "My Funny ValentineTests/CreativeCardExportTests/printablePDF()",
+    "My Funny ValentineTests/CreativeCardExportTests/safeOfflineBrowserCard()",
+    "My Funny ValentineTests/CreativeCardExportTests/snapshotDoesNotReadLiveDraft()",
+    "My Funny ValentineTests/CreativeCardExportTests/transparentSticker()",
+    "My Funny ValentineTests/MFVRuntimeIsolationTests/actualPrivateUnitPaths()",
+    "My Funny ValentineTests/MFVRuntimeIsolationTests/conflictingRequests()",
+    "My Funny ValentineTests/MFVRuntimeIsolationTests/malformedPrivateRequests()",
+    "My Funny ValentineTests/MFVRuntimeIsolationTests/ordinaryAndForcedModes()",
+    "My Funny ValentineTests/MFVRuntimeIsolationTests/unitHostsAreBlank()",
+    "My Funny ValentineTests/MFVRuntimeIsolationTests/validUISession()",
+    "My Funny ValentineTests/StarterTemplateCatalogTests/draftsStayUnsaved()",
+    "My Funny ValentineTests/StarterTemplateCatalogTests/legacyTemplatesRemainCompatible()",
+    "My Funny ValentineTests/StarterTemplateCatalogTests/starterGeometryFits()",
+    "My Funny ValentineTests/StarterTemplateCatalogTests/startersAreComplete()"
+  ],
+  "enumerationSHA256": "8261c6748c72cda3ffd35603b06708aa16402dadcf2e9172706abda614dd8b24",
+  "externalAPICloudKitSubscriptionTestsSelected": false
+}

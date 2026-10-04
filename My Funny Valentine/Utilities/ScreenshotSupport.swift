@@ -6,42 +6,36 @@
 //  platforms that can't be driven by XCUITest. Compiled out of Release builds.
 //
 //  Usage (macOS):
-//    open -a "My Funny Valentine.app" --args -screenshotTab 1 -seedSampleCards YES
+//    --mfv-ui-tests --mfv-test-session <UUID> -screenshotTab 1
 //
 
 import Foundation
 import SwiftData
 
+@MainActor
 enum ScreenshotSupport {
 
     static var qaStoreName: String {
         #if DEBUG
-        if let name = UserDefaults.standard.string(forKey: "qaStoreName"),
-           name.range(of: "^[A-Za-z0-9-]{1,64}$", options: .regularExpression) != nil {
-            return name
-        }
+        return MFVRuntime.configuration.session?.uuidString ?? "invalid"
+        #else
+        return "unused"
         #endif
-        return "20261003"
     }
 
     /// Native QA uses a separate persistent library; Release always uses the user's store.
     static var shouldUseQAStore: Bool {
-        #if DEBUG && MFV_QA_STORE
-        true
-        #elseif DEBUG
-        ProcessInfo.processInfo.arguments.contains("--uitesting")
-            || UserDefaults.standard.bool(forKey: "qaStore")
-            || ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
-        #else
-        false
-        #endif
+        MFVRuntime.isPrivate
     }
 
     /// Tab to select on launch. Always 0 outside DEBUG builds.
     static var initialTab: Int {
         #if DEBUG
-        if UserDefaults.standard.object(forKey: "screenshotTab") != nil {
-            return UserDefaults.standard.integer(forKey: "screenshotTab")
+        if let raw = argument("-screenshotTab"), let tab = Int(raw), (0...4).contains(tab) {
+            return tab
+        }
+        if MFVRuntime.preferences.object(forKey: "screenshotTab") != nil {
+            return min(max(MFVRuntime.preferences.integer(forKey: "screenshotTab"), 0), 4)
         }
         #endif
         return 0
@@ -51,7 +45,7 @@ enum ScreenshotSupport {
     /// `-skipOnboarding YES`. Always false outside DEBUG builds.
     static var shouldSkipOnboarding: Bool {
         #if DEBUG
-        return UserDefaults.standard.bool(forKey: "skipOnboarding")
+        return flag("skipOnboarding") ?? (MFVRuntime.configuration.mode == .ui)
         #else
         return false
         #endif
@@ -61,7 +55,7 @@ enum ScreenshotSupport {
     /// it has been completed before. Always false outside DEBUG builds.
     static var shouldForceOnboarding: Bool {
         #if DEBUG
-        return UserDefaults.standard.bool(forKey: "showOnboarding")
+        return flag("showOnboarding") ?? false
         #else
         return false
         #endif
@@ -71,7 +65,7 @@ enum ScreenshotSupport {
     /// No-op in Release builds and when the store already has cards.
     static func seedSampleCardsIfRequested(in context: ModelContext) {
         #if DEBUG
-        guard UserDefaults.standard.bool(forKey: "seedSampleCards") else { return }
+        guard flag("seedSampleCards") == true else { return }
 
         let existing = (try? context.fetch(FetchDescriptor<Card>())) ?? []
         guard existing.isEmpty else { return }
@@ -91,4 +85,23 @@ enum ScreenshotSupport {
         try? context.save()
         #endif
     }
+
+    #if DEBUG
+    private static func argument(_ name: String) -> String? {
+        let arguments = ProcessInfo.processInfo.arguments
+        let indices = arguments.indices.filter { arguments[$0] == name }
+        guard indices.count == 1, let index = indices.first, arguments.indices.contains(index + 1) else { return nil }
+        return arguments[index + 1]
+    }
+
+    private static func flag(_ name: String) -> Bool? {
+        if let raw = argument("-" + name)?.lowercased() {
+            if ["yes", "true", "1"].contains(raw) { return true }
+            if ["no", "false", "0"].contains(raw) { return false }
+            return nil
+        }
+        guard MFVRuntime.preferences.object(forKey: name) != nil else { return nil }
+        return MFVRuntime.preferences.bool(forKey: name)
+    }
+    #endif
 }

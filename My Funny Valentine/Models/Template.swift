@@ -390,7 +390,8 @@ class TemplateManager {
             templateId: template.id,
             saying: template.textAreas.first?.defaultText,
             customText: nil,
-            layoutData: CardLayoutData(backgroundColor: template.backgroundColor.hexString)
+            layoutData: CardLayoutData(backgroundColor: template.backgroundColor.hexString,
+                                       composition: CardComposition.starter(templateID: template.id))
         )
     }
     

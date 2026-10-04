@@ -1,0 +1,22 @@
+{
+  "status": "Prepared; requires final matching native verification before Apple mutation",
+  "version": "1.0",
+  "promotionalText": "Make a little surprise. Thirty starters, six playful styles, opening animations, GIFs, printable PDFs and interactive cards. Free, with no ads or in-app purchases.",
+  "description": "Make a card they will want to open.\n\nStart with 30 editable cards, then give yours its own style: Comic crush, Cosmic love, Love letter, Photo booth, Confetti party or Pop-up heart. Illustrated pizza dates, cosmic adventures, lovebirds, dinosaurs, disco and sweets give you a place to start.\n\nMAKE IT YOURS\n\u2022 Write your message and tuck a personal note inside\n\u2022 Choose a style and its layout\n\u2022 Add your own photo or a face cutout\n\u2022 Tap or drag the preview to reveal the note\n\u2022 Save your card and its motion preference\n\nGIVE IT A LIFE OUTSIDE THE APP\n\u2022 Send a front or inside image through the system share sheet\n\u2022 Export an opening GIF, with or without a face\n\u2022 Make a transparent PNG sticker image\n\u2022 Export a 4-by-6-inch PDF, with extra pages for long notes\n\u2022 Print through the system print dialog\n\u2022 Share a self-contained interactive HTML card that opens in a browser\n\nSend GIFs, PDFs or images through Mail, Messages and other installed apps. Interactive HTML is a file attachment: recipients open it in a browser, since email apps may block interactive content inside an email. Sticker images do not install a chat sticker pack.\n\nA LITTLE HELP WITH THE WORDS AND ART\nBuilt-in sayings are ready to use. Optional Apple Intelligence can suggest messages on compatible devices. Image Playground can create artwork when Apple reports support; Apple manages processing, availability and usage limits.\n\nStarter cards, writing, editing and exports work without an AI account. Cards are stored on the device where you create them; the library does not automatically sync between devices.\n\nMy Funny Valentine is free, with no in-app purchases, ads or app account.",
+  "keywords": "valentine,card,greeting,love,funny,romantic,photo,face,gif,anniversary,pdf,print,sticker",
+  "reviewNotes": "No demo account is required. The app is free, with no in-app purchases or ads.\n\nHome has 30 editable starter cards. Pick a starter, edit its message and personal note, choose a scene/layout, then Save. Tap the card or Open card to reveal the note; horizontal dragging opens it manually, while vertical swipes scroll the editor. My Cards contains cards explicitly saved by the user. Cancel preserves a saved card. The motion preference is saved with each card and Reduce Motion is respected.\n\nShare renders files locally: front and inside PNG, full-card opening GIF (no face required), transparent sticker PNG, 4-by-6-inch PDF with long-note continuation pages, and self-contained interactive HTML. Each completed file has a system share control. Print opens the system print dialog for user confirmation. Interactive HTML requires a browser; it is not executable inside every mail app. Sticker PNG export does not install a Messages extension. Exporting never sends automatically.\n\nPhoto and Face are optional. Face detection/cutout happens locally with Apple's Vision framework; a rectangular crop is the fallback. The existing Animate face GIF remains available when a face is present.\n\nFind the words offers built-in suggestions and optional on-device FoundationModels generation when the OS, hardware, Apple Intelligence settings and ready model support it. The app falls back to built-in suggestions. Image Playground is available only when Apple's system reports support and is governed by Apple's own availability, privacy notices and limits.\n\nThere is no direct Sign in with ChatGPT integration, hosted AI service, automatic sending or physical hinge API in this build. All saved cards and media persist locally; there is no automatic cross-device sync. Storage failures show a retry screen rather than falling back to temporary memory storage.",
+  "platforms": [
+    "ios",
+    "macos"
+  ],
+  "contact": {
+    "firstName": "Nathan",
+    "lastName": "Fennel",
+    "phone": "+1 781 535 1931",
+    "email": "nathan@100apps.studio"
+  },
+  "pricing": "free in all available countries",
+  "countries": "all available plus future territories",
+  "release": "automatic after approval",
+  "privacy": "Data Not Collected; optional system-owned Apple generation explained in policy; current candidate no hosted backend"
+}

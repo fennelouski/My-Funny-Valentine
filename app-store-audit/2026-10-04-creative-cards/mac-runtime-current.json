@@ -1,0 +1,105 @@
+{
+  "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+  "appPath": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+  "version": "1.0",
+  "build": "3",
+  "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+  "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+  "ordinaryStorePrefsBefore": [
+    {
+      "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store",
+      "sha256": "aa2f5933416fd9caf34a5b7ffa2f09968d3050e8bd6f28bbda7795bbabefca18",
+      "byteCount": 114688
+    },
+    {
+      "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store-shm",
+      "sha256": "75bf6e421247db25138c107566e05ac3ffafd76b3a3ca002d70d4610cc67d330",
+      "byteCount": 32768
+    },
+    {
+      "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store-wal",
+      "sha256": "da5ca139394e59055b84d5570e222a5066206adddbf7356366219b44c8f62fb7",
+      "byteCount": 119512
+    },
+    {
+      "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Preferences/com.nathanfennel.My-Funny-Valentine.plist",
+      "sha256": "2ee4cd2e2c21894432a7927561f4111e9882df5acb96a97b4e12f7f6aee10055",
+      "byteCount": 2778
+    }
+  ],
+  "runtimeVerification": {
+    "status": "passed-actual-private-Mac-flows",
+    "sixFamiliesCaptured": true,
+    "savedTextColdReopen": true,
+    "motionPreferencePersisted": true,
+    "horizontalDragOpens": true,
+    "verticalEditorScroll": true,
+    "keyboardNewSaveExport": [
+      "Command-N",
+      "Command-S",
+      "Command-Shift-E"
+    ],
+    "sixFormatsGenerated": true,
+    "nativeSharingServicesObservedAndCancelled": true,
+    "recipientSelected": false,
+    "ordinaryApplicationPreferenceKeysUnchangedAcrossInteractions": true,
+    "ordinaryCardStoreFilesUnchangedFromBeforeLaunch": true,
+    "printPhotosProviderCalls": "disabled-in-private-QA-not-executed"
+  },
+  "privateBoundaryBeforeInteraction": {
+    "processPathAndArguments": "11553 /private/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app/Contents/MacOS/My Funny Valentine --mfv-ui-tests --mfv-test-session 12916CA4-9BC7-4F0B-846C-C6BA592E63A2 -screenshotTab 0",
+    "privateStorePath": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/tmp/MFVPrivateQA-12916CA4-9BC7-4F0B-846C-C6BA592E63A2/Store/cards.store",
+    "privateStoreExists": true,
+    "privatePreferencesExists": true,
+    "ordinaryFileChecks": [
+      {
+        "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store",
+        "unchanged": true
+      },
+      {
+        "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store-shm",
+        "unchanged": true
+      },
+      {
+        "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store-wal",
+        "unchanged": true
+      },
+      {
+        "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Preferences/com.nathanfennel.My-Funny-Valentine.plist",
+        "unchanged": false
+      }
+    ],
+    "ordinaryApplicationPreferenceKeysSHA256": "4d236f55a7ff34f59952bf6f9555d89c2472a5f407272da0db64e7fff724f410",
+    "preferenceLimit": "macOS wrote WindowGroup/split-view frame caches in ordinary NS preferences during launch. No unchanged-preferences claim; application preference keys now hashed for the interaction boundary. Ordinary card store hashes match prelaunch.",
+    "cuaSelectedExactDebugApp": true,
+    "AXLimitation": "CUA collapses macOS root identifier into WindowGroup type; exact process arguments and unique UUID store verified before interaction. No false AX marker claim."
+  },
+  "privateRelaunchBoundary": {
+    "exactProcessArguments": "14807 /private/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app/Contents/MacOS/My Funny Valentine --mfv-ui-tests --mfv-test-session 12916CA4-9BC7-4F0B-846C-C6BA592E63A2 -screenshotTab 0",
+    "sameSession": true,
+    "ordinaryApplicationPreferenceKeysUnchanged": true,
+    "ordinaryCardStoresUnchanged": true
+  },
+  "postQuitVerification": {
+    "atUTC": "2026-10-04T23:27:28.007871+00:00",
+    "ordinaryCardFiles": [
+      {
+        "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store",
+        "unchanged": true
+      },
+      {
+        "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store-shm",
+        "unchanged": true
+      },
+      {
+        "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store-wal",
+        "unchanged": true
+      }
+    ],
+    "exactPrivateProcessStopped": true,
+    "note": "Command-Q succeeded; subsequent CUA observation reported process not found, then shell process inventory confirmed exact Debug application absent. Ordinary OS window cache preference exception retained.",
+    "ordinaryApplicationPreferenceKeysUnchanged": true,
+    "applicationPreferenceHashEncoding": "plist-xml",
+    "ordinaryApplicationPreferenceKeysSHA256": "4d236f55a7ff34f59952bf6f9555d89c2472a5f407272da0db64e7fff724f410"
+  }
+}

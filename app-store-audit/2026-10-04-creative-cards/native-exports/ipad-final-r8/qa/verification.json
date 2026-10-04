@@ -1,0 +1,598 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUTC": "2026-10-04T23:05:54.913685+00:00",
+  "status": "PASS — bounded current root-r8 actual export-file QA",
+  "platform": "ipad",
+  "nativeVersion": "1.0",
+  "nativeBuild": "3",
+  "currentSourceFreeze": {
+    "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/source-freeze.root-r8.json",
+    "sha256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca"
+  },
+  "nativeAttribution": {
+    "manifestPath": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/ipad-final-r8/export-artifacts.json",
+    "manifestSHA256": "4b06b4edbbda7f15ca92a6e4e5a7193bedb112bd7cc326ec585bc89474f39739",
+    "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+    "privateSession": "94429CBB-0B90-4C9D-A38C-5191D90D4FF8",
+    "chooserEvidence": "The root manifest records actual chooser presentation without recipient selection; this agent inspected files only."
+  },
+  "originalArtifacts": [
+    {
+      "path": "Valentine-0DDD7AA2-708E-46FA-81BE-4F66313DCC84.png",
+      "sha256": "f2999b25690d011e7eab038333fd436fd13cdcfe8ad48ceccae7bddbd61ba1d8",
+      "byteCount": 27319,
+      "matchesNativeManifestBeforeAndAfterQA": true,
+      "originalUnchanged": true
+    },
+    {
+      "path": "Valentine-7A2C1E7A-727E-49A1-B5D5-2EEF77674414.gif",
+      "sha256": "2202a7f5e321032af0b97a031d944cca1934029408f402006ef3e195a996789b",
+      "byteCount": 1002191,
+      "matchesNativeManifestBeforeAndAfterQA": true,
+      "originalUnchanged": true
+    },
+    {
+      "path": "Valentine-A3576816-71B1-4F2C-912D-AA43168E6FD3.png",
+      "sha256": "e56354025485a0b5c6253c88711e10f6f6b2f980c2a1ce534ba7fc66905d2f9d",
+      "byteCount": 56209,
+      "matchesNativeManifestBeforeAndAfterQA": true,
+      "originalUnchanged": true
+    },
+    {
+      "path": "Valentine-B00DA022-4267-4F83-8567-3876C2E75187.html",
+      "sha256": "4e2a07f39c588a98d665f4148f6c128d24e78368a2a61372395ecf1bd838c5ce",
+      "byteCount": 2854539,
+      "matchesNativeManifestBeforeAndAfterQA": true,
+      "originalUnchanged": true
+    },
+    {
+      "path": "Valentine-CA26E722-2E6D-4015-86FB-B165CFEF16D0.pdf",
+      "sha256": "3e4913574e2cf507ada98e273fdf04d6e85758cf7ef7f6f9e0ab896e78c95a72",
+      "byteCount": 2830828,
+      "matchesNativeManifestBeforeAndAfterQA": true,
+      "originalUnchanged": true
+    },
+    {
+      "path": "Valentine-E26F18C1-6494-42BC-AFA8-07DAD34E26CE.png",
+      "sha256": "da04c8f0e2a3ed991b82694469d379a70cc8480c8fa56999ec70673093f67068",
+      "byteCount": 753431,
+      "matchesNativeManifestBeforeAndAfterQA": true,
+      "originalUnchanged": true
+    }
+  ],
+  "originalsUnchanged": true,
+  "independentFormatInspection": [
+    {
+      "path": "Valentine-0DDD7AA2-708E-46FA-81BE-4F66313DCC84.png",
+      "sha256": "f2999b25690d011e7eab038333fd436fd13cdcfe8ad48ceccae7bddbd61ba1d8",
+      "byteCount": 27319,
+      "matchesNativeManifest": true,
+      "dimensions": [
+        618,
+        618
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "fullyTransparentPixelCount": 239326,
+      "fullyOpaquePixelCount": 140310,
+      "partiallyTransparentPixelCount": 2288,
+      "kind": "sticker"
+    },
+    {
+      "path": "Valentine-7A2C1E7A-727E-49A1-B5D5-2EEF77674414.gif",
+      "sha256": "2202a7f5e321032af0b97a031d944cca1934029408f402006ef3e195a996789b",
+      "byteCount": 1002191,
+      "matchesNativeManifest": true,
+      "kind": "full-card GIF",
+      "dimensions": [
+        400,
+        600
+      ],
+      "frameCount": 30,
+      "frameDurationsMilliseconds": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "durationMilliseconds": 3000,
+      "loop": 0
+    },
+    {
+      "path": "Valentine-A3576816-71B1-4F2C-912D-AA43168E6FD3.png",
+      "sha256": "e56354025485a0b5c6253c88711e10f6f6b2f980c2a1ce534ba7fc66905d2f9d",
+      "byteCount": 56209,
+      "matchesNativeManifest": true,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "fullyTransparentPixelCount": 0,
+      "fullyOpaquePixelCount": 960000,
+      "partiallyTransparentPixelCount": 0,
+      "kind": "inside"
+    },
+    {
+      "path": "Valentine-B00DA022-4267-4F83-8567-3876C2E75187.html",
+      "sha256": "4e2a07f39c588a98d665f4148f6c128d24e78368a2a61372395ecf1bd838c5ce",
+      "byteCount": 2854539,
+      "matchesNativeManifest": true,
+      "kind": "self-contained HTML",
+      "embeddedPNGFrames": [
+        {
+          "frame": 0,
+          "sha256": "4b4763f2dc2a36ce94373c4e19720cbc8ee9f0c2a6bde4e2eeeee887decd2bc7",
+          "byteCount": 206193,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 1,
+          "sha256": "20c317cb95fdef6bfa0eddae90572aff6cbd4a9a36fcee535479b41cd22dee9a",
+          "byteCount": 203501,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 2,
+          "sha256": "27171783170d93c9db8539b7828f42fe51c50d2cacbb4d05e2da2a1196c7161f",
+          "byteCount": 198300,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 3,
+          "sha256": "663fd21ac159f3946d07aab0263453113dbcb318958cfd80d75f51e3e6f377c4",
+          "byteCount": 187751,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 4,
+          "sha256": "b6a2136f0687eb89599f335f503aebe40d327d5c2beacff0b870da3e1c5874ac",
+          "byteCount": 177099,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 5,
+          "sha256": "6d7e521dfc10c3ce288a2137d363acb50d4e80ea5e86deff6ec9602fd1a21a3e",
+          "byteCount": 163287,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 6,
+          "sha256": "1baeab2ce46903a3be9fd470f87ee65602b950a1338e278220d4ab11410ede8b",
+          "byteCount": 147538,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 7,
+          "sha256": "4f262ea155996a6ef2b761c42e5ef097b5c02fd74961f9e2f782f64e92ca8cf1",
+          "byteCount": 132366,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 8,
+          "sha256": "2fa7263b3b3f22f29b3e525345dd4e8f516b9dd47c5c07c2b271e39dc2d533f3",
+          "byteCount": 115492,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 9,
+          "sha256": "75724cc4bff17a986202ca28d71626a11e978b34b56f7510846209945ae7802c",
+          "byteCount": 98099,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 10,
+          "sha256": "87f6976881a04c70bc2ac150c2c43e7d1a85e3adda1a09fda22a085545bfa797",
+          "byteCount": 81008,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 11,
+          "sha256": "6c48f1b0b397145adce14135bb5f37d7dd0a8125a531b80f8ddd432626f17f01",
+          "byteCount": 64106,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 12,
+          "sha256": "34cc05cbeca5dd53d73771f0288da13bd0b975a942fdff4bd3aedc516b7084b4",
+          "byteCount": 48684,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 13,
+          "sha256": "606f95cfde651649c44b11dac74e5dad3f5a29769e51ba80888ba47802d5be93",
+          "byteCount": 35630,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 14,
+          "sha256": "6777296db35868155baa7673b628f75b937cae31b1dc0c9349cea32e9cd3aade",
+          "byteCount": 25372,
+          "dimensions": [
+            400,
+            600
+          ]
+        },
+        {
+          "frame": 15,
+          "sha256": "058cd36e82831350bea9a8720b4e4a3a2c4d0d1fad5906132ad325ca7877b767",
+          "byteCount": 19919,
+          "dimensions": [
+            400,
+            600
+          ]
+        }
+      ],
+      "csp": "default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'",
+      "resourceAttributes": [
+        {
+          "tag": "img",
+          "attribute": "src",
+          "value": "[embedded data PNG]"
+        }
+      ],
+      "networkTokenMatches": {
+        "HTTP URLs": false,
+        "fetch": false,
+        "XMLHttpRequest": false,
+        "WebSocket": false,
+        "external CSS URL": false
+      },
+      "frontTextPresent": true,
+      "insideTextPresent": true,
+      "fallbackSummaryPresent": true,
+      "openCloseButtonPresent": true,
+      "reducedMotionMediaQueryPresent": true,
+      "savedMotionOffExport": true,
+      "scope": "Source and embedded-data inspection only; no browser execution."
+    },
+    {
+      "path": "Valentine-CA26E722-2E6D-4015-86FB-B165CFEF16D0.pdf",
+      "sha256": "3e4913574e2cf507ada98e273fdf04d6e85758cf7ef7f6f9e0ab896e78c95a72",
+      "byteCount": 2830828,
+      "matchesNativeManifest": true,
+      "kind": "two-page PDF",
+      "pages": [
+        {
+          "page": 1,
+          "mediaBoxPoints": [
+            0.0,
+            0.0,
+            288.0,
+            432.0
+          ],
+          "rotation": 0,
+          "text": "A little card for \nmy favorite \nperson\nA note waits inside"
+        },
+        {
+          "page": 2,
+          "mediaBoxPoints": [
+            0.0,
+            0.0,
+            288.0,
+            432.0
+          ],
+          "rotation": 0,
+          "text": "A little card for my favorite \nperson \n \nYou make ordinary days \nwonderful. Love, Sam."
+        }
+      ],
+      "isEncrypted": false
+    },
+    {
+      "path": "Valentine-E26F18C1-6494-42BC-AFA8-07DAD34E26CE.png",
+      "sha256": "da04c8f0e2a3ed991b82694469d379a70cc8480c8fa56999ec70673093f67068",
+      "byteCount": 753431,
+      "matchesNativeManifest": true,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "fullyTransparentPixelCount": 0,
+      "fullyOpaquePixelCount": 960000,
+      "partiallyTransparentPixelCount": 0,
+      "kind": "front"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "portable_marketing",
+    "individuallyViewedImages": 8,
+    "items": [
+      {
+        "path": "../Valentine-0DDD7AA2-708E-46FA-81BE-4F66313DCC84.png",
+        "sha256": "f2999b25690d011e7eab038333fd436fd13cdcfe8ad48ceccae7bddbd61ba1d8",
+        "kind": "actual source sticker PNG",
+        "result": "pass",
+        "observed": "Heart and complete front headline fit. This sticker contains the front headline, not the Sam inside note. Alpha data confirms actual transparency."
+      },
+      {
+        "path": "../Valentine-A3576816-71B1-4F2C-912D-AA43168E6FD3.png",
+        "sha256": "e56354025485a0b5c6253c88711e10f6f6b2f980c2a1ce534ba7fc66905d2f9d",
+        "kind": "actual source inside PNG",
+        "result": "pass",
+        "observed": "Entire inside note is upright and readable: You make ordinary days wonderful. Love, Sam."
+      },
+      {
+        "path": "../Valentine-E26F18C1-6494-42BC-AFA8-07DAD34E26CE.png",
+        "sha256": "da04c8f0e2a3ed991b82694469d379a70cc8480c8fa56999ec70673093f67068",
+        "kind": "actual source front PNG",
+        "result": "pass",
+        "observed": "Bird subjects retain complete heads, eyes, beaks, bodies and tails. Entire front headline and footer fit."
+      },
+      {
+        "path": "gif-selected-01.png",
+        "sha256": "c3e7dfe126b8d58bc8193ac18699a02333a203563caf24010ef89b4279c24237",
+        "kind": "decoded actual GIF frame 0",
+        "result": "pass",
+        "observed": "Complete birds heads and full front headline."
+      },
+      {
+        "path": "gif-selected-02.png",
+        "sha256": "58a46f98c6a6accdb135b5db2a8066b19e38c9f637c1edafc8e4212d9432fcaf",
+        "kind": "decoded actual GIF frame 15",
+        "result": "pass",
+        "observed": "Entire inside message and Sam signature are legible."
+      },
+      {
+        "path": "gif-selected-03.png",
+        "sha256": "de62c19abc497f9230e3dc4be3067b5683f04f680722e195b866c368a51af9dc",
+        "kind": "decoded actual GIF frame 29",
+        "result": "pass",
+        "observed": "Complete birds heads and full front headline."
+      },
+      {
+        "path": "pdf-page-1.png",
+        "sha256": "332c1805e67cd3a09644560a3af35cb4d65d7982ee50b1be3081e5f52488a45a",
+        "kind": "full actual PDF page 1, rendered150dpi",
+        "result": "pass",
+        "observed": "Complete birds subjects, full headline and footer; upright page with no former head crop."
+      },
+      {
+        "path": "pdf-page-2.png",
+        "sha256": "5627ac7e5b4d4969abdec3e4897431bc2f5aca7ed3b9cedefebbbf3ca126777e",
+        "kind": "full actual PDF page 2, rendered150dpi",
+        "result": "pass",
+        "observed": "Entire front headline and inside note including Sam signature are readable with clear margins."
+      }
+    ],
+    "defectsFound": [],
+    "birdsCropCorrectionVerified": true,
+    "frontHeadline": "A little card for my favorite person",
+    "insideNote": "You make ordinary days wonderful. Love, Sam.",
+    "stickerTextScope": "Full front headline, not the inside note."
+  },
+  "tools": {
+    "commands": [
+      {
+        "argv": [
+          "/opt/homebrew/bin/ffprobe",
+          "-v",
+          "error",
+          "-count_frames",
+          "-show_entries",
+          "stream=codec_name,width,height,nb_frames,nb_read_frames,duration,avg_frame_rate",
+          "-show_entries",
+          "format=duration,size",
+          "-of",
+          "json",
+          "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/ipad-final-r8/Valentine-7A2C1E7A-727E-49A1-B5D5-2EEF77674414.gif"
+        ],
+        "exitCode": 0,
+        "stdoutPath": "gif-ffprobe.json",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "/Users/nathan/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override/pdfinfo",
+          "-box",
+          "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/ipad-final-r8/Valentine-CA26E722-2E6D-4015-86FB-B165CFEF16D0.pdf"
+        ],
+        "exitCode": 0,
+        "stdoutPath": "pdfinfo.txt",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "/opt/homebrew/bin/ffmpeg",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-i",
+          "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/ipad-final-r8/Valentine-7A2C1E7A-727E-49A1-B5D5-2EEF77674414.gif",
+          "-vf",
+          "select=eq(n\\,0)+eq(n\\,15)+eq(n\\,29)",
+          "-fps_mode",
+          "vfr",
+          "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/ipad-final-r8/qa/gif-selected-%02d.png"
+        ],
+        "exitCode": 0,
+        "stdoutPath": "ffmpeg.stdout.txt",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "/Users/nathan/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override/pdftoppm",
+          "-png",
+          "-r",
+          "150",
+          "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/ipad-final-r8/Valentine-CA26E722-2E6D-4015-86FB-B165CFEF16D0.pdf",
+          "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/ipad-final-r8/qa/pdf-page"
+        ],
+        "exitCode": 0,
+        "stdoutPath": "pdftoppm.stdout.txt",
+        "stderr": ""
+      }
+    ],
+    "additionalReadOnlyAnalysis": "Pillow PNG/GIF decoding and alpha histogram, pypdf all-page extraction, HTMLParser/CSP/resource inspection and independent base64 PNG frame decoding."
+  },
+  "gifFFprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "gif",
+        "width": 400,
+        "height": 600,
+        "avg_frame_rate": "10/1",
+        "duration": "3.000000",
+        "nb_frames": "30",
+        "nb_read_frames": "30"
+      }
+    ],
+    "format": {
+      "duration": "3.000000",
+      "size": "1002191"
+    }
+  },
+  "historicalEvidence": {
+    "r6FailedCropReceipt": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/iphone/qa/verification.json",
+    "r6FailedCropReceiptSHA256": "e47068b8d3c44db2b03bcc8af96fe6c5d161ddfb667e324ce1afe9c0250d8e07",
+    "r7SupersededReceipt": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-exports/iphone-final-r7/qa/verification.json",
+    "r7SupersededReceiptSHA256": "3a2257657974d88cd2f88d080735385f3c7c9e45226df2f1555eb9367f585523",
+    "preservedUnchanged": true,
+    "scopeClarification": "Earlier sticker wording used note imprecisely. Actual current and historical byte-identical sticker pixels contain the full front headline; current receipt does not claim the inside Sam note is on the sticker. Neither historical receipt is current root-r8 validation."
+  },
+  "limits": [
+    "Only the actual birds/love-letter export fixture is reviewed here; no all-six-family screenshot approval is implied.",
+    "HTML is source/embedded-data verification only; actual browser interaction is separately root-owned.",
+    "Actual plain fixture text is verified; hostile-text browser testing is not asserted.",
+    "No new app, UI, compiler, native test, service, browser, network, Git or release action was performed.",
+    "Printing, sending, Photos save, provider behavior and macOS exports are outside this read-only file check."
+  ],
+  "qaArtifacts": [
+    {
+      "path": "commands.json",
+      "sha256": "fd69144d8979e0adc50e81df395276dc4b148c13107a8a5bf1f576d8f8748fd0",
+      "byteCount": 2163
+    },
+    {
+      "path": "ffmpeg.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteCount": 0
+    },
+    {
+      "path": "gif-ffprobe.json",
+      "sha256": "0002be1f34de838e435f73525197577163d3a00c1d889137a80f14c699efc80d",
+      "byteCount": 411
+    },
+    {
+      "path": "gif-selected-01.png",
+      "sha256": "c3e7dfe126b8d58bc8193ac18699a02333a203563caf24010ef89b4279c24237",
+      "byteCount": 120821
+    },
+    {
+      "path": "gif-selected-02.png",
+      "sha256": "58a46f98c6a6accdb135b5db2a8066b19e38c9f637c1edafc8e4212d9432fcaf",
+      "byteCount": 13915
+    },
+    {
+      "path": "gif-selected-03.png",
+      "sha256": "de62c19abc497f9230e3dc4be3067b5683f04f680722e195b866c368a51af9dc",
+      "byteCount": 119502
+    },
+    {
+      "path": "pdf-page-1.png",
+      "sha256": "332c1805e67cd3a09644560a3af35cb4d65d7982ee50b1be3081e5f52488a45a",
+      "byteCount": 275669
+    },
+    {
+      "path": "pdf-page-2.png",
+      "sha256": "5627ac7e5b4d4969abdec3e4897431bc2f5aca7ed3b9cedefebbbf3ca126777e",
+      "byteCount": 26792
+    },
+    {
+      "path": "pdfinfo.txt",
+      "sha256": "d745d1a9b3e85513f673072de946b2631b9e0ff6c9ad187c9d13ca4a8f25373c",
+      "byteCount": 728
+    },
+    {
+      "path": "pdftoppm.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteCount": 0
+    },
+    {
+      "path": "source-artifact-inspection.json",
+      "sha256": "2bb2d5fa58db40ea659647596a4d19a1888254e7725487b63aaa419bed0a06d7",
+      "byteCount": 7431
+    }
+  ]
+}

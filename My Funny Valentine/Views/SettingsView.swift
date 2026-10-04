@@ -64,7 +64,7 @@ struct SettingsView: View {
     /// macOS borrows the app's existing sidebar; the Settings tab owns navigation elsewhere.
     var section: SettingsSection? = nil
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    @AppStorage("hasCompletedOnboarding", store: MFVRuntime.preferences) private var hasCompletedOnboarding = false
 
     @State private var selectedSection: SettingsSection? = .generation
     @State private var preferredCompactColumn: NavigationSplitViewColumn = .sidebar
@@ -117,10 +117,10 @@ struct SettingsView: View {
                 }
 
                 Section {
-                    generationStatus("Sayings", symbol: "sparkles", value: OnDeviceSayingsGenerator.isAvailable ? "On device" : "Built-in")
+                    generationStatus("Sayings", symbol: "sparkles", value: MFVRuntime.isPrivate ? "Private QA" : (OnDeviceSayingsGenerator.isAvailable ? "On device" : "Built-in"))
                     generationStatus("Artwork", symbol: "photo.artframe", value: "Samples and Photos")
 
-                    if let reason = OnDeviceSayingsGenerator.unavailableReason {
+                    if !MFVRuntime.isPrivate, let reason = OnDeviceSayingsGenerator.unavailableReason {
                         Text(reason)
                             .font(.footnote)
                             .foregroundStyle(.secondary)

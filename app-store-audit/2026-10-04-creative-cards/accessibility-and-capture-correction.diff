@@ -1,0 +1,124 @@
+--- a/My Funny Valentine/Views/HomeView.swift
++++ b/My Funny Valentine/Views/HomeView.swift
+@@ -4,6 +4,7 @@
+ struct HomeView: View {
+     @Query(sort: \Card.modifiedAt, order: .reverse) private var recentCards: [Card]
+     @State private var collection = "all"
++    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+ 
+     private let collections = [
+         ("all", "All cards"), ("pizza", "Comic crush"), ("space", "Cosmic love"),
+@@ -23,21 +24,35 @@
+         }
+     }
+ 
++    private var writeButton: some View {
++        Button { NotificationCenter.default.post(name: NSNotification.Name("NewCard"), object: nil) } label: {
++            Label("Write", systemImage: "square.and.pencil")
++                .fixedSize(horizontal: true, vertical: true)
++                .frame(minHeight: 44)
++        }
++        .buttonStyle(.bordered)
++        .accessibilityIdentifier("home.createCard")
++    }
++
+     var body: some View {
+         NavigationStack {
+             ScrollView {
+                 VStack(alignment: .leading, spacing: 24) {
+-                    HStack(alignment: .top) {
+-                        Text("Pick a card.\nMake it yours.")
+-                            .font(.largeTitle.bold())
+-                            .fixedSize(horizontal: false, vertical: true)
+-                        Spacer(minLength: 12)
+-                        Button { NotificationCenter.default.post(name: NSNotification.Name("NewCard"), object: nil) } label: {
+-                            Label("Write", systemImage: "square.and.pencil")
+-                                .frame(minHeight: 44)
++                    if dynamicTypeSize.isAccessibilitySize {
++                        VStack(alignment: .leading, spacing: 20) {
++                            writeButton
++                            Text("Pick a card.\nMake it yours.")
++                                .font(.title2.bold())
++                                .fixedSize(horizontal: false, vertical: true)
+                         }
+-                        .buttonStyle(.bordered)
+-                        .accessibilityIdentifier("home.createCard")
++                    } else {
++                        HStack(alignment: .top) {
++                            Text("Pick a card.\nMake it yours.")
++                                .font(.largeTitle.bold())
++                                .fixedSize(horizontal: false, vertical: true)
++                            Spacer(minLength: 12)
++                            writeButton
++                        }
+                     }
+                     if !recentCards.isEmpty {
+                         Text("Your latest").font(.title2.bold())
+--- a/My Funny Valentine/Views/CardDetailView.swift
++++ b/My Funny Valentine/Views/CardDetailView.swift
+@@ -8,6 +8,7 @@
+     @Environment(\.dismiss) private var dismiss
+     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+     @Environment(\.colorScheme) private var colorScheme
++    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+ 
+     let card: Card?
+     @State private var draft: Card
+@@ -175,7 +176,9 @@
+     private var stylePicker: some View {
+         VStack(alignment: .leading, spacing: 12) {
+             Text("Set the scene").font(.title2.bold())
+-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
++            LazyVGrid(columns: dynamicTypeSize.isAccessibilitySize
++                      ? [GridItem(.flexible())]
++                      : [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
+                 ForEach(CardVisualFamily.allCases) { family in
+                     Button {
+                         var layout = draft.getLayoutData() ?? CardLayoutData()
+--- a/My Funny ValentineUITests/CreativeCardsUITests.swift
++++ b/My Funny ValentineUITests/CreativeCardsUITests.swift
+@@ -104,11 +104,43 @@
+         let activity = app.otherElements["ActivityListView"]
+         try require(activity, "Actual native sharing chooser", timeout: 15)
+         capture("Actual native PNG sharing chooser")
+-        try tap(app.otherElements["PopoverDismissRegion"], "Dismiss sharing without a destination")
++        let dismissal = app.otherElements.matching(identifier: "PopoverDismissRegion")
++            .allElementsBoundByIndex.first { $0.frame == app.frame }
++        guard let dismissal else { throw DriverError.missing("System sharing dismissal region") }
++        let sharingScroll = app.scrollViews["cardShare.scroll"]
++        let dismissalPoint = CGPoint(x: sharingScroll.frame.minX + sharingScroll.frame.width * 0.1,
++                                     y: sharingScroll.frame.minY + sharingScroll.frame.height * 0.1)
++        XCTAssertFalse(activity.frame.contains(dismissalPoint), "Dismiss outside the actual native chooser")
++        dismissal.coordinate(withNormalizedOffset: CGVector(
++            dx: (dismissalPoint.x - app.frame.minX) / app.frame.width,
++            dy: (dismissalPoint.y - app.frame.minY) / app.frame.height)).tap()
+         try waitForAbsence(activity)
+         try tap(app.buttons["Done"].firstMatch, "Dismiss local export options")
+         try require(app.buttons["cardDetail.save"], "Same saved draft after export")
+         try tap(app.buttons["cardDetail.cancel"], "Leave the saved card intact")
++    }
++
++    func testPersonalizedCardMarketingCapture() throws {
++        try launchPrivate()
++        try tap(app.buttons["starter.starter_birds_1"], "Personalize an actual starter for capture")
++        try replaceText(identifier: "cardDetail.message", placeholder: "You're my favorite person.",
++                        with: "A little card for my favorite person")
++        try replaceText(identifier: "cardDetail.note", placeholder: "Love, me",
++                        with: "You make ordinary days wonderful. Love, Sam.")
++        let preview = try previewButton()
++        let scroll = app.scrollViews["cardDetail.scroll"]
++        for _ in 0..<8 {
++            if preview.frame.minY > app.buttons["cardDetail.save"].frame.maxY + 4
++                && preview.frame.maxY < app.frame.maxY - 16 { break }
++            scroll.swipeDown()
++        }
++        XCTAssertTrue(preview.frame.minY > app.buttons["cardDetail.save"].frame.maxY + 4)
++        XCTAssertTrue(preview.frame.maxY < app.frame.maxY - 16)
++        capture("Personalized full front for marketing")
++        try tap(app.buttons["cardDetail.openCard"], "Open actual personalized note for capture")
++        try waitForValue(preview, "Inside")
++        capture("Personalized full inside for marketing")
++        try tap(app.buttons["cardDetail.cancel"], "Leave only the private capture draft")
+     }
+ 
+     /// The release owner runs this method with the allocated Simulator's actual

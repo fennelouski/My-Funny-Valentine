@@ -1,0 +1,117 @@
+{
+  "status": "source-only derivative prepared, not compiled or executed",
+  "parentFreezePath": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/source-freeze.root-r3.json",
+  "parentFreezeSHA256": "852b871453e941826757f8b0280f608394a722dbc8a15badbb1d2334cc0e74c2",
+  "ownedFiles": [
+    {
+      "path": "My Funny Valentine/Utilities/CardRenderer+Composition.swift",
+      "sha256": "d4cf759da5b23e8fd7a5b32cb457ea5a4511b47f8a099fdb6a44c2dac8ee3938",
+      "afterSHA256": "eafd14d9dd0a4eb5022cd278ef659da98817ad8b57e934afa97338b804ff0c02",
+      "afterByteCount": 14371
+    },
+    {
+      "path": "My Funny Valentine/Views/CardDetailView.swift",
+      "sha256": "544450d151943a6c2477abeb82cee592ddb0784df41b1b8799ea4004a50c4f2a",
+      "afterSHA256": "108ccd0a272b607aeac3c27b4c11ffe430d72d4ba71b5a61461327e94ab5b123",
+      "afterByteCount": 27353
+    },
+    {
+      "path": "My Funny Valentine/Components/CardStageView.swift",
+      "sha256": "2b6402697fa96fa966d1bc9b4b7bab2217f68d653dbec9d4da617fdab8a6f392",
+      "afterSHA256": "a811da8cd67437fd57050e6074f521dd4643aab698ff21f81ecdc473edb1a4f1",
+      "afterByteCount": 3859
+    },
+    {
+      "path": "My Funny Valentine/Services/GIFExporter.swift",
+      "sha256": "3a3ddf9a655284cfa214fc0f27f828d809b951d270cfce57b729bca0e1977c12",
+      "afterSHA256": "2d9471c02500e8797ef3cf08fb201e063b5130ce8d076c7d2d673eac915cfce8",
+      "afterByteCount": 10208
+    },
+    {
+      "path": "My Funny Valentine/Services/CardExportService.swift",
+      "sha256": "e0f5b690368a7d0ee76a8061cbca91e9883024cd22e2621a8c2ff01f58493c71",
+      "afterSHA256": "d126cab80d3b038bb96a6505b819b3efa28a0526033967c4f39fabdc82f89880",
+      "afterByteCount": 12277
+    },
+    {
+      "path": "My Funny ValentineTests/Services/CreativeCardExportTests.swift",
+      "sha256": "4ad515ac8fcfc9280297a35fd6c8a1c76254406afd98fdc9f0ea45cba9fbe98d",
+      "afterSHA256": "acc9cce06de29bd5a2028229fcf1fb3f6253ec0e487bec563ed4cb84bf91910b",
+      "afterByteCount": 19245
+    }
+  ],
+  "scopeGuard": {
+    "shippingInputs": {
+      "unchangedCount": 110,
+      "changed": [
+        {
+          "path": "My Funny Valentine/Components/CardStageView.swift",
+          "frozenSHA256": "2b6402697fa96fa966d1bc9b4b7bab2217f68d653dbec9d4da617fdab8a6f392",
+          "currentSHA256": "a811da8cd67437fd57050e6074f521dd4643aab698ff21f81ecdc473edb1a4f1"
+        },
+        {
+          "path": "My Funny Valentine/Services/CardExportService.swift",
+          "frozenSHA256": "e0f5b690368a7d0ee76a8061cbca91e9883024cd22e2621a8c2ff01f58493c71",
+          "currentSHA256": "d126cab80d3b038bb96a6505b819b3efa28a0526033967c4f39fabdc82f89880"
+        },
+        {
+          "path": "My Funny Valentine/Services/GIFExporter.swift",
+          "frozenSHA256": "3a3ddf9a655284cfa214fc0f27f828d809b951d270cfce57b729bca0e1977c12",
+          "currentSHA256": "2d9471c02500e8797ef3cf08fb201e063b5130ce8d076c7d2d673eac915cfce8"
+        },
+        {
+          "path": "My Funny Valentine/Utilities/CardRenderer+Composition.swift",
+          "frozenSHA256": "d4cf759da5b23e8fd7a5b32cb457ea5a4511b47f8a099fdb6a44c2dac8ee3938",
+          "currentSHA256": "eafd14d9dd0a4eb5022cd278ef659da98817ad8b57e934afa97338b804ff0c02"
+        },
+        {
+          "path": "My Funny Valentine/Views/CardDetailView.swift",
+          "frozenSHA256": "544450d151943a6c2477abeb82cee592ddb0784df41b1b8799ea4004a50c4f2a",
+          "currentSHA256": "108ccd0a272b607aeac3c27b4c11ffe430d72d4ba71b5a61461327e94ab5b123"
+        }
+      ],
+      "unexpectedChanges": []
+    },
+    "unitTestInputs": {
+      "unchangedCount": 22,
+      "changed": [
+        {
+          "path": "My Funny ValentineTests/Services/CreativeCardExportTests.swift",
+          "frozenSHA256": "4ad515ac8fcfc9280297a35fd6c8a1c76254406afd98fdc9f0ea45cba9fbe98d",
+          "currentSHA256": "acc9cce06de29bd5a2028229fcf1fb3f6253ec0e487bec563ed4cb84bf91910b"
+        }
+      ],
+      "unexpectedChanges": []
+    },
+    "uiTestInputs": {
+      "unchangedCount": 9,
+      "changed": [
+        {
+          "path": "My Funny ValentineUITests/CreativeCardsUITests.swift",
+          "frozenSHA256": "29fea2475825f1a3487a5de96b1592f932f74528d2c9a8a994652bdbf63b3774",
+          "currentSHA256": "86d404247b5c91ad212f5b59bf953a655b395c4c261bdc2d1a2729a2af7195fc"
+        }
+      ],
+      "unexpectedChanges": [
+        {
+          "path": "My Funny ValentineUITests/CreativeCardsUITests.swift",
+          "frozenSHA256": "29fea2475825f1a3487a5de96b1592f932f74528d2c9a8a994652bdbf63b3774",
+          "currentSHA256": "86d404247b5c91ad212f5b59bf953a655b395c4c261bdc2d1a2729a2af7195fc"
+        }
+      ]
+    }
+  },
+  "diffPath": "/tmp/mfv-export-correction-20261004/correction.diff",
+  "diffSHA256": "957f0ec1328d5f4d1815de64ac817acf6268f792a405cd7f7287ae0d30b79042",
+  "newTestMethods": [
+    "twoFaceCompositionsStayDistinctAndFrozen",
+    "obsoleteExportCannotCommitOrFinishNewJob",
+    "cancelledAsyncExportsDoNotReturnFiles",
+    "asyncExportsKeepFormatContracts"
+  ],
+  "limits": [
+    "No compiler, runtime, UI, or export delivery verification in this correction round.",
+    "Single native render, PNG encoding, GIF finalization, PDF closure and file write remain bounded synchronous steps.",
+    "Original 22-unit pass and r4 compiled UI receipts belong to preceding candidate."
+  ]
+}

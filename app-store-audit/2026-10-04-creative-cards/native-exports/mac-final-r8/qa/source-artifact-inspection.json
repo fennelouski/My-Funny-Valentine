@@ -1,0 +1,312 @@
+[
+  {
+    "path": "Valentine-01F933D8-28CF-49ED-B2F5-5531CFF2736A.png",
+    "sha256": "c4209c9d833ec781db7a18daf83c10a6a77b58f8f6e3de036e9154447f313b90",
+    "byteCount": 53677,
+    "matchesNativeManifest": true,
+    "dimensions": [
+      800,
+      1200
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "fullyTransparentPixelCount": 0,
+    "fullyOpaquePixelCount": 960000,
+    "partiallyTransparentPixelCount": 0,
+    "kind": "inside"
+  },
+  {
+    "path": "Valentine-18B8B929-B2EF-421E-A791-B5ADB49C7E9A.pdf",
+    "sha256": "2783b2b7d26e24307424bc23803362c056e9ca50d881482647b7e898d50dbda9",
+    "byteCount": 2828041,
+    "matchesNativeManifest": true,
+    "kind": "two-page PDF",
+    "pages": [
+      {
+        "page": 1,
+        "mediaBoxPoints": [
+          0.0,
+          0.0,
+          288.0,
+          432.0
+        ],
+        "rotation": 0,
+        "text": "A little card for \nmy favorite \nperson\nA note waits inside"
+      },
+      {
+        "page": 2,
+        "mediaBoxPoints": [
+          0.0,
+          0.0,
+          288.0,
+          432.0
+        ],
+        "rotation": 0,
+        "text": "A little card for my favorite \nperson \n \nYou make ordinary days \nwonderful. Love, Sam."
+      }
+    ],
+    "isEncrypted": false
+  },
+  {
+    "path": "Valentine-27B62082-DDA1-413F-958B-91FA519730FC.png",
+    "sha256": "70d4b525e67d26572ac3f2366ef9760d65682e062300794a9b358a4c0f7ada2c",
+    "byteCount": 33370,
+    "matchesNativeManifest": true,
+    "dimensions": [
+      618,
+      618
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "fullyTransparentPixelCount": 239326,
+    "fullyOpaquePixelCount": 140310,
+    "partiallyTransparentPixelCount": 2288,
+    "kind": "sticker"
+  },
+  {
+    "path": "Valentine-7E782F8A-D630-4773-A6B7-29F0916CAB37.png",
+    "sha256": "994abac47b21ec87a5ff31fd24e9b5816ad2f141f64473eb143d246329eb18e4",
+    "byteCount": 586094,
+    "matchesNativeManifest": true,
+    "dimensions": [
+      800,
+      1200
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ],
+    "fullyTransparentPixelCount": 0,
+    "fullyOpaquePixelCount": 960000,
+    "partiallyTransparentPixelCount": 0,
+    "kind": "front"
+  },
+  {
+    "path": "Valentine-BF95E742-C438-4BAF-B3CF-C440396FB97A.gif",
+    "sha256": "78088c73a5c35d63cc1dd7e5557b7d8873c51a3115dee8c1a4d0e259e61fa910",
+    "byteCount": 1006028,
+    "matchesNativeManifest": true,
+    "kind": "full-card GIF",
+    "dimensions": [
+      400,
+      600
+    ],
+    "frameCount": 30,
+    "frameDurationsMilliseconds": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "durationMilliseconds": 3000,
+    "loop": 0
+  },
+  {
+    "path": "Valentine-E1EBB123-99F1-4AF0-8AED-223ECDF0F0ED.html",
+    "sha256": "3e99e0000421fd8c4d3f33dd24dc7233f6e82d9173a951f5e03286ca71a65e6b",
+    "byteCount": 2487265,
+    "matchesNativeManifest": true,
+    "kind": "self-contained HTML",
+    "embeddedPNGFrames": [
+      {
+        "frame": 0,
+        "sha256": "04679b1d1e767ae7d3a881dba6d2338464dee5a7f4385403677e530f1578915b",
+        "byteCount": 175047,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 1,
+        "sha256": "e2b67683c1c7da4274f0b79ead1dcff6ea680390ecea52c28d3bacad92b98c37",
+        "byteCount": 173814,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 2,
+        "sha256": "96a435818dbb685063ef50a7afbe5830133b62b1a01895cb2ac4604bca0f01ef",
+        "byteCount": 168093,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 3,
+        "sha256": "5f0d34212069dc59fbd635520451734997ca66afdc950c2edfc18ddf4a507e6a",
+        "byteCount": 160321,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 4,
+        "sha256": "561069de00bc599be44399e05d865dd48f65b1ddfb7d143e5b4d71f1957bddb5",
+        "byteCount": 150240,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 5,
+        "sha256": "0eb75f7eeae140d15a3f4de080a5e8909bf028e805d03505834d79d14304c9be",
+        "byteCount": 140148,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 6,
+        "sha256": "7f88566f754e30db37a6f1a34cbb726bd4530793e023e99ef7d39e8631ff715b",
+        "byteCount": 127462,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 7,
+        "sha256": "b41b0d8803cd07465e5d45a065c89b4de61a2582acb9a13fb1856ed43f01d2fa",
+        "byteCount": 114563,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 8,
+        "sha256": "59484ef5c8118a3cbd8f5ff3075137c517d983855afd14871ec63cb16a6d1e51",
+        "byteCount": 102356,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 9,
+        "sha256": "fd813263cfa488083e53f73b29e92d3d4f004a5903de71d9e66cdc95dc96eef2",
+        "byteCount": 87422,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 10,
+        "sha256": "4a332f541f1df2fb0b4dee79c318e7eb6d9ebafd5be80a3f0b6b69416c1db1cd",
+        "byteCount": 72707,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 11,
+        "sha256": "cf866ea3778f244af28107eee5aa745cbfd1959185f009e3789c230702043304",
+        "byteCount": 59332,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 12,
+        "sha256": "cd4233c1f721b1f2b7e1beb7d52a5797c8b847401c24ae7e1e7d71be6852d883",
+        "byteCount": 46615,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 13,
+        "sha256": "f312648c15e62ddec6a95c1dc1940c42239866039b78d09f648cc701993bf50f",
+        "byteCount": 35114,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 14,
+        "sha256": "79df9402a6c0fb9a24e6b2b61fc98788d799813dac071eafea72159224f3360e",
+        "byteCount": 27050,
+        "dimensions": [
+          400,
+          600
+        ]
+      },
+      {
+        "frame": 15,
+        "sha256": "1dc620866fed79eb00002eea6f3b3b9bea4851084b2c4a5a727c90bc36a6b572",
+        "byteCount": 22623,
+        "dimensions": [
+          400,
+          600
+        ]
+      }
+    ],
+    "csp": "default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'",
+    "resourceAttributes": [
+      {
+        "tag": "img",
+        "attribute": "src",
+        "value": "[embedded data PNG]"
+      }
+    ],
+    "networkTokenMatches": {
+      "HTTP URLs": false,
+      "fetch": false,
+      "XMLHttpRequest": false,
+      "WebSocket": false,
+      "external CSS URL": false
+    },
+    "frontTextPresent": true,
+    "insideTextPresent": true,
+    "fallbackSummaryPresent": true,
+    "openCloseButtonPresent": true,
+    "reducedMotionMediaQueryPresent": true,
+    "savedMotionOffExport": true,
+    "scope": "Source and embedded-data inspection only; no browser execution."
+  }
+]

@@ -1,0 +1,59 @@
+Window: "Your card", App: My Funny Valentine.
+0 standard window Your card, Secondary Actions: Raise, ID: SwiftUI._ConditionalContent<SwiftUI._ConditionalContent<SwiftUI._ConditionalContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<My_Funny_Valentine.ContentView, _SwiftData_SwiftUI.(unknown context at $235a26f4c).PassthroughModelContainerViewModifier>, SwiftUI._EnvironmentKeyWritingModifier<__C.NSUserDefaults>>, SwiftUI.AccessibilityContainerModifier>, SwiftUI.AccessibilityAttachmentModifier>, SwiftUI.ModifiedContent<My_Funny_Valentine.ContentView, _SwiftDat
+	1 split group SwiftUI._ConditionalContent<SwiftUI._ConditionalContent<SwiftUI._ConditionalContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<My_Funny_Valentine.ContentView, _SwiftData_SwiftUI.(unknown context at $235a26f4c).PassthroughModelContainerViewModifier>, SwiftUI._EnvironmentKeyWritingModifier<__C.NSUserDefaults>>, SwiftUI.AccessibilityContainerModifier>, SwiftUI.AccessibilityAttachmentModifier>, SwiftUI.ModifiedContent<My_Funny_Valentine.ContentView, _SwiftDat
+		2 scroll area
+			3 list Sidebar
+				4 row (selected) Home
+				5 row (selectable) My Cards
+				6 row (selectable) Settings
+				7 row (selectable) Generation
+				8 row (selectable) Storage
+				9 row (selectable) About
+		10 splitter (disabled, settable, float) 258
+		11 scroll area ID: cardDetail.scroll, Secondary Actions: Scroll Up, Scroll Down, Cancel
+			12 button Description: Card preview. You're the center of my universe., Value: Front, ID: cardDetail.preview, Secondary Actions: Open card
+			13 text Your words Message
+			14 text field (settable) Value: You're the center of my universe., Placeholder: You're my favorite person., ID: cardDetail.message
+			15 text Value: 33/160 Personal note, ID: cardDetail.message
+			16 text field (settable) Placeholder: Love, me, ID: cardDetail.note
+			17 text Value: 0/240, ID: cardDetail.note
+			18 button (disabled) Description: Find the words, ID: cardDetail.generateWithAI
+			19 text Make it personal
+			20 menu button (disabled) Photo, ID: cardDetail.photo
+			21 menu button (disabled) Face, ID: cardDetail.face
+			22 button Description: Open card, ID: cardDetail.openCard
+			23 text Set the scene
+			24 collection Secondary Actions: AXScrollToTop, AXScrollToBottom
+				25 button Description: Comic crush, ID: cardDetail.style.comic
+				26 button (selected) Description: Cosmic love, ID: cardDetail.style.cosmic
+				27 button Description: Love letter, ID: cardDetail.style.loveLetter
+				28 button Description: Photo booth, ID: cardDetail.style.photoBooth
+				29 button Description: Confetti party, ID: cardDetail.style.confetti
+				30 button Description: Pop-up heart, ID: cardDetail.style.popUp
+			31 pop up button Composition, Value: Layout 1, ID: cardDetail.variant
+			32 checkbox Description: Bring it to life, Value: 1, ID: cardDetail.motion
+			33 scroll bar (settable, float) 0
+				34 value indicator (settable, float) 0
+				35 increment arrow button
+				36 decrement arrow button
+				37 increment page button
+				38 decrement page button
+	39 toolbar
+		40 button Description: Hide Sidebar, Secondary Actions: Increment, Decrement, Delete, Cancel
+		41 button Description: Back, ID: chevron.backward, Secondary Actions: Increment, Decrement, Delete, Cancel, Move previous, Move next, Remove from toolbar
+		42 button Description: Cancel, ID: cardDetail.cancel, Secondary Actions: Increment, Decrement, Delete, Cancel, Move previous, Move next, Remove from toolbar
+		43 button Description: Share, ID: cardDetail.share, Secondary Actions: Increment, Decrement, Delete, Cancel, Move previous, Move next, Remove from toolbar
+		44 button Description: Save, ID: cardDetail.save, Secondary Actions: Increment, Decrement, Delete, Cancel, Move previous, Remove from toolbar
+	45 close button
+	46 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	47 minimize button
+	48 text Your card
+49 menu bar
+	50 My Funny Valentine
+	51 File
+	52 Edit
+	53 View
+	54 Window
+	55 Help
+
+The focused UI element is 0 standard window Your card, Secondary Actions: Raise, ID: SwiftUI._ConditionalContent<SwiftUI._ConditionalContent<SwiftUI._ConditionalContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<SwiftUI.ModifiedContent<My_Funny_Valentine.ContentView, _SwiftData_SwiftUI.(unknown context at $235a26f4c).PassthroughModelContainerViewModifier>, SwiftUI._EnvironmentKeyWritingModifier<__C.NSUserDefaults>>, SwiftUI.AccessibilityContainerModifier>, SwiftUI.AccessibilityAttachmentModifier>, SwiftUI.ModifiedContent<My_Funny_Valentine.ContentView, _SwiftDat

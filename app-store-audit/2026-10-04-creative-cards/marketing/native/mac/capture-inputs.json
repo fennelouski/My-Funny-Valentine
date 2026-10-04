@@ -1,0 +1,299 @@
+{
+  "mac-comic-front": {
+    "platform": "mac",
+    "path": "native/mac/comic-front.jpg",
+    "sha256": "ea22e0b6cf19975517f455a4421e99d1373ba94b19697e09056e6aacc5c39a57",
+    "width": 2560,
+    "height": 1600,
+    "displayedWidth": 2560,
+    "displayedHeight": 1600,
+    "nativeVersion": "1.0",
+    "nativeBuild": "3",
+    "componentProvenance": {
+      "kind": "actual-full-native-app-window",
+      "captureAPI": "CUA App.getScreenshot",
+      "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+      "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+      "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "actualObservedActions": null,
+      "originalPixels": true,
+      "windowChromeRedrawn": false,
+      "runtimeReceipt": "mac-runtime-current.json"
+    },
+    "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+    "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+    "mediaType": "image/jpeg"
+  },
+  "mac-cosmic-front": {
+    "platform": "mac",
+    "path": "native/mac/cosmic-front.jpg",
+    "sha256": "eb598c6d2919232c0580661db4926780cbcaaddba011161566b1abb9b9c0e966",
+    "width": 2560,
+    "height": 1600,
+    "displayedWidth": 2560,
+    "displayedHeight": 1600,
+    "nativeVersion": "1.0",
+    "nativeBuild": "3",
+    "componentProvenance": {
+      "kind": "actual-full-native-app-window",
+      "captureAPI": "CUA App.getScreenshot",
+      "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+      "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+      "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "actualObservedActions": {
+        "state": "cosmic-front",
+        "capturedAtUTC": "2026-10-04T23:08:24.341Z",
+        "identifier": "starter.starter_space_1",
+        "method": "CUA App.getScreenshot original full native window pixels"
+      },
+      "originalPixels": true,
+      "windowChromeRedrawn": false,
+      "runtimeReceipt": "mac-runtime-current.json"
+    },
+    "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+    "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+    "mediaType": "image/jpeg"
+  },
+  "mac-loveLetter-front": {
+    "platform": "mac",
+    "path": "native/mac/loveLetter-front.jpg",
+    "sha256": "e0471e0f84361eba96bee325b4af1105c9ff2f9086d0c577974dfcbe779ea73d",
+    "width": 2560,
+    "height": 1600,
+    "displayedWidth": 2560,
+    "displayedHeight": 1600,
+    "nativeVersion": "1.0",
+    "nativeBuild": "3",
+    "componentProvenance": {
+      "kind": "actual-full-native-app-window",
+      "captureAPI": "CUA App.getScreenshot",
+      "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+      "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+      "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "actualObservedActions": {
+        "state": "loveLetter-front",
+        "capturedAtUTC": "2026-10-04T23:09:05.890Z",
+        "identifier": "starter.starter_birds_1",
+        "method": "CUA App.getScreenshot original full native window pixels"
+      },
+      "originalPixels": true,
+      "windowChromeRedrawn": false,
+      "runtimeReceipt": "mac-runtime-current.json"
+    },
+    "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+    "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+    "mediaType": "image/jpeg"
+  },
+  "mac-popUp-front": {
+    "platform": "mac",
+    "path": "native/mac/popUp-front.jpg",
+    "sha256": "d56303a6fe2c3a007c034d42f95ee38d07408cf25ce5a5576cbda51d10b3bf5a",
+    "width": 2560,
+    "height": 1600,
+    "displayedWidth": 2560,
+    "displayedHeight": 1600,
+    "nativeVersion": "1.0",
+    "nativeBuild": "3",
+    "componentProvenance": {
+      "kind": "actual-full-native-app-window",
+      "captureAPI": "CUA App.getScreenshot",
+      "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+      "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+      "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "actualObservedActions": {
+        "state": "popUp-front",
+        "capturedAtUTC": "2026-10-04T23:08:31.612Z",
+        "identifier": "starter.starter_dino_1",
+        "method": "CUA App.getScreenshot original full native window pixels"
+      },
+      "originalPixels": true,
+      "windowChromeRedrawn": false,
+      "runtimeReceipt": "mac-runtime-current.json"
+    },
+    "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+    "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+    "mediaType": "image/jpeg"
+  },
+  "mac-photoBooth-front": {
+    "platform": "mac",
+    "path": "native/mac/photoBooth-front.jpg",
+    "sha256": "11d93185711c0255d19e6514197ed5c8c7140fca2aa3d2c997485b06f582a02b",
+    "width": 2560,
+    "height": 1600,
+    "displayedWidth": 2560,
+    "displayedHeight": 1600,
+    "nativeVersion": "1.0",
+    "nativeBuild": "3",
+    "componentProvenance": {
+      "kind": "actual-full-native-app-window",
+      "captureAPI": "CUA App.getScreenshot",
+      "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+      "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+      "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "actualObservedActions": {
+        "state": "photoBooth-front",
+        "capturedAtUTC": "2026-10-04T23:08:35.083Z",
+        "identifier": "starter.starter_disco_1",
+        "method": "CUA App.getScreenshot original full native window pixels"
+      },
+      "originalPixels": true,
+      "windowChromeRedrawn": false,
+      "runtimeReceipt": "mac-runtime-current.json"
+    },
+    "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+    "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+    "mediaType": "image/jpeg"
+  },
+  "mac-confetti-front": {
+    "platform": "mac",
+    "path": "native/mac/confetti-front.jpg",
+    "sha256": "26a50bd70e8afab54fa03b0a3fda35513718f5e28bdb9ccdc63631e258b013b7",
+    "width": 2560,
+    "height": 1600,
+    "displayedWidth": 2560,
+    "displayedHeight": 1600,
+    "nativeVersion": "1.0",
+    "nativeBuild": "3",
+    "componentProvenance": {
+      "kind": "actual-full-native-app-window",
+      "captureAPI": "CUA App.getScreenshot",
+      "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+      "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+      "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "actualObservedActions": {
+        "state": "confetti-front",
+        "capturedAtUTC": "2026-10-04T23:08:38.914Z",
+        "identifier": "starter.starter_sweets_1",
+        "method": "CUA App.getScreenshot original full native window pixels"
+      },
+      "originalPixels": true,
+      "windowChromeRedrawn": false,
+      "runtimeReceipt": "mac-runtime-current.json"
+    },
+    "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+    "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+    "mediaType": "image/jpeg"
+  },
+  "mac-inside": {
+    "platform": "mac",
+    "path": "native/mac/inside.jpg",
+    "sha256": "2e09632159839145951fc8b30184bc6360da793d7abccdc510fcea101568068c",
+    "width": 2560,
+    "height": 1600,
+    "displayedWidth": 2560,
+    "displayedHeight": 1600,
+    "nativeVersion": "1.0",
+    "nativeBuild": "3",
+    "componentProvenance": {
+      "kind": "actual-full-native-app-window",
+      "captureAPI": "CUA App.getScreenshot",
+      "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+      "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+      "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "actualObservedActions": {
+        "state": "inside",
+        "capturedAtUTC": "2026-10-04T23:09:39.548Z",
+        "method": "CUA full native editor screenshot after actual Open card"
+      },
+      "originalPixels": true,
+      "windowChromeRedrawn": false,
+      "runtimeReceipt": "mac-runtime-current.json"
+    },
+    "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+    "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+    "mediaType": "image/jpeg"
+  },
+  "mac-library": {
+    "platform": "mac",
+    "path": "native/mac/library.jpg",
+    "sha256": "13ace4cef4721d5334c59326b80e66cfa756bf401c38cb2819ab0cea2fdbe95d",
+    "width": 2560,
+    "height": 1600,
+    "displayedWidth": 2560,
+    "displayedHeight": 1600,
+    "nativeVersion": "1.0",
+    "nativeBuild": "3",
+    "componentProvenance": {
+      "kind": "actual-full-native-app-window",
+      "captureAPI": "CUA App.getScreenshot",
+      "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+      "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+      "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "actualObservedActions": null,
+      "originalPixels": true,
+      "windowChromeRedrawn": false,
+      "runtimeReceipt": "mac-runtime-current.json"
+    },
+    "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+    "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+    "mediaType": "image/jpeg"
+  },
+  "mac-personalized": {
+    "platform": "mac",
+    "path": "native/mac/personalized.jpg",
+    "sha256": "ebbf3eff0f1a205d1de14b193e433ab1b59d745175eaa9c8fce23cdcd52f9841",
+    "width": 2560,
+    "height": 1600,
+    "displayedWidth": 2560,
+    "displayedHeight": 1600,
+    "nativeVersion": "1.0",
+    "nativeBuild": "3",
+    "componentProvenance": {
+      "kind": "actual-full-native-app-window",
+      "captureAPI": "CUA App.getScreenshot",
+      "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+      "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+      "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "actualObservedActions": {
+        "state": "personalized",
+        "capturedAtUTC": "2026-10-04T23:09:36.510Z",
+        "method": "CUA full native editor screenshot after actual native text field edits"
+      },
+      "originalPixels": true,
+      "windowChromeRedrawn": false,
+      "runtimeReceipt": "mac-runtime-current.json"
+    },
+    "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+    "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+    "mediaType": "image/jpeg"
+  },
+  "mac-exports": {
+    "platform": "mac",
+    "path": "native/mac/exports.jpg",
+    "sha256": "c6016a2ae7232a1d1c3031819fb9fe30e715fd3423a82ddae9e1f53e4d60c5c6",
+    "width": 940,
+    "height": 1520,
+    "displayedWidth": 940,
+    "displayedHeight": 1520,
+    "nativeVersion": "1.0",
+    "nativeBuild": "3",
+    "componentProvenance": {
+      "kind": "actual-native-sheet-window",
+      "captureAPI": "CUA App.getScreenshot",
+      "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+      "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+      "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "actualObservedActions": {
+        "state": "exports",
+        "capturedAtUTC": "2026-10-04T23:12:32.041Z",
+        "method": "CUA screenshot actual Mac Ready to send sheet after all six exports generated"
+      },
+      "originalPixels": true,
+      "windowChromeRedrawn": false,
+      "runtimeReceipt": "mac-runtime-current.json"
+    },
+    "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+    "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+    "mediaType": "image/jpeg"
+  }
+}

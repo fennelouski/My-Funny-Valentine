@@ -1,0 +1,17 @@
+{
+  "unitSession": "F1315D3F-3872-49D3-A027-EDC6680FE182",
+  "plan": "/tmp/mfv-creative-qa-20261004/DerivedData/Build/Products/MFV-private-units.xctestrun",
+  "planSHA256": "737e86dd5591b19353e81a4b3f0b509b67beeefd538ee4b73e87bf2cbedc2f2a",
+  "unitTarget": "My Funny ValentineTests",
+  "CommandLineArguments": [
+    "--mfv-unit-tests",
+    "--mfv-test-session",
+    "F1315D3F-3872-49D3-A027-EDC6680FE182"
+  ],
+  "unitEnvironmentSessionMatches": true,
+  "uiLaunchConfiguration": "untouched; three prepared methods launch with independent explicit UUIDs",
+  "schemaFormat": {
+    "FormatVersion": 2
+  },
+  "argumentKeyEvidence": "Installed Xcode xcodebuild.xctestrun(5) lines157-160: CommandLineArguments are provided to test host"
+}

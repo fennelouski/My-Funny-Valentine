@@ -1,0 +1,87 @@
+[
+  {
+    "path": "Valentine-58AAF8FD-E3F7-4A75-A65B-E5B26EA3C114.png",
+    "sha256": "da04c8f0e2a3ed991b82694469d379a70cc8480c8fa56999ec70673093f67068",
+    "byteCount": 753431,
+    "matchesManifest": true,
+    "dimensions": [
+      800,
+      1200
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ]
+  },
+  {
+    "path": "Valentine-67A64713-024C-47AD-9F6E-981E6E89B494.gif",
+    "sha256": "2202a7f5e321032af0b97a031d944cca1934029408f402006ef3e195a996789b",
+    "byteCount": 1002191,
+    "matchesManifest": true
+  },
+  {
+    "path": "Valentine-67F0DFE2-6464-4069-BAE4-4FC5086EFC66.png",
+    "sha256": "e56354025485a0b5c6253c88711e10f6f6b2f980c2a1ce534ba7fc66905d2f9d",
+    "byteCount": 56209,
+    "matchesManifest": true,
+    "dimensions": [
+      800,
+      1200
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ]
+  },
+  {
+    "path": "Valentine-C48B8075-1B69-4298-8D13-91716DEC7442.pdf",
+    "sha256": "32d19330bb1e4ec8d2d0f4a2acdd45c89fa51c7bebcea765c6dcc01c11836e5c",
+    "byteCount": 2830828,
+    "matchesManifest": true,
+    "pages": [
+      {
+        "page": 1,
+        "mediaBox": [
+          0,
+          0,
+          288,
+          432
+        ],
+        "text": "A little card for \nmy favorite \nperson\nA note waits inside"
+      },
+      {
+        "page": 2,
+        "mediaBox": [
+          0,
+          0,
+          288,
+          432
+        ],
+        "text": "A little card for my favorite \nperson \n \nYou make ordinary days \nwonderful. Love, Sam."
+      }
+    ]
+  },
+  {
+    "path": "Valentine-DEF9808C-41E3-4BB2-A8B6-0270B9C2CE8F.html",
+    "sha256": "4e2a07f39c588a98d665f4148f6c128d24e78368a2a61372395ecf1bd838c5ce",
+    "byteCount": 2854539,
+    "matchesManifest": true
+  },
+  {
+    "path": "Valentine-F332D8DF-71F5-489D-8349-95CBBC443594.png",
+    "sha256": "f2999b25690d011e7eab038333fd436fd13cdcfe8ad48ceccae7bddbd61ba1d8",
+    "byteCount": 27319,
+    "matchesManifest": true,
+    "dimensions": [
+      618,
+      618
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  }
+]

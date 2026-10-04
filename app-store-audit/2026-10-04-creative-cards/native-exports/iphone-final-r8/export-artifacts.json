@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "nativeVersion": "1.0",
+  "nativeBuild": "3",
+  "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+  "privateSession": "D9D27773-BA47-4FDD-B35B-A8CE02F6862D",
+  "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+  "nativeChooserShown": true,
+  "recipientSelected": false,
+  "files": [
+    {
+      "file": "Valentine-151897C3-C738-4A84-88BC-4359DA028B47.html",
+      "sourcePath": "/Users/nathan/Library/Developer/CoreSimulator/Devices/1714F243-FD25-4B57-9B1D-10393B13A057/data/Containers/Data/Application/7F1B7487-1598-427B-8182-3E0DDFD4C72C/tmp/MFVPrivateQA-D9D27773-BA47-4FDD-B35B-A8CE02F6862D/Media/Valentine-151897C3-C738-4A84-88BC-4359DA028B47.html",
+      "sha256": "4e2a07f39c588a98d665f4148f6c128d24e78368a2a61372395ecf1bd838c5ce",
+      "byteCount": 2854539
+    },
+    {
+      "file": "Valentine-44F60F4F-1939-4206-8AD6-7E4354BC353F.pdf",
+      "sourcePath": "/Users/nathan/Library/Developer/CoreSimulator/Devices/1714F243-FD25-4B57-9B1D-10393B13A057/data/Containers/Data/Application/7F1B7487-1598-427B-8182-3E0DDFD4C72C/tmp/MFVPrivateQA-D9D27773-BA47-4FDD-B35B-A8CE02F6862D/Media/Valentine-44F60F4F-1939-4206-8AD6-7E4354BC353F.pdf",
+      "sha256": "d35ae94540f15d7be826eaa16bc7b3e0a433d6724d4981fd5af602e8eb5cf148",
+      "byteCount": 2830828
+    },
+    {
+      "file": "Valentine-5E109D8D-ED9A-4109-B504-7D02E04D6CFF.png",
+      "sourcePath": "/Users/nathan/Library/Developer/CoreSimulator/Devices/1714F243-FD25-4B57-9B1D-10393B13A057/data/Containers/Data/Application/7F1B7487-1598-427B-8182-3E0DDFD4C72C/tmp/MFVPrivateQA-D9D27773-BA47-4FDD-B35B-A8CE02F6862D/Media/Valentine-5E109D8D-ED9A-4109-B504-7D02E04D6CFF.png",
+      "sha256": "f2999b25690d011e7eab038333fd436fd13cdcfe8ad48ceccae7bddbd61ba1d8",
+      "byteCount": 27319
+    },
+    {
+      "file": "Valentine-62DD536A-E977-4247-817B-06485B2EB8A4.gif",
+      "sourcePath": "/Users/nathan/Library/Developer/CoreSimulator/Devices/1714F243-FD25-4B57-9B1D-10393B13A057/data/Containers/Data/Application/7F1B7487-1598-427B-8182-3E0DDFD4C72C/tmp/MFVPrivateQA-D9D27773-BA47-4FDD-B35B-A8CE02F6862D/Media/Valentine-62DD536A-E977-4247-817B-06485B2EB8A4.gif",
+      "sha256": "2202a7f5e321032af0b97a031d944cca1934029408f402006ef3e195a996789b",
+      "byteCount": 1002191
+    },
+    {
+      "file": "Valentine-80027A5D-0F49-4758-9744-81E7EC9F8A7C.png",
+      "sourcePath": "/Users/nathan/Library/Developer/CoreSimulator/Devices/1714F243-FD25-4B57-9B1D-10393B13A057/data/Containers/Data/Application/7F1B7487-1598-427B-8182-3E0DDFD4C72C/tmp/MFVPrivateQA-D9D27773-BA47-4FDD-B35B-A8CE02F6862D/Media/Valentine-80027A5D-0F49-4758-9744-81E7EC9F8A7C.png",
+      "sha256": "e56354025485a0b5c6253c88711e10f6f6b2f980c2a1ce534ba7fc66905d2f9d",
+      "byteCount": 56209
+    },
+    {
+      "file": "Valentine-A2D6EB86-7454-476E-AC01-A03D91F3B957.png",
+      "sourcePath": "/Users/nathan/Library/Developer/CoreSimulator/Devices/1714F243-FD25-4B57-9B1D-10393B13A057/data/Containers/Data/Application/7F1B7487-1598-427B-8182-3E0DDFD4C72C/tmp/MFVPrivateQA-D9D27773-BA47-4FDD-B35B-A8CE02F6862D/Media/Valentine-A2D6EB86-7454-476E-AC01-A03D91F3B957.png",
+      "sha256": "da04c8f0e2a3ed991b82694469d379a70cc8480c8fa56999ec70673093f67068",
+      "byteCount": 753431
+    }
+  ],
+  "decodeVisualApproval": "all-six-files-pass",
+  "decodeVisualReceipt": {
+    "path": "qa/verification.json",
+    "sha256": "f4a65706f87123574050c81948f2c78cdaf190c98c7cbecb6993a8e0556df85e"
+  }
+}

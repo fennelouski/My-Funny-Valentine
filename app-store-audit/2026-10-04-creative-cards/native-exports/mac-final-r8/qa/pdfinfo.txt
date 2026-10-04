@@ -1,0 +1,22 @@
+Producer:        macOS Version 26.5.2 (Build 25F84) Quartz PDFContext
+CreationDate:    Mon Oct  5 01:12:29 2026 CEST
+ModDate:         Mon Oct  5 01:12:29 2026 CEST
+Custom Metadata: no
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           2
+Encrypted:       no
+Page size:       288 x 432 pts
+Page rot:        0
+MediaBox:            0.00     0.00   288.00   432.00
+CropBox:             0.00     0.00   288.00   432.00
+BleedBox:            0.00     0.00   288.00   432.00
+TrimBox:             0.00     0.00   288.00   432.00
+ArtBox:              0.00     0.00   288.00   432.00
+File size:       2828041 bytes
+Optimized:       no
+PDF version:     1.4

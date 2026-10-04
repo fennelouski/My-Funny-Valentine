@@ -1,0 +1,53 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+        "deviceName": "Mouse Character QA Phone 20261004",
+        "modelName": "iPhone 16 Pro",
+        "osBuildNumber": "23F77",
+        "osVersion": "26.5",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 2,
+      "passedTests": 1,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "My Funny Valentine \u00b7 Built with macOS 26.5.2",
+  "expectedFailures": 0,
+  "failedTests": 2,
+  "finishTime": 1791151270.124,
+  "passedTests": 1,
+  "result": "Failed",
+  "skippedTests": 0,
+  "startTime": 1791151148.289,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "failed: caught error: \"missing(\"cardDetail.motion\")\"",
+      "targetName": "My Funny ValentineUITests",
+      "testIdentifier": 2,
+      "testIdentifierString": "CreativeCardsUITests/testSavedMotionChoiceAndLocalExportSheet()",
+      "testIdentifierURL": "test://com.apple.xcode/My%20Funny%20Valentine/My%20Funny%20ValentineUITests/CreativeCardsUITests/testSavedMotionChoiceAndLocalExportSheet",
+      "testName": "testSavedMotionChoiceAndLocalExportSheet()"
+    },
+    {
+      "failureText": "Failed to get matching snapshot: No matches found for Elements matching predicate '\"cardDetail.style.comic\" IN identifiers' from input {(\n    Button, identifier: 'cardDetail.share', label: 'Share',\n    Button, identifier: 'cardDetail.cancel', label: 'Cancel',\n    Button, identifier: 'cardDetail.save', label: 'Save',\n    Button, identifier: 'cardDetail.preview', label: 'Card preview. You had me at pizza.', value: Front,\n    Button, identifier: 'cardDetail.openCard', label: 'Open card',\n    Button, identifier: 'cardDetail.generateWithAI', label: 'Find the words', Disabled,\n    Button, identifier: 'cardDetail.photo', label: 'Photo', Disabled,\n    Button, identifier: 'cardDetail.face', label: 'Face', Disabled,\n    Button, identifier: 'cardDetail.variant', label: 'Composition, Layout 1'\n)}",
+      "targetName": "My Funny ValentineUITests",
+      "testIdentifier": 3,
+      "testIdentifierString": "CreativeCardsUITests/testSixStarterFamiliesOpenAndClose()",
+      "testIdentifierURL": "test://com.apple.xcode/My%20Funny%20Valentine/My%20Funny%20ValentineUITests/CreativeCardsUITests/testSixStarterFamiliesOpenAndClose",
+      "testName": "testSixStarterFamiliesOpenAndClose()"
+    }
+  ],
+  "title": "Test - My Funny Valentine",
+  "topInsights": [],
+  "totalTestCount": 3
+}

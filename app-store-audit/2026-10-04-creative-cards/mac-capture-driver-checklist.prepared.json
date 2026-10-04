@@ -1,0 +1,75 @@
+{
+  "status": "source-only prepared driver checklist; no native actions",
+  "createdAtUTC": "2026-10-04T22:32:36.470030+00:00",
+  "checklist": "app-store-audit/2026-10-04-creative-cards/mac-capture-driver-checklist.prepared.md",
+  "checklistSHA256": "29edee6ca050dbef876e4eeee8c05ed9178980518b4e3b5bdcbc20dcc52cd229",
+  "sourceInputs": [
+    {
+      "path": "My Funny Valentine/Utilities/MFVRuntime.swift",
+      "sha256": "2065db10b9f02ec4eaa0461a8ed07beef2f14ffa67d5583b7276bca053f465ad"
+    },
+    {
+      "path": "My Funny Valentine/Utilities/ScreenshotSupport.swift",
+      "sha256": "1b55ccfb1f340de2d4b69666bfa5f50581dab3df567880f74be63c1aae0be814"
+    },
+    {
+      "path": "My Funny Valentine/My_Funny_ValentineApp.swift",
+      "sha256": "bd0b1cdbf16ae2019c7fe0a0d240e21000581ffcbcc73b197d8eeb8b3b9a8e38"
+    },
+    {
+      "path": "My Funny Valentine/ContentView.swift",
+      "sha256": "dcfe7930112ae16ce6efb8670128564757e3272c787b01120cea9cd9c8438fbe"
+    },
+    {
+      "path": "My Funny Valentine/Views/HomeView.swift",
+      "sha256": "6b613de14671727f941700d0c7081498ebfb9f43b87e25ec6e2cb8fbd3ddac6e"
+    },
+    {
+      "path": "My Funny Valentine/Views/CardListView.swift",
+      "sha256": "73d3b8e1b78deef0a479bdd869bff9848995983efe227cee30a06346cd9e2336"
+    },
+    {
+      "path": "My Funny Valentine/Views/CardDetailView.swift",
+      "sha256": "108ccd0a272b607aeac3c27b4c11ffe430d72d4ba71b5a61461327e94ab5b123"
+    },
+    {
+      "path": "My Funny Valentine/Views/CardPrintView.swift",
+      "sha256": "621d293e827470d745b8edf9006252cbc4191ef03b122d9bae42e5257976af39"
+    },
+    {
+      "path": "My Funny Valentine/Views/ImagePlaygroundSheetModifier.swift",
+      "sha256": "176479a4202c367562cbda5d3a43eccde1994beeef577a292f9db38641884951"
+    },
+    {
+      "path": "My Funny ValentineUITests/CreativeCardsUITests.swift",
+      "sha256": "d0095f65ed5b64cdac407846cba0e61ac202309022ca94bc968733873bc41fd2"
+    },
+    {
+      "path": "My Funny ValentineUITests/ScreenshotUITests.swift",
+      "sha256": "f707db047844122d83b85944c6e7d775556909518bcf76c8a09ff3f98ff1791e"
+    },
+    {
+      "path": "My Funny Valentine.xcodeproj/project.pbxproj",
+      "sha256": "d0e4e38fa419e7acb3f28361b08e49fb575bb7d3d9331187f4eaecb23c4216f0"
+    },
+    {
+      "path": "app-store-audit/2026-10-04-creative-cards/marketing/manifest.json",
+      "sha256": "50fc46167ec0a889dd92ccffebe4182ee1fd7b43b61b3b26f6b480dabe81e27b"
+    }
+  ],
+  "warning": "Root is preparing a rendering derivative. These observed source hashes are not an approval/freeze of that future candidate. Recheck against its final source receipt before any runtime/capture.",
+  "existingMacDriver": "No current CreativeCardsUITests Mac methods; legacy screenshot method unsafe/obsolete for new private contract.",
+  "captureStates": [
+    "comic-front",
+    "cosmic-front",
+    "loveLetter-front",
+    "popUp-front",
+    "photoBooth-front",
+    "confetti-front",
+    "inside",
+    "library",
+    "personalized",
+    "exports"
+  ],
+  "exportsPriorEvidence": "Actual Phone root-r6 exports retained unchanged; not Mac output proof."
+}

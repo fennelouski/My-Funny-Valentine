@@ -1,0 +1,55 @@
+{
+  "status": "Actual native iPhone6formats; visual QA pending",
+  "sourceFreeze": "source-freeze.root-r7.json",
+  "sourceFreezeSHA256": "8597aedf0a5acd1faf5d0be2a3a6b7bb1a9f60f67ffb419b6eac42179d2af42f",
+  "nativeVersion": "1.0",
+  "nativeBuild": "3",
+  "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r6.xcresult",
+  "testSession": "613C1436-88F9-41F8-BD5F-36B92AE6FFD3",
+  "systemChooserPresented": true,
+  "destinationSelected": false,
+  "artifacts": [
+    {
+      "source": "/Users/nathan/Library/Developer/CoreSimulator/Devices/1714F243-FD25-4B57-9B1D-10393B13A057/data/Containers/Data/Application/C57C697E-38E6-48B3-BC21-6E7BF71F7BFB/tmp/MFVPrivateQA-613C1436-88F9-41F8-BD5F-36B92AE6FFD3/Media/Valentine-58AAF8FD-E3F7-4A75-A65B-E5B26EA3C114.png",
+      "path": "Valentine-58AAF8FD-E3F7-4A75-A65B-E5B26EA3C114.png",
+      "sha256": "da04c8f0e2a3ed991b82694469d379a70cc8480c8fa56999ec70673093f67068",
+      "byteCount": 753431,
+      "modifiedAtUTC": "2026-10-04T22:31:41.549473+00:00"
+    },
+    {
+      "source": "/Users/nathan/Library/Developer/CoreSimulator/Devices/1714F243-FD25-4B57-9B1D-10393B13A057/data/Containers/Data/Application/C57C697E-38E6-48B3-BC21-6E7BF71F7BFB/tmp/MFVPrivateQA-613C1436-88F9-41F8-BD5F-36B92AE6FFD3/Media/Valentine-67A64713-024C-47AD-9F6E-981E6E89B494.gif",
+      "path": "Valentine-67A64713-024C-47AD-9F6E-981E6E89B494.gif",
+      "sha256": "2202a7f5e321032af0b97a031d944cca1934029408f402006ef3e195a996789b",
+      "byteCount": 1002191,
+      "modifiedAtUTC": "2026-10-04T22:31:46.165353+00:00"
+    },
+    {
+      "source": "/Users/nathan/Library/Developer/CoreSimulator/Devices/1714F243-FD25-4B57-9B1D-10393B13A057/data/Containers/Data/Application/C57C697E-38E6-48B3-BC21-6E7BF71F7BFB/tmp/MFVPrivateQA-613C1436-88F9-41F8-BD5F-36B92AE6FFD3/Media/Valentine-67F0DFE2-6464-4069-BAE4-4FC5086EFC66.png",
+      "path": "Valentine-67F0DFE2-6464-4069-BAE4-4FC5086EFC66.png",
+      "sha256": "e56354025485a0b5c6253c88711e10f6f6b2f980c2a1ce534ba7fc66905d2f9d",
+      "byteCount": 56209,
+      "modifiedAtUTC": "2026-10-04T22:31:48.791754+00:00"
+    },
+    {
+      "source": "/Users/nathan/Library/Developer/CoreSimulator/Devices/1714F243-FD25-4B57-9B1D-10393B13A057/data/Containers/Data/Application/C57C697E-38E6-48B3-BC21-6E7BF71F7BFB/tmp/MFVPrivateQA-613C1436-88F9-41F8-BD5F-36B92AE6FFD3/Media/Valentine-C48B8075-1B69-4298-8D13-91716DEC7442.pdf",
+      "path": "Valentine-C48B8075-1B69-4298-8D13-91716DEC7442.pdf",
+      "sha256": "32d19330bb1e4ec8d2d0f4a2acdd45c89fa51c7bebcea765c6dcc01c11836e5c",
+      "byteCount": 2830828,
+      "modifiedAtUTC": "2026-10-04T22:31:53.784133+00:00"
+    },
+    {
+      "source": "/Users/nathan/Library/Developer/CoreSimulator/Devices/1714F243-FD25-4B57-9B1D-10393B13A057/data/Containers/Data/Application/C57C697E-38E6-48B3-BC21-6E7BF71F7BFB/tmp/MFVPrivateQA-613C1436-88F9-41F8-BD5F-36B92AE6FFD3/Media/Valentine-DEF9808C-41E3-4BB2-A8B6-0270B9C2CE8F.html",
+      "path": "Valentine-DEF9808C-41E3-4BB2-A8B6-0270B9C2CE8F.html",
+      "sha256": "4e2a07f39c588a98d665f4148f6c128d24e78368a2a61372395ecf1bd838c5ce",
+      "byteCount": 2854539,
+      "modifiedAtUTC": "2026-10-04T22:32:01.213369+00:00"
+    },
+    {
+      "source": "/Users/nathan/Library/Developer/CoreSimulator/Devices/1714F243-FD25-4B57-9B1D-10393B13A057/data/Containers/Data/Application/C57C697E-38E6-48B3-BC21-6E7BF71F7BFB/tmp/MFVPrivateQA-613C1436-88F9-41F8-BD5F-36B92AE6FFD3/Media/Valentine-F332D8DF-71F5-489D-8349-95CBBC443594.png",
+      "path": "Valentine-F332D8DF-71F5-489D-8349-95CBBC443594.png",
+      "sha256": "f2999b25690d011e7eab038333fd436fd13cdcfe8ad48ceccae7bddbd61ba1d8",
+      "byteCount": 27319,
+      "modifiedAtUTC": "2026-10-04T22:31:57.072577+00:00"
+    }
+  ]
+}

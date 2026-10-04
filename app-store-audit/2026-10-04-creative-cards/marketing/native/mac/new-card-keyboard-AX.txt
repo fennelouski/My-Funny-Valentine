@@ -1,0 +1,37 @@
+Window: "", App: My Funny Valentine.
+0 sheet Secondary Actions: Raise
+	1 container
+		2 text Value: Your card, Secondary Actions: Cancel
+		3 scroll area ID: cardDetail.scroll, Secondary Actions: Scroll Up, Scroll Down, Cancel
+			4 button Description: Card preview. , Value: Front, ID: cardDetail.preview, Secondary Actions: Open card
+			5 button Description: Open card, ID: cardDetail.openCard
+			6 text Your words Message
+			7 text field (settable) Placeholder: You're my favorite person., ID: cardDetail.message
+			8 text Value: 0/160 Personal note, ID: cardDetail.message
+			9 text field (settable) Placeholder: Love, me, ID: cardDetail.note
+			10 text Value: 0/240, ID: cardDetail.note
+			11 button (disabled) Description: Find the words, ID: cardDetail.generateWithAI
+			12 text Make it personal
+			13 menu button (disabled) Photo, ID: cardDetail.photo
+			14 menu button (disabled) Face, ID: cardDetail.face
+			15 text Set the scene
+			16 pop up button Composition, Value: Layout 1, ID: cardDetail.variant
+			17 checkbox Description: Bring it to life, Value: 1, ID: cardDetail.motion
+			18 collection Secondary Actions: AXScrollToTop, AXScrollToBottom
+			19 scroll bar (settable, float) 0
+				20 value indicator (settable, float) 0
+				21 increment arrow button
+				22 decrement arrow button
+				23 increment page button
+				24 decrement page button
+		25 button Description: Cancel, ID: cardDetail.cancel
+		26 button (disabled) Description: Save, ID: cardDetail.save
+27 menu bar
+	28 My Funny Valentine
+	29 File
+	30 Edit
+	31 View
+	32 Window
+	33 Help
+
+The focused UI element is 7 text field (settable) Placeholder: You're my favorite person., ID: cardDetail.message

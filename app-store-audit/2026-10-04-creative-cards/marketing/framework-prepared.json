@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "status": "framework-prepared-no-render",
+  "recordedAtUTC": "2026-10-04T21:23:03.861416+00:00",
+  "plannedOutputCount": 30,
+  "plannedPerPlatform": 10,
+  "multiPerPlatform": 7,
+  "singlePerPlatform": 3,
+  "backgroundCount": 4,
+  "manifestValidation": "PASS source-only contract",
+  "rendererSyntaxCheck": {
+    "command": [
+      "node",
+      "--check",
+      "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/marketing/render-marketing.cjs"
+    ],
+    "exitCode": 0
+  },
+  "pendingCaptureGate": {
+    "command": [
+      "node",
+      "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/marketing/render-marketing.cjs"
+    ],
+    "exitCode": 1,
+    "expectedFailure": "Matching final native capture handoff is required; no placeholder rendering",
+    "noExportsCreated": true
+  },
+  "files": [
+    {
+      "path": "DESIGN.md",
+      "sha256": "91daddbf822df93e19f2db83a095bfeb7eb1c559835621d7bc27b28a4199b029",
+      "byteCount": 1677
+    },
+    {
+      "path": "README.md",
+      "sha256": "7830b3a665401232034d9758f4d6af2abf071fa6d7628fc48b3dcbb1b5f63960",
+      "byteCount": 5138
+    },
+    {
+      "path": "assets/FrauncesVariable.ttf",
+      "sha256": "177ff6c0f14e5550a3c624247cd1189611d4eb65d000b14944c63d967958abbb",
+      "byteCount": 360440
+    },
+    {
+      "path": "assets/OFL.txt",
+      "sha256": "bdf4c22802eaf804f998195871c6b8938aac2ac14b2d78a8bd66a6f1eced833b",
+      "byteCount": 4391
+    },
+    {
+      "path": "index.html",
+      "sha256": "c7891f66ce2371d0dc3e178383111a83621b40d2ca6abfd01b70602a42238055",
+      "byteCount": 6257
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "50fc46167ec0a889dd92ccffebe4182ee1fd7b43b61b3b26f6b480dabe81e27b",
+      "byteCount": 15780
+    },
+    {
+      "path": "render-marketing.cjs",
+      "sha256": "71e14fc05d164bcdeb91700ec70191cbbd12bebe7589e662a159eca80cd92a73",
+      "byteCount": 8911
+    }
+  ],
+  "limits": [
+    "No native compiler/runtime/device/GUI invoked",
+    "No browser launched by pending-gate check",
+    "No PNG output rendered",
+    "No native screenshot received/copied or old native UI substituted",
+    "Final root matching source/captures and visual/upload approval required"
+  ]
+}

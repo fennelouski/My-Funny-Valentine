@@ -1,0 +1,2867 @@
+{
+  "schemaVersion": 1,
+  "status": "root-individually-approved-for-upload",
+  "renderedAtUTC": "2026-10-04T23:25:37.686Z",
+  "version": "1.0",
+  "build": "3",
+  "manifestSHA256": "d874374b90a84f284e8d3612bf4af86e68ac9237040bae7e9dbf934945ffe104",
+  "templateSHA256": "af69cc612a29d3539ac7153fae89fffc724a5380772c1b87db3ffe6d2b1762e8",
+  "rendererSHA256": "a69927fba634d26614bab5e099283b49e5606a7ec1ce406bb41a95c24b815827",
+  "sourceFreeze": {
+    "path": "proof/source-freeze.root-r8.json",
+    "sha256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca"
+  },
+  "font": {
+    "family": "Fraunces",
+    "file": "assets/FrauncesVariable.ttf",
+    "sha256": "177ff6c0f14e5550a3c624247cd1189611d4eb65d000b14944c63d967958abbb",
+    "byteCount": 360440,
+    "sourceURL": "https://raw.githubusercontent.com/google/fonts/main/ofl/fraunces/Fraunces%5BSOFT%2CWONK%2Copsz%2Cwght%5D.ttf",
+    "license": "SIL Open Font License 1.1",
+    "licensePath": "assets/OFL.txt",
+    "licenseSHA256": "bdf4c22802eaf804f998195871c6b8938aac2ac14b2d78a8bd66a6f1eced833b",
+    "licenseURL": "https://raw.githubusercontent.com/google/fonts/main/ofl/fraunces/OFL.txt",
+    "downloadedAtUTC": "2026-10-04T21:17:54.130085+00:00",
+    "variation": {
+      "weight": 800,
+      "opticalSize": 64,
+      "softness": 30,
+      "wonk": 1
+    }
+  },
+  "outputs": [
+    {
+      "platform": "iphone",
+      "ordinal": 1,
+      "scene": "make-their-day",
+      "path": "exports/iphone/01-make-their-day.png",
+      "sha256": "738bfa359f3b67ef0c19f908d8240d4469e0f246a579e878c2ad95d451b34195",
+      "width": 1320,
+      "height": 2868,
+      "headline": "Make their day.",
+      "background": "coralBurgundy",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "iphone-comic-front",
+          "role": "hero",
+          "path": "native/iphone/comic-front.png",
+          "sha256": "2393d3b621b237dcc5ad31f70f89bd3d2d462cba702c87d31f0da55b43684a05",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        },
+        {
+          "id": "iphone-library",
+          "role": "left",
+          "path": "native/iphone/library.png",
+          "sha256": "481981e7fc3d0ce31bb84b09923c3cd3399f82fcba81ca89469cb2790d44ee31",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        },
+        {
+          "id": "iphone-inside",
+          "role": "right",
+          "path": "native/iphone/inside.png",
+          "sha256": "cc39f7ccd32ed6e0314148811b5b61dff769dbf7525506803d2fee6261b8fc75",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 79.1875,
+          "y": 143.390625,
+          "width": 1161.59375,
+          "height": 116.125
+        },
+        "hero": {
+          "x": 250.8046875,
+          "y": 688.3125,
+          "width": 818.390625,
+          "height": 1765.1875
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "iphone-comic-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 250.8046875,
+              "y": 688.3125,
+              "width": 818.390625,
+              "height": 1765.1875
+            }
+          },
+          {
+            "id": "iphone-library",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -167.83432006835938,
+              "y": 956.8701171875,
+              "width": 863.668701171875,
+              "height": 1428.572265625
+            }
+          },
+          {
+            "id": "iphone-inside",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 624.1656494140625,
+              "y": 956.8701171875,
+              "width": 863.668701171875,
+              "height": 1428.572265625
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "iphone",
+      "ordinal": 2,
+      "scene": "cosmic-love",
+      "path": "exports/iphone/02-cosmic-love.png",
+      "sha256": "c03e4a9935e5b796cd7fc767cd905c942f727a4f675a4a6099045ade253d72ba",
+      "width": 1320,
+      "height": 2868,
+      "headline": "Love, across\nthe universe.",
+      "background": "midnightStars",
+      "captureCount": 2,
+      "sources": [
+        {
+          "id": "iphone-cosmic-front",
+          "role": "hero",
+          "path": "native/iphone/cosmic-front.png",
+          "sha256": "a46beed0ed8ad5ab0d5186a186e0f4d44991cdff2eb3833df367da2300caa624",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        },
+        {
+          "id": "iphone-personalized",
+          "role": "left",
+          "path": "native/iphone/personalized.png",
+          "sha256": "5c3c181ddab468020c6db0de7e6f7497847da5eb96dc263521138ef82c53c550",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 79.1875,
+          "y": 143.390625,
+          "width": 1161.59375,
+          "height": 232.25
+        },
+        "hero": {
+          "x": 250.8046875,
+          "y": 688.3125,
+          "width": 818.390625,
+          "height": 1765.1875
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "iphone-cosmic-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 250.8046875,
+              "y": 688.3125,
+              "width": 818.390625,
+              "height": 1765.1875
+            }
+          },
+          {
+            "id": "iphone-personalized",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -167.83432006835938,
+              "y": 956.8701171875,
+              "width": 863.668701171875,
+              "height": 1428.572265625
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "iphone",
+      "ordinal": 3,
+      "scene": "more-than-a-message",
+      "path": "exports/iphone/03-more-than-a-message.png",
+      "sha256": "ed6184e75e7015bcefafbff2a8f855e71b6dd72eb6b39fb8ae7f657d1f9c836e",
+      "width": 1320,
+      "height": 2868,
+      "headline": "More than\na message.",
+      "background": "mintConfetti",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "iphone-loveLetter-front",
+          "role": "hero",
+          "path": "native/iphone/loveLetter-front.png",
+          "sha256": "7ada7148171b156b2cadcb8a97d163840cc2393a97d44d963e26f8fa90cf9038",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        },
+        {
+          "id": "iphone-inside",
+          "role": "left",
+          "path": "native/iphone/inside.png",
+          "sha256": "cc39f7ccd32ed6e0314148811b5b61dff769dbf7525506803d2fee6261b8fc75",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        },
+        {
+          "id": "iphone-library",
+          "role": "right",
+          "path": "native/iphone/library.png",
+          "sha256": "481981e7fc3d0ce31bb84b09923c3cd3399f82fcba81ca89469cb2790d44ee31",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 79.1875,
+          "y": 143.390625,
+          "width": 1161.59375,
+          "height": 232.25
+        },
+        "hero": {
+          "x": 250.8046875,
+          "y": 688.3125,
+          "width": 818.390625,
+          "height": 1765.1875
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "iphone-loveLetter-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 250.8046875,
+              "y": 688.3125,
+              "width": 818.390625,
+              "height": 1765.1875
+            }
+          },
+          {
+            "id": "iphone-inside",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -167.83432006835938,
+              "y": 956.8701171875,
+              "width": 863.668701171875,
+              "height": 1428.572265625
+            }
+          },
+          {
+            "id": "iphone-library",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 624.1656494140625,
+              "y": 956.8701171875,
+              "width": 863.668701171875,
+              "height": 1428.572265625
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "iphone",
+      "ordinal": 4,
+      "scene": "little-surprise",
+      "path": "exports/iphone/04-little-surprise.png",
+      "sha256": "73983775e7d41b12ef6233dafa65d8cc5744fa6e95465ca2c56ab50c03407709",
+      "width": 1320,
+      "height": 2868,
+      "headline": "Open a little\nsurprise.",
+      "background": "plumLetter",
+      "captureCount": 1,
+      "sources": [
+        {
+          "id": "iphone-popUp-front",
+          "role": "hero",
+          "path": "native/iphone/popUp-front.png",
+          "sha256": "eecea97e6b9c3defb0ce926bb47563fd34bd0d2488be832fcd4420dc6152b9b9",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 79.1875,
+          "y": 143.390625,
+          "width": 1161.59375,
+          "height": 232.25
+        },
+        "hero": {
+          "x": 198,
+          "y": 688.3125,
+          "width": 924,
+          "height": 1994.796875
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "iphone-popUp-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 198,
+              "y": 688.3125,
+              "width": 924,
+              "height": 1994.796875
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "iphone",
+      "ordinal": 5,
+      "scene": "good-times",
+      "path": "exports/iphone/05-good-times.png",
+      "sha256": "9b3d913cd9c16b749bfa4ca2d0bab69d171381af81daf32cdbc38b5c673699c5",
+      "width": 1320,
+      "height": 2868,
+      "headline": "Keep the\ngood times.",
+      "background": "coralBurgundy",
+      "captureCount": 2,
+      "sources": [
+        {
+          "id": "iphone-photoBooth-front",
+          "role": "hero",
+          "path": "native/iphone/photoBooth-front.png",
+          "sha256": "133851486419f92885585e6365e7af2504bfd157e1ef72af1760a2c0995257c0",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        },
+        {
+          "id": "iphone-comic-front",
+          "role": "left",
+          "path": "native/iphone/comic-front.png",
+          "sha256": "2393d3b621b237dcc5ad31f70f89bd3d2d462cba702c87d31f0da55b43684a05",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 79.1875,
+          "y": 143.390625,
+          "width": 1161.59375,
+          "height": 232.25
+        },
+        "hero": {
+          "x": 250.8046875,
+          "y": 688.3125,
+          "width": 818.390625,
+          "height": 1765.1875
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "iphone-photoBooth-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 250.8046875,
+              "y": 688.3125,
+              "width": 818.390625,
+              "height": 1765.1875
+            }
+          },
+          {
+            "id": "iphone-comic-front",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -167.83432006835938,
+              "y": 956.8701171875,
+              "width": 863.668701171875,
+              "height": 1428.572265625
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "iphone",
+      "ordinal": 6,
+      "scene": "little-celebration",
+      "path": "exports/iphone/06-little-celebration.png",
+      "sha256": "62230fd43a8a3ea4d8304e4e2f58d0592ec517df7ecc75e6693d499dda5e86e6",
+      "width": 1320,
+      "height": 2868,
+      "headline": "Send a little\ncelebration.",
+      "background": "midnightStars",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "iphone-confetti-front",
+          "role": "hero",
+          "path": "native/iphone/confetti-front.png",
+          "sha256": "4deaea0fe1eed84e2f5129b09fad4119102ce92aa13a73d1c2a2eef69a1fafbc",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        },
+        {
+          "id": "iphone-exports",
+          "role": "left",
+          "path": "native/iphone/exports.png",
+          "sha256": "477fb52477bb0ff9144e79929a3e0d53d447f61d457ce46e79e313b4d7c7ab4d",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        },
+        {
+          "id": "iphone-inside",
+          "role": "right",
+          "path": "native/iphone/inside.png",
+          "sha256": "cc39f7ccd32ed6e0314148811b5b61dff769dbf7525506803d2fee6261b8fc75",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 79.1875,
+          "y": 143.390625,
+          "width": 1161.59375,
+          "height": 232.25
+        },
+        "hero": {
+          "x": 250.8046875,
+          "y": 688.3125,
+          "width": 818.390625,
+          "height": 1765.1875
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "iphone-confetti-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 250.8046875,
+              "y": 688.3125,
+              "width": 818.390625,
+              "height": 1765.1875
+            }
+          },
+          {
+            "id": "iphone-exports",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -167.83432006835938,
+              "y": 956.8701171875,
+              "width": 863.668701171875,
+              "height": 1428.572265625
+            }
+          },
+          {
+            "id": "iphone-inside",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 624.1656494140625,
+              "y": 956.8701171875,
+              "width": 863.668701171875,
+              "height": 1428.572265625
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "iphone",
+      "ordinal": 7,
+      "scene": "note-inside",
+      "path": "exports/iphone/07-note-inside.png",
+      "sha256": "87741c4d02795449433781122144eb9398b2c3430634b05e23bdb025204c3f88",
+      "width": 1320,
+      "height": 2868,
+      "headline": "There's a note\ninside.",
+      "background": "mintConfetti",
+      "captureCount": 1,
+      "sources": [
+        {
+          "id": "iphone-inside",
+          "role": "hero",
+          "path": "native/iphone/inside.png",
+          "sha256": "cc39f7ccd32ed6e0314148811b5b61dff769dbf7525506803d2fee6261b8fc75",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 79.1875,
+          "y": 143.390625,
+          "width": 1161.59375,
+          "height": 232.25
+        },
+        "hero": {
+          "x": 198,
+          "y": 688.3125,
+          "width": 924,
+          "height": 1994.796875
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "iphone-inside",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 198,
+              "y": 688.3125,
+              "width": 924,
+              "height": 1994.796875
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "iphone",
+      "ordinal": 8,
+      "scene": "pick-personalize-smile",
+      "path": "exports/iphone/08-pick-personalize-smile.png",
+      "sha256": "130a7ed54bd149ae3474cfa34c4e63d81d696114e1eb1fc4961e8d4edc7283a6",
+      "width": 1320,
+      "height": 2868,
+      "headline": "Pick. Personalize.\nSmile.",
+      "background": "plumLetter",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "iphone-library",
+          "role": "hero",
+          "path": "native/iphone/library.png",
+          "sha256": "481981e7fc3d0ce31bb84b09923c3cd3399f82fcba81ca89469cb2790d44ee31",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        },
+        {
+          "id": "iphone-cosmic-front",
+          "role": "left",
+          "path": "native/iphone/cosmic-front.png",
+          "sha256": "a46beed0ed8ad5ab0d5186a186e0f4d44991cdff2eb3833df367da2300caa624",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        },
+        {
+          "id": "iphone-comic-front",
+          "role": "right",
+          "path": "native/iphone/comic-front.png",
+          "sha256": "2393d3b621b237dcc5ad31f70f89bd3d2d462cba702c87d31f0da55b43684a05",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 79.1875,
+          "y": 143.390625,
+          "width": 1161.59375,
+          "height": 232.25
+        },
+        "hero": {
+          "x": 250.8046875,
+          "y": 688.3125,
+          "width": 818.390625,
+          "height": 1765.1875
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "iphone-library",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 250.8046875,
+              "y": 688.3125,
+              "width": 818.390625,
+              "height": 1765.1875
+            }
+          },
+          {
+            "id": "iphone-cosmic-front",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -167.83432006835938,
+              "y": 956.8701171875,
+              "width": 863.668701171875,
+              "height": 1428.572265625
+            }
+          },
+          {
+            "id": "iphone-comic-front",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 624.1656494140625,
+              "y": 956.8701171875,
+              "width": 863.668701171875,
+              "height": 1428.572265625
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "iphone",
+      "ordinal": 9,
+      "scene": "make-it-yours",
+      "path": "exports/iphone/09-make-it-yours.png",
+      "sha256": "88c7ef13a65cdbbdb3149ea5b9987464a9ebb9418e74da269418dfef5b0f152f",
+      "width": 1320,
+      "height": 2868,
+      "headline": "Make it yours.",
+      "background": "coralBurgundy",
+      "captureCount": 1,
+      "sources": [
+        {
+          "id": "iphone-personalized",
+          "role": "hero",
+          "path": "native/iphone/personalized.png",
+          "sha256": "5c3c181ddab468020c6db0de7e6f7497847da5eb96dc263521138ef82c53c550",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 79.1875,
+          "y": 143.390625,
+          "width": 1161.59375,
+          "height": 116.125
+        },
+        "hero": {
+          "x": 198,
+          "y": 688.3125,
+          "width": 924,
+          "height": 1994.796875
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "iphone-personalized",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 198,
+              "y": 688.3125,
+              "width": 924,
+              "height": 1994.796875
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "iphone",
+      "ordinal": 10,
+      "scene": "many-ways",
+      "path": "exports/iphone/10-many-ways.png",
+      "sha256": "14d3799ed77e648a11db44472df1a1fbeddc226a412d1b4c25449851d6ea7773",
+      "width": 1320,
+      "height": 2868,
+      "headline": "One card.\nSo many ways.",
+      "background": "midnightStars",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "iphone-exports",
+          "role": "hero",
+          "path": "native/iphone/exports.png",
+          "sha256": "477fb52477bb0ff9144e79929a3e0d53d447f61d457ce46e79e313b4d7c7ab4d",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        },
+        {
+          "id": "iphone-inside",
+          "role": "left",
+          "path": "native/iphone/inside.png",
+          "sha256": "cc39f7ccd32ed6e0314148811b5b61dff769dbf7525506803d2fee6261b8fc75",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        },
+        {
+          "id": "iphone-personalized",
+          "role": "right",
+          "path": "native/iphone/personalized.png",
+          "sha256": "5c3c181ddab468020c6db0de7e6f7497847da5eb96dc263521138ef82c53c550",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 1206,
+          "displayedHeight": 2622
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 79.1875,
+          "y": 143.390625,
+          "width": 1161.59375,
+          "height": 232.25
+        },
+        "hero": {
+          "x": 250.8046875,
+          "y": 688.3125,
+          "width": 818.390625,
+          "height": 1765.1875
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "iphone-exports",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 250.8046875,
+              "y": 688.3125,
+              "width": 818.390625,
+              "height": 1765.1875
+            }
+          },
+          {
+            "id": "iphone-inside",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -167.83432006835938,
+              "y": 956.8701171875,
+              "width": 863.668701171875,
+              "height": 1428.572265625
+            }
+          },
+          {
+            "id": "iphone-personalized",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 624.1656494140625,
+              "y": 956.8701171875,
+              "width": 863.668701171875,
+              "height": 1428.572265625
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "ipad",
+      "ordinal": 1,
+      "scene": "make-their-day",
+      "path": "exports/ipad/01-make-their-day.png",
+      "sha256": "a1ff0f0d7ee6e31964ce5d1c7a125ca61d275dc0ea4b7c04207ec7482647dfdd",
+      "width": 2752,
+      "height": 2064,
+      "headline": "Make their day.",
+      "background": "coralBurgundy",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "ipad-comic-front",
+          "role": "hero",
+          "path": "native/ipad/comic-front.png",
+          "sha256": "53bdea930f8401d571d99d3eccc419e368703680d365feab17ce3d07eac927e7",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        },
+        {
+          "id": "ipad-library",
+          "role": "left",
+          "path": "native/ipad/library.png",
+          "sha256": "c3d18cfdd14a262a16981e21a0fa3be051b71f0fc42b7b75abc10bf49f14b862",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        },
+        {
+          "id": "ipad-inside",
+          "role": "right",
+          "path": "native/ipad/inside.png",
+          "sha256": "b1e02c8b8f535688bd4749445e1dd7c7d9234553fc11f6ac6ea463b763b621b0",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 165.109375,
+          "y": 92.875,
+          "width": 2421.75,
+          "height": 140.015625
+        },
+        "hero": {
+          "x": 518,
+          "y": 722.390625,
+          "width": 1716,
+          "height": 1290
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "ipad-comic-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 518,
+              "y": 722.390625,
+              "width": 1716,
+              "height": 1290
+            }
+          },
+          {
+            "id": "ipad-library",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -261.517333984375,
+              "y": 813.05419921875,
+              "width": 1733.90966796875,
+              "height": 1431.5947265625
+            }
+          },
+          {
+            "id": "ipad-inside",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 1279.592041015625,
+              "y": 813.05419921875,
+              "width": 1733.90966796875,
+              "height": 1431.5947265625
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "ipad",
+      "ordinal": 2,
+      "scene": "cosmic-love",
+      "path": "exports/ipad/02-cosmic-love.png",
+      "sha256": "40292e85022c73b13ef513ee674a5bb62347b13bfa82d8efe7c65d88ac991089",
+      "width": 2752,
+      "height": 2064,
+      "headline": "Love, across\nthe universe.",
+      "background": "midnightStars",
+      "captureCount": 2,
+      "sources": [
+        {
+          "id": "ipad-cosmic-front",
+          "role": "hero",
+          "path": "native/ipad/cosmic-front.png",
+          "sha256": "df588b1d6a93518261cda77022ae68b2005fd13106b57971262fa6196dcd9ba2",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        },
+        {
+          "id": "ipad-personalized",
+          "role": "left",
+          "path": "native/ipad/personalized.png",
+          "sha256": "71b2471e4c4cc4eaf53b4e769fffb4914346ddaf5905d21a1137af99088d6630",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 165.109375,
+          "y": 92.875,
+          "width": 2421.75,
+          "height": 140.015625
+        },
+        "hero": {
+          "x": 518,
+          "y": 722.390625,
+          "width": 1716,
+          "height": 1290
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "ipad-cosmic-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 518,
+              "y": 722.390625,
+              "width": 1716,
+              "height": 1290
+            }
+          },
+          {
+            "id": "ipad-personalized",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -261.517333984375,
+              "y": 813.05419921875,
+              "width": 1733.90966796875,
+              "height": 1431.5947265625
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "ipad",
+      "ordinal": 3,
+      "scene": "more-than-a-message",
+      "path": "exports/ipad/03-more-than-a-message.png",
+      "sha256": "003ddc83698f310d5b39ac2caeeeb34a2db488de7d293a3d43455881129edf44",
+      "width": 2752,
+      "height": 2064,
+      "headline": "More than\na message.",
+      "background": "mintConfetti",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "ipad-loveLetter-front",
+          "role": "hero",
+          "path": "native/ipad/loveLetter-front.png",
+          "sha256": "15aa0c60c0ddde09e9ec0fc04c57f4f9cff48278a42e42eeb5e2156120dae762",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        },
+        {
+          "id": "ipad-inside",
+          "role": "left",
+          "path": "native/ipad/inside.png",
+          "sha256": "b1e02c8b8f535688bd4749445e1dd7c7d9234553fc11f6ac6ea463b763b621b0",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        },
+        {
+          "id": "ipad-library",
+          "role": "right",
+          "path": "native/ipad/library.png",
+          "sha256": "c3d18cfdd14a262a16981e21a0fa3be051b71f0fc42b7b75abc10bf49f14b862",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 165.109375,
+          "y": 92.875,
+          "width": 2421.75,
+          "height": 140.015625
+        },
+        "hero": {
+          "x": 518,
+          "y": 722.390625,
+          "width": 1716,
+          "height": 1290
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "ipad-loveLetter-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 518,
+              "y": 722.390625,
+              "width": 1716,
+              "height": 1290
+            }
+          },
+          {
+            "id": "ipad-inside",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -261.517333984375,
+              "y": 813.05419921875,
+              "width": 1733.90966796875,
+              "height": 1431.5947265625
+            }
+          },
+          {
+            "id": "ipad-library",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 1279.592041015625,
+              "y": 813.05419921875,
+              "width": 1733.90966796875,
+              "height": 1431.5947265625
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "ipad",
+      "ordinal": 4,
+      "scene": "little-surprise",
+      "path": "exports/ipad/04-little-surprise.png",
+      "sha256": "ec5d32a8fba136e0e81744c49d03eb9ac20ec132d9966b473b1e1c51a79fd3d2",
+      "width": 2752,
+      "height": 2064,
+      "headline": "Open a little\nsurprise.",
+      "background": "plumLetter",
+      "captureCount": 1,
+      "sources": [
+        {
+          "id": "ipad-popUp-front",
+          "role": "hero",
+          "path": "native/ipad/popUp-front.png",
+          "sha256": "c4772d743505d76f06d46e4bdd9004b73b0cb91bbe8dc512bb511d538258a474",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 165.109375,
+          "y": 92.875,
+          "width": 2421.75,
+          "height": 140.015625
+        },
+        "hero": {
+          "x": 518,
+          "y": 722.390625,
+          "width": 1716,
+          "height": 1290
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "ipad-popUp-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 518,
+              "y": 722.390625,
+              "width": 1716,
+              "height": 1290
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "ipad",
+      "ordinal": 5,
+      "scene": "good-times",
+      "path": "exports/ipad/05-good-times.png",
+      "sha256": "e8369773018554ae781969dbfa1916a2145bbe9292719e4d3d0ca06d338620c6",
+      "width": 2752,
+      "height": 2064,
+      "headline": "Keep the\ngood times.",
+      "background": "coralBurgundy",
+      "captureCount": 2,
+      "sources": [
+        {
+          "id": "ipad-photoBooth-front",
+          "role": "hero",
+          "path": "native/ipad/photoBooth-front.png",
+          "sha256": "70bc243bf6973d5b0557e46621cfc59e887e30eec94fcd4f2674d43613029fa2",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        },
+        {
+          "id": "ipad-comic-front",
+          "role": "left",
+          "path": "native/ipad/comic-front.png",
+          "sha256": "53bdea930f8401d571d99d3eccc419e368703680d365feab17ce3d07eac927e7",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 165.109375,
+          "y": 92.875,
+          "width": 2421.75,
+          "height": 140.015625
+        },
+        "hero": {
+          "x": 518,
+          "y": 722.390625,
+          "width": 1716,
+          "height": 1290
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "ipad-photoBooth-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 518,
+              "y": 722.390625,
+              "width": 1716,
+              "height": 1290
+            }
+          },
+          {
+            "id": "ipad-comic-front",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -261.517333984375,
+              "y": 813.05419921875,
+              "width": 1733.90966796875,
+              "height": 1431.5947265625
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "ipad",
+      "ordinal": 6,
+      "scene": "little-celebration",
+      "path": "exports/ipad/06-little-celebration.png",
+      "sha256": "d25309bff0cb6a8638116713eb6687a890bdf713f31d899db0b1a38dd3baa7f9",
+      "width": 2752,
+      "height": 2064,
+      "headline": "Send a little\ncelebration.",
+      "background": "midnightStars",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "ipad-confetti-front",
+          "role": "hero",
+          "path": "native/ipad/confetti-front.png",
+          "sha256": "6feb5b9c3b9f9d09138a431349c13ff6925d1e779b3fc548baa9a8cdf8d75891",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        },
+        {
+          "id": "ipad-exports",
+          "role": "left",
+          "path": "native/ipad/exports.png",
+          "sha256": "9c14ecd6162338a2ba40c1ef045a47814158c5d283994240b1227c21c788c50c",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        },
+        {
+          "id": "ipad-inside",
+          "role": "right",
+          "path": "native/ipad/inside.png",
+          "sha256": "b1e02c8b8f535688bd4749445e1dd7c7d9234553fc11f6ac6ea463b763b621b0",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 165.109375,
+          "y": 92.875,
+          "width": 2421.75,
+          "height": 140.015625
+        },
+        "hero": {
+          "x": 518,
+          "y": 722.390625,
+          "width": 1716,
+          "height": 1290
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "ipad-confetti-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 518,
+              "y": 722.390625,
+              "width": 1716,
+              "height": 1290
+            }
+          },
+          {
+            "id": "ipad-exports",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -261.517333984375,
+              "y": 813.05419921875,
+              "width": 1733.90966796875,
+              "height": 1431.5947265625
+            }
+          },
+          {
+            "id": "ipad-inside",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 1279.592041015625,
+              "y": 813.05419921875,
+              "width": 1733.90966796875,
+              "height": 1431.5947265625
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "ipad",
+      "ordinal": 7,
+      "scene": "note-inside",
+      "path": "exports/ipad/07-note-inside.png",
+      "sha256": "bea5aa8d235de78d753b04066a719cbba2729fecdb9f46b1996fd34a8ede5b74",
+      "width": 2752,
+      "height": 2064,
+      "headline": "There's a note\ninside.",
+      "background": "mintConfetti",
+      "captureCount": 1,
+      "sources": [
+        {
+          "id": "ipad-inside",
+          "role": "hero",
+          "path": "native/ipad/inside.png",
+          "sha256": "b1e02c8b8f535688bd4749445e1dd7c7d9234553fc11f6ac6ea463b763b621b0",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 165.109375,
+          "y": 92.875,
+          "width": 2421.75,
+          "height": 140.015625
+        },
+        "hero": {
+          "x": 518,
+          "y": 722.390625,
+          "width": 1716,
+          "height": 1290
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "ipad-inside",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 518,
+              "y": 722.390625,
+              "width": 1716,
+              "height": 1290
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "ipad",
+      "ordinal": 8,
+      "scene": "pick-personalize-smile",
+      "path": "exports/ipad/08-pick-personalize-smile.png",
+      "sha256": "57ef43e99cc73fde34add9e85feb0b25265d5b59db655817893659df842622a7",
+      "width": 2752,
+      "height": 2064,
+      "headline": "Pick. Personalize.\nSmile.",
+      "background": "plumLetter",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "ipad-library",
+          "role": "hero",
+          "path": "native/ipad/library.png",
+          "sha256": "c3d18cfdd14a262a16981e21a0fa3be051b71f0fc42b7b75abc10bf49f14b862",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        },
+        {
+          "id": "ipad-cosmic-front",
+          "role": "left",
+          "path": "native/ipad/cosmic-front.png",
+          "sha256": "df588b1d6a93518261cda77022ae68b2005fd13106b57971262fa6196dcd9ba2",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        },
+        {
+          "id": "ipad-comic-front",
+          "role": "right",
+          "path": "native/ipad/comic-front.png",
+          "sha256": "53bdea930f8401d571d99d3eccc419e368703680d365feab17ce3d07eac927e7",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 165.109375,
+          "y": 92.875,
+          "width": 2421.75,
+          "height": 140.015625
+        },
+        "hero": {
+          "x": 518,
+          "y": 722.390625,
+          "width": 1716,
+          "height": 1290
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "ipad-library",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 518,
+              "y": 722.390625,
+              "width": 1716,
+              "height": 1290
+            }
+          },
+          {
+            "id": "ipad-cosmic-front",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -261.517333984375,
+              "y": 813.05419921875,
+              "width": 1733.90966796875,
+              "height": 1431.5947265625
+            }
+          },
+          {
+            "id": "ipad-comic-front",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 1279.592041015625,
+              "y": 813.05419921875,
+              "width": 1733.90966796875,
+              "height": 1431.5947265625
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "ipad",
+      "ordinal": 9,
+      "scene": "make-it-yours",
+      "path": "exports/ipad/09-make-it-yours.png",
+      "sha256": "0ef393ba5888b5d4cc091dadcc6e54ea9dab7255d6322d91bc9f79c3a3963951",
+      "width": 2752,
+      "height": 2064,
+      "headline": "Make it yours.",
+      "background": "coralBurgundy",
+      "captureCount": 1,
+      "sources": [
+        {
+          "id": "ipad-personalized",
+          "role": "hero",
+          "path": "native/ipad/personalized.png",
+          "sha256": "71b2471e4c4cc4eaf53b4e769fffb4914346ddaf5905d21a1137af99088d6630",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 165.109375,
+          "y": 92.875,
+          "width": 2421.75,
+          "height": 140.015625
+        },
+        "hero": {
+          "x": 518,
+          "y": 722.390625,
+          "width": 1716,
+          "height": 1290
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "ipad-personalized",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 518,
+              "y": 722.390625,
+              "width": 1716,
+              "height": 1290
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "ipad",
+      "ordinal": 10,
+      "scene": "many-ways",
+      "path": "exports/ipad/10-many-ways.png",
+      "sha256": "207113790cbeee2fc2c910bc425621bf30f8292946e2ee8866792837c124a358",
+      "width": 2752,
+      "height": 2064,
+      "headline": "One card.\nSo many ways.",
+      "background": "midnightStars",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "ipad-exports",
+          "role": "hero",
+          "path": "native/ipad/exports.png",
+          "sha256": "9c14ecd6162338a2ba40c1ef045a47814158c5d283994240b1227c21c788c50c",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        },
+        {
+          "id": "ipad-inside",
+          "role": "left",
+          "path": "native/ipad/inside.png",
+          "sha256": "b1e02c8b8f535688bd4749445e1dd7c7d9234553fc11f6ac6ea463b763b621b0",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        },
+        {
+          "id": "ipad-personalized",
+          "role": "right",
+          "path": "native/ipad/personalized.png",
+          "sha256": "71b2471e4c4cc4eaf53b4e769fffb4914346ddaf5905d21a1137af99088d6630",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+          "componentProvenance": null,
+          "displayedWidth": 2752,
+          "displayedHeight": 2064
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 165.109375,
+          "y": 92.875,
+          "width": 2421.75,
+          "height": 140.015625
+        },
+        "hero": {
+          "x": 518,
+          "y": 722.390625,
+          "width": 1716,
+          "height": 1290
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "ipad-exports",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 518,
+              "y": 722.390625,
+              "width": 1716,
+              "height": 1290
+            }
+          },
+          {
+            "id": "ipad-inside",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -261.517333984375,
+              "y": 813.05419921875,
+              "width": 1733.90966796875,
+              "height": 1431.5947265625
+            }
+          },
+          {
+            "id": "ipad-personalized",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 1279.592041015625,
+              "y": 813.05419921875,
+              "width": 1733.90966796875,
+              "height": 1431.5947265625
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "mac",
+      "ordinal": 1,
+      "scene": "make-their-day",
+      "path": "exports/mac/01-make-their-day.png",
+      "sha256": "1e5571963730cb60adf9d4910221a6290fec4bbfdaad815407fdfa46ec5f33f0",
+      "width": 2560,
+      "height": 1600,
+      "headline": "Make their day.",
+      "background": "coralBurgundy",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "mac-comic-front",
+          "role": "hero",
+          "path": "native/mac/comic-front.jpg",
+          "sha256": "ea22e0b6cf19975517f455a4421e99d1373ba94b19697e09056e6aacc5c39a57",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": null,
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        },
+        {
+          "id": "mac-library",
+          "role": "left",
+          "path": "native/mac/library.jpg",
+          "sha256": "13ace4cef4721d5334c59326b80e66cfa756bf401c38cb2819ab0cea2fdbe95d",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": null,
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        },
+        {
+          "id": "mac-inside",
+          "role": "right",
+          "path": "native/mac/inside.jpg",
+          "sha256": "2e09632159839145951fc8b30184bc6360da793d7abccdc510fcea101568068c",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "inside",
+              "capturedAtUTC": "2026-10-04T23:09:39.548Z",
+              "method": "CUA full native editor screenshot after actual Open card"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 153.59375,
+          "y": 73.59375,
+          "width": 2252.796875,
+          "height": 130.234375
+        },
+        "hero": {
+          "x": 422.40625,
+          "y": 432,
+          "width": 1715.1875,
+          "height": 1076.484375
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "mac-comic-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 422.40625,
+              "y": 432,
+              "width": 1715.1875,
+              "height": 1076.484375
+            }
+          },
+          {
+            "id": "mac-library",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -90.60369110107422,
+              "y": 493.272705078125,
+              "width": 1409.988525390625,
+              "height": 1033.95458984375
+            }
+          },
+          {
+            "id": "mac-inside",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 1240.5994873046875,
+              "y": 493.272705078125,
+              "width": 1409.9886474609375,
+              "height": 1033.95458984375
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "mac",
+      "ordinal": 2,
+      "scene": "cosmic-love",
+      "path": "exports/mac/02-cosmic-love.png",
+      "sha256": "df6da8089e902f4fceca00ef46ee10287fa9b7cc307ba263736e43d063b2d01f",
+      "width": 2560,
+      "height": 1600,
+      "headline": "Love, across\nthe universe.",
+      "background": "midnightStars",
+      "captureCount": 2,
+      "sources": [
+        {
+          "id": "mac-cosmic-front",
+          "role": "hero",
+          "path": "native/mac/cosmic-front.jpg",
+          "sha256": "eb598c6d2919232c0580661db4926780cbcaaddba011161566b1abb9b9c0e966",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "cosmic-front",
+              "capturedAtUTC": "2026-10-04T23:08:24.341Z",
+              "identifier": "starter.starter_space_1",
+              "method": "CUA App.getScreenshot original full native window pixels"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        },
+        {
+          "id": "mac-personalized",
+          "role": "left",
+          "path": "native/mac/personalized.jpg",
+          "sha256": "ebbf3eff0f1a205d1de14b193e433ab1b59d745175eaa9c8fce23cdcd52f9841",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "personalized",
+              "capturedAtUTC": "2026-10-04T23:09:36.510Z",
+              "method": "CUA full native editor screenshot after actual native text field edits"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 153.59375,
+          "y": 73.59375,
+          "width": 2252.796875,
+          "height": 130.234375
+        },
+        "hero": {
+          "x": 422.40625,
+          "y": 432,
+          "width": 1715.1875,
+          "height": 1076.484375
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "mac-cosmic-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 422.40625,
+              "y": 432,
+              "width": 1715.1875,
+              "height": 1076.484375
+            }
+          },
+          {
+            "id": "mac-personalized",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -90.60369110107422,
+              "y": 493.272705078125,
+              "width": 1409.988525390625,
+              "height": 1033.95458984375
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "mac",
+      "ordinal": 3,
+      "scene": "more-than-a-message",
+      "path": "exports/mac/03-more-than-a-message.png",
+      "sha256": "29266c19cde9b40043259d1cb3686d6e4de71ec908835dc018f22509ffbefc88",
+      "width": 2560,
+      "height": 1600,
+      "headline": "More than\na message.",
+      "background": "mintConfetti",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "mac-loveLetter-front",
+          "role": "hero",
+          "path": "native/mac/loveLetter-front.jpg",
+          "sha256": "e0471e0f84361eba96bee325b4af1105c9ff2f9086d0c577974dfcbe779ea73d",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "loveLetter-front",
+              "capturedAtUTC": "2026-10-04T23:09:05.890Z",
+              "identifier": "starter.starter_birds_1",
+              "method": "CUA App.getScreenshot original full native window pixels"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        },
+        {
+          "id": "mac-inside",
+          "role": "left",
+          "path": "native/mac/inside.jpg",
+          "sha256": "2e09632159839145951fc8b30184bc6360da793d7abccdc510fcea101568068c",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "inside",
+              "capturedAtUTC": "2026-10-04T23:09:39.548Z",
+              "method": "CUA full native editor screenshot after actual Open card"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        },
+        {
+          "id": "mac-library",
+          "role": "right",
+          "path": "native/mac/library.jpg",
+          "sha256": "13ace4cef4721d5334c59326b80e66cfa756bf401c38cb2819ab0cea2fdbe95d",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": null,
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 153.59375,
+          "y": 73.59375,
+          "width": 2252.796875,
+          "height": 130.234375
+        },
+        "hero": {
+          "x": 422.40625,
+          "y": 432,
+          "width": 1715.1875,
+          "height": 1076.484375
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "mac-loveLetter-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 422.40625,
+              "y": 432,
+              "width": 1715.1875,
+              "height": 1076.484375
+            }
+          },
+          {
+            "id": "mac-inside",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -90.60369110107422,
+              "y": 493.272705078125,
+              "width": 1409.988525390625,
+              "height": 1033.95458984375
+            }
+          },
+          {
+            "id": "mac-library",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 1240.5994873046875,
+              "y": 493.272705078125,
+              "width": 1409.9886474609375,
+              "height": 1033.95458984375
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "mac",
+      "ordinal": 4,
+      "scene": "little-surprise",
+      "path": "exports/mac/04-little-surprise.png",
+      "sha256": "af0601e89815cbe95211f5bcee04b00c44fb0286836a18fe29a8e7e45c9e5d15",
+      "width": 2560,
+      "height": 1600,
+      "headline": "Open a little\nsurprise.",
+      "background": "plumLetter",
+      "captureCount": 1,
+      "sources": [
+        {
+          "id": "mac-popUp-front",
+          "role": "hero",
+          "path": "native/mac/popUp-front.jpg",
+          "sha256": "d56303a6fe2c3a007c034d42f95ee38d07408cf25ce5a5576cbda51d10b3bf5a",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "popUp-front",
+              "capturedAtUTC": "2026-10-04T23:08:31.612Z",
+              "identifier": "starter.starter_dino_1",
+              "method": "CUA App.getScreenshot original full native window pixels"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 153.59375,
+          "y": 73.59375,
+          "width": 2252.796875,
+          "height": 130.234375
+        },
+        "hero": {
+          "x": 381.203125,
+          "y": 432,
+          "width": 1797.59375,
+          "height": 1127.984375
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "mac-popUp-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 381.203125,
+              "y": 432,
+              "width": 1797.59375,
+              "height": 1127.984375
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "mac",
+      "ordinal": 5,
+      "scene": "good-times",
+      "path": "exports/mac/05-good-times.png",
+      "sha256": "623ee61b2671c66daa032681f1b0cd0803b3dad3f82ab592f357c9276ab77723",
+      "width": 2560,
+      "height": 1600,
+      "headline": "Keep the\ngood times.",
+      "background": "coralBurgundy",
+      "captureCount": 2,
+      "sources": [
+        {
+          "id": "mac-photoBooth-front",
+          "role": "hero",
+          "path": "native/mac/photoBooth-front.jpg",
+          "sha256": "11d93185711c0255d19e6514197ed5c8c7140fca2aa3d2c997485b06f582a02b",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "photoBooth-front",
+              "capturedAtUTC": "2026-10-04T23:08:35.083Z",
+              "identifier": "starter.starter_disco_1",
+              "method": "CUA App.getScreenshot original full native window pixels"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        },
+        {
+          "id": "mac-comic-front",
+          "role": "left",
+          "path": "native/mac/comic-front.jpg",
+          "sha256": "ea22e0b6cf19975517f455a4421e99d1373ba94b19697e09056e6aacc5c39a57",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": null,
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 153.59375,
+          "y": 73.59375,
+          "width": 2252.796875,
+          "height": 130.234375
+        },
+        "hero": {
+          "x": 422.40625,
+          "y": 432,
+          "width": 1715.1875,
+          "height": 1076.484375
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "mac-photoBooth-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 422.40625,
+              "y": 432,
+              "width": 1715.1875,
+              "height": 1076.484375
+            }
+          },
+          {
+            "id": "mac-comic-front",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -90.60369110107422,
+              "y": 493.272705078125,
+              "width": 1409.988525390625,
+              "height": 1033.95458984375
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "mac",
+      "ordinal": 6,
+      "scene": "little-celebration",
+      "path": "exports/mac/06-little-celebration.png",
+      "sha256": "d03591576543848df6d2d1ca618fa941bd9d6e280c9401def7038bab508ae0dd",
+      "width": 2560,
+      "height": 1600,
+      "headline": "Send a little\ncelebration.",
+      "background": "midnightStars",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "mac-confetti-front",
+          "role": "hero",
+          "path": "native/mac/confetti-front.jpg",
+          "sha256": "26a50bd70e8afab54fa03b0a3fda35513718f5e28bdb9ccdc63631e258b013b7",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "confetti-front",
+              "capturedAtUTC": "2026-10-04T23:08:38.914Z",
+              "identifier": "starter.starter_sweets_1",
+              "method": "CUA App.getScreenshot original full native window pixels"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        },
+        {
+          "id": "mac-exports",
+          "role": "left",
+          "path": "native/mac/exports.jpg",
+          "sha256": "c6016a2ae7232a1d1c3031819fb9fe30e715fd3423a82ddae9e1f53e4d60c5c6",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-native-sheet-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "exports",
+              "capturedAtUTC": "2026-10-04T23:12:32.041Z",
+              "method": "CUA screenshot actual Mac Ready to send sheet after all six exports generated"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 940,
+          "displayedHeight": 1520
+        },
+        {
+          "id": "mac-inside",
+          "role": "right",
+          "path": "native/mac/inside.jpg",
+          "sha256": "2e09632159839145951fc8b30184bc6360da793d7abccdc510fcea101568068c",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "inside",
+              "capturedAtUTC": "2026-10-04T23:09:39.548Z",
+              "method": "CUA full native editor screenshot after actual Open card"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 153.59375,
+          "y": 73.59375,
+          "width": 2252.796875,
+          "height": 130.234375
+        },
+        "hero": {
+          "x": 422.40625,
+          "y": 432,
+          "width": 1715.1875,
+          "height": 1076.484375
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "mac-confetti-front",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 422.40625,
+              "y": 432,
+              "width": 1715.1875,
+              "height": 1076.484375
+            }
+          },
+          {
+            "id": "mac-exports",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -210.61062622070312,
+              "y": 504.82806396484375,
+              "width": 1650.00244140625,
+              "height": 2268.71875
+            }
+          },
+          {
+            "id": "mac-inside",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 1240.5994873046875,
+              "y": 493.272705078125,
+              "width": 1409.9886474609375,
+              "height": 1033.95458984375
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "mac",
+      "ordinal": 7,
+      "scene": "note-inside",
+      "path": "exports/mac/07-note-inside.png",
+      "sha256": "d4592071cb10e97846a471bd070f2193772381562fc6453164e60175ac957e2d",
+      "width": 2560,
+      "height": 1600,
+      "headline": "There's a note\ninside.",
+      "background": "mintConfetti",
+      "captureCount": 1,
+      "sources": [
+        {
+          "id": "mac-inside",
+          "role": "hero",
+          "path": "native/mac/inside.jpg",
+          "sha256": "2e09632159839145951fc8b30184bc6360da793d7abccdc510fcea101568068c",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "inside",
+              "capturedAtUTC": "2026-10-04T23:09:39.548Z",
+              "method": "CUA full native editor screenshot after actual Open card"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 153.59375,
+          "y": 73.59375,
+          "width": 2252.796875,
+          "height": 130.234375
+        },
+        "hero": {
+          "x": 381.203125,
+          "y": 432,
+          "width": 1797.59375,
+          "height": 1127.984375
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "mac-inside",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 381.203125,
+              "y": 432,
+              "width": 1797.59375,
+              "height": 1127.984375
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "mac",
+      "ordinal": 8,
+      "scene": "pick-personalize-smile",
+      "path": "exports/mac/08-pick-personalize-smile.png",
+      "sha256": "aa7c3835f519a2b0b56f6eecd0dc92574126aed7453473cab24d105ab4f6fe0f",
+      "width": 2560,
+      "height": 1600,
+      "headline": "Pick. Personalize.\nSmile.",
+      "background": "plumLetter",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "mac-library",
+          "role": "hero",
+          "path": "native/mac/library.jpg",
+          "sha256": "13ace4cef4721d5334c59326b80e66cfa756bf401c38cb2819ab0cea2fdbe95d",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": null,
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        },
+        {
+          "id": "mac-cosmic-front",
+          "role": "left",
+          "path": "native/mac/cosmic-front.jpg",
+          "sha256": "eb598c6d2919232c0580661db4926780cbcaaddba011161566b1abb9b9c0e966",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "cosmic-front",
+              "capturedAtUTC": "2026-10-04T23:08:24.341Z",
+              "identifier": "starter.starter_space_1",
+              "method": "CUA App.getScreenshot original full native window pixels"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        },
+        {
+          "id": "mac-comic-front",
+          "role": "right",
+          "path": "native/mac/comic-front.jpg",
+          "sha256": "ea22e0b6cf19975517f455a4421e99d1373ba94b19697e09056e6aacc5c39a57",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": null,
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 153.59375,
+          "y": 73.59375,
+          "width": 2252.796875,
+          "height": 130.234375
+        },
+        "hero": {
+          "x": 422.40625,
+          "y": 432,
+          "width": 1715.1875,
+          "height": 1076.484375
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "mac-library",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 422.40625,
+              "y": 432,
+              "width": 1715.1875,
+              "height": 1076.484375
+            }
+          },
+          {
+            "id": "mac-cosmic-front",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -90.60369110107422,
+              "y": 493.272705078125,
+              "width": 1409.988525390625,
+              "height": 1033.95458984375
+            }
+          },
+          {
+            "id": "mac-comic-front",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 1240.5994873046875,
+              "y": 493.272705078125,
+              "width": 1409.9886474609375,
+              "height": 1033.95458984375
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "mac",
+      "ordinal": 9,
+      "scene": "make-it-yours",
+      "path": "exports/mac/09-make-it-yours.png",
+      "sha256": "f44ec6482b542fd8c1723fbf48521550660e15b08fe078d38d45eca7eea67cdf",
+      "width": 2560,
+      "height": 1600,
+      "headline": "Make it yours.",
+      "background": "coralBurgundy",
+      "captureCount": 1,
+      "sources": [
+        {
+          "id": "mac-personalized",
+          "role": "hero",
+          "path": "native/mac/personalized.jpg",
+          "sha256": "ebbf3eff0f1a205d1de14b193e433ab1b59d745175eaa9c8fce23cdcd52f9841",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "personalized",
+              "capturedAtUTC": "2026-10-04T23:09:36.510Z",
+              "method": "CUA full native editor screenshot after actual native text field edits"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 153.59375,
+          "y": 73.59375,
+          "width": 2252.796875,
+          "height": 130.234375
+        },
+        "hero": {
+          "x": 381.203125,
+          "y": 432,
+          "width": 1797.59375,
+          "height": 1127.984375
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "mac-personalized",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 381.203125,
+              "y": 432,
+              "width": 1797.59375,
+              "height": 1127.984375
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    },
+    {
+      "platform": "mac",
+      "ordinal": 10,
+      "scene": "many-ways",
+      "path": "exports/mac/10-many-ways.png",
+      "sha256": "233f03ddc0326f6235823a7dec272b8a4b695481d973edb323bb2ae57f4c4ac4",
+      "width": 2560,
+      "height": 1600,
+      "headline": "One card.\nSo many ways.",
+      "background": "midnightStars",
+      "captureCount": 3,
+      "sources": [
+        {
+          "id": "mac-exports",
+          "role": "hero",
+          "path": "native/mac/exports.jpg",
+          "sha256": "c6016a2ae7232a1d1c3031819fb9fe30e715fd3423a82ddae9e1f53e4d60c5c6",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-native-sheet-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "exports",
+              "capturedAtUTC": "2026-10-04T23:12:32.041Z",
+              "method": "CUA screenshot actual Mac Ready to send sheet after all six exports generated"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 940,
+          "displayedHeight": 1520
+        },
+        {
+          "id": "mac-inside",
+          "role": "left",
+          "path": "native/mac/inside.jpg",
+          "sha256": "2e09632159839145951fc8b30184bc6360da793d7abccdc510fcea101568068c",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "inside",
+              "capturedAtUTC": "2026-10-04T23:09:39.548Z",
+              "method": "CUA full native editor screenshot after actual Open card"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        },
+        {
+          "id": "mac-personalized",
+          "role": "right",
+          "path": "native/mac/personalized.jpg",
+          "sha256": "ebbf3eff0f1a205d1de14b193e433ab1b59d745175eaa9c8fce23cdcd52f9841",
+          "nativeVersion": "1.0",
+          "nativeBuild": "3",
+          "xcresult": null,
+          "componentProvenance": {
+            "kind": "actual-full-native-app-window",
+            "captureAPI": "CUA App.getScreenshot",
+            "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+            "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+            "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+            "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+            "actualObservedActions": {
+              "state": "personalized",
+              "capturedAtUTC": "2026-10-04T23:09:36.510Z",
+              "method": "CUA full native editor screenshot after actual native text field edits"
+            },
+            "originalPixels": true,
+            "windowChromeRedrawn": false,
+            "runtimeReceipt": "mac-runtime-current.json"
+          },
+          "displayedWidth": 2560,
+          "displayedHeight": 1600
+        }
+      ],
+      "geometry": {
+        "headline": {
+          "x": 153.59375,
+          "y": 73.59375,
+          "width": 2252.796875,
+          "height": 130.234375
+        },
+        "hero": {
+          "x": 928.921875,
+          "y": 432,
+          "width": 702.15625,
+          "height": 1127.984375
+        },
+        "font": "ValentineDisplay",
+        "captures": [
+          {
+            "id": "mac-exports",
+            "role": "hero",
+            "rotation": 0,
+            "bounds": {
+              "x": 928.921875,
+              "y": 432,
+              "width": 702.15625,
+              "height": 1127.984375
+            }
+          },
+          {
+            "id": "mac-inside",
+            "role": "left",
+            "rotation": -11,
+            "bounds": {
+              "x": -90.60369110107422,
+              "y": 493.272705078125,
+              "width": 1409.988525390625,
+              "height": 1033.95458984375
+            }
+          },
+          {
+            "id": "mac-personalized",
+            "role": "right",
+            "rotation": 11,
+            "bounds": {
+              "x": 1240.5994873046875,
+              "y": 493.272705078125,
+              "width": 1409.9886474609375,
+              "height": 1033.95458984375
+            }
+          }
+        ]
+      },
+      "individualVisualReview": "root-individually-viewed-pass",
+      "rootApproval": "approved-for-matching-build-1.0-3"
+    }
+  ],
+  "browserVersion": "153.0.8010.12",
+  "productionGuard": {
+    "inputCount": 115,
+    "before": "all-match",
+    "after": "all-match"
+  },
+  "rootVisualApproval": {
+    "atUTC": "2026-10-04T23:27:28.007871+00:00",
+    "images": 30,
+    "initialBatch": "all thirty outputs individually viewed, no material blocker",
+    "formatCorrection": "Mac originals were JPEG; native bytes retained, correct extensions/media type used. Output canvases remain exact opaque PNG.",
+    "scope": "Marketing composition only. Actual native UI screenshots retain original pixels and native capture provenance; Mac exports hero is the actual sheet window."
+  }
+}

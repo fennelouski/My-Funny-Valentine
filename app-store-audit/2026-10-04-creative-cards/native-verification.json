@@ -1,0 +1,1329 @@
+{
+  "status": "Current root-r8 native1.0(3):28/28 offline units,Phone4/4,targeted Phone accessibility1/1,Pad3/3 pass; actual private Mac flows and6format file QA pass within recorded limits. Release submission is separate.",
+  "sourceFreeze": "source-freeze.root-r8.json",
+  "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+  "iOSBuildForTesting": {
+    "result": "TEST BUILD SUCCEEDED",
+    "log": "/tmp/mfv-creative-qa-20261004/build-for-testing-r3.log"
+  },
+  "units": {
+    "passed": 22,
+    "suites": 6,
+    "seconds": 1.908,
+    "result": "/tmp/mfv-creative-qa-20261004/units-r1.xcresult",
+    "log": "/tmp/mfv-creative-qa-20261004/units-r1.log"
+  },
+  "compilerCorrections": [
+    "Conditional UIKit/AppKit import in renderer extension",
+    "Test fixture raw-string delimiters and platform imports",
+    "Separated template-artwork assertion from imported-photo override"
+  ],
+  "preservedFailureLogs": [
+    "/tmp/mfv-creative-qa-20261004/build-for-testing-r1.log",
+    "/tmp/mfv-creative-qa-20261004/build-for-testing-r2.log"
+  ],
+  "visionOSBuilds": 0,
+  "iOSBuildForTestingCurrent": {
+    "result": "TEST BUILD SUCCEEDED",
+    "log": "/tmp/mfv-creative-qa-20261004/build-for-testing-r4.log",
+    "sourceFreeze": "source-freeze.root-r3.json",
+    "sourceFreezeSHA256": "852b871453e941826757f8b0280f608394a722dbc8a15badbb1d2334cc0e74c2"
+  },
+  "uiAttempts": [
+    {
+      "platform": "iPhone",
+      "sourceFreeze": "source-freeze.root-r2.json",
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-ui-r1.xcresult",
+      "log": "/tmp/mfv-creative-qa-20261004/phone-ui-r1.log",
+      "summary": "phone-ui-r1-summary.json",
+      "passed": 1,
+      "failed": 2,
+      "total": 3
+    },
+    {
+      "platform": "iPhone",
+      "sourceFreeze": "source-freeze.root-r3.json",
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-ui-r2.xcresult",
+      "log": "/tmp/mfv-creative-qa-20261004/phone-ui-r2.log",
+      "summary": "phone-ui-r2-summary.json",
+      "passed": 0,
+      "failed": 1,
+      "total": 1
+    },
+    {
+      "platform": "iPhone",
+      "sourceFreeze": "source-freeze.root-r4.json",
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-ui-r3.xcresult",
+      "log": "/tmp/mfv-creative-qa-20261004/phone-ui-r3.log",
+      "summary": "phone-ui-r3-summary.json",
+      "passed": 1,
+      "failed": 2,
+      "total": 3
+    },
+    {
+      "platform": "iPhone",
+      "sourceFreeze": "source-freeze.root-r5.json",
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-ui-r4.xcresult",
+      "log": "/tmp/mfv-creative-qa-20261004/phone-ui-r4.log",
+      "summary": "phone-ui-r4-summary.json",
+      "passed": 1,
+      "failed": 2,
+      "total": 3
+    },
+    {
+      "platform": "iPhone",
+      "sourceFreeze": "source-freeze.root-r6.json",
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-ui-r5.xcresult",
+      "log": "/tmp/mfv-creative-qa-20261004/phone-ui-r5.log",
+      "summary": "phone-ui-r5-summary.json",
+      "passed": 3,
+      "failed": 0,
+      "total": 3
+    },
+    {
+      "run": "phone-ui-r6",
+      "result": "Passed",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "total": 3,
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-ui-r6.xcresult",
+      "summary": "phone-ui-r6-summary.json",
+      "summarySHA256": "5b42e82d3030710009c1ed2568791a7a51dc9bd3bb7da6ddf7af9860b1df9af0",
+      "log": "/tmp/mfv-creative-qa-20261004/phone-ui-r6.log",
+      "logSHA256": "4b9b0a9d8bf187f8516f0c699079bbd371148ebed9eac25cbcca6692182045af",
+      "startTime": 1791153026.404,
+      "finishTime": 1791153278.203,
+      "elapsedWallSeconds": 251.799,
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+            "deviceName": "Mouse Character QA Phone 20261004",
+            "modelName": "iPhone 16 Pro",
+            "osBuildNumber": "23F77",
+            "osVersion": "26.5",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 3,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "testFailures": [],
+      "passedMethods": [
+        {
+          "name": "testInvalidPrivateSessionRemainsBlank",
+          "seconds": 5.114
+        },
+        {
+          "name": "testSavedMotionChoiceAndLocalExportSheet",
+          "seconds": 103.065
+        },
+        {
+          "name": "testSixStarterFamiliesOpenAndClose",
+          "seconds": 121.489
+        }
+      ],
+      "platform": "iPhone"
+    },
+    {
+      "run": "phone-ui-r7",
+      "result": "Passed",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "total": 4,
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+      "summary": "phone-ui-r7-summary.json",
+      "summarySHA256": "6160044a39d7cdbb10677eee279b0a93ccec1216fbc6cdde0e9526c27d09e0f4",
+      "log": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.log",
+      "logSHA256": "97f0d0124531d31247fe3f9703657f48536b2839cae86d1de617bb9fd3e5b169",
+      "startTime": 1791153925.863,
+      "finishTime": 1791154216.193,
+      "elapsedWallSeconds": 290.33,
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+            "deviceName": "Mouse Character QA Phone 20261004",
+            "modelName": "iPhone 16 Pro",
+            "osBuildNumber": "23F77",
+            "osVersion": "26.5",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 4,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "testFailures": [],
+      "passedMethods": [
+        {
+          "name": "testInvalidPrivateSessionRemainsBlank",
+          "seconds": 4.874
+        },
+        {
+          "name": "testPersonalizedCardMarketingCapture",
+          "seconds": 41.752
+        },
+        {
+          "name": "testSavedMotionChoiceAndLocalExportSheet",
+          "seconds": 100.722
+        },
+        {
+          "name": "testSixStarterFamiliesOpenAndClose",
+          "seconds": 121.151
+        }
+      ],
+      "sourceFreeze": "source-freeze.root-r8.json",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "version": "1.0",
+      "build": "3",
+      "platform": "iPhone"
+    },
+    {
+      "run": "pad-ui-r1",
+      "result": "Failed",
+      "passed": 1,
+      "failed": 1,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "total": 2,
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/pad-ui-r1.xcresult",
+      "summary": "pad-ui-r1-summary.json",
+      "summarySHA256": "76137eb18e7f0a0c7f2d5ac079e31ef7a971f7d7999d420e6506371cd1a20be9",
+      "log": "/tmp/mfv-creative-qa-20261004/pad-ui-r1.log",
+      "logSHA256": "03a8637662e895db38fd03df68a19ce2483f5903f3e80403c0f2cbd6bef7989d",
+      "startTime": 1791153462.034,
+      "finishTime": 1791153692.653,
+      "elapsedWallSeconds": 230.619,
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "F69EE4E7-DFEE-41C7-A753-41F27FB5AB7D",
+            "deviceName": "Mouse Character QA iPad 20261004",
+            "modelName": "iPad Pro 13-inch (M5)",
+            "osBuildNumber": "23F77",
+            "osVersion": "26.5",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 1,
+          "passedTests": 1,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "testFailures": [
+        {
+          "failureText": "Failed to get matching snapshot: Find single matching element. Multiple matching elements found for <XCUIElementQuery: 0x11680c870>.\nSparse tree of matches:\n→Application, pid: 1382, label: 'My Funny Valentine'\n  ↳Window (Main)\n    ↳Other\n    ⋅ ↳Other, identifier: 'PopoverDismissRegion', label: 'dismiss popup'\n    ↳Other\n    ⋅ ↳Other, identifier: 'PopoverDismissRegion', label: 'dismiss popup'\n    ↳Other\n      ↳Other\n        ↳Other\n          ↳Other, identifier: 'PopoverDismissRegion', label: 'dismiss popup'\nPossibly caused by runtime issues:\nAutomation type mismatch: computed Other from legacy attributes vs Popover from modern attribute. Input attributes and values: {\n    \"XC_kAXXCAttributeAutomationType\" = 18;\n    \"XC_kAXXCAttributeElementBaseType\" = \"_UIPopoverView\";\n    \"XC_kAXXCAttributeElementType\" = \"_UIPopoverView\";\n    \"XC_kAXXCAttributeTraits\" = 0;\n}\nAutomation type mismatch: computed Other from legacy attributes vs StaticText from modern attribute. Input attributes and values: {\n    \"XC_kAXXCAttributeAutomationType\" = 48;\n    \"XC_kAXXCAttributeElementBaseType\" = UILabel;\n    \"XC_kAXXCAttributeElementType\" = UILabel;\n    \"XC_kAXXCAttributeTraits\" = 8590000128;\n}\nSee test report attachments for more detail.",
+          "targetName": "My Funny ValentineUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "CreativeCardsUITests/testSavedMotionChoiceAndLocalExportSheet()",
+          "testIdentifierURL": "test://com.apple.xcode/My%20Funny%20Valentine/My%20Funny%20ValentineUITests/CreativeCardsUITests/testSavedMotionChoiceAndLocalExportSheet",
+          "testName": "testSavedMotionChoiceAndLocalExportSheet()"
+        }
+      ],
+      "passedMethods": [
+        {
+          "name": "testSixStarterFamiliesOpenAndClose",
+          "seconds": 105.552
+        }
+      ],
+      "platform": "iPad"
+    },
+    {
+      "run": "pad-ui-r2",
+      "result": "Passed",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "total": 3,
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+      "summary": "pad-ui-r2-summary.json",
+      "summarySHA256": "c413b81e6120b6388c798c7103725ff0ecf9d7d2a59915345dcd64e6ada710f4",
+      "log": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.log",
+      "logSHA256": "382243cd46e7bb531dae69601e02577afdb9bfe044945b1781636c749ac6d015",
+      "startTime": 1791154324.672,
+      "finishTime": 1791154589.147,
+      "elapsedWallSeconds": 264.475,
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "F69EE4E7-DFEE-41C7-A753-41F27FB5AB7D",
+            "deviceName": "Mouse Character QA iPad 20261004",
+            "modelName": "iPad Pro 13-inch (M5)",
+            "osBuildNumber": "23F77",
+            "osVersion": "26.5",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 3,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "testFailures": [],
+      "passedMethods": [
+        {
+          "name": "testPersonalizedCardMarketingCapture",
+          "seconds": 40.995
+        },
+        {
+          "name": "testSavedMotionChoiceAndLocalExportSheet",
+          "seconds": 96.088
+        },
+        {
+          "name": "testSixStarterFamiliesOpenAndClose",
+          "seconds": 104.177
+        }
+      ],
+      "sourceFreeze": "source-freeze.root-r8.json",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "version": "1.0",
+      "build": "3",
+      "platform": "iPad"
+    },
+    {
+      "run": "phone-accessibility-r1",
+      "result": "Passed",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "total": 1,
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-accessibility-r1.xcresult",
+      "summary": "phone-accessibility-r1-summary.json",
+      "summarySHA256": "3261cad51dda451f72ab04270fdd5f0fc94dd480e4cd88a06fc35720bb7f9265",
+      "log": "/tmp/mfv-creative-qa-20261004/phone-accessibility-r1.log",
+      "logSHA256": "011556672713bdc19859f939799eab3af7e481018aff65f4f4561a340647e9bb",
+      "startTime": 1791153333.605,
+      "finishTime": 1791153364.508,
+      "elapsedWallSeconds": 30.903,
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+            "deviceName": "Mouse Character QA Phone 20261004",
+            "modelName": "iPhone 16 Pro",
+            "osBuildNumber": "23F77",
+            "osVersion": "26.5",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 1,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "testFailures": [],
+      "passedMethods": [
+        {
+          "name": "testReadableControlsAtCurrentAppearanceAndTextSize",
+          "seconds": 26.604
+        }
+      ],
+      "platform": "iPhone targeted accessibility"
+    },
+    {
+      "run": "phone-accessibility-r2",
+      "result": "Passed",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "total": 1,
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-accessibility-r2.xcresult",
+      "summary": "phone-accessibility-r2-summary.json",
+      "summarySHA256": "5d37b473e12679d01d00cef586bba45d7dc028c26c7a291f47dc78a6053c9d99",
+      "log": "/tmp/mfv-creative-qa-20261004/phone-accessibility-r2.log",
+      "logSHA256": "821272085c03b74dfcb71f1292489d09051efa985dedbcc1d75603095e70e39e",
+      "startTime": 1791154269.654,
+      "finishTime": 1791154300.931,
+      "elapsedWallSeconds": 31.277,
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+            "deviceName": "Mouse Character QA Phone 20261004",
+            "modelName": "iPhone 16 Pro",
+            "osBuildNumber": "23F77",
+            "osVersion": "26.5",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 1,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "testFailures": [],
+      "passedMethods": [
+        {
+          "name": "testReadableControlsAtCurrentAppearanceAndTextSize",
+          "seconds": 27.225
+        }
+      ],
+      "sourceFreeze": "source-freeze.root-r8.json",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "version": "1.0",
+      "build": "3",
+      "platform": "iPhone targeted accessibility"
+    }
+  ],
+  "uiFindings": [
+    {
+      "attempt": "r1",
+      "kind": "real UI",
+      "issue": "Bundled navigation title clipped; parent preview identifier overrode child controls",
+      "correction": "Short Your card title, redundant back hidden, editor tab bar hidden, preview child AX identifier"
+    },
+    {
+      "attempt": "r1",
+      "kind": "test harness",
+      "issue": "Caret position assumption did not replace complete text",
+      "correction": "Select All using actual native edit menu; r2 exact edited values plus Save/relaunch passed"
+    },
+    {
+      "attempt": "r2",
+      "kind": "real UI",
+      "issue": "Preview high-priority drag consumed vertical scrolling after saved card reopened",
+      "evidence": "phone-ui-r2-attachments/DD8B6F86-FED6-4AC1-B27B-D301A495F88F.txt; scroll offset remained zero through eight drags",
+      "correctionStatus": "Derivative batch preparing simultaneous horizontal-intent drag"
+    },
+    {
+      "attempt": "r3",
+      "kind": "test harness",
+      "issue": "Driver required entire starter frame inside viewport and scrolled past a partly visible hittable navigation link",
+      "correction": "Accept actual isHittable for reveal; first-screen requirements elsewhere remain explicit"
+    },
+    {
+      "attempt": "r3",
+      "kind": "real UI",
+      "issue": "Preview Button activation after horizontal drag toggled the card closed again",
+      "evidence": "phone-ui-r3-attachments/3BAF86DE-A4C3-4890-AA67-2C1E2E4B2D19.mp4; gesture-frames show front, half-open, front",
+      "correction": "Tap recognizer plus simultaneous horizontal-intent drag; explicit accessible Open/Close Button retained"
+    },
+    {
+      "attempt": "r4",
+      "kind": "real UI",
+      "issue": "Horizontal opening now passes; SwiftUI child drag still prevents ancestor vertical scrolling before styles and after saved-card reopen",
+      "evidence": "phone-ui-r4-attachments/BFB04791-8042-47A7-9555-1A09FA165568.txt and screenshot31236083; horizontal-opening attachment2247E19E",
+      "correctionStatus": "Narrow native iOS recognizer preparing horizontal-only begin test"
+    }
+  ],
+  "updatedAtUTC": "2026-10-04T23:29:23.031579+00:00",
+  "currentUnits": {
+    "run": "units-r5",
+    "result": "Passed",
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0,
+    "expectedFailures": 0,
+    "total": 28,
+    "resultBundle": "/tmp/mfv-creative-qa-20261004/units-r5.xcresult",
+    "summary": "units-r5-summary.json",
+    "summarySHA256": "6a1ef379681179e34ba19f4f801c6fa36ea43ad83c7f0bcc76f70e6ec439bc34",
+    "log": "/tmp/mfv-creative-qa-20261004/units-r5.log",
+    "logSHA256": "22cd164682db7ee55815caf0174d9a5b8f0136226d6e079e069c672a784109fc",
+    "startTime": 1791153912.91,
+    "finishTime": 1791153925.201,
+    "elapsedWallSeconds": 12.291,
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+          "deviceName": "Mouse Character QA Phone 20261004",
+          "modelName": "iPhone 16 Pro",
+          "osBuildNumber": "23F77",
+          "osVersion": "26.5",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 28,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "testFailures": [],
+    "sourceFreeze": "source-freeze.root-r8.json",
+    "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+    "version": "1.0",
+    "build": "3",
+    "scope": "28 selected offline tests in 6 suites:13 creative export tests,6 private-isolation tests and9 existing renderer/draft/persistence/starter regressions; no provider/cloud/subscription suite selected.",
+    "suiteCountFromActualLog": 6,
+    "passedTestTitlesFromActualLog": [
+      "Detached drafts cancel safely, retain child identities, and reopen after Save",
+      "A card with faces, images, and stickers saves and reloads",
+      "Mutating position through the computed property persists",
+      "Thumbnails and exports share the complete portrait canvas and degree rotations",
+      "No-photo starters render and personalized GIFs move only the face",
+      "Old layout JSON remains classic and all thirty starters receive six distinct new families",
+      "Frozen export pixels survive later text, artwork and layout edits",
+      "Every new family keeps two people visible and freezes their original face pixels",
+      "Dismissed or replaced exports cannot commit or finish a newer share job",
+      "Canceled local exports throw cancellation instead of returning a completed file",
+      "Cooperative exports retain native pixels, complete PDF pages and the shared animation clock",
+      "Full card GIF opens real inside content without a face and keeps finite frame timing",
+      "Motion-off frames stay still and manual inside selection remains usable",
+      "PDF preserves 4 by 6 inch pages and continues long Unicode notes",
+      "Sticker has real transparency, bounded bytes and a square output",
+      "Browser export embeds its native frames and escapes executable user text",
+      "All thirty bundled layouts retain upper and lower subject features while imported photos keep centered cropping",
+      "Classic card opening uses its message when the note contains only whitespace",
+      "A valid explicit UI UUID selects only its private session",
+      "Missing and malformed explicit private requests remain blank",
+      "Conflicting private modes or UUIDs cannot silently choose a store",
+      "Automatic and explicitly valid unit hosts are blank before model creation",
+      "Ordinary launch remains ordinary, while a forced QA build still needs a UUID",
+      "The actual unit process writes preferences and media only inside its private session",
+      "Thirty complete starters have stable IDs, distinct names and short sayings",
+      "Message and optional photo geometry fit the 400 by 600 card",
+      "Draft creation leaves the saved library untouched and uses editable plain text",
+      "Legacy IDs remain available and missing minimumFaceCount decodes as nil"
+    ]
+  },
+  "currentBuild": {
+    "result": "TEST BUILD SUCCEEDED",
+    "log": "/tmp/mfv-creative-qa-20261004/build-for-testing-r9.log",
+    "logSHA256": "d1d42bf23a9ce5760692890ed40793e1a92c34aba2bec1c2752a456eeb0c128d",
+    "sourceFreeze": "source-freeze.root-r8.json",
+    "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+    "version": "1.0",
+    "build": "3",
+    "configuration": "Debug",
+    "commandFromActualLog": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project \"My Funny Valentine.xcodeproj\" -scheme \"My Funny Valentine\" -configuration Debug -destination \"platform=iOS Simulator,id=1714F243-FD25-4B57-9B1D-10393B13A057\" -derivedDataPath /tmp/mfv-creative-qa-20261004/DerivedData -jobs 2 CODE_SIGNING_ALLOWED=NO build-for-testing",
+    "productPath": "/tmp/mfv-creative-qa-20261004/DerivedData/Build/Products/Debug-iphonesimulator/My Funny Valentine.app",
+    "InfoPlistSHA256": "dd15aca19f17192e6b34eff22254579db8769a6c2be3f6b81e1893c3f68bff08",
+    "executableSHA256": "e83990bc89825d0ff2cbfcbae78c49c835163c4acd8c0996261bbf635a93d25e",
+    "scope": "Actual compiled private QA product, not a distribution archive or upload receipt."
+  },
+  "history": [
+    {
+      "kind": "prior-native-verification-snapshot",
+      "preservedAtUTC": "2026-10-04T23:29:23.031189+00:00",
+      "beforeSHA256": "5da5de7943d297493034d6a1fe640b42e5ae493aba6c57e83ae449af5ce66747",
+      "snapshot": {
+        "status": "28 current units and all3actualPhoneflows pass; Pad/Mac/accessibility pending",
+        "sourceFreeze": "source-freeze.root-r2.json",
+        "sourceFreezeSHA256": "8466ec2a5f7c6ce74c288aa96ba3233c6a75fc72c5450784f7a74334f192da9b",
+        "iOSBuildForTesting": {
+          "result": "TEST BUILD SUCCEEDED",
+          "log": "/tmp/mfv-creative-qa-20261004/build-for-testing-r3.log"
+        },
+        "units": {
+          "passed": 22,
+          "suites": 6,
+          "seconds": 1.908,
+          "result": "/tmp/mfv-creative-qa-20261004/units-r1.xcresult",
+          "log": "/tmp/mfv-creative-qa-20261004/units-r1.log"
+        },
+        "compilerCorrections": [
+          "Conditional UIKit/AppKit import in renderer extension",
+          "Test fixture raw-string delimiters and platform imports",
+          "Separated template-artwork assertion from imported-photo override"
+        ],
+        "preservedFailureLogs": [
+          "/tmp/mfv-creative-qa-20261004/build-for-testing-r1.log",
+          "/tmp/mfv-creative-qa-20261004/build-for-testing-r2.log"
+        ],
+        "visionOSBuilds": 0,
+        "iOSBuildForTestingCurrent": {
+          "result": "TEST BUILD SUCCEEDED",
+          "log": "/tmp/mfv-creative-qa-20261004/build-for-testing-r4.log",
+          "sourceFreeze": "source-freeze.root-r3.json",
+          "sourceFreezeSHA256": "852b871453e941826757f8b0280f608394a722dbc8a15badbb1d2334cc0e74c2"
+        },
+        "uiAttempts": [
+          {
+            "platform": "iPhone",
+            "sourceFreeze": "source-freeze.root-r2.json",
+            "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-ui-r1.xcresult",
+            "log": "/tmp/mfv-creative-qa-20261004/phone-ui-r1.log",
+            "summary": "phone-ui-r1-summary.json",
+            "passed": 1,
+            "failed": 2,
+            "total": 3
+          },
+          {
+            "platform": "iPhone",
+            "sourceFreeze": "source-freeze.root-r3.json",
+            "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-ui-r2.xcresult",
+            "log": "/tmp/mfv-creative-qa-20261004/phone-ui-r2.log",
+            "summary": "phone-ui-r2-summary.json",
+            "passed": 0,
+            "failed": 1,
+            "total": 1
+          },
+          {
+            "platform": "iPhone",
+            "sourceFreeze": "source-freeze.root-r4.json",
+            "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-ui-r3.xcresult",
+            "log": "/tmp/mfv-creative-qa-20261004/phone-ui-r3.log",
+            "summary": "phone-ui-r3-summary.json",
+            "passed": 1,
+            "failed": 2,
+            "total": 3
+          },
+          {
+            "platform": "iPhone",
+            "sourceFreeze": "source-freeze.root-r5.json",
+            "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-ui-r4.xcresult",
+            "log": "/tmp/mfv-creative-qa-20261004/phone-ui-r4.log",
+            "summary": "phone-ui-r4-summary.json",
+            "passed": 1,
+            "failed": 2,
+            "total": 3
+          },
+          {
+            "platform": "iPhone",
+            "sourceFreeze": "source-freeze.root-r6.json",
+            "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-ui-r5.xcresult",
+            "log": "/tmp/mfv-creative-qa-20261004/phone-ui-r5.log",
+            "summary": "phone-ui-r5-summary.json",
+            "passed": 3,
+            "failed": 0,
+            "total": 3
+          }
+        ],
+        "uiFindings": [
+          {
+            "attempt": "r1",
+            "kind": "real UI",
+            "issue": "Bundled navigation title clipped; parent preview identifier overrode child controls",
+            "correction": "Short Your card title, redundant back hidden, editor tab bar hidden, preview child AX identifier"
+          },
+          {
+            "attempt": "r1",
+            "kind": "test harness",
+            "issue": "Caret position assumption did not replace complete text",
+            "correction": "Select All using actual native edit menu; r2 exact edited values plus Save/relaunch passed"
+          },
+          {
+            "attempt": "r2",
+            "kind": "real UI",
+            "issue": "Preview high-priority drag consumed vertical scrolling after saved card reopened",
+            "evidence": "phone-ui-r2-attachments/DD8B6F86-FED6-4AC1-B27B-D301A495F88F.txt; scroll offset remained zero through eight drags",
+            "correctionStatus": "Derivative batch preparing simultaneous horizontal-intent drag"
+          },
+          {
+            "attempt": "r3",
+            "kind": "test harness",
+            "issue": "Driver required entire starter frame inside viewport and scrolled past a partly visible hittable navigation link",
+            "correction": "Accept actual isHittable for reveal; first-screen requirements elsewhere remain explicit"
+          },
+          {
+            "attempt": "r3",
+            "kind": "real UI",
+            "issue": "Preview Button activation after horizontal drag toggled the card closed again",
+            "evidence": "phone-ui-r3-attachments/3BAF86DE-A4C3-4890-AA67-2C1E2E4B2D19.mp4; gesture-frames show front, half-open, front",
+            "correction": "Tap recognizer plus simultaneous horizontal-intent drag; explicit accessible Open/Close Button retained"
+          },
+          {
+            "attempt": "r4",
+            "kind": "real UI",
+            "issue": "Horizontal opening now passes; SwiftUI child drag still prevents ancestor vertical scrolling before styles and after saved-card reopen",
+            "evidence": "phone-ui-r4-attachments/BFB04791-8042-47A7-9555-1A09FA165568.txt and screenshot31236083; horizontal-opening attachment2247E19E",
+            "correctionStatus": "Narrow native iOS recognizer preparing horizontal-only begin test"
+          }
+        ],
+        "updatedAtUTC": "2026-10-04T22:18:12.016398+00:00",
+        "currentUnits": {
+          "passed": 28,
+          "failed": 0,
+          "total": 28,
+          "resultBundle": "/tmp/mfv-creative-qa-20261004/units-r3.xcresult",
+          "summary": "units-r3-summary.json",
+          "sourceFreeze": "source-freeze.root-r6.json",
+          "log": "/tmp/mfv-creative-qa-20261004/units-r3.log"
+        },
+        "currentBuild": {
+          "result": "TEST BUILD SUCCEEDED",
+          "sourceFreeze": "source-freeze.root-r6.json",
+          "sourceFreezeSHA256": "bf7e44e739cafaabdbdf67c84b3b9da227c1baebcb3eebd6152a9e579fc658b6",
+          "log": "/tmp/mfv-creative-qa-20261004/build-for-testing-r7.log",
+          "version": "1.0",
+          "build": "3"
+        }
+      },
+      "reason": "Superseded current fields updated to actual root-r8 validation; older attempts, findings and compiler evidence retained verbatim."
+    }
+  ],
+  "schemaVersion": 2,
+  "version": "1.0",
+  "build": "3",
+  "currentPhoneUI": {
+    "run": "phone-ui-r7",
+    "result": "Passed",
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "expectedFailures": 0,
+    "total": 4,
+    "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+    "summary": "phone-ui-r7-summary.json",
+    "summarySHA256": "6160044a39d7cdbb10677eee279b0a93ccec1216fbc6cdde0e9526c27d09e0f4",
+    "log": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.log",
+    "logSHA256": "97f0d0124531d31247fe3f9703657f48536b2839cae86d1de617bb9fd3e5b169",
+    "startTime": 1791153925.863,
+    "finishTime": 1791154216.193,
+    "elapsedWallSeconds": 290.33,
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+          "deviceName": "Mouse Character QA Phone 20261004",
+          "modelName": "iPhone 16 Pro",
+          "osBuildNumber": "23F77",
+          "osVersion": "26.5",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 4,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "testFailures": [],
+    "passedMethods": [
+      {
+        "name": "testInvalidPrivateSessionRemainsBlank",
+        "seconds": 4.874
+      },
+      {
+        "name": "testPersonalizedCardMarketingCapture",
+        "seconds": 41.752
+      },
+      {
+        "name": "testSavedMotionChoiceAndLocalExportSheet",
+        "seconds": 100.722
+      },
+      {
+        "name": "testSixStarterFamiliesOpenAndClose",
+        "seconds": 121.151
+      }
+    ],
+    "sourceFreeze": "source-freeze.root-r8.json",
+    "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+    "version": "1.0",
+    "build": "3",
+    "scope": "Actual valid/invalid private bootstrap, six native starter families/open-close/horizontal drag/vertical editor scroll, editable saved full Sam text and motion-off cold reopen, six local formats, real native PNG ActivityListView opened/dismissed without a destination, and full personalized front/inside capture."
+  },
+  "currentPhoneAccessibility": {
+    "run": "phone-accessibility-r2",
+    "result": "Passed",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "expectedFailures": 0,
+    "total": 1,
+    "resultBundle": "/tmp/mfv-creative-qa-20261004/phone-accessibility-r2.xcresult",
+    "summary": "phone-accessibility-r2-summary.json",
+    "summarySHA256": "5d37b473e12679d01d00cef586bba45d7dc028c26c7a291f47dc78a6053c9d99",
+    "log": "/tmp/mfv-creative-qa-20261004/phone-accessibility-r2.log",
+    "logSHA256": "821272085c03b74dfcb71f1292489d09051efa985dedbcc1d75603095e70e39e",
+    "startTime": 1791154269.654,
+    "finishTime": 1791154300.931,
+    "elapsedWallSeconds": 31.277,
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+          "deviceName": "Mouse Character QA Phone 20261004",
+          "modelName": "iPhone 16 Pro",
+          "osBuildNumber": "23F77",
+          "osVersion": "26.5",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 1,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "testFailures": [],
+    "passedMethods": [
+      {
+        "name": "testReadableControlsAtCurrentAppearanceAndTextSize",
+        "seconds": 27.225
+      }
+    ],
+    "sourceFreeze": "source-freeze.root-r8.json",
+    "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+    "version": "1.0",
+    "build": "3",
+    "scope": "One targeted native Phone method checks first-viewport Write, preview/title, style selection and motion control at the owner-configured appearance/content size. This is not a complete accessibility or VoiceOver/hardware audit."
+  },
+  "currentPadUI": {
+    "run": "pad-ui-r2",
+    "result": "Passed",
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "expectedFailures": 0,
+    "total": 3,
+    "resultBundle": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+    "summary": "pad-ui-r2-summary.json",
+    "summarySHA256": "c413b81e6120b6388c798c7103725ff0ecf9d7d2a59915345dcd64e6ada710f4",
+    "log": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.log",
+    "logSHA256": "382243cd46e7bb531dae69601e02577afdb9bfe044945b1781636c749ac6d015",
+    "startTime": 1791154324.672,
+    "finishTime": 1791154589.147,
+    "elapsedWallSeconds": 264.475,
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "F69EE4E7-DFEE-41C7-A753-41F27FB5AB7D",
+          "deviceName": "Mouse Character QA iPad 20261004",
+          "modelName": "iPad Pro 13-inch (M5)",
+          "osBuildNumber": "23F77",
+          "osVersion": "26.5",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 3,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "testFailures": [],
+    "passedMethods": [
+      {
+        "name": "testPersonalizedCardMarketingCapture",
+        "seconds": 40.995
+      },
+      {
+        "name": "testSavedMotionChoiceAndLocalExportSheet",
+        "seconds": 96.088
+      },
+      {
+        "name": "testSixStarterFamiliesOpenAndClose",
+        "seconds": 104.177
+      }
+    ],
+    "sourceFreeze": "source-freeze.root-r8.json",
+    "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+    "version": "1.0",
+    "build": "3",
+    "scope": "Actual three native methods: six families/open-close/horizontal drag/vertical editor scroll, saved Sam text/motion-off cold reopen and six local exports, real native PNG chooser dismissal without a destination, and full personalized front/inside capture. Invalid-request method was not repeated on iPad."
+  },
+  "currentMacBuild": {
+    "result": "BUILD SUCCEEDED",
+    "log": "/tmp/mfv-creative-qa-20261004/mac-debug-build3.log",
+    "logSHA256": "ef6fe5f23b49a02936f06f08ace39d5cfa2d85b8f44c38ff310862e59214ed44",
+    "sourceFreeze": "source-freeze.root-r8.json",
+    "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+    "version": "1.0",
+    "build": "3",
+    "configuration": "Debug",
+    "commandFromActualLog": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project \"My Funny Valentine.xcodeproj\" -scheme \"My Funny Valentine\" -configuration Debug -destination generic/platform=macOS -derivedDataPath /tmp/mfv-creative-mac-build3-20261005 -jobs 2 build",
+    "productPath": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+    "InfoPlistSHA256": "4a4f4f6c436fee65cd61d33dece578f34f235fdebfb402778ace0913c1439245",
+    "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+    "scope": "Actual compiled private QA product, not a distribution archive or upload receipt."
+  },
+  "currentMacRuntime": {
+    "kind": "root-owned actual native Mac interaction; not an automated XCTest method count",
+    "receipt": "mac-runtime-current.json",
+    "receiptSHA256": "6ee036b249786b06dbd3a67c9f9090e4ef4db6d6f0a0db7b04b76769bca75fe3",
+    "nativeRuntimeReceipt": {
+      "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+      "appPath": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+      "version": "1.0",
+      "build": "3",
+      "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "ordinaryStorePrefsBefore": [
+        {
+          "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store",
+          "sha256": "aa2f5933416fd9caf34a5b7ffa2f09968d3050e8bd6f28bbda7795bbabefca18",
+          "byteCount": 114688
+        },
+        {
+          "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store-shm",
+          "sha256": "75bf6e421247db25138c107566e05ac3ffafd76b3a3ca002d70d4610cc67d330",
+          "byteCount": 32768
+        },
+        {
+          "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store-wal",
+          "sha256": "da5ca139394e59055b84d5570e222a5066206adddbf7356366219b44c8f62fb7",
+          "byteCount": 119512
+        },
+        {
+          "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Preferences/com.nathanfennel.My-Funny-Valentine.plist",
+          "sha256": "2ee4cd2e2c21894432a7927561f4111e9882df5acb96a97b4e12f7f6aee10055",
+          "byteCount": 2778
+        }
+      ],
+      "runtimeVerification": {
+        "status": "passed-actual-private-Mac-flows",
+        "sixFamiliesCaptured": true,
+        "savedTextColdReopen": true,
+        "motionPreferencePersisted": true,
+        "horizontalDragOpens": true,
+        "verticalEditorScroll": true,
+        "keyboardNewSaveExport": [
+          "Command-N",
+          "Command-S",
+          "Command-Shift-E"
+        ],
+        "sixFormatsGenerated": true,
+        "nativeSharingServicesObservedAndCancelled": true,
+        "recipientSelected": false,
+        "ordinaryApplicationPreferenceKeysUnchangedAcrossInteractions": true,
+        "ordinaryCardStoreFilesUnchangedFromBeforeLaunch": true,
+        "printPhotosProviderCalls": "disabled-in-private-QA-not-executed"
+      },
+      "privateBoundaryBeforeInteraction": {
+        "processPathAndArguments": "11553 /private/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app/Contents/MacOS/My Funny Valentine --mfv-ui-tests --mfv-test-session 12916CA4-9BC7-4F0B-846C-C6BA592E63A2 -screenshotTab 0",
+        "privateStorePath": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/tmp/MFVPrivateQA-12916CA4-9BC7-4F0B-846C-C6BA592E63A2/Store/cards.store",
+        "privateStoreExists": true,
+        "privatePreferencesExists": true,
+        "ordinaryFileChecks": [
+          {
+            "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store",
+            "unchanged": true
+          },
+          {
+            "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store-shm",
+            "unchanged": true
+          },
+          {
+            "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store-wal",
+            "unchanged": true
+          },
+          {
+            "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Preferences/com.nathanfennel.My-Funny-Valentine.plist",
+            "unchanged": false
+          }
+        ],
+        "ordinaryApplicationPreferenceKeysSHA256": "4d236f55a7ff34f59952bf6f9555d89c2472a5f407272da0db64e7fff724f410",
+        "preferenceLimit": "macOS wrote WindowGroup/split-view frame caches in ordinary NS preferences during launch. No unchanged-preferences claim; application preference keys now hashed for the interaction boundary. Ordinary card store hashes match prelaunch.",
+        "cuaSelectedExactDebugApp": true,
+        "AXLimitation": "CUA collapses macOS root identifier into WindowGroup type; exact process arguments and unique UUID store verified before interaction. No false AX marker claim."
+      },
+      "privateRelaunchBoundary": {
+        "exactProcessArguments": "14807 /private/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app/Contents/MacOS/My Funny Valentine --mfv-ui-tests --mfv-test-session 12916CA4-9BC7-4F0B-846C-C6BA592E63A2 -screenshotTab 0",
+        "sameSession": true,
+        "ordinaryApplicationPreferenceKeysUnchanged": true,
+        "ordinaryCardStoresUnchanged": true
+      },
+      "postQuitVerification": {
+        "atUTC": "2026-10-04T23:27:28.007871+00:00",
+        "ordinaryCardFiles": [
+          {
+            "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store",
+            "unchanged": true
+          },
+          {
+            "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store-shm",
+            "unchanged": true
+          },
+          {
+            "path": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/Library/Application Support/default.store-wal",
+            "unchanged": true
+          }
+        ],
+        "exactPrivateProcessStopped": true,
+        "note": "Command-Q succeeded; subsequent CUA observation reported process not found, then shell process inventory confirmed exact Debug application absent. Ordinary OS window cache preference exception retained.",
+        "ordinaryApplicationPreferenceKeysUnchanged": true,
+        "applicationPreferenceHashEncoding": "plist-xml",
+        "ordinaryApplicationPreferenceKeysSHA256": "4d236f55a7ff34f59952bf6f9555d89c2472a5f407272da0db64e7fff724f410"
+      }
+    },
+    "nativeSharingReceipt": {
+      "path": "marketing/native/mac/native-sharing-verification.json",
+      "sha256": "a1c72a351b77be7e32dbc0c3e797234b4ad1878c4489e9a9e0d25ea772ef6fc7",
+      "observations": {
+        "nativeChooserObserved": true,
+        "services": [
+          "AirDrop",
+          "Mail",
+          "Messages",
+          "Notes",
+          "Freeform",
+          "Copy"
+        ],
+        "recipientSelected": false,
+        "method": "Observed native ShareLink popover after focused Space activation",
+        "personalContactSuggestionsExcludedFromReceipt": true,
+        "observedAtUTC": "2026-10-04T23:13:52.949Z"
+      }
+    },
+    "privateBoundaryVerifiedBy": [
+      "exact Debug product/process arguments",
+      "valid UUID private store/preferences existence before interaction",
+      "same-session cold relaunch boundary"
+    ],
+    "AXRootUUIDMarkerExposed": false,
+    "AXLimit": "CUA collapses macOS root identifier into WindowGroup type; exact process arguments and unique UUID store verified before interaction. No false AX marker claim.",
+    "ordinaryDataScope": {
+      "cardStoreFilesUnchangedBeforeLaunchAndThroughInteractions": true,
+      "applicationPreferenceKeysUnchangedAcrossInteractionAndColdRelaunch": true,
+      "wholeOrdinaryPreferenceFileUnchanged": false,
+      "reason": "macOS wrote WindowGroup/split-view frame caches in ordinary NS preferences during launch. No unchanged-preferences claim; application preference keys now hashed for the interaction boundary. Ordinary card store hashes match prelaunch."
+    },
+    "notExecuted": [
+      "Print",
+      "Photos save",
+      "external provider requests",
+      "Mail or Messages recipient selection/sending",
+      "physical iPhone Duo/hinge input"
+    ]
+  },
+  "sourceInputVerification": {
+    "freezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+    "beforeReconciliation": {
+      "shippingInputs": {
+        "inputCount": 115,
+        "aggregateSHA256": "a3d6d7f8bd3f3a31894ea2d164699172e9c55046af284c8267b16b26905eb7fc",
+        "allMatch": true
+      },
+      "unitTestInputs": {
+        "inputCount": 23,
+        "aggregateSHA256": "9558cd5a8531e7cd78661cb52572b639c2c4416cb01a230f455763b424d97839",
+        "allMatch": true
+      },
+      "uiTestInputs": {
+        "inputCount": 10,
+        "aggregateSHA256": "21657cae8ccbdb0ec1dcfb48f34998b96cc2f16193b4339619b8007c716153c8",
+        "allMatch": true
+      }
+    },
+    "afterReconciliation": {
+      "shippingInputs": {
+        "inputCount": 115,
+        "aggregateSHA256": "a3d6d7f8bd3f3a31894ea2d164699172e9c55046af284c8267b16b26905eb7fc",
+        "allMatch": true
+      },
+      "unitTestInputs": {
+        "inputCount": 23,
+        "aggregateSHA256": "9558cd5a8531e7cd78661cb52572b639c2c4416cb01a230f455763b424d97839",
+        "allMatch": true
+      },
+      "uiTestInputs": {
+        "inputCount": 10,
+        "aggregateSHA256": "21657cae8ccbdb0ec1dcfb48f34998b96cc2f16193b4339619b8007c716153c8",
+        "allMatch": true
+      }
+    },
+    "scope": "Read-only SHA/byte verification of115 shipping+23 unit+10 UI inputs against the current root-r8 map. No app/native command executed by this reconciler."
+  },
+  "limits": [
+    "No physical iPhone Duo or hinge interaction, no iOS27/27.1 native SDK build or runtime. Current products use the actually installed26.5 SDK.",
+    "No provider/API/Image Playground runtime calls in private QA; approval/client/authentication capability remains separate.",
+    "No actual print destination or Photos write.",
+    "Native iOS and Mac share choosers were observed and dismissed; no Mail/Messages recipient or external destination selected, no delivery claim.",
+    "Mac root UUID is not exposed in CUA AX. Private boundary is recorded by exact process arguments/private store/preferences, not a false marker assertion.",
+    "Mac ordinary preference file changed for system window/split-view cache writes; only application preference keys and ordinary card-store preservation are established across interactions.",
+    "No visionOS builds/boots/captures/uploads/submissions in this work.",
+    "Native QA and actual local exports do not prove a new App Store submission or distribution package."
+  ],
+  "unitAttemptSummaryHistory": [
+    {
+      "run": "units-r2",
+      "result": "Passed",
+      "passed": 26,
+      "failed": 0,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "total": 26,
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/units-r2.xcresult",
+      "summary": "units-r2-summary.json",
+      "summarySHA256": "20f8434f1fea9a4dc1f2f285d8fbd10598cef36000ee4e7c95f8f99b363a7848",
+      "log": "/tmp/mfv-creative-qa-20261004/units-r2.log",
+      "logSHA256": "15de266fbe7be49d5776ed1c0fa92ef14ed2aa2bb81927819a7ab802153ed542",
+      "startTime": 1791150384.388,
+      "finishTime": 1791150391.34,
+      "elapsedWallSeconds": 6.952,
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+            "deviceName": "Mouse Character QA Phone 20261004",
+            "modelName": "iPhone 16 Pro",
+            "osBuildNumber": "23F77",
+            "osVersion": "26.5",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 26,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "testFailures": []
+    },
+    {
+      "run": "units-r3",
+      "result": "Passed",
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "total": 28,
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/units-r3.xcresult",
+      "summary": "units-r3-summary.json",
+      "summarySHA256": "ac94121271bffacd6e278d0c6df3d4d077246396233a7188fd1c6d7aab86967a",
+      "log": "/tmp/mfv-creative-qa-20261004/units-r3.log",
+      "logSHA256": "352862b726f55c94594b595b39a258c6cc8f71f3d0d86663b62ba46bd313d7b0",
+      "startTime": 1791151924.579,
+      "finishTime": 1791151935.42,
+      "elapsedWallSeconds": 10.841,
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+            "deviceName": "Mouse Character QA Phone 20261004",
+            "modelName": "iPhone 16 Pro",
+            "osBuildNumber": "23F77",
+            "osVersion": "26.5",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 28,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "testFailures": []
+    },
+    {
+      "run": "units-r4",
+      "result": "Passed",
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "total": 28,
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/units-r4.xcresult",
+      "summary": "units-r4-summary.json",
+      "summarySHA256": "da4a51ad2c5c3f5f8f26ffa6f77cfbfb128e73f14c35afe8f8846491bda842b2",
+      "log": "/tmp/mfv-creative-qa-20261004/units-r4.log",
+      "logSHA256": "a82f00be3ad7ba3be7312e3c5dbaff35e3d35a644148bb67757454a0713e2c56",
+      "startTime": 1791152967.358,
+      "finishTime": 1791152979.948,
+      "elapsedWallSeconds": 12.59,
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+            "deviceName": "Mouse Character QA Phone 20261004",
+            "modelName": "iPhone 16 Pro",
+            "osBuildNumber": "23F77",
+            "osVersion": "26.5",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 28,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "testFailures": []
+    },
+    {
+      "run": "units-r5",
+      "result": "Passed",
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "total": 28,
+      "resultBundle": "/tmp/mfv-creative-qa-20261004/units-r5.xcresult",
+      "summary": "units-r5-summary.json",
+      "summarySHA256": "6a1ef379681179e34ba19f4f801c6fa36ea43ad83c7f0bcc76f70e6ec439bc34",
+      "log": "/tmp/mfv-creative-qa-20261004/units-r5.log",
+      "logSHA256": "22cd164682db7ee55815caf0174d9a5b8f0136226d6e079e069c672a784109fc",
+      "startTime": 1791153912.91,
+      "finishTime": 1791153925.201,
+      "elapsedWallSeconds": 12.291,
+      "devicesAndConfigurations": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+            "deviceName": "Mouse Character QA Phone 20261004",
+            "modelName": "iPhone 16 Pro",
+            "osBuildNumber": "23F77",
+            "osVersion": "26.5",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 28,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ],
+      "testFailures": [],
+      "sourceFreeze": "source-freeze.root-r8.json",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "version": "1.0",
+      "build": "3"
+    }
+  ],
+  "unitAttemptSummaryHistoryNote": "Initial22-test unit result/log remains in original units field and full historical snapshot; no missing r1 summary was fabricated.",
+  "currentFindingResolutions": [
+    {
+      "historicalAttempts": [
+        "r2",
+        "r4"
+      ],
+      "issue": "Preview consumed vertical scrolling",
+      "currentCorrection": "Native iOS horizontal-only recognizer avoids vertical ancestor scroll interception",
+      "proof": [
+        "phone-ui-r7-summary.json",
+        "pad-ui-r2-summary.json"
+      ],
+      "result": "Current six-family and saved-motion methods pass; previous findings retained."
+    },
+    {
+      "historicalAttempts": [
+        "r3"
+      ],
+      "issue": "Horizontal drag opened then Button activation closed the preview",
+      "currentCorrection": "Explicit accessible Open/Close control retained; gesture path passes genuine Front→Inside in current native flow",
+      "proof": [
+        "phone-ui-r7-summary.json",
+        "pad-ui-r2-summary.json"
+      ]
+    },
+    {
+      "issue": "Actual earlier birds export cropped heads",
+      "currentCorrection": "Exact six bundled subjects use known subject fit; imported photos/classic behavior retained",
+      "proof": [
+        "units-r5-summary.json",
+        "native-exports/iphone-final-r8/qa/verification.json",
+        "native-exports/ipad-final-r8/qa/verification.json",
+        "native-exports/mac-final-r8/qa/verification.json"
+      ]
+    },
+    {
+      "issue": "Largest text Write/header and two-column style layout crowded",
+      "currentCorrection": "Adaptive header/style layout in root-r8",
+      "proof": [
+        "phone-accessibility-r2-summary.json"
+      ],
+      "scope": "One targeted Phone method plus separately root-reviewed actual pixels."
+    },
+    {
+      "issue": "iPad chooser multiple nested PopoverDismissRegion elements",
+      "currentCorrection": "Native driver derives the observed full-app dismissal region and position outside chooser",
+      "proof": [
+        "pad-ui-r1-summary.json",
+        "pad-ui-r2-summary.json"
+      ],
+      "result": "Initial1-pass1-fail driver receipt preserved; current3/3 passes."
+    }
+  ],
+  "currentExportFileQA": {
+    "iphone": {
+      "receipt": "native-exports/iphone-final-r8/qa/verification.json",
+      "sha256": "f4a65706f87123574050c81948f2c78cdaf190c98c7cbecb6993a8e0556df85e",
+      "status": "PASS — bounded current root-r8 actual export-file QA",
+      "originalsUnchanged": true,
+      "individuallyViewedImages": 8,
+      "scope": "Actual6files,3PNGs/GIF30frames3sec/PDFall2pages/HTML16embeddedframes; source+decoded-file inspection, not browser execution."
+    },
+    "ipad": {
+      "receipt": "native-exports/ipad-final-r8/qa/verification.json",
+      "sha256": "6dacd34ba945a73b92511043a63349acebafcf7c2440798d7ef9f0bbd2b17cf2",
+      "status": "PASS — bounded current root-r8 actual export-file QA",
+      "originalsUnchanged": true,
+      "individuallyViewedImages": 8,
+      "scope": "Actual6files,3PNGs/GIF30frames3sec/PDFall2pages/HTML16embeddedframes; source+decoded-file inspection, not browser execution."
+    },
+    "mac": {
+      "receipt": "native-exports/mac-final-r8/qa/verification.json",
+      "sha256": "346d216089f42605b1a6af3bfcfa7ee3df636981efee60efca0d373ef18e6a12",
+      "status": "PASS — bounded current root-r8 actual Mac export-file QA",
+      "originalsUnchanged": true,
+      "individuallyViewedImages": 8,
+      "scope": "Actual6files,3PNGs/GIF30frames3sec/PDFall2pages/HTML16embeddedframes; source+decoded-file inspection, not browser execution."
+    }
+  },
+  "nativeCaptureFormatCorrection": {
+    "receipt": "marketing/native/mac/native-format-correction.json",
+    "sha256": "d6b2640faf4ef2da9b1dac27181cd0c6cd0a1b2c1286d2f2f72b0eacc3cf0eac",
+    "scope": "Root corrected ten actual Mac JPEG original extensions without changing image bytes. Historical logs preserve original .png names; no fabricated conversion."
+  },
+  "reconciliation": {
+    "onlyEditedFile": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/native-verification.json",
+    "beforeSHA256": "5da5de7943d297493034d6a1fe640b42e5ae493aba6c57e83ae449af5ce66747",
+    "method": "Actual summaries/build logs/products and Mac runtime read; historical snapshot embedded, atomic compare-and-swap update of this JSON only. No compiler, native runtime, browser, network or Git action."
+  }
+}

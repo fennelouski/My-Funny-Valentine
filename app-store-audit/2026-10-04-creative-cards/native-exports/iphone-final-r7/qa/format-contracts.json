@@ -1,0 +1,61 @@
+{
+  "gif": {
+    "path": "Valentine-67A64713-024C-47AD-9F6E-981E6E89B494.gif",
+    "dimensions": [
+      400,
+      600
+    ],
+    "frameCount": 30,
+    "frameDurationsMilliseconds": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "durationMilliseconds": 3000,
+    "loop": 0
+  },
+  "sticker": {
+    "path": "Valentine-F332D8DF-71F5-489D-8349-95CBBC443594.png",
+    "dimensions": [
+      618,
+      618
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "fullyTransparentPixelCount": 239326,
+    "fullyOpaquePixelCount": 140310,
+    "partiallyTransparentPixelCount": 2288,
+    "byteCount": 27319,
+    "below500KB": true
+  }
+}

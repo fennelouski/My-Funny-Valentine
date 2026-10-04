@@ -1,0 +1,777 @@
+--- root-r3/My Funny Valentine/Utilities/CardRenderer+Composition.swift
++++ correction/My Funny Valentine/Utilities/CardRenderer+Composition.swift
+@@ -157,9 +157,9 @@
+         } else {
+             heart(in: artRect.insetBy(dx: 32, dy: 40), color: accent, context: context)
+         }
+-        for face in card.faces {
++        for (index, face) in card.faces.enumerated() {
+             guard let image = PlatformImageUtils.image(from: face.data) else { continue }
+-            let rect = CGRect(x: artRect.midX - 54, y: artRect.midY - 60, width: 108, height: 120)
++            let rect = faceRect(at: index, count: card.faces.count, artwork: artRect)
+             draw(image, in: rect, rotation: phase == nil ? 0 : Double(wave * 6), context: context)
+         }
+         for layer in card.stickers {
+@@ -177,6 +177,29 @@
+             context.setFillColor(ink.withAlphaComponent(CGFloat(opening * 0.25)).cgColor)
+             context.fill(CGRect(x: 390, y: 0, width: 10, height: 600))
+         }
++    }
++
++    /// New compositions arrange the people together. The classic renderer still
++    /// uses each saved face's original position and size.
++    private func faceRect(at index: Int, count: Int, artwork: CGRect) -> CGRect {
++        if count == 1 {
++            return CGRect(x: artwork.midX - 54, y: artwork.midY - 60, width: 108, height: 120)
++        }
++        let columns = Int(ceil(sqrt(Double(count))))
++        let rows = Int(ceil(Double(count) / Double(columns)))
++        let area = artwork.insetBy(dx: 8, dy: 8)
++        let gap = min(12, min(area.width / CGFloat(columns), area.height / CGFloat(rows)) * 0.12)
++        let width = min(108, (area.width - CGFloat(columns - 1) * gap) / CGFloat(columns),
++                        (area.height - CGFloat(rows - 1) * gap) / CGFloat(rows) * 0.9)
++        let height = width / 0.9
++        let row = index / columns
++        let column = index % columns
++        let rowCount = min(columns, count - row * columns)
++        let rowWidth = CGFloat(rowCount) * width + CGFloat(rowCount - 1) * gap
++        let totalHeight = CGFloat(rows) * height + CGFloat(rows - 1) * gap
++        return CGRect(x: area.midX - rowWidth / 2 + CGFloat(column) * (width + gap),
++                      y: area.midY - totalHeight / 2 + CGFloat(row) * (height + gap),
++                      width: width, height: height)
+     }
+ 
+     func drawSticker(_ card: CardRenderSnapshot, context: CGContext) {
+--- root-r3/My Funny Valentine/Views/CardDetailView.swift
++++ correction/My Funny Valentine/Views/CardDetailView.swift
+@@ -29,7 +29,7 @@
+     @State private var insideURL: URL?
+     @State private var animatedURL: URL?
+     @State private var showingShare = false
+-    @State private var exporting = false
++    @State private var exportSession = CardExportSession()
+     @State private var opening = 0.0
+     @State private var pdfURL: URL?
+     @State private var stickerURL: URL?
+@@ -38,6 +38,7 @@
+     @State private var showingPrint = false
+     @State private var exportSnapshot: CardRenderSnapshot?
+     @State private var exportTask: Task<Void, Never>?
++    private var exporting: Bool { exportSession.isExporting }
+ 
+     init(card: Card?, starter: Card? = nil) {
+         self.card = card
+@@ -135,7 +136,7 @@
+         .sheet(isPresented: $showingFaces) {
+             FaceSelectionView(faces: detectedFaces) { addFace($0) }
+         }
+-        .sheet(isPresented: $showingShare) { sharePreview }
++        .sheet(isPresented: $showingShare, onDismiss: shareDismissed) { sharePreview }
+         .alert("Couldn't finish", isPresented: $showingError) {
+             Button("OK", role: .cancel) { }
+         } message: { Text(errorMessage ?? "Please try again.") }
+@@ -157,7 +158,7 @@
+         }
+         .onChange(of: artworkItem) { _, item in importPhoto(item, face: false) }
+         .onChange(of: faceItem) { _, item in importPhoto(item, face: true) }
+-        .onDisappear { importTask?.cancel(); exportTask?.cancel() }
++        .onDisappear { importTask?.cancel(); shareDismissed() }
+     }
+ 
+     private var preview: some View {
+@@ -372,7 +373,7 @@
+             .appInlineNavigationTitle()
+             .toolbar {
+                 ToolbarItem(placement: .cancellationAction) {
+-                    Button("Done") { showingShare = false }
++                    Button("Done") { shareDismissed(); showingShare = false }
+                 }
+             }
+             .sheet(isPresented: $showingPrint) {
+@@ -389,11 +390,28 @@
+ 
+     private func changed() {
+         draft.updateModifiedDate()
++        resetExportContent()
++    }
++
++    private func resetExportContent() {
++        cancelExport()
++        exportSession.invalidate()
+         shareURL = nil
+         insideURL = nil
+         animatedURL = nil
+         pdfURL = nil; stickerURL = nil; htmlURL = nil; printData = nil
+         exportSnapshot = nil
++    }
++
++    private func cancelExport() {
++        exportTask?.cancel()
++        exportTask = nil
++        exportSession.cancelJob()
++    }
++
++    private func shareDismissed() {
++        cancelExport()
++        exportSession.invalidate()
+     }
+ 
+     private func addArtwork(_ data: Data, source: ImageSource) {
+@@ -465,16 +483,28 @@
+     }
+ 
+     private func prepareShare() {
++        resetExportContent()
+         opening = 0
+         let snapshot = CardRenderer.shared.snapshot(of: draft)
+         do {
+             shareURL = try export(CardExportService.png(snapshot), extension: "png")
+             exportSnapshot = snapshot
++            exportSession.replaceSnapshot()
+             showingShare = true
+         } catch { fail(error.localizedDescription) }
+     }
+ 
+-    private enum ExportKind: String { case animation, inside, pdf, sticker, html }
++    private enum ExportKind: String {
++        case animation, inside, pdf, sticker, html
++        var fileExtension: String {
++            switch self {
++            case .animation: "gif"
++            case .inside, .sticker: "png"
++            case .pdf: "pdf"
++            case .html: "html"
++            }
++        }
++    }
+ 
+     @ViewBuilder private func exportRow(title: String, symbol: String, url: URL?, kind: ExportKind) -> some View {
+         if let url {
+@@ -487,26 +517,38 @@
+     }
+ 
+     private func makeExport(_ kind: ExportKind) {
+-        guard !exporting, let snapshot = exportSnapshot else { return }
+-        exporting = true
+-        exportTask = Task {
+-            await Task.yield()
+-            guard !Task.isCancelled else { exporting = false; return }
+-            defer { exporting = false }
++        guard showingShare, let snapshot = exportSnapshot, let job = exportSession.begin() else { return }
++        exportTask = Task { @MainActor in
++            defer { if exportSession.finish(job) { exportTask = nil } }
+             do {
++                let data: Data
+                 switch kind {
+                 case .animation:
+-                    guard let data = GIFExporter.shared.createCardAnimation(from: snapshot) else { throw CardExportService.ExportError.render }
+-                    animatedURL = try export(data, extension: "gif")
+-                case .inside: insideURL = try export(CardExportService.png(snapshot, inside: true), extension: "png")
+-                case .pdf:
+-                    let data = try CardExportService.pdf(snapshot)
+-                    pdfURL = try export(data, extension: "pdf"); printData = data
+-                case .sticker: stickerURL = try export(CardExportService.stickerPNG(snapshot), extension: "png")
+-                case .html: htmlURL = try export(CardExportService.interactiveHTML(snapshot), extension: "html")
+-                }
++                    guard let animation = try await GIFExporter.shared.createCardAnimationCancellable(from: snapshot) else {
++                        throw CardExportService.ExportError.render
++                    }
++                    data = animation
++                case .inside: data = try await CardExportService.pngCancellable(snapshot, inside: true)
++                case .pdf: data = try await CardExportService.pdfCancellable(snapshot)
++                case .sticker: data = try await CardExportService.stickerPNGCancellable(snapshot)
++                case .html: data = try await CardExportService.interactiveHTMLCancellable(snapshot)
++                }
++                try Task.checkCancellation()
++                guard showingShare, exportSnapshot != nil, exportSession.canCommit(job) else { return }
++                // No suspension between the ownership check, file write and URL
++                // commit: an edit/dismiss cannot publish an obsolete snapshot.
++                let url = try export(data, extension: kind.fileExtension)
++                switch kind {
++                case .animation: animatedURL = url
++                case .inside: insideURL = url
++                case .pdf: pdfURL = url; printData = data
++                case .sticker: stickerURL = url
++                case .html: htmlURL = url
++                }
++            } catch is CancellationError {
++                // Dismissal/editing is an expected cancellation, not an alert.
+             } catch {
+-                if !Task.isCancelled { fail(error.localizedDescription) }
++                if !Task.isCancelled, showingShare, exportSession.canCommit(job) { fail(error.localizedDescription) }
+             }
+         }
+     }
+@@ -524,3 +566,34 @@
+         else { showingError = true }
+     }
+ }
++
++/// A snapshot and its current export own the result together. Cancellation,
++/// reopening Share or editing a draft invalidates old completion callbacks.
++nonisolated struct CardExportSession {
++    struct Job: Equatable {
++        let snapshotID: UUID
++        let id: UUID
++    }
++    private var snapshotID: UUID?
++    private var activeJob: Job?
++    var isExporting: Bool { activeJob != nil }
++
++    mutating func replaceSnapshot() {
++        snapshotID = UUID()
++        activeJob = nil
++    }
++    mutating func begin() -> Job? {
++        guard let snapshotID, activeJob == nil else { return nil }
++        let job = Job(snapshotID: snapshotID, id: UUID())
++        activeJob = job
++        return job
++    }
++    func canCommit(_ job: Job) -> Bool { snapshotID == job.snapshotID && activeJob == job }
++    @discardableResult mutating func finish(_ job: Job) -> Bool {
++        guard canCommit(job) else { return false }
++        activeJob = nil
++        return true
++    }
++    mutating func cancelJob() { activeJob = nil }
++    mutating func invalidate() { snapshotID = nil; activeJob = nil }
++}
+--- root-r3/My Funny Valentine/Components/CardStageView.swift
++++ correction/My Funny Valentine/Components/CardStageView.swift
+@@ -9,6 +9,7 @@
+     var motionEnabled: Bool
+     @State private var startedAt = Date()
+     @State private var dragStart: Double?
++    @State private var dragIsHorizontal: Bool?
+     @State private var openingTask: Task<Void, Never>?
+ 
+     var body: some View {
+@@ -26,13 +27,17 @@
+                         .contentShape(Rectangle())
+                     }
+                         .buttonStyle(.plain)
+-                        .highPriorityGesture(DragGesture(minimumDistance: 12).onChanged { value in
++                        .simultaneousGesture(DragGesture(minimumDistance: 12).onChanged { value in
++                            if dragIsHorizontal == nil {
++                                dragIsHorizontal = abs(value.translation.width) > abs(value.translation.height)
++                            }
++                            guard dragIsHorizontal == true else { return }
+                             openingTask?.cancel()
+                             if dragStart == nil { dragStart = opening }
+                             opening = min(max((dragStart ?? opening) - Double(value.translation.width / max(1, size.width)), 0), 1)
+-                        }.onEnded { _ in dragStart = nil })
++                        }.onEnded { _ in dragStart = nil; dragIsHorizontal = nil })
+                         .accessibilityElement(children: .ignore)
+-                        .accessibilityLabel("Card preview. " + (opening > 0.5 && !snapshot.note.isEmpty ? snapshot.note : snapshot.saying))
++                        .accessibilityLabel("Card preview. " + (opening > 0.5 && !snapshot.note.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? snapshot.note : snapshot.saying))
+                         .accessibilityValue(opening > 0.5 ? "Inside" : "Front")
+                         .accessibilityAddTraits(.isButton)
+                         .accessibilityIdentifier("cardDetail.preview")
+--- root-r3/My Funny Valentine/Services/GIFExporter.swift
++++ correction/My Funny Valentine/Services/GIFExporter.swift
+@@ -35,6 +35,17 @@
+     func createCardAnimation(from snapshot: CardRenderSnapshot, duration: Double = 3) -> Data? {
+         let options = GIFExportOptions(frameRate: 10, duration: duration, animationType: .cardOpening)
+         return encodeGIF(size: CardRenderer.canvasSize, options: options) { phase, size in
++            CardRenderer.shared.render(snapshot, size: size, phase: phase,
++                                       opening: CardMotion.opening(phase: phase))
++                .flatMap { PlatformGraphics.cgImage(from: $0) }
++        }
++    }
++
++    /// UI export yields between native frames, preserving actor-safe font/image
++    /// access and allowing share-sheet dismissal to cancel unfinished work.
++    func createCardAnimationCancellable(from snapshot: CardRenderSnapshot, duration: Double = 3) async throws -> Data? {
++        let options = GIFExportOptions(frameRate: 10, duration: duration, animationType: .cardOpening)
++        return try await encodeGIFCancellable(size: CardRenderer.canvasSize, options: options) { phase, size in
+             CardRenderer.shared.render(snapshot, size: size, phase: phase,
+                                        opening: CardMotion.opening(phase: phase))
+                 .flatMap { PlatformGraphics.cgImage(from: $0) }
+@@ -73,10 +84,13 @@
+         }
+     }
+ 
+-    private func encodeGIF(
+-        size: CGSize, options: GIFExportOptions,
+-        makeFrame: (Double, CGSize) -> CGImage?
+-    ) -> Data? {
++    private struct EncodingPlan {
++        let frameCount: Int
++        let delay: Double
++        let byteLimit: Double
++    }
++
++    private func encodingPlan(size: CGSize, options: GIFExportOptions) -> EncodingPlan? {
+         guard size.width.isFinite, size.height.isFinite, size.width > 0, size.height > 0,
+               options.frameRate.isFinite, options.frameRate > 0,
+               options.duration.isFinite, options.duration > 0,
+@@ -84,37 +98,78 @@
+         let duration = min(options.duration, 8)
+         // ponytail: 32 streamed frames cap export work; increase after profiling long animations.
+         let frameCount = max(2, min(32, Int(min(options.frameRate, 24) * duration)))
+-        let delay = duration / Double(frameCount)
+-        let byteLimit = min(options.maxSizeMB, 50) * 1024 * 1024
+-
++        return EncodingPlan(frameCount: frameCount, delay: duration / Double(frameCount),
++                            byteLimit: min(options.maxSizeMB, 50) * 1024 * 1024)
++    }
++
++    private func gifAttempt(size: CGSize, longestEdge: CGFloat, plan: EncodingPlan)
++        -> (data: NSMutableData, destination: CGImageDestination, output: CGSize)? {
++        let scale = min(1, longestEdge / max(size.width, size.height))
++        let output = CGSize(width: max(1, floor(size.width * scale)),
++                            height: max(1, floor(size.height * scale)))
++        let data = NSMutableData()
++        guard let destination = CGImageDestinationCreateWithData(
++            data, UTType.gif.identifier as CFString, plan.frameCount, nil
++        ) else { return nil }
++        CGImageDestinationSetProperties(destination, [
++            kCGImagePropertyGIFDictionary: [kCGImagePropertyGIFLoopCount: 0]
++        ] as CFDictionary)
++        return (data, destination, output)
++    }
++
++    private func appendFrame(at index: Int, plan: EncodingPlan, output: CGSize,
++                             destination: CGImageDestination, makeFrame: (Double, CGSize) -> CGImage?) -> Bool {
++        autoreleasepool {
++            guard let frame = makeFrame(Double(index) / Double(plan.frameCount), output) else { return false }
++            CGImageDestinationAddImage(destination, frame, [
++                kCGImagePropertyGIFDictionary: [
++                    kCGImagePropertyGIFDelayTime: plan.delay,
++                    kCGImagePropertyGIFUnclampedDelayTime: plan.delay
++                ]
++            ] as CFDictionary)
++            return true
++        }
++    }
++
++    private func encodeGIF(
++        size: CGSize, options: GIFExportOptions,
++        makeFrame: (Double, CGSize) -> CGImage?
++    ) -> Data? {
++        guard let plan = encodingPlan(size: size, options: options) else { return nil }
+         // Finite retries fix the old recursive optimizer's minimum-size loop.
+         for longestEdge in [CGFloat(640), 480, 320, 240] {
+-            let scale = min(1, longestEdge / max(size.width, size.height))
+-            let output = CGSize(width: max(1, floor(size.width * scale)),
+-                                height: max(1, floor(size.height * scale)))
+-            let data = NSMutableData()
+-            guard let destination = CGImageDestinationCreateWithData(
+-                data, UTType.gif.identifier as CFString, frameCount, nil
+-            ) else { return nil }
+-            CGImageDestinationSetProperties(destination, [
+-                kCGImagePropertyGIFDictionary: [kCGImagePropertyGIFLoopCount: 0]
+-            ] as CFDictionary)
+-            for index in 0..<frameCount {
+-                guard !Task.isCancelled else { return nil }
+-                let added = autoreleasepool { () -> Bool in
+-                    guard let frame = makeFrame(Double(index) / Double(frameCount), output) else { return false }
+-                    CGImageDestinationAddImage(destination, frame, [
+-                        kCGImagePropertyGIFDictionary: [
+-                            kCGImagePropertyGIFDelayTime: delay,
+-                            kCGImagePropertyGIFUnclampedDelayTime: delay
+-                        ]
+-                    ] as CFDictionary)
+-                    return true
+-                }
+-                guard added else { return nil }
+-            }
+-            guard CGImageDestinationFinalize(destination) else { return nil }
+-            if Double(data.length) <= byteLimit { return data as Data }
++            guard let attempt = gifAttempt(size: size, longestEdge: longestEdge, plan: plan) else { return nil }
++            for index in 0..<plan.frameCount {
++                guard !Task.isCancelled,
++                      appendFrame(at: index, plan: plan, output: attempt.output,
++                                  destination: attempt.destination, makeFrame: makeFrame) else { return nil }
++            }
++            guard CGImageDestinationFinalize(attempt.destination) else { return nil }
++            if Double(attempt.data.length) <= plan.byteLimit { return attempt.data as Data }
++        }
++        return nil
++    }
++
++    private func encodeGIFCancellable(
++        size: CGSize, options: GIFExportOptions,
++        makeFrame: (Double, CGSize) -> CGImage?
++    ) async throws -> Data? {
++        try Task.checkCancellation()
++        guard let plan = encodingPlan(size: size, options: options) else { return nil }
++        for longestEdge in [CGFloat(640), 480, 320, 240] {
++            try Task.checkCancellation()
++            guard let attempt = gifAttempt(size: size, longestEdge: longestEdge, plan: plan) else { return nil }
++            for index in 0..<plan.frameCount {
++                await Task.yield()
++                try Task.checkCancellation()
++                guard appendFrame(at: index, plan: plan, output: attempt.output,
++                                  destination: attempt.destination, makeFrame: makeFrame) else { return nil }
++            }
++            await Task.yield()
++            try Task.checkCancellation()
++            guard CGImageDestinationFinalize(attempt.destination) else { return nil }
++            try Task.checkCancellation()
++            if Double(attempt.data.length) <= plan.byteLimit { return attempt.data as Data }
+         }
+         return nil
+     }
+--- root-r3/My Funny Valentine/Services/CardExportService.swift
++++ correction/My Funny Valentine/Services/CardExportService.swift
+@@ -40,30 +40,92 @@
+     /// A 4 × 6 inch front plus readable inside pages. Long saved notes continue
+     /// onto additional pages rather than being clipped or reduced to tiny type.
+     static func pdf(_ card: CardRenderSnapshot) throws -> Data {
+-        let data = NSMutableData()
+-        guard let consumer = CGDataConsumer(data: data as CFMutableData) else { throw ExportError.render }
+-        var box = CGRect(x: 0, y: 0, width: 288, height: 432)
+-        guard let context = CGContext(consumer: consumer, mediaBox: &box, nil) else { throw ExportError.render }
+-        context.beginPDFPage(nil)
+-        context.saveGState()
+-        context.translateBy(x: 0, y: box.height); context.scaleBy(x: 0.72, y: -0.72)
+-        CardRenderer.shared.draw(card, context: context)
+-        context.restoreGState(); context.endPDFPage()
+-
+-        let content = [card.saying, card.note].filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+-            .joined(separator: "\n\n")
+-        let paragraph = NSMutableParagraphStyle()
+-        paragraph.alignment = .center
+-        paragraph.lineBreakMode = .byWordWrapping
+-        let text = NSAttributedString(string: content.isEmpty ? "Made with love." : content, attributes: [
+-            .font: PlatformFont(name: "Georgia", size: 18) ?? PlatformFont.systemFont(ofSize: 18),
+-            .foregroundColor: PlatformColor.fromHex("#4E2036") ?? .black,
+-            .paragraphStyle: paragraph
+-        ])
+-        guard text.length <= 100_000 else { throw ExportError.tooLarge }
+-        let setter = CTFramesetterCreateWithAttributedString(text as CFAttributedString)
+-        var location = 0
+-        while location < text.length {
++        let document = try PDFWriter(card)
++        defer { document.close() }
++        while document.hasRemainingText { try document.appendInsidePage() }
++        document.close()
++        return document.data as Data
++    }
++
++    // UIKit/AppKit image and font access stays on the renderer's actor. Yield
++    // between bounded pieces of work so the user can dismiss and cancel.
++    static func pngCancellable(_ card: CardRenderSnapshot, inside: Bool = false) async throws -> Data {
++        try await checkpoint()
++        let data = try png(card, inside: inside)
++        try await checkpoint()
++        return data
++    }
++
++    static func stickerPNGCancellable(_ card: CardRenderSnapshot) async throws -> Data {
++        for edge: CGFloat in [618, 408, 300] {
++            try await checkpoint()
++            guard let image = CardRenderer.shared.render(card, size: CGSize(width: edge, height: edge), sticker: true),
++                  let data = PlatformImageUtils.pngData(from: image) else { throw ExportError.render }
++            try await checkpoint()
++            if data.count < 500_000 { return data }
++        }
++        throw ExportError.stickerTooLarge
++    }
++
++    static func pdfCancellable(_ card: CardRenderSnapshot) async throws -> Data {
++        try await checkpoint()
++        let document = try PDFWriter(card)
++        defer { document.close() }
++        try await checkpoint()
++        while document.hasRemainingText {
++            try document.appendInsidePage()
++            try await checkpoint()
++        }
++        document.close()
++        try Task.checkCancellation()
++        return document.data as Data
++    }
++
++    private static func checkpoint() async throws {
++        try Task.checkCancellation()
++        await Task.yield()
++        try Task.checkCancellation()
++    }
++
++    private final class PDFWriter {
++        let data: NSMutableData
++        private let context: CGContext
++        private let box = CGRect(x: 0, y: 0, width: 288, height: 432)
++        private let textLength: Int
++        private let setter: CTFramesetter
++        private var location = 0
++        private var closed = false
++        var hasRemainingText: Bool { location < textLength }
++
++        init(_ card: CardRenderSnapshot) throws {
++            let output = NSMutableData()
++            let pageBox = CGRect(x: 0, y: 0, width: 288, height: 432)
++            let content = [card.saying, card.note].filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
++                .joined(separator: "\n\n")
++            let paragraph = NSMutableParagraphStyle()
++            paragraph.alignment = .center
++            paragraph.lineBreakMode = .byWordWrapping
++            let text = NSAttributedString(string: content.isEmpty ? "Made with love." : content, attributes: [
++                .font: PlatformFont(name: "Georgia", size: 18) ?? PlatformFont.systemFont(ofSize: 18),
++                .foregroundColor: PlatformColor.fromHex("#4E2036") ?? .black,
++                .paragraphStyle: paragraph
++            ])
++            guard text.length <= 100_000 else { throw ExportError.tooLarge }
++            textLength = text.length
++            setter = CTFramesetterCreateWithAttributedString(text as CFAttributedString)
++            guard let consumer = CGDataConsumer(data: output as CFMutableData) else { throw ExportError.render }
++            var mediaBox = pageBox
++            guard let context = CGContext(consumer: consumer, mediaBox: &mediaBox, nil) else { throw ExportError.render }
++            data = output
++            self.context = context
++            context.beginPDFPage(nil)
++            context.saveGState()
++            context.translateBy(x: 0, y: box.height); context.scaleBy(x: 0.72, y: -0.72)
++            CardRenderer.shared.draw(card, context: context)
++            context.restoreGState(); context.endPDFPage()
++        }
++
++        func appendInsidePage() throws {
+             try Task.checkCancellation()
+             context.beginPDFPage(nil)
+             context.setFillColor((PlatformColor.fromHex("#FFF7FA") ?? .white).cgColor)
+@@ -71,13 +133,17 @@
+             let path = CGPath(rect: CGRect(x: 28, y: 36, width: 232, height: 360), transform: nil)
+             let frame = CTFramesetterCreateFrame(setter, CFRange(location: location, length: 0), path, nil)
+             let visible = CTFrameGetVisibleStringRange(frame)
+-            guard visible.length > 0 else { throw ExportError.render }
++            guard visible.length > 0 else { context.endPDFPage(); throw ExportError.render }
+             CTFrameDraw(frame, context)
+             context.endPDFPage()
+             location += visible.length
+         }
+-        context.closePDF()
+-        return data as Data
++
++        func close() {
++            guard !closed else { return }
++            context.closePDF()
++            closed = true
++        }
+     }
+ 
+     /// No scripts from user input, remote fonts, trackers or CDN dependencies.
+@@ -85,21 +151,39 @@
+     /// a small perspective interaction around those identical pixels.
+     static func interactiveHTML(_ card: CardRenderSnapshot) throws -> Data {
+         var frames: [String] = []
+-        let count = 16
+-        for index in 0..<count {
++        for index in 0..<16 {
+             try Task.checkCancellation()
+-            // The 16 frames are the opening half of the same 30-frame/3-second
+-            // clock used by the full GIF, including its eased paper fold.
+-            let phase = Double(index) / Double((count - 1) * 2)
+-            let opening = CardMotion.opening(phase: phase)
+-            let frame = try autoreleasepool { () throws -> String in
+-                guard let image = CardRenderer.shared.render(card, size: CGSize(width: 400, height: 600),
+-                                                             phase: phase, opening: opening),
+-                      let data = PlatformImageUtils.pngData(from: image) else { throw ExportError.render }
+-                return "data:image/png;base64," + data.base64EncodedString()
+-            }
+-            frames.append(frame)
+-        }
++            frames.append(try htmlFrame(card, index: index))
++        }
++        return try htmlDocument(card, frames: frames)
++    }
++
++    static func interactiveHTMLCancellable(_ card: CardRenderSnapshot) async throws -> Data {
++        var frames: [String] = []
++        for index in 0..<16 {
++            try await checkpoint()
++            frames.append(try htmlFrame(card, index: index))
++        }
++        try await checkpoint()
++        let data = try htmlDocument(card, frames: frames)
++        try Task.checkCancellation()
++        return data
++    }
++
++    private static func htmlFrame(_ card: CardRenderSnapshot, index: Int) throws -> String {
++        // The 16 frames are the opening half of the same 30-frame/3-second
++        // clock used by the full GIF, including its eased paper fold.
++        let phase = Double(index) / 30
++        let opening = CardMotion.opening(phase: phase)
++        return try autoreleasepool {
++            guard let image = CardRenderer.shared.render(card, size: CGSize(width: 400, height: 600),
++                                                         phase: phase, opening: opening),
++                  let data = PlatformImageUtils.pngData(from: image) else { throw ExportError.render }
++            return "data:image/png;base64," + data.base64EncodedString()
++        }
++    }
++
++    private static func htmlDocument(_ card: CardRenderSnapshot, frames: [String]) throws -> Data {
+         let json = try JSONSerialization.data(withJSONObject: frames, options: [.fragmentsAllowed])
+         guard let frameJSON = String(data: json, encoding: .utf8) else { throw ExportError.render }
+         let words = htmlEscape(card.saying)
+--- root-r3/My Funny ValentineTests/Services/CreativeCardExportTests.swift
++++ correction/My Funny ValentineTests/Services/CreativeCardExportTests.swift
+@@ -79,6 +79,132 @@
+         #expect(try CardExportService.png(CardRenderer.shared.snapshot(of: card)) != original)
+     }
+ 
++    @Test("Every new family keeps two people visible and freezes their original face pixels")
++    func twoFaceCompositionsStayDistinctAndFrozen() throws {
++        let green = try facePixels(hex: "#00FF00")
++        let purple = try facePixels(hex: "#FF00FF")
++        for family in CardVisualFamily.allCases {
++            for variant in 0..<5 {
++                try autoreleasepool {
++                    let card = Card(saying: "Together", layoutData: CardLayoutData(
++                        composition: CardComposition(family: family, variant: variant)))
++                    let first = FaceImage(cardId: card.id, imageData: green, thumbnailData: green)
++                    let second = FaceImage(cardId: card.id, imageData: purple, thumbnailData: purple)
++                    card.faces = [first, second]
++                    let snapshot = CardRenderer.shared.snapshot(of: card)
++                    let original = try CardExportService.png(snapshot)
++                    let colors = try faceColorCounts(original)
++                    // The old overlap bug completely hid the first opaque face.
++                    // These colors are absent from all six family palettes.
++                    #expect(colors.green > 1_000, "First person must remain visible in \(family.rawValue), layout \(variant)")
++                    #expect(colors.purple > 1_000, "Second person must remain visible in \(family.rawValue), layout \(variant)")
++                    first.imageData = Data([0])
++                    second.imageData = Data([1])
++                    card.faces = []
++                    #expect(try CardExportService.png(snapshot) == original)
++                    let edited = try faceColorCounts(CardExportService.png(CardRenderer.shared.snapshot(of: card)))
++                    #expect(edited.green == 0 && edited.purple == 0)
++                }
++            }
++        }
++
++        let classic = Card(saying: "Saved classic", layoutData: CardLayoutData())
++        classic.faces = [
++            FaceImage(cardId: classic.id, imageData: green, thumbnailData: green,
++                      position: CGPoint(x: 30, y: 30), size: CGSize(width: 50, height: 60)),
++            FaceImage(cardId: classic.id, imageData: purple, thumbnailData: purple,
++                      position: CGPoint(x: 250, y: 30), size: CGSize(width: 50, height: 60))
++        ]
++        let saved = CardRenderer.shared.snapshot(of: classic)
++        #expect(saved.composition == nil)
++        #expect(saved.faces.map(\.rect) == [CGRect(x: 30, y: 30, width: 50, height: 60),
++                                          CGRect(x: 250, y: 30, width: 50, height: 60)])
++        let colors = try faceColorCounts(CardExportService.png(saved))
++        #expect(colors.green > 1_000 && colors.purple > 1_000)
++    }
++
++    @Test("Dismissed or replaced exports cannot commit or finish a newer share job")
++    func obsoleteExportCannotCommitOrFinishNewJob() throws {
++        var session = CardExportSession()
++        let beforeSnapshot = session.begin()
++        #expect(beforeSnapshot == nil)
++        session.replaceSnapshot()
++        let firstJob = session.begin()
++        let dismissed = try #require(firstJob)
++        let duplicate = session.begin()
++        #expect(duplicate == nil)
++        session.invalidate() // Share is dismissed, even if the task completes late.
++        #expect(!session.canCommit(dismissed))
++        session.replaceSnapshot()
++        let nextJob = session.begin()
++        let current = try #require(nextJob)
++        let oldFinished = session.finish(dismissed)
++        #expect(!oldFinished)
++        #expect(session.isExporting && session.canCommit(current))
++        session.cancelJob() // Retry on the same frozen snapshot has a new owner.
++        let retryJob = session.begin()
++        let retry = try #require(retryJob)
++        #expect(!session.canCommit(current))
++        let cancelledFinished = session.finish(current)
++        #expect(!cancelledFinished)
++        #expect(session.isExporting && session.canCommit(retry))
++        let retryFinished = session.finish(retry)
++        #expect(retryFinished)
++        #expect(!session.isExporting)
++        #expect(!session.canCommit(retry)) // A duplicate completion cannot commit twice.
++    }
++
++    @Test("Canceled local exports throw cancellation instead of returning a completed file")
++    func cancelledAsyncExportsDoNotReturnFiles() async throws {
++        let card = Card(saying: "For you", customText: "Keep this note",
++                        layoutData: CardLayoutData(composition: CardComposition(family: .cosmic)))
++        let snapshot = CardRenderer.shared.snapshot(of: card)
++        let gif = Task { @MainActor in try await GIFExporter.shared.createCardAnimationCancellable(from: snapshot) }
++        gif.cancel()
++        await #expect(throws: CancellationError.self) { _ = try await gif.value }
++        let operations: [@MainActor () async throws -> Data] = [
++            { try await CardExportService.pngCancellable(snapshot, inside: true) },
++            { try await CardExportService.pdfCancellable(snapshot) },
++            { try await CardExportService.stickerPNGCancellable(snapshot) },
++            { try await CardExportService.interactiveHTMLCancellable(snapshot) }
++        ]
++        for operation in operations {
++            let task = Task { @MainActor in try await operation() }
++            task.cancel()
++            await #expect(throws: CancellationError.self) { _ = try await task.value }
++        }
++    }
++
++    @Test("Cooperative exports retain native pixels, complete PDF pages and the shared animation clock")
++    func asyncExportsKeepFormatContracts() async throws {
++        let card = Card(saying: "For my favorite person", customText: "A little note inside",
++                        layoutData: CardLayoutData(composition: CardComposition(family: .loveLetter)))
++        let snapshot = CardRenderer.shared.snapshot(of: card)
++        let inside = try await CardExportService.pngCancellable(snapshot, inside: true)
++        #expect(inside == (try CardExportService.png(snapshot, inside: true)))
++        let sticker = try await CardExportService.stickerPNGCancellable(snapshot)
++        #expect(sticker == (try CardExportService.stickerPNG(snapshot)))
++        let html = try await CardExportService.interactiveHTMLCancellable(snapshot)
++        #expect(html == (try CardExportService.interactiveHTML(snapshot)))
++        let pdf = try await CardExportService.pdfCancellable(snapshot)
++        let provider = try #require(CGDataProvider(data: pdf as CFData))
++        let document = try #require(CGPDFDocument(provider))
++        #expect(document.numberOfPages == 2)
++        for number in 1...document.numberOfPages {
++            let page = try #require(document.page(at: number))
++            #expect(page.getBoxRect(.mediaBox) == CGRect(x: 0, y: 0, width: 288, height: 432))
++        }
++        let animation = try await GIFExporter.shared.createCardAnimationCancellable(from: snapshot)
++        let data = try #require(animation)
++        let frames = try #require(CGImageSourceCreateWithData(data as CFData, nil))
++        #expect(CGImageSourceGetCount(frames) == 30)
++        let image = try #require(CGImageSourceCreateImageAtIndex(frames, 0, nil))
++        #expect(image.width == 400 && image.height == 600)
++        let properties = try #require(CGImageSourceCopyPropertiesAtIndex(frames, 0, nil) as? [String: Any])
++        let timing = try #require(properties[kCGImagePropertyGIFDictionary as String] as? [String: Any])
++        #expect((timing[kCGImagePropertyGIFUnclampedDelayTime as String] as? Double) == 0.1)
++    }
++
+     @Test("Full card GIF opens real inside content without a face and keeps finite frame timing")
+     func fullCardAnimation() throws {
+         let card = Card(saying: "Stay wonderful", customText: "A little note inside",
+@@ -166,4 +292,31 @@
+         #expect(html.contains("prefers-reduced-motion"))
+         #expect(html.contains("Read the message"))
+     }
++
++    private func facePixels(hex: String) throws -> Data {
++        let color = try #require(PlatformColor.fromHex(hex))
++        let image = try #require(PlatformGraphics.image(size: CGSize(width: 20, height: 20), scale: 1) { context in
++            context.setFillColor(color.cgColor)
++            context.fill(CGRect(x: 0, y: 0, width: 20, height: 20))
++        })
++        return try #require(PlatformImageUtils.pngData(from: image))
++    }
++
++    private func faceColorCounts(_ png: Data) throws -> (green: Int, purple: Int) {
++        let source = try #require(CGImageSourceCreateWithData(png as CFData, nil))
++        let image = try #require(CGImageSourceCreateImageAtIndex(source, 0, nil))
++        var pixels = [UInt8](repeating: 0, count: image.width * image.height * 4)
++        try pixels.withUnsafeMutableBytes { buffer in
++            let context = try #require(CGContext(data: buffer.baseAddress, width: image.width, height: image.height,
++                bitsPerComponent: 8, bytesPerRow: image.width * 4, space: CGColorSpaceCreateDeviceRGB(),
++                bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue))
++            context.draw(image, in: CGRect(x: 0, y: 0, width: image.width, height: image.height))
++        }
++        var green = 0, purple = 0
++        for index in stride(from: 0, to: pixels.count, by: 4) where pixels[index + 3] > 239 {
++            if pixels[index] < 16 && pixels[index + 1] > 239 && pixels[index + 2] < 16 { green += 1 }
++            if pixels[index] > 239 && pixels[index + 1] < 16 && pixels[index + 2] > 239 { purple += 1 }
++        }
++        return (green, purple)
++    }
+ }

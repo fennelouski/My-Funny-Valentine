@@ -1,0 +1,15 @@
+{
+  "nativeChooserObserved": true,
+  "services": [
+    "AirDrop",
+    "Mail",
+    "Messages",
+    "Notes",
+    "Freeform",
+    "Copy"
+  ],
+  "recipientSelected": false,
+  "method": "Observed native ShareLink popover after focused Space activation",
+  "personalContactSuggestionsExcludedFromReceipt": true,
+  "observedAtUTC": "2026-10-04T23:13:52.949Z"
+}

@@ -267,9 +267,9 @@ The inactive backend code has defaults for `gpt-5-nano`, `gpt-5.4-nano` and `gpt
 
 ## Release status and public links
 
-The [current release draft](app-store/SUBMISSION.md) and [listing metadata](app-store-audit/2026-10-03-my-funny-valentine/release-listing.json) record completed checks and remaining release steps. Frozen bff4771 complete iPhone and landscape iPad flows passed; actual Mac gallery, saved-card relaunch, sayings and Image Playground import checks passed. The synthetic pre-polish local saved-card upgrade passed. Both signed release packages and all 30 composed marketing images passed local verification. Xcode failed to create the missing App Store record before transfer. Representative iOS18.5 checks passed all23 tests. App Store fields, live privacy/support pages and review submission remain pending. Cards save on this device; sharing sends an exported copy.
+The [creative-card candidate](app-store-audit/2026-10-04-creative-cards/README.md) adds six illustrated styles, manual opening, thirty editable starters and six local export formats. Version 1.0 build 3 passed the recorded iPhone/iPad tests and actual Mac flows. All thirty matching marketing images and the generated PNG, GIF, PDF, sticker and interactive HTML files passed their recorded checks. Replacement Release uploads and Apple submission are pending. Earlier iOS 1.0 build 1 and macOS build 2 remain Waiting for Review until the new packages are ready.
 
-Prospective privacy and support pages are [privacy.html](https://nathanfennel.com/my-funny-valentine/privacy.html) and [support.html](https://nathanfennel.com/my-funny-valentine/support.html). Deployment and live URL checks remain pending. The App Store marketing URL stays unset because there is no app directory marketing page.
+The unlisted [privacy](https://nathanfennel.com/my-funny-valentine/privacy.html) and [support](https://nathanfennel.com/my-funny-valentine/support.html) pages are published and verified on both Vercel and AWS. Cards save on this device; sharing sends an exported copy. The App Store marketing URL stays unset because there is no app directory marketing page.
 
 ## License
 
@@ -278,3 +278,10 @@ See LICENSE file for details.
 ## Contributing
 
 This is a personal project. For questions or issues, please open an issue on GitHub.
+
+
+### Creative-card work prepared October 4, 2026
+
+A local candidate adds six visual families to the thirty starters, tap/drag opening, complete-card GIFs, readable PDF/print output, transparent PNG chat images and self-contained browser cards. Original card IDs and saved classic layouts remain compatible. The new code and seven export/render tests are prepared for native verification; they are not the bytes currently waiting for Apple review. See [DESIGN.md](DESIGN.md) and [the candidate handoff](app-store-audit/2026-10-04-creative-cards/README.md).
+
+The prepared DEBUG test bootstrap has separate UUID preferences and Store/Media directories, with blank unit and invalid-session hosts. Six isolation tests and three local native UI methods are added. No compiler or runtime has been invoked for this candidate; [the exact QA plan](app-store-audit/2026-10-04-creative-cards/qa-plan.prepared.md) records the remaining checks.

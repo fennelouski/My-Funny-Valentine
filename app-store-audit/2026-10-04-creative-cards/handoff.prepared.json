@@ -1,0 +1,149 @@
+{
+  "status": "source-held-uncompiled-unrun",
+  "at": "2026-10-04T21:13:34.227309+00:00",
+  "baselineCommit": "faacd9fba611f88c4df5a48fb7ed7615213028e4",
+  "shippingInputCount": 115,
+  "shippingInputAggregateSHA256": "3565d34be3c8aa961edde7357e4d87e11aaa62eaf6f0488024b5127117fd16d8",
+  "unitTestInputCount": 23,
+  "unitTestInputAggregateSHA256": "4c7d66a0a6987641b34de0748d0c6f5be356cf7c808c837619f9953218481c3e",
+  "uiTestInputCount": 10,
+  "uiTestInputAggregateSHA256": "2381f435b1ea350c08be706d8814eee59be770a8424529a96ebf2f9a3885d79b",
+  "plannedUnitCount": 22,
+  "plannedUICount": 3,
+  "trackedChangedPaths": [
+    "DESIGN.md",
+    "My Funny Valentine/ContentView.swift",
+    "My Funny Valentine/Models/Card.swift",
+    "My Funny Valentine/Models/Template.swift",
+    "My Funny Valentine/My_Funny_ValentineApp.swift",
+    "My Funny Valentine/Services/GIFExporter.swift",
+    "My Funny Valentine/Services/ImageManager.swift",
+    "My Funny Valentine/Services/UserPreferencesService.swift",
+    "My Funny Valentine/Utilities/CardRenderer.swift",
+    "My Funny Valentine/Utilities/ScreenshotSupport.swift",
+    "My Funny Valentine/Views/CardDetailView.swift",
+    "My Funny Valentine/Views/HomeView.swift",
+    "My Funny Valentine/Views/ImagePlaygroundSheetModifier.swift",
+    "My Funny Valentine/Views/SettingsView.swift",
+    "My Funny ValentineTests/TestUtilities.swift",
+    "README.md"
+  ],
+  "newOwnedNativeTestFiles": [
+    "My Funny Valentine/Components/CardStageView.swift",
+    "My Funny Valentine/Models/CardComposition.swift",
+    "My Funny Valentine/Services/CardExportService.swift",
+    "My Funny Valentine/Utilities/CardRenderer+Composition.swift",
+    "My Funny Valentine/Utilities/MFVRuntime.swift",
+    "My Funny Valentine/Views/CardPrintView.swift",
+    "My Funny ValentineTests/Services/CreativeCardExportTests.swift",
+    "My Funny ValentineTests/Services/MFVRuntimeIsolationTests.swift",
+    "My Funny ValentineUITests/CreativeCardsUITests.swift"
+  ],
+  "unchangedOriginalArtworkAndProjectCount": 29,
+  "guardedPaths": [
+    "My Funny Valentine.xcodeproj/project.pbxproj",
+    "My Funny Valentine/Assets.xcassets/AccentColor.colorset/Contents.json",
+    "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/Contents.json",
+    "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-ios-1024-dark.png",
+    "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-ios-1024-tinted.png",
+    "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-ios-1024.png",
+    "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-128x128@1x.png",
+    "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-128x128@2x.png",
+    "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-16x16@1x.png",
+    "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-16x16@2x.png",
+    "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-256x256@1x.png",
+    "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-256x256@2x.png",
+    "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-32x32@1x.png",
+    "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-32x32@2x.png",
+    "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-512x512@1x.png",
+    "My Funny Valentine/Assets.xcassets/AppIcon.appiconset/icon-mac-512x512@2x.png",
+    "My Funny Valentine/Assets.xcassets/Contents.json",
+    "My Funny Valentine/Assets.xcassets/starter_birds.imageset/Contents.json",
+    "My Funny Valentine/Assets.xcassets/starter_birds.imageset/art.png",
+    "My Funny Valentine/Assets.xcassets/starter_dino.imageset/Contents.json",
+    "My Funny Valentine/Assets.xcassets/starter_dino.imageset/art.png",
+    "My Funny Valentine/Assets.xcassets/starter_disco.imageset/Contents.json",
+    "My Funny Valentine/Assets.xcassets/starter_disco.imageset/art.png",
+    "My Funny Valentine/Assets.xcassets/starter_pizza.imageset/Contents.json",
+    "My Funny Valentine/Assets.xcassets/starter_pizza.imageset/art.png",
+    "My Funny Valentine/Assets.xcassets/starter_space.imageset/Contents.json",
+    "My Funny Valentine/Assets.xcassets/starter_space.imageset/art.png",
+    "My Funny Valentine/Assets.xcassets/starter_sweets.imageset/Contents.json",
+    "My Funny Valentine/Assets.xcassets/starter_sweets.imageset/art.png"
+  ],
+  "diffCheckExitCode": 0,
+  "diffCheckOutput": "",
+  "nativeCandidateDiffSHA256": "1e789f5219a3f0236f1cb0524f473662fb83959eb0bf3682b7ae3a08bf038d62",
+  "freezeSHA256": "0cd0c54e0a6a3d6dd5bcfdd6c8d66eecfe2ca062f7e164633f6a0586ea592b97",
+  "qaPlan": "app-store-audit/2026-10-04-creative-cards/qa-plan.prepared.md",
+  "qaPlanSHA256": "21921dfe42620a2e8255850b63ffc21abdba37eebd80f871000833169e4350c6",
+  "shippingDeltaSinceCreativePrepared": [
+    {
+      "path": "My Funny Valentine/ContentView.swift",
+      "beforeSHA256": "62b83c35f6f2c1978251fee42f956798090161005cd2857ee498c96f2651b485",
+      "afterSHA256": "dcfe7930112ae16ce6efb8670128564757e3272c787b01120cea9cd9c8438fbe"
+    },
+    {
+      "path": "My Funny Valentine/My_Funny_ValentineApp.swift",
+      "beforeSHA256": "93ed9f7ea97b47fc7527f01b43768c45595208768408ef55889a6b8c54c4999e",
+      "afterSHA256": "bd0b1cdbf16ae2019c7fe0a0d240e21000581ffcbcc73b197d8eeb8b3b9a8e38"
+    },
+    {
+      "path": "My Funny Valentine/Services/ImageManager.swift",
+      "beforeSHA256": "52dbb1ecab37f4f3e463639dd045b6a0fae859b2ea328b41ff94a16aa16b8571",
+      "afterSHA256": "689ac631cd7a763471289c88b113e69f7cef9103672cad01d2e4ceb3f558164d"
+    },
+    {
+      "path": "My Funny Valentine/Services/UserPreferencesService.swift",
+      "beforeSHA256": "0b45f596c4eb71e5de61a35e619201deaf405582dce488d791ea4057429b88c5",
+      "afterSHA256": "678b2dcd2c4e00a6a4074408f13f762998d3639ed9ec0f8bf295102e9f4eb10a"
+    },
+    {
+      "path": "My Funny Valentine/Utilities/MFVRuntime.swift",
+      "beforeSHA256": null,
+      "afterSHA256": "2065db10b9f02ec4eaa0461a8ed07beef2f14ffa67d5583b7276bca053f465ad"
+    },
+    {
+      "path": "My Funny Valentine/Utilities/ScreenshotSupport.swift",
+      "beforeSHA256": "1d629034376c9af9af035ae73922ef0b7c41761ccde69192342df8586cf39157",
+      "afterSHA256": "1b55ccfb1f340de2d4b69666bfa5f50581dab3df567880f74be63c1aae0be814"
+    },
+    {
+      "path": "My Funny Valentine/Views/CardDetailView.swift",
+      "beforeSHA256": "05b47cb8a53651e125afddcc1df0ee769c65678fcc52a8ebac8aa4da6b8b52dc",
+      "afterSHA256": "84c389124206c33d25a55094e656124a969a715bd1477aa52d65bc07407e461d"
+    },
+    {
+      "path": "My Funny Valentine/Views/ImagePlaygroundSheetModifier.swift",
+      "beforeSHA256": "4441ae3fac40ebecda2cb1ebf60db17d1f600b33f52e23b130efcf742e6cd14c",
+      "afterSHA256": "176479a4202c367562cbda5d3a43eccde1994beeef577a292f9db38641884951"
+    },
+    {
+      "path": "My Funny Valentine/Views/SettingsView.swift",
+      "beforeSHA256": "2bc00705bb5403cee9cc85bd526e5644e0b74cf19f8c83431dc8033153e50d84",
+      "afterSHA256": "25ce8da8e45c7f8be733c2aeb5f388e8b22b84bb67ac9301cc7dcdd480122afd"
+    }
+  ],
+  "limits": [
+    "No build/typecheck/runtime executed",
+    "Actual native UI selectors and layout remain unverified",
+    "QA intentionally disables provider/Photos/Image Playground/print actions",
+    "Prepared local export sheet checks do not prove native ShareLink chooser or print presentation",
+    "No issued SIWC connection, image provider request or physical hinge test",
+    "No version/project/signing/account/provider/credential changes"
+  ],
+  "historyPreserved": [
+    {
+      "path": "app-store-audit/2026-10-04-creative-cards/history/2026-10-04-pre-isolation/handoff.prepared.json",
+      "sha256": "ddd4debbf963f825b621f60e9f762ab57e563a6890e0dfd50a43bfbde45af359"
+    },
+    {
+      "path": "app-store-audit/2026-10-04-creative-cards/history/2026-10-04-pre-isolation/native-candidate.diff",
+      "sha256": "aa4bf1999421fa72e5e8596d3b9f9bedfa4e0956052e0df7d63dc4fb5d5d63ad"
+    },
+    {
+      "path": "app-store-audit/2026-10-04-creative-cards/history/2026-10-04-pre-isolation/source-freeze.prepared.json",
+      "sha256": "cdbf7c3d242bd2fad07bbc77920c69f091316e747186fdc8566332b149b8137d"
+    }
+  ]
+}

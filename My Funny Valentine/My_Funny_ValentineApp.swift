@@ -13,16 +13,17 @@ import CloudKit
 struct My_Funny_ValentineApp: App {
     @State private var storage = Self.loadStorage()
 
-    private static func loadStorage() -> Result<ModelContainer, Error> {
+    private static func loadStorage() -> Result<ModelContainer, Error>? {
+        // No schema, container, app view or service is constructed by a unit or
+        // rejected private host. Release always proceeds through the normal path.
+        guard !MFVRuntime.usesBlankHost else { return nil }
         let schema = Schema([
             Card.self, FaceImage.self, CardImage.self, StickerReference.self, UserPreferences.self
         ])
         do {
             let local: ModelConfiguration
             if ScreenshotSupport.shouldUseQAStore {
-                let directory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-                    .appendingPathComponent("MyFunnyValentine-QA-\(ScreenshotSupport.qaStoreName)", isDirectory: true)
-                try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+                let directory = try MFVRuntime.storeDirectory()
                 local = ModelConfiguration(schema: schema, url: directory.appendingPathComponent("cards.store"), cloudKitDatabase: .none)
             } else {
                 local = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false, cloudKitDatabase: .none)
@@ -36,9 +37,19 @@ struct My_Funny_ValentineApp: App {
     var body: some Scene {
         WindowGroup {
             switch storage {
-            case .success(let container):
-                ContentView().modelContainer(container)
-            case .failure(let error):
+            case .some(.success(let container)):
+                if MFVRuntime.isPrivate {
+                    ContentView().modelContainer(container)
+                        .defaultAppStorage(MFVRuntime.preferences)
+                        .accessibilityElement(children: .contain)
+                        .accessibilityIdentifier("mfv.private.ui." + (MFVRuntime.configuration.session?.uuidString ?? "invalid"))
+                } else {
+                    ContentView().modelContainer(container)
+                }
+            case .none:
+                Text(MFVRuntime.configuration.mode == .invalid ? "Private QA session rejected" : "Private unit test host")
+                    .accessibilityIdentifier(MFVRuntime.configuration.mode == .invalid ? "mfv.private.invalid" : "mfv.private.unit")
+            case .some(.failure(let error)):
                 ContentUnavailableView {
                     Label("Cards couldn't open", systemImage: "externaldrive.badge.exclamationmark")
                 } description: {

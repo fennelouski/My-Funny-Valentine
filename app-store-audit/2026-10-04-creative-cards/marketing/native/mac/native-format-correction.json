@@ -1,0 +1,76 @@
+{
+  "atUTC": "2026-10-04T23:25:37.141007+00:00",
+  "reason": "CUA App.getScreenshot returned JPEG originals; corrected extensions and declared media type without changing image bytes. Earlier action logs retain original capture names.",
+  "files": [
+    {
+      "historicalCaptureName": "native/mac/comic-front.png",
+      "actualFormat": "JPEG",
+      "currentPath": "native/mac/comic-front.jpg",
+      "sha256": "ea22e0b6cf19975517f455a4421e99d1373ba94b19697e09056e6aacc5c39a57",
+      "bytesUnchanged": true
+    },
+    {
+      "historicalCaptureName": "native/mac/cosmic-front.png",
+      "actualFormat": "JPEG",
+      "currentPath": "native/mac/cosmic-front.jpg",
+      "sha256": "eb598c6d2919232c0580661db4926780cbcaaddba011161566b1abb9b9c0e966",
+      "bytesUnchanged": true
+    },
+    {
+      "historicalCaptureName": "native/mac/loveLetter-front.png",
+      "actualFormat": "JPEG",
+      "currentPath": "native/mac/loveLetter-front.jpg",
+      "sha256": "e0471e0f84361eba96bee325b4af1105c9ff2f9086d0c577974dfcbe779ea73d",
+      "bytesUnchanged": true
+    },
+    {
+      "historicalCaptureName": "native/mac/popUp-front.png",
+      "actualFormat": "JPEG",
+      "currentPath": "native/mac/popUp-front.jpg",
+      "sha256": "d56303a6fe2c3a007c034d42f95ee38d07408cf25ce5a5576cbda51d10b3bf5a",
+      "bytesUnchanged": true
+    },
+    {
+      "historicalCaptureName": "native/mac/photoBooth-front.png",
+      "actualFormat": "JPEG",
+      "currentPath": "native/mac/photoBooth-front.jpg",
+      "sha256": "11d93185711c0255d19e6514197ed5c8c7140fca2aa3d2c997485b06f582a02b",
+      "bytesUnchanged": true
+    },
+    {
+      "historicalCaptureName": "native/mac/confetti-front.png",
+      "actualFormat": "JPEG",
+      "currentPath": "native/mac/confetti-front.jpg",
+      "sha256": "26a50bd70e8afab54fa03b0a3fda35513718f5e28bdb9ccdc63631e258b013b7",
+      "bytesUnchanged": true
+    },
+    {
+      "historicalCaptureName": "native/mac/inside.png",
+      "actualFormat": "JPEG",
+      "currentPath": "native/mac/inside.jpg",
+      "sha256": "2e09632159839145951fc8b30184bc6360da793d7abccdc510fcea101568068c",
+      "bytesUnchanged": true
+    },
+    {
+      "historicalCaptureName": "native/mac/library.png",
+      "actualFormat": "JPEG",
+      "currentPath": "native/mac/library.jpg",
+      "sha256": "13ace4cef4721d5334c59326b80e66cfa756bf401c38cb2819ab0cea2fdbe95d",
+      "bytesUnchanged": true
+    },
+    {
+      "historicalCaptureName": "native/mac/personalized.png",
+      "actualFormat": "JPEG",
+      "currentPath": "native/mac/personalized.jpg",
+      "sha256": "ebbf3eff0f1a205d1de14b193e433ab1b59d745175eaa9c8fce23cdcd52f9841",
+      "bytesUnchanged": true
+    },
+    {
+      "historicalCaptureName": "native/mac/exports.png",
+      "actualFormat": "JPEG",
+      "currentPath": "native/mac/exports.jpg",
+      "sha256": "c6016a2ae7232a1d1c3031819fb9fe30e715fd3423a82ddae9e1f53e4d60c5c6",
+      "bytesUnchanged": true
+    }
+  ]
+}

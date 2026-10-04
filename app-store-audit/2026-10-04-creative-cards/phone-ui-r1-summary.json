@@ -1,0 +1,53 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+        "deviceName": "Mouse Character QA Phone 20261004",
+        "modelName": "iPhone 16 Pro",
+        "osBuildNumber": "23F77",
+        "osVersion": "26.5",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 2,
+      "passedTests": 1,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "My Funny Valentine \u00b7 Built with macOS 26.5.2",
+  "expectedFailures": 0,
+  "failedTests": 2,
+  "finishTime": 1791148918.753,
+  "passedTests": 1,
+  "result": "Failed",
+  "skippedTests": 0,
+  "startTime": 1791148848.723,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "XCTAssertEqual failed: (\"Optional(\"A little card for my favorite personYou\\'re my favorite person to perch beside.\")\") is not equal to (\"Optional(\"A little card for my favorite person\")\")",
+      "targetName": "My Funny ValentineUITests",
+      "testIdentifier": 2,
+      "testIdentifierString": "CreativeCardsUITests/testSavedMotionChoiceAndLocalExportSheet()",
+      "testIdentifierURL": "test://com.apple.xcode/My%20Funny%20Valentine/My%20Funny%20ValentineUITests/CreativeCardsUITests/testSavedMotionChoiceAndLocalExportSheet",
+      "testName": "testSavedMotionChoiceAndLocalExportSheet()"
+    },
+    {
+      "failureText": "failed - Genuine rendered preview",
+      "targetName": "My Funny ValentineUITests",
+      "testIdentifier": 3,
+      "testIdentifierString": "CreativeCardsUITests/testSixStarterFamiliesOpenAndClose()",
+      "testIdentifierURL": "test://com.apple.xcode/My%20Funny%20Valentine/My%20Funny%20ValentineUITests/CreativeCardsUITests/testSixStarterFamiliesOpenAndClose",
+      "testName": "testSixStarterFamiliesOpenAndClose()"
+    }
+  ],
+  "title": "Test - My Funny Valentine",
+  "topInsights": [],
+  "totalTestCount": 3
+}

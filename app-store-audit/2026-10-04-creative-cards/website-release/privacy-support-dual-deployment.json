@@ -1,0 +1,159 @@
+{
+  "mode": "parallel-static-app-policies",
+  "revision": "dc766ebc682d8cbdf37adf6655fd0ad5e3aac9f2",
+  "approvedBase": "2e95b0dc5dc1506f004bee19b435f724087161b6",
+  "startedAt": "2026-10-04T22:03:00.391649+00:00",
+  "pages": [
+    "my-funny-valentine/privacy.html",
+    "my-funny-valentine/support.html"
+  ],
+  "pageProof": [
+    {
+      "page": "my-funny-valentine/privacy.html",
+      "sha256": "cb5011a0ae1b81881676dcbc64d786fe4ea0b0e0ab3397668de360538be443e2",
+      "byteCount": 4715
+    },
+    {
+      "page": "my-funny-valentine/support.html",
+      "sha256": "1ccb5cd71f76fcc05d5895c30c01e8390f475061a5fd647b9689104c4af26550",
+      "byteCount": 3976
+    }
+  ],
+  "selectedPagesOnly": true,
+  "commands": {
+    "aws": [
+      [
+        "aws",
+        "--profile",
+        "fishbowl-head",
+        "--region",
+        "us-west-2",
+        "s3api",
+        "put-object",
+        "--bucket",
+        "nfbucketforstuff",
+        "--key",
+        "app-support/my-funny-valentine/privacy.html",
+        "--body",
+        "public/my-funny-valentine/privacy.html",
+        "--acl",
+        "public-read",
+        "--content-type",
+        "text/html; charset=utf-8",
+        "--cache-control",
+        "public, max-age=300",
+        "--metadata",
+        "git-revision=dc766ebc682d8cbdf37adf6655fd0ad5e3aac9f2"
+      ],
+      [
+        "aws",
+        "--profile",
+        "fishbowl-head",
+        "--region",
+        "us-west-2",
+        "s3api",
+        "put-object",
+        "--bucket",
+        "nfbucketforstuff",
+        "--key",
+        "app-support/my-funny-valentine/support.html",
+        "--body",
+        "public/my-funny-valentine/support.html",
+        "--acl",
+        "public-read",
+        "--content-type",
+        "text/html; charset=utf-8",
+        "--cache-control",
+        "public, max-age=300",
+        "--metadata",
+        "git-revision=dc766ebc682d8cbdf37adf6655fd0ad5e3aac9f2"
+      ]
+    ],
+    "push": [
+      "git",
+      "-c",
+      "credential.helper=",
+      "-c",
+      "credential.helper=!gh auth git-credential",
+      "push",
+      "origin",
+      "HEAD:refs/heads/main"
+    ]
+  },
+  "status": "verified",
+  "cutoverCompletedAt": null,
+  "fullSiteAwsMigration": "pending",
+  "DNSOrJobsChanged": false,
+  "retiredObjectsDeleted": [],
+  "credentialValuesInspected": false,
+  "allowMissingAWSPage": [],
+  "vercelBefore": {
+    "id": "dpl_69kSsJbVMy9XwFZGZwAEtgLJrzGB",
+    "url": "nathanfennel-odisp2zi8-nathan-fennels-projects.vercel.app",
+    "readyState": "READY",
+    "revision": "2e95b0dc5dc1506f004bee19b435f724087161b6"
+  },
+  "previousAWS": [
+    {
+      "page": "my-funny-valentine/privacy.html",
+      "url": "https://nfbucketforstuff.s3.us-west-2.amazonaws.com/app-support/my-funny-valentine/privacy.html",
+      "present": true,
+      "status": 200,
+      "sha256": "440ce9b8bb0da71d8e6660155b865fc820999abe258f56d516c42774e5b2e84a",
+      "gitRevision": "9e2058d195bf3c8ef1e6630267e815a1346349d3",
+      "backup": "/Users/nathan/Documents/GitHub/.worktrees/nathanfennel-mouse-characters-20261004/.vercel/app-privacy-selected-dc766ebc682d8cbdf37adf6655fd0ad5e3aac9f2-20261004T220300Z-a4a66634.previous-1.html"
+    },
+    {
+      "page": "my-funny-valentine/support.html",
+      "url": "https://nfbucketforstuff.s3.us-west-2.amazonaws.com/app-support/my-funny-valentine/support.html",
+      "present": true,
+      "status": 200,
+      "sha256": "a436417d51ed9a87736702684042242ad264b2847805cfc33fd841860f6dedd8",
+      "gitRevision": "9e2058d195bf3c8ef1e6630267e815a1346349d3",
+      "backup": "/Users/nathan/Documents/GitHub/.worktrees/nathanfennel-mouse-characters-20261004/.vercel/app-privacy-selected-dc766ebc682d8cbdf37adf6655fd0ad5e3aac9f2-20261004T220300Z-a4a66634.previous-2.html"
+    }
+  ],
+  "stage": "vercel-git-push",
+  "aws": [
+    {
+      "url": "https://nfbucketforstuff.s3.us-west-2.amazonaws.com/app-support/my-funny-valentine/privacy.html?revision=dc766ebc682d8cbdf37adf6655fd0ad5e3aac9f2",
+      "sha256": "cb5011a0ae1b81881676dcbc64d786fe4ea0b0e0ab3397668de360538be443e2",
+      "byteCount": 4715,
+      "status": 200
+    },
+    {
+      "url": "https://nfbucketforstuff.s3.us-west-2.amazonaws.com/app-support/my-funny-valentine/support.html?revision=dc766ebc682d8cbdf37adf6655fd0ad5e3aac9f2",
+      "sha256": "1ccb5cd71f76fcc05d5895c30c01e8390f475061a5fd647b9689104c4af26550",
+      "byteCount": 3976,
+      "status": 200
+    }
+  ],
+  "vercelAfter": {
+    "id": "dpl_GheEWZmyyv4uM3AfZbAAPGEEE9nz",
+    "url": "nathanfennel-9w68nf4ai-nathan-fennels-projects.vercel.app",
+    "readyState": "READY",
+    "revision": "dc766ebc682d8cbdf37adf6655fd0ad5e3aac9f2"
+  },
+  "vercelVerificationStart": {
+    "id": "dpl_GheEWZmyyv4uM3AfZbAAPGEEE9nz",
+    "url": "nathanfennel-9w68nf4ai-nathan-fennels-projects.vercel.app",
+    "readyState": "READY",
+    "revision": "dc766ebc682d8cbdf37adf6655fd0ad5e3aac9f2"
+  },
+  "vercel": [
+    {
+      "url": "https://nathanfennel.com/my-funny-valentine/privacy.html?revision=dc766ebc682d8cbdf37adf6655fd0ad5e3aac9f2",
+      "sha256": "cb5011a0ae1b81881676dcbc64d786fe4ea0b0e0ab3397668de360538be443e2",
+      "byteCount": 4715,
+      "status": 200
+    },
+    {
+      "url": "https://nathanfennel.com/my-funny-valentine/support.html?revision=dc766ebc682d8cbdf37adf6655fd0ad5e3aac9f2",
+      "sha256": "1ccb5cd71f76fcc05d5895c30c01e8390f475061a5fd647b9689104c4af26550",
+      "byteCount": 3976,
+      "status": 200
+    }
+  ],
+  "sameRevisionVerified": true,
+  "verifiedAt": "2026-10-04T22:05:11.262148+00:00"
+}

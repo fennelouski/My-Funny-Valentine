@@ -1,0 +1,2309 @@
+diff --git a/DESIGN.md b/DESIGN.md
+index 3115221..c7abf64 100644
+--- a/DESIGN.md
++++ b/DESIGN.md
+@@ -31,3 +31,22 @@ Built-in suggestions remain usable without Apple Intelligence. Show Image Playgr
+ ## Verify the finished interface
+ 
+ Native checks for large text, appearances, narrow windows, keyboard behavior, photo results and face animation remain pending. Final App Store images will use fresh native captures, ten per platform, with short centered copy, varied backgrounds, a centered upright hero and outward fans where supporting captures are used.
++
++
++## October 4 creative-card upgrade, prepared for native verification
++
++The owner asked for richer cards, playful opening, email/print/PDF/GIF/chat sharing, and current Apple/ChatGPT options. This refinement keeps the existing burgundy/pink app identity, thirty starter IDs, six original illustrations and saved local card graph. It does not replace or migrate the already submitted releases.
++
++New starter drafts pair the existing messages with six visual families: comic bursts, cosmic orbits, a love-letter envelope, photo-booth prints, confetti and layered pop-up hearts. Five layout variants per family change print geometry, framing or ornament placement. Original saved cards keep the classic renderer until their owner chooses a new style. The new optional composition lives inside the existing layout JSON; missing or unknown compositions preserve the old layout.
++
++The card is the main object. Tap Open card or drag across it to reveal the inside. A local clock moves the appropriate printed ornaments; explicit motion-off and Reduce Motion keep the preview calm. Text and personal-photo controls precede style options, so the editor starts with the person's words. Family buttons carry their actual palette, named typeface and a selected checkmark. All labels wrap and controls retain native accessibility/keyboard behavior.
++
++An immutable snapshot copies the current text, layout and image bytes before sharing. One CoreGraphics drawing path produces the preview, opening GIF frames, front PNG, transparent PNG chat image and printable front. The 4×6-inch PDF puts the full message on readable inside pages and continues longer notes. The browser file embeds native frames and escaped complete text, uses a keyboard-accessible open button, and has no CDN or remote script. The native print and share choosers leave destinations and sending to the user. A PNG chat image is not a registered Messages sticker pack.
++
++Apple's interactive Image Playground stays optional and system-managed. The existing SDK supports source photos and illustration/animation/sketch styles; on 26.0+ the sheet also permits Apple's external-provider style. Apple's sheet handles its provider setup and consent. The app does not claim its own Sign in with ChatGPT connection. The installed 26.5 SDK lacks the new closest-size and hinge APIs. Manual opening works on existing platforms; actual iPhone Duo hinge effects need the documented 27.1 beta SDK and device checks before they can ship.
++
++Evidence: [Apple's interactive Image Playground APIs](https://developer.apple.com/videos/play/wwdc2026/375/), [ImageCreator discontinuation](https://developer.apple.com/news/?id=dz9wvq0r), [iPhone Duo tools](https://developer.apple.com/iphone-duo/), [hinge effects and layout separation](https://developer.apple.com/videos/play/tech-talks/111464/), [ChatGPT preview capability limits](https://developers.openai.com/siwc/token-sharing-open-source/preview-limitations).
++
++Seven new deterministic compatibility/render/export tests are prepared. No compiler, device, print job or provider request has run for this candidate. Root owns the bounded native checks and final visual approval. Future checks must verify actual print/share chooser behavior, full large-text reflow, narrow Mac windows, rendering budgets and consent flow before any updated release claim.
++
++Private DEBUG verification uses a valid UUID preference suite and temporary card/media directories. Unit and rejected-session hosts stop before creating a model container or app view. The three prepared UI methods use the genuine local editor and export controls, while provider, Photos and print actions are unavailable. Release keeps its original storage paths and service availability. Six guard tests are prepared; none of these new tests has run yet.
+diff --git a/My Funny Valentine/ContentView.swift b/My Funny Valentine/ContentView.swift
+index e278c45..aafbe7f 100644
+--- a/My Funny Valentine/ContentView.swift	
++++ b/My Funny Valentine/ContentView.swift	
+@@ -10,7 +10,7 @@ import SwiftData
+ 
+ struct ContentView: View {
+     @Environment(\.modelContext) private var modelContext
+-    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = true
++    @AppStorage("hasCompletedOnboarding", store: MFVRuntime.preferences) private var hasCompletedOnboarding = true
+     @State private var selectedTab = ScreenshotSupport.initialTab
+ 
+     /// Set when onboarding is dismissed in this session, so a forced run
+diff --git a/My Funny Valentine/Models/Card.swift b/My Funny Valentine/Models/Card.swift
+index 7615929..3260ad3 100644
+--- a/My Funny Valentine/Models/Card.swift	
++++ b/My Funny Valentine/Models/Card.swift	
+@@ -99,6 +99,7 @@ nonisolated struct CardLayoutData: Codable {
+     var textPositionY: CGFloat?
+     var textRotation: Double?
+     var imagePlacements: [ImagePosition]?
++    var composition: CardComposition?
+ 
+     init(
+         backgroundColor: String = "#FFFFFF",
+@@ -109,7 +110,8 @@ nonisolated struct CardLayoutData: Codable {
+         textPositionX: CGFloat? = nil,
+         textPositionY: CGFloat? = nil,
+         textRotation: Double? = nil,
+-        imagePlacements: [ImagePosition]? = nil
++        imagePlacements: [ImagePosition]? = nil,
++        composition: CardComposition? = nil
+     ) {
+         self.backgroundColor = backgroundColor
+         self.textPositions = textPositions
+@@ -120,6 +122,27 @@ nonisolated struct CardLayoutData: Codable {
+         self.textPositionY = textPositionY
+         self.textRotation = textRotation
+         self.imagePlacements = imagePlacements
++        self.composition = composition
++    }
++
++    private enum CodingKeys: String, CodingKey {
++        case backgroundColor, textPositions, imagePositions, stickerPositions, templateLayoutId
++        case textPositionX, textPositionY, textRotation, imagePlacements, composition
++    }
++
++    init(from decoder: Decoder) throws {
++        let values = try decoder.container(keyedBy: CodingKeys.self)
++        backgroundColor = try values.decode(String.self, forKey: .backgroundColor)
++        textPositions = try values.decode([TextPosition].self, forKey: .textPositions)
++        imagePositions = try values.decode([ImagePosition].self, forKey: .imagePositions)
++        stickerPositions = try values.decode([StickerPosition].self, forKey: .stickerPositions)
++        templateLayoutId = try values.decodeIfPresent(String.self, forKey: .templateLayoutId)
++        textPositionX = try values.decodeIfPresent(CGFloat.self, forKey: .textPositionX)
++        textPositionY = try values.decodeIfPresent(CGFloat.self, forKey: .textPositionY)
++        textRotation = try values.decodeIfPresent(Double.self, forKey: .textRotation)
++        imagePlacements = try values.decodeIfPresent([ImagePosition].self, forKey: .imagePlacements)
++        // A future design family must not discard a saved classic layout.
++        composition = try? values.decodeIfPresent(CardComposition.self, forKey: .composition)
+     }
+ }
+ 
+diff --git a/My Funny Valentine/Models/Template.swift b/My Funny Valentine/Models/Template.swift
+index b2166eb..16aa78b 100644
+--- a/My Funny Valentine/Models/Template.swift	
++++ b/My Funny Valentine/Models/Template.swift	
+@@ -390,7 +390,8 @@ class TemplateManager {
+             templateId: template.id,
+             saying: template.textAreas.first?.defaultText,
+             customText: nil,
+-            layoutData: CardLayoutData(backgroundColor: template.backgroundColor.hexString)
++            layoutData: CardLayoutData(backgroundColor: template.backgroundColor.hexString,
++                                       composition: CardComposition.starter(templateID: template.id))
+         )
+     }
+     
+diff --git a/My Funny Valentine/My_Funny_ValentineApp.swift b/My Funny Valentine/My_Funny_ValentineApp.swift
+index beee2e9..2525a61 100644
+--- a/My Funny Valentine/My_Funny_ValentineApp.swift	
++++ b/My Funny Valentine/My_Funny_ValentineApp.swift	
+@@ -13,16 +13,17 @@ import CloudKit
+ struct My_Funny_ValentineApp: App {
+     @State private var storage = Self.loadStorage()
+ 
+-    private static func loadStorage() -> Result<ModelContainer, Error> {
++    private static func loadStorage() -> Result<ModelContainer, Error>? {
++        // No schema, container, app view or service is constructed by a unit or
++        // rejected private host. Release always proceeds through the normal path.
++        guard !MFVRuntime.usesBlankHost else { return nil }
+         let schema = Schema([
+             Card.self, FaceImage.self, CardImage.self, StickerReference.self, UserPreferences.self
+         ])
+         do {
+             let local: ModelConfiguration
+             if ScreenshotSupport.shouldUseQAStore {
+-                let directory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+-                    .appendingPathComponent("MyFunnyValentine-QA-\(ScreenshotSupport.qaStoreName)", isDirectory: true)
+-                try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
++                let directory = try MFVRuntime.storeDirectory()
+                 local = ModelConfiguration(schema: schema, url: directory.appendingPathComponent("cards.store"), cloudKitDatabase: .none)
+             } else {
+                 local = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false, cloudKitDatabase: .none)
+@@ -36,9 +37,19 @@ struct My_Funny_ValentineApp: App {
+     var body: some Scene {
+         WindowGroup {
+             switch storage {
+-            case .success(let container):
+-                ContentView().modelContainer(container)
+-            case .failure(let error):
++            case .some(.success(let container)):
++                if MFVRuntime.isPrivate {
++                    ContentView().modelContainer(container)
++                        .defaultAppStorage(MFVRuntime.preferences)
++                        .accessibilityElement(children: .contain)
++                        .accessibilityIdentifier("mfv.private.ui." + (MFVRuntime.configuration.session?.uuidString ?? "invalid"))
++                } else {
++                    ContentView().modelContainer(container)
++                }
++            case .none:
++                Text(MFVRuntime.configuration.mode == .invalid ? "Private QA session rejected" : "Private unit test host")
++                    .accessibilityIdentifier(MFVRuntime.configuration.mode == .invalid ? "mfv.private.invalid" : "mfv.private.unit")
++            case .some(.failure(let error)):
+                 ContentUnavailableView {
+                     Label("Cards couldn't open", systemImage: "externaldrive.badge.exclamationmark")
+                 } description: {
+diff --git a/My Funny Valentine/Services/GIFExporter.swift b/My Funny Valentine/Services/GIFExporter.swift
+index 50d21d2..4026e90 100644
+--- a/My Funny Valentine/Services/GIFExporter.swift	
++++ b/My Funny Valentine/Services/GIFExporter.swift	
+@@ -15,6 +15,7 @@ enum AnimationType {
+     case heartAnimation
+     case textReveal
+     case faceWiggle
++    case cardOpening
+ }
+ 
+ struct GIFExportOptions {
+@@ -30,16 +31,34 @@ class GIFExporter {
+     static let shared = GIFExporter()
+     private init() {}
+ 
++    /// The complete layered scene moves, even when no personal photo was added.
++    func createCardAnimation(from snapshot: CardRenderSnapshot, duration: Double = 3) -> Data? {
++        let options = GIFExportOptions(frameRate: 10, duration: duration, animationType: .cardOpening)
++        return encodeGIF(size: CardRenderer.canvasSize, options: options) { phase, size in
++            CardRenderer.shared.render(snapshot, size: size, phase: phase,
++                                       opening: CardMotion.opening(phase: phase))
++                .flatMap { PlatformGraphics.cgImage(from: $0) }
++        }
++    }
++
+     /// Each frame comes from the same renderer as the editor. Only faces move.
+     func createAnimatedGIF(
+         from card: Card,
+         options: GIFExportOptions = GIFExportOptions(animationType: .faceWiggle)
+     ) -> Data? {
++        if options.animationType == .cardOpening {
++            let snapshot = CardRenderer.shared.snapshot(of: card)
++            return encodeGIF(size: CardRenderer.canvasSize, options: options) { phase, size in
++                CardRenderer.shared.render(snapshot, size: size, phase: phase, opening: CardMotion.opening(phase: phase))
++                    .flatMap { PlatformGraphics.cgImage(from: $0) }
++            }
++        }
+         guard options.animationType != .faceWiggle || !(card.faces ?? []).isEmpty else { return nil }
++        let snapshot = CardRenderer.shared.snapshot(of: card)
+         return encodeGIF(size: CardRenderer.canvasSize, options: options) { phase, size in
+-            let image = CardRenderer.shared.renderCard(
+-                card, size: size,
+-                faceAnimationPhase: options.animationType == .faceWiggle ? phase : nil
++            let image = CardRenderer.shared.render(
++                snapshot, size: size,
++                phase: options.animationType == .faceWiggle ? phase : nil
+             )
+             guard let image else { return nil }
+             return self.frame(from: image, phase: phase, animation: options.animationType, size: size)
+@@ -48,7 +67,7 @@ class GIFExporter {
+ 
+     /// Compatibility path for an already flattened card image.
+     func createAnimatedGIF(from image: PlatformImage, options: GIFExportOptions = GIFExportOptions()) -> Data? {
+-        guard options.animationType != .faceWiggle else { return nil }
++        guard options.animationType != .faceWiggle, options.animationType != .cardOpening else { return nil }
+         return encodeGIF(size: image.size, options: options) { phase, size in
+             self.frame(from: image, phase: phase, animation: options.animationType, size: size)
+         }
+@@ -81,6 +100,7 @@ class GIFExporter {
+                 kCGImagePropertyGIFDictionary: [kCGImagePropertyGIFLoopCount: 0]
+             ] as CFDictionary)
+             for index in 0..<frameCount {
++                guard !Task.isCancelled else { return nil }
+                 let added = autoreleasepool { () -> Bool in
+                     guard let frame = makeFrame(Double(index) / Double(frameCount), output) else { return false }
+                     CGImageDestinationAddImage(destination, frame, [
+@@ -118,7 +138,7 @@ class GIFExporter {
+             case .textReveal:
+                 context.clip(to: CGRect(x: 0, y: 0, width: size.width,
+                                         height: size.height * CGFloat(min(1, phase * 2 + 0.1))))
+-            case .faceWiggle:
++            case .faceWiggle, .cardOpening:
+                 break
+             }
+             PlatformGraphics.draw(image, in: CGRect(origin: .zero, size: size), context: context)
+diff --git a/My Funny Valentine/Services/ImageManager.swift b/My Funny Valentine/Services/ImageManager.swift
+index a594f41..e70cb81 100644
+--- a/My Funny Valentine/Services/ImageManager.swift	
++++ b/My Funny Valentine/Services/ImageManager.swift	
+@@ -33,7 +33,15 @@ actor ImageManager {
+     // MARK: - Storage Paths
+ 
+     private var documentsDirectory: URL {
+-        fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
++        if MFVRuntime.isPrivate {
++            // Unit/media helpers share the valid private session. A rejected
++            // request must not read or write the ordinary Documents directory.
++            guard let path = try? MFVRuntime.mediaDirectory() else {
++                preconditionFailure("Rejected private media session")
++            }
++            return path
++        }
++        return fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+     }
+ 
+     private var imagesDirectory: URL {
+diff --git a/My Funny Valentine/Services/UserPreferencesService.swift b/My Funny Valentine/Services/UserPreferencesService.swift
+index 791fd7d..ed69bf6 100644
+--- a/My Funny Valentine/Services/UserPreferencesService.swift	
++++ b/My Funny Valentine/Services/UserPreferencesService.swift	
+@@ -51,12 +51,12 @@ class UserPreferencesService: ObservableObject {
+     /// Stable per-install identifier, shared by anything that needs to identify
+     /// this user to the backend.
+     static func deviceUserId() -> String {
+-        if let userId = UserDefaults.standard.string(forKey: "userId") {
++        if let userId = MFVRuntime.preferences.string(forKey: "userId") {
+             return userId
+         }
+ 
+         let userId = UUID().uuidString
+-        UserDefaults.standard.set(userId, forKey: "userId")
++        MFVRuntime.preferences.set(userId, forKey: "userId")
+         return userId
+     }
+     
+diff --git a/My Funny Valentine/Utilities/CardRenderer.swift b/My Funny Valentine/Utilities/CardRenderer.swift
+index e94db5b..106cf3c 100644
+--- a/My Funny Valentine/Utilities/CardRenderer.swift	
++++ b/My Funny Valentine/Utilities/CardRenderer.swift	
+@@ -11,90 +11,138 @@ import AppKit
+ class CardRenderer {
+     static let shared = CardRenderer()
+     static let canvasSize = CGSize(width: 400, height: 600)
++    private var artworkBytes: [String: Data] = [:]
+ 
+     private init() {}
+ 
++    func snapshot(of card: Card) -> CardRenderSnapshot {
++        let template = TemplateManager.shared.getTemplate(id: card.templateId ?? "")
++        let layout = card.getLayoutData()
++        let layers = (card.images ?? []).map {
++            CardRenderSnapshot.ImageLayer(data: $0.imageData, rect: CGRect(origin: $0.position, size: $0.size), rotation: $0.rotation)
++        }
++        let faces = (card.faces ?? []).enumerated().map { index, face in
++            let slot = template?.facePositions.indices.contains(index) == true ? template?.facePositions[index] : nil
++            let rect = face.size.width > 0 && face.size.height > 0
++                ? CGRect(origin: face.position, size: face.size)
++                : slot.map { CGRect(origin: $0.position, size: $0.size) }
++                    ?? CGRect(x: 140, y: 150, width: 120, height: 120)
++            return CardRenderSnapshot.ImageLayer(data: face.imageData, rect: rect, rotation: 0)
++        }
++        let stickers = (card.stickers ?? []).compactMap { layer -> CardRenderSnapshot.ImageLayer? in
++            guard let data = layer.stickerData else { return nil }
++            return .init(data: data, rect: CGRect(origin: layer.position, size: layer.size), rotation: layer.rotation)
++        }
++        return CardRenderSnapshot(
++            saying: layout?.textPositions.isEmpty == false
++                ? (layout?.textPositions.map(\.text).joined(separator: "\n\n") ?? "") : (card.saying ?? ""),
++            note: card.customText ?? "", template: template,
++            templateArtwork: template.flatMap { artworkData(named: $0.imageName) },
++            layout: layout, images: layers, faces: faces, stickers: stickers
++        )
++    }
++
+     func renderCard(
+         _ card: Card,
+         size: CGSize = CGSize(width: 800, height: 1200),
+         faceAnimationPhase: Double? = nil
+     ) -> PlatformImage? {
+-        guard size.width.isFinite, size.height.isFinite,
+-              size.width > 0, size.height > 0,
+-              size.width * size.height <= 16_000_000 else { return nil }
+-
+-        let template = TemplateManager.shared.getTemplate(id: card.templateId ?? "")
+-        let layout = card.getLayoutData()
+-        let background = layout.flatMap { PlatformColor.fromHex($0.backgroundColor) }
+-            ?? template.map { PlatformColor($0.backgroundColor.color) } ?? .white
+-        let canvas = Self.canvasSize
++        render(snapshot(of: card), size: size, phase: faceAnimationPhase)
++    }
+ 
++    func render(
++        _ snapshot: CardRenderSnapshot, size: CGSize = CGSize(width: 800, height: 1200),
++        phase: Double? = nil, opening: Double = 0, sticker: Bool = false
++    ) -> PlatformImage? {
++        guard size.width.isFinite, size.height.isFinite, size.width > 0, size.height > 0,
++              size.width * size.height <= 16_000_000, opening.isFinite,
++              phase == nil || phase?.isFinite == true else { return nil }
+         return PlatformGraphics.image(size: size, scale: 1) { context in
+-            context.setFillColor(background.cgColor)
+-            context.fill(CGRect(origin: .zero, size: size))
+-
+-            let scale = min(size.width / canvas.width, size.height / canvas.height)
+-            context.translateBy(
+-                x: (size.width - canvas.width * scale) / 2,
+-                y: (size.height - canvas.height * scale) / 2
+-            )
+-            context.scaleBy(x: scale, y: scale)
+-            context.clip(to: CGRect(origin: .zero, size: canvas))
+-
+-            if let template, let image = artwork(named: template.imageName) {
+-                draw(image, in: CGRect(origin: .zero, size: canvas), context: context, fill: true)
++            if !sticker {
++                let background = opening > 0 ? PlatformColor.fromHex("#FFF7FA")
++                    : snapshot.composition.flatMap { PlatformColor.fromHex($0.family.backgroundHex) }
++                        ?? snapshot.layout.flatMap { PlatformColor.fromHex($0.backgroundColor) }
++                        ?? snapshot.template.map { PlatformColor($0.backgroundColor.color) }
++                context.setFillColor((background ?? .white).cgColor)
++                context.fill(CGRect(origin: .zero, size: size))
+             }
++            let scale = min(size.width / Self.canvasSize.width, size.height / Self.canvasSize.height)
++            context.translateBy(x: (size.width - Self.canvasSize.width * scale) / 2,
++                                y: (size.height - Self.canvasSize.height * scale) / 2)
++            context.scaleBy(x: scale, y: scale)
++            draw(snapshot, context: context, phase: phase, opening: opening, sticker: sticker)
++        }
++    }
+ 
+-            for layer in card.images ?? [] {
+-                guard let image = PlatformImageUtils.image(from: layer.imageData) else { continue }
+-                draw(image, in: CGRect(origin: layer.position, size: layer.size),
+-                     rotation: layer.rotation, context: context)
++    /// Top-left-origin drawing also works in a PDF context without flattening text.
++    func draw(_ snapshot: CardRenderSnapshot, context: CGContext, phase: Double? = nil,
++              opening: Double = 0, sticker: Bool = false) {
++        context.saveGState()
++        defer { context.restoreGState() }
++        context.clip(to: CGRect(origin: .zero, size: Self.canvasSize))
++        if sticker {
++            drawSticker(snapshot, context: context)
++        } else if snapshot.composition != nil {
++            drawComposition(snapshot, context: context, phase: phase, opening: min(max(opening, 0), 1))
++        } else {
++            let amount = min(max(opening, 0), 1)
++            if amount > 0 {
++                context.setFillColor((PlatformColor.fromHex("#FFF7FA") ?? .white).cgColor)
++                context.fill(CGRect(origin: .zero, size: Self.canvasSize))
++                drawText(snapshot.note.isEmpty ? snapshot.saying : snapshot.note,
++                         in: CGRect(x: 40, y: 70, width: 320, height: 460), fontName: "Georgia", fontSize: 30,
++                         color: PlatformColor.fromHex("#4E2036") ?? .black, context: context)
+             }
+-            for (index, face) in (card.faces ?? []).enumerated() {
+-                guard let image = PlatformImageUtils.image(from: face.imageData) else { continue }
+-                let slot = template?.facePositions.indices.contains(index) == true
+-                    ? template?.facePositions[index] : nil
+-                let rect = face.size.width > 0 && face.size.height > 0
+-                    ? CGRect(origin: face.position, size: face.size)
+-                    : slot.map { CGRect(origin: $0.position, size: $0.size) }
+-                        ?? CGRect(x: 140, y: 150, width: 120, height: 120)
+-                let rotation = faceAnimationPhase.map { sin($0 * .pi * 2) * 6 } ?? 0
+-                draw(image, in: rect, rotation: rotation, context: context)
++            if amount < 0.995 {
++                context.saveGState()
++                context.scaleBy(x: max(0.005, 1 - amount), y: 1)
++                drawLegacy(snapshot, context: context, phase: phase)
++                context.restoreGState()
+             }
++        }
++    }
+ 
+-            for layer in card.stickers ?? [] {
+-                guard let data = layer.stickerData,
+-                      let image = PlatformImageUtils.image(from: data) else { continue }
+-                draw(image, in: CGRect(origin: layer.position, size: layer.size),
+-                     rotation: layer.rotation, context: context)
++    private func drawLegacy(_ snapshot: CardRenderSnapshot, context: CGContext, phase: Double?) {
++        let template = snapshot.template
++        let layout = snapshot.layout
++        let background = layout.flatMap { PlatformColor.fromHex($0.backgroundColor) }
++            ?? template.map { PlatformColor($0.backgroundColor.color) } ?? .white
++        context.setFillColor(background.cgColor)
++        context.fill(CGRect(origin: .zero, size: Self.canvasSize))
++        if let data = snapshot.templateArtwork, let image = PlatformImageUtils.image(from: data) {
++            draw(image, in: CGRect(origin: .zero, size: Self.canvasSize), context: context, fill: true)
++        }
++        for layer in snapshot.images {
++            guard let image = PlatformImageUtils.image(from: layer.data) else { continue }
++            draw(image, in: layer.rect, rotation: layer.rotation, context: context)
++        }
++        for face in snapshot.faces {
++            guard let image = PlatformImageUtils.image(from: face.data) else { continue }
++            draw(image, in: face.rect, rotation: phase.map { sin($0 * .pi * 2) * 6 } ?? 0, context: context)
++        }
++        for layer in snapshot.stickers {
++            guard let image = PlatformImageUtils.image(from: layer.data) else { continue }
++            draw(image, in: layer.rect, rotation: layer.rotation, context: context)
++        }
++        if let positions = layout?.textPositions, !positions.isEmpty {
++            for text in positions {
++                drawText(text.text, in: CGRect(origin: text.position, size: text.size), fontName: text.fontName,
++                         fontSize: text.fontSize, color: PlatformColor.fromHex(text.color) ?? .black, context: context)
+             }
+-
+-            if let positions = layout?.textPositions, !positions.isEmpty {
+-                for text in positions {
+-                    drawText(text.text, in: CGRect(origin: text.position, size: text.size),
+-                             fontName: text.fontName, fontSize: text.fontSize,
+-                             color: PlatformColor.fromHex(text.color) ?? .black,
+-                             context: context)
+-                }
+-            } else {
+-                let text = [card.saying, card.customText]
+-                    .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
+-                    .filter { !$0.isEmpty }.joined(separator: "\n\n")
+-                var rect = template?.textAreas.first.map {
+-                    CGRect(origin: $0.position, size: $0.size)
+-                } ?? CGRect(x: 28, y: 150, width: 344, height: 300)
+-                if let x = layout?.textPositionX, let y = layout?.textPositionY {
+-                    rect.origin = CGPoint(x: x, y: y)
+-                    if template == nil { rect.size = CGSize(width: 400 - x - 24, height: 600 - y - 24) }
+-                }
+-                let components = background.cgColor.converted(
+-                    to: CGColorSpaceCreateDeviceRGB(), intent: .defaultIntent, options: nil
+-                )?.components ?? [1, 1, 1, 1]
+-                let linear = components.prefix(3).map { $0 <= 0.04045 ? $0 / 12.92 : pow(($0 + 0.055) / 1.055, 2.4) }
+-                let luminance = linear[0] * 0.2126 + linear[1] * 0.7152 + linear[2] * 0.0722
+-                drawText(text, in: rect, fontSize: 32, color: luminance > 0.179 ? .black : .white,
+-                         rotation: layout?.textRotation ?? 0, context: context)
++        } else {
++            let text = [snapshot.saying, snapshot.note].map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
++                .filter { !$0.isEmpty }.joined(separator: "\n\n")
++            var rect = template?.textAreas.first.map { CGRect(origin: $0.position, size: $0.size) }
++                ?? CGRect(x: 28, y: 150, width: 344, height: 300)
++            if let x = layout?.textPositionX, let y = layout?.textPositionY {
++                rect.origin = CGPoint(x: x, y: y)
++                if template == nil { rect.size = CGSize(width: 400 - x - 24, height: 600 - y - 24) }
+             }
++            let c = background.rgbaComponents
++            let linear = [c.red, c.green, c.blue].map { $0 <= 0.04045 ? $0 / 12.92 : pow(($0 + 0.055) / 1.055, 2.4) }
++            let luminance = linear[0] * 0.2126 + linear[1] * 0.7152 + linear[2] * 0.0722
++            drawText(text, in: rect, fontSize: 32, color: luminance > 0.179 ? .black : .white,
++                     rotation: layout?.textRotation ?? 0, context: context)
+         }
+     }
+ 
+@@ -112,7 +160,14 @@ class CardRenderer {
+         return nil
+     }
+ 
+-    private func draw(
++    private func artworkData(named name: String) -> Data? {
++        if let cached = artworkBytes[name] { return cached }
++        guard let image = artwork(named: name), let data = PlatformImageUtils.pngData(from: image) else { return nil }
++        artworkBytes[name] = data
++        return data
++    }
++
++    func draw(
+         _ image: PlatformImage, in rect: CGRect, rotation: Double = 0,
+         context: CGContext, fill: Bool = false
+     ) {
+@@ -133,7 +188,7 @@ class CardRenderer {
+         context.restoreGState()
+     }
+ 
+-    private func drawText(
++    func drawText(
+         _ text: String, in bounds: CGRect, fontName: String? = nil,
+         fontSize: CGFloat, color: PlatformColor, rotation: Double = 0, context: CGContext
+     ) {
+diff --git a/My Funny Valentine/Utilities/ScreenshotSupport.swift b/My Funny Valentine/Utilities/ScreenshotSupport.swift
+index a56ff72..6d585da 100644
+--- a/My Funny Valentine/Utilities/ScreenshotSupport.swift	
++++ b/My Funny Valentine/Utilities/ScreenshotSupport.swift	
+@@ -6,42 +6,36 @@
+ //  platforms that can't be driven by XCUITest. Compiled out of Release builds.
+ //
+ //  Usage (macOS):
+-//    open -a "My Funny Valentine.app" --args -screenshotTab 1 -seedSampleCards YES
++//    --mfv-ui-tests --mfv-test-session <UUID> -screenshotTab 1
+ //
+ 
+ import Foundation
+ import SwiftData
+ 
++@MainActor
+ enum ScreenshotSupport {
+ 
+     static var qaStoreName: String {
+         #if DEBUG
+-        if let name = UserDefaults.standard.string(forKey: "qaStoreName"),
+-           name.range(of: "^[A-Za-z0-9-]{1,64}$", options: .regularExpression) != nil {
+-            return name
+-        }
++        return MFVRuntime.configuration.session?.uuidString ?? "invalid"
++        #else
++        return "unused"
+         #endif
+-        return "20261003"
+     }
+ 
+     /// Native QA uses a separate persistent library; Release always uses the user's store.
+     static var shouldUseQAStore: Bool {
+-        #if DEBUG && MFV_QA_STORE
+-        true
+-        #elseif DEBUG
+-        ProcessInfo.processInfo.arguments.contains("--uitesting")
+-            || UserDefaults.standard.bool(forKey: "qaStore")
+-            || ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+-        #else
+-        false
+-        #endif
++        MFVRuntime.isPrivate
+     }
+ 
+     /// Tab to select on launch. Always 0 outside DEBUG builds.
+     static var initialTab: Int {
+         #if DEBUG
+-        if UserDefaults.standard.object(forKey: "screenshotTab") != nil {
+-            return UserDefaults.standard.integer(forKey: "screenshotTab")
++        if let raw = argument("-screenshotTab"), let tab = Int(raw), (0...4).contains(tab) {
++            return tab
++        }
++        if MFVRuntime.preferences.object(forKey: "screenshotTab") != nil {
++            return min(max(MFVRuntime.preferences.integer(forKey: "screenshotTab"), 0), 4)
+         }
+         #endif
+         return 0
+@@ -51,7 +45,7 @@ enum ScreenshotSupport {
+     /// `-skipOnboarding YES`. Always false outside DEBUG builds.
+     static var shouldSkipOnboarding: Bool {
+         #if DEBUG
+-        return UserDefaults.standard.bool(forKey: "skipOnboarding")
++        return flag("skipOnboarding") ?? (MFVRuntime.configuration.mode == .ui)
+         #else
+         return false
+         #endif
+@@ -61,7 +55,7 @@ enum ScreenshotSupport {
+     /// it has been completed before. Always false outside DEBUG builds.
+     static var shouldForceOnboarding: Bool {
+         #if DEBUG
+-        return UserDefaults.standard.bool(forKey: "showOnboarding")
++        return flag("showOnboarding") ?? false
+         #else
+         return false
+         #endif
+@@ -71,7 +65,7 @@ enum ScreenshotSupport {
+     /// No-op in Release builds and when the store already has cards.
+     static func seedSampleCardsIfRequested(in context: ModelContext) {
+         #if DEBUG
+-        guard UserDefaults.standard.bool(forKey: "seedSampleCards") else { return }
++        guard flag("seedSampleCards") == true else { return }
+ 
+         let existing = (try? context.fetch(FetchDescriptor<Card>())) ?? []
+         guard existing.isEmpty else { return }
+@@ -91,4 +85,23 @@ enum ScreenshotSupport {
+         try? context.save()
+         #endif
+     }
++
++    #if DEBUG
++    private static func argument(_ name: String) -> String? {
++        let arguments = ProcessInfo.processInfo.arguments
++        let indices = arguments.indices.filter { arguments[$0] == name }
++        guard indices.count == 1, let index = indices.first, arguments.indices.contains(index + 1) else { return nil }
++        return arguments[index + 1]
++    }
++
++    private static func flag(_ name: String) -> Bool? {
++        if let raw = argument("-" + name)?.lowercased() {
++            if ["yes", "true", "1"].contains(raw) { return true }
++            if ["no", "false", "0"].contains(raw) { return false }
++            return nil
++        }
++        guard MFVRuntime.preferences.object(forKey: name) != nil else { return nil }
++        return MFVRuntime.preferences.bool(forKey: name)
++    }
++    #endif
+ }
+diff --git a/My Funny Valentine/Views/CardDetailView.swift b/My Funny Valentine/Views/CardDetailView.swift
+index bc08245..c131244 100644
+--- a/My Funny Valentine/Views/CardDetailView.swift	
++++ b/My Funny Valentine/Views/CardDetailView.swift	
+@@ -24,17 +24,31 @@ struct CardDetailView: View {
+     @State private var importTask: Task<Void, Never>?
+     @State private var errorMessage: String?
+     @State private var showingError = false
++    @State private var showingShareError = false
+     @State private var shareURL: URL?
++    @State private var insideURL: URL?
+     @State private var animatedURL: URL?
+     @State private var showingShare = false
+     @State private var exporting = false
+-    @State private var playing = false
++    @State private var opening = 0.0
++    @State private var pdfURL: URL?
++    @State private var stickerURL: URL?
++    @State private var htmlURL: URL?
++    @State private var printData: Data?
++    @State private var showingPrint = false
++    @State private var exportSnapshot: CardRenderSnapshot?
++    @State private var exportTask: Task<Void, Never>?
+ 
+     init(card: Card?, starter: Card? = nil) {
+         self.card = card
+         let initial = CardDraft.copy(of: card ?? starter ?? Card())
+         if card == nil {
+             initial.id = UUID()
++            if starter == nil {
++                var layout = initial.getLayoutData() ?? CardLayoutData()
++                layout.composition = CardComposition()
++                initial.setLayoutData(layout)
++            }
+             for face in initial.faces ?? [] { face.id = UUID(); face.cardId = initial.id }
+             for image in initial.images ?? [] { image.id = UUID(); image.cardId = initial.id }
+             for sticker in initial.stickers ?? [] { sticker.id = UUID(); sticker.cardId = initial.id }
+@@ -110,7 +124,9 @@ struct CardDetailView: View {
+             }
+         }
+         .sheet(isPresented: $showingSayings) {
+-            SayingsGenerationView(userId: UserPreferencesService.deviceUserId()) { message.wrappedValue = $0 }
++            if !MFVRuntime.isPrivate {
++                SayingsGenerationView(userId: UserPreferencesService.deviceUserId()) { message.wrappedValue = $0 }
++            }
+         }
+         .sheet(isPresented: $showingFaces) {
+             FaceSelectionView(faces: detectedFaces) { addFace($0) }
+@@ -137,19 +153,68 @@ struct CardDetailView: View {
+         }
+         .onChange(of: artworkItem) { _, item in importPhoto(item, face: false) }
+         .onChange(of: faceItem) { _, item in importPhoto(item, face: true) }
+-        .onDisappear { importTask?.cancel() }
++        .onDisappear { importTask?.cancel(); exportTask?.cancel() }
+     }
+ 
+     private var preview: some View {
+-        TimelineView(.animation(minimumInterval: 1.0 / 12, paused: !playing || reduceMotion)) { timeline in
+-            CardTileView(
+-                card: draft, size: CGSize(width: 280, height: 420),
+-                faceAnimationPhase: playing && !reduceMotion
+-                    ? timeline.date.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 2) / 2 : nil
+-            )
++        CardStageView(snapshot: CardRenderer.shared.snapshot(of: draft), opening: $opening,
++                      motionEnabled: draft.getLayoutData()?.composition?.motionEnabled ?? false)
++            .accessibilityIdentifier("cardDetail.preview")
++    }
++
++    private var composition: CardComposition? { draft.getLayoutData()?.composition }
++    private var artworkSource: Image? {
++        guard let data = draft.images?.first?.imageData, let image = PlatformImageUtils.image(from: data) else { return nil }
++        return PlatformImageUtils.swiftUIImage(from: image)
++    }
++
++    private var stylePicker: some View {
++        VStack(alignment: .leading, spacing: 12) {
++            Text("Set the scene").font(.title2.bold())
++            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
++                ForEach(CardVisualFamily.allCases) { family in
++                    Button {
++                        var layout = draft.getLayoutData() ?? CardLayoutData()
++                        layout.composition = CardComposition(family: family, variant: composition?.variant ?? 0,
++                                                             motionEnabled: composition?.motionEnabled ?? true)
++                        draft.setLayoutData(layout)
++                        opening = 0
++                        changed()
++                    } label: {
++                        VStack(alignment: .leading, spacing: 8) {
++                            HStack {
++                                Image(systemName: family.symbol).font(.title2.bold())
++                                Spacer(minLength: 4)
++                                if composition?.family == family { Image(systemName: "checkmark.circle.fill") }
++                            }
++                            Text(family.title).font(.subheadline.bold()).fixedSize(horizontal: false, vertical: true)
++                        }
++                        .padding(12).frame(maxWidth: .infinity, minHeight: 88, alignment: .leading)
++                        .foregroundStyle(Color(PlatformColor.fromHex(family.inkHex) ?? .black))
++                        .background(Color(PlatformColor.fromHex(family.backgroundHex) ?? .white), in: RoundedRectangle(cornerRadius: 12))
++                    }
++                    .buttonStyle(.plain)
++                    .accessibilityIdentifier("cardDetail.style." + family.rawValue)
++                    .accessibilityAddTraits(composition?.family == family ? .isSelected : [])
++                }
++            }
++            if let composition {
++                Picker("Composition", selection: Binding(get: { composition.variant }, set: { value in
++                    var layout = draft.getLayoutData() ?? CardLayoutData()
++                    layout.composition?.variant = value
++                    draft.setLayoutData(layout); opening = 0; changed()
++                })) {
++                    ForEach(0..<5, id: \.self) { index in Text("Layout \(index + 1)").tag(index) }
++                }
++                .accessibilityIdentifier("cardDetail.variant")
++                Toggle(isOn: Binding(get: { draft.getLayoutData()?.composition?.motionEnabled ?? true }, set: { value in
++                    var layout = draft.getLayoutData() ?? CardLayoutData()
++                    layout.composition?.motionEnabled = value
++                    draft.setLayoutData(layout); changed()
++                })) { Label("Bring it to life", systemImage: "play.circle.fill") }
++                    .accessibilityIdentifier("cardDetail.motion")
++            }
+         }
+-        .shadow(color: .black.opacity(0.12), radius: 12, y: 6)
+-        .accessibilityIdentifier("cardDetail.preview")
+     }
+ 
+     private var editor: some View {
+@@ -175,6 +240,7 @@ struct CardDetailView: View {
+                     .frame(minHeight: 44)
+             }
+             .accessibilityIdentifier("cardDetail.generateWithAI")
++            .disabled(MFVRuntime.isPrivate)
+ 
+             Divider()
+             Text("Make it personal").font(.title2.bold())
+@@ -182,7 +248,8 @@ struct CardDetailView: View {
+                 HStack(spacing: 12) { photoButton; faceButton }
+                 VStack(alignment: .leading, spacing: 8) { photoButton; faceButton }
+             }
+-            ImagePlaygroundButton(generatedImageURL: $playgroundURL, concept: draft.saying ?? "") { image in
++            .disabled(MFVRuntime.isPrivate)
++            ImagePlaygroundButton(generatedImageURL: $playgroundURL, concept: draft.saying ?? "", sourceImage: artworkSource) { image in
+                 guard let data = PlatformImageUtils.pngData(from: image) else {
+                     fail("That artwork couldn't be read. Please try again.")
+                     return
+@@ -193,17 +260,10 @@ struct CardDetailView: View {
+ 
+             if importing { ProgressView("Adding photo…").accessibilityIdentifier("cardDetail.importing") }
+             if !(draft.faces ?? []).isEmpty {
+-                if !reduceMotion {
+-                    Button { playing.toggle() } label: {
+-                        Label(playing ? "Pause face" : "Play face", systemImage: playing ? "pause.fill" : "play.fill")
+-                            .frame(minHeight: 44)
+-                    }
+-                    .accessibilityIdentifier("cardDetail.playFace")
+-                }
+                 HStack {
+                     Label("Face added", systemImage: "person.crop.circle.badge.checkmark")
+                     Spacer()
+-                    Button("Remove", role: .destructive) { draft.faces = []; playing = false; changed() }
++                    Button("Remove", role: .destructive) { draft.faces = []; changed() }
+                 }
+                 .font(.subheadline)
+             }
+@@ -215,9 +275,10 @@ struct CardDetailView: View {
+                 }
+                 .font(.subheadline)
+             }
++            Divider().padding(.vertical, 4)
++            stylePicker
+         }
+-        .padding(20)
+-        .background(Color.appSecondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 20))
++        .padding(.vertical, 8)
+         .buttonStyle(.bordered)
+         .tint(colorScheme == .dark
+             ? Color(red: 0.98, green: 0.55, blue: 0.68)
+@@ -257,10 +318,13 @@ struct CardDetailView: View {
+         NavigationStack {
+             ScrollView {
+                 VStack(spacing: 20) {
+-                    preview
++                    if let exportSnapshot {
++                        CardStageView(snapshot: exportSnapshot, opening: $opening,
++                                      motionEnabled: exportSnapshot.composition?.motionEnabled ?? false)
++                    }
+                     if let shareURL {
+                         ShareLink(item: shareURL, preview: SharePreview("My Funny Valentine")) {
+-                            Label("Share card", systemImage: "square.and.arrow.up")
++                            Label("Share card front", systemImage: "square.and.arrow.up")
+                                 .frame(minHeight: 44)
+                         }
+                         .buttonStyle(.borderedProminent)
+@@ -273,28 +337,29 @@ struct CardDetailView: View {
+                         }
+                         .buttonStyle(.bordered)
+                         .accessibilityIdentifier("cardDetail.shareGIF")
+-                    } else if !(draft.faces ?? []).isEmpty {
+-                        Button {
+-                            exporting = true
+-                            Task {
+-                                await Task.yield()
+-                                defer { exporting = false }
+-                                guard let data = GIFExporter.shared.createAnimatedGIF(from: draft) else {
+-                                    fail("The animation couldn't be exported. Your card is still ready to share.")
+-                                    return
+-                                }
+-                                do { animatedURL = try export(data, extension: "gif") }
+-                                catch { fail(error.localizedDescription) }
+-                            }
+-                        } label: {
+-                            Label("Animate face", systemImage: "person.crop.rectangle.badge.sparkles")
+-                                .frame(minHeight: 44)
++                    } else {
++                        Button { makeExport(.animation) } label: {
++                            Label("Animate the card", systemImage: "play.rectangle.fill").frame(minHeight: 44)
+                         }
+-                        .buttonStyle(.bordered)
+-                        .disabled(exporting)
+-                        .accessibilityIdentifier("cardDetail.animateFace")
++                        .buttonStyle(.bordered).disabled(exporting)
++                        .accessibilityIdentifier("cardDetail.animateCard")
++                    }
++                    if let exportSnapshot, !exportSnapshot.note.isEmpty {
++                        exportRow(title: "Inside message PNG", symbol: "envelope.open", url: insideURL, kind: .inside)
+                     }
+-                    if exporting { ProgressView("Making animation…") }
++                    exportRow(title: "Printable PDF", symbol: "doc.richtext", url: pdfURL, kind: .pdf)
++                    exportRow(title: "Chat sticker PNG", symbol: "face.smiling", url: stickerURL, kind: .sticker)
++                    exportRow(title: "Interactive browser card", symbol: "globe", url: htmlURL, kind: .html)
++                    if let printData {
++                        Button { self.printData = printData; showingPrint = true } label: {
++                            Label("Print card", systemImage: "printer.fill").frame(minHeight: 44)
++                        }
++                        .buttonStyle(.bordered).accessibilityIdentifier("cardDetail.print")
++                        .disabled(MFVRuntime.isPrivate)
++                    }
++                    Text("Mail and chat apps appear in your device's share menu.")
++                        .font(.footnote).foregroundStyle(.secondary).multilineTextAlignment(.center)
++                    if exporting { ProgressView("Making your file…").accessibilityIdentifier("cardDetail.exporting") }
+                 }
+                 .padding(20)
+             }
+@@ -307,13 +372,25 @@ struct CardDetailView: View {
+                     Button("Done") { showingShare = false }
+                 }
+             }
++            .sheet(isPresented: $showingPrint) {
++                if let printData {
++                    CardPrintView(data: printData) { showingPrint = false }
++                        .frame(minWidth: 280, minHeight: 240)
++                }
++            }
++            .alert("Couldn't export", isPresented: $showingShareError) {
++                Button("OK", role: .cancel) { }
++            } message: { Text(errorMessage ?? "Your draft is still here. Try again.") }
+         }
+     }
+ 
+     private func changed() {
+         draft.updateModifiedDate()
+         shareURL = nil
++        insideURL = nil
+         animatedURL = nil
++        pdfURL = nil; stickerURL = nil; htmlURL = nil; printData = nil
++        exportSnapshot = nil
+     }
+ 
+     private func addArtwork(_ data: Data, source: ImageSource) {
+@@ -385,20 +462,54 @@ struct CardDetailView: View {
+     }
+ 
+     private func prepareShare() {
+-        playing = false
+-        guard let image = CardRenderer.shared.renderCard(draft),
+-              let data = PlatformImageUtils.pngData(from: image) else {
+-            fail("The card couldn't be exported. Your changes are still here.")
+-            return
+-        }
++        opening = 0
++        let snapshot = CardRenderer.shared.snapshot(of: draft)
+         do {
+-            shareURL = try export(data, extension: "png")
++            shareURL = try export(CardExportService.png(snapshot), extension: "png")
++            exportSnapshot = snapshot
+             showingShare = true
+         } catch { fail(error.localizedDescription) }
+     }
+ 
++    private enum ExportKind: String { case animation, inside, pdf, sticker, html }
++
++    @ViewBuilder private func exportRow(title: String, symbol: String, url: URL?, kind: ExportKind) -> some View {
++        if let url {
++            ShareLink(item: url) { Label("Share " + title, systemImage: "square.and.arrow.up").frame(minHeight: 44) }
++                .buttonStyle(.bordered).accessibilityIdentifier("cardDetail.share." + kind.rawValue)
++        } else {
++            Button { makeExport(kind) } label: { Label(title, systemImage: symbol).frame(minHeight: 44) }
++                .buttonStyle(.bordered).disabled(exporting).accessibilityIdentifier("cardDetail.export." + kind.rawValue)
++        }
++    }
++
++    private func makeExport(_ kind: ExportKind) {
++        guard !exporting, let snapshot = exportSnapshot else { return }
++        exporting = true
++        exportTask = Task {
++            await Task.yield()
++            guard !Task.isCancelled else { exporting = false; return }
++            defer { exporting = false }
++            do {
++                switch kind {
++                case .animation:
++                    guard let data = GIFExporter.shared.createCardAnimation(from: snapshot) else { throw CardExportService.ExportError.render }
++                    animatedURL = try export(data, extension: "gif")
++                case .inside: insideURL = try export(CardExportService.png(snapshot, inside: true), extension: "png")
++                case .pdf:
++                    let data = try CardExportService.pdf(snapshot)
++                    pdfURL = try export(data, extension: "pdf"); printData = data
++                case .sticker: stickerURL = try export(CardExportService.stickerPNG(snapshot), extension: "png")
++                case .html: htmlURL = try export(CardExportService.interactiveHTML(snapshot), extension: "html")
++                }
++            } catch {
++                if !Task.isCancelled { fail(error.localizedDescription) }
++            }
++        }
++    }
++
+     private func export(_ data: Data, extension fileExtension: String) throws -> URL {
+-        let url = FileManager.default.temporaryDirectory
++        let url = try MFVRuntime.mediaDirectory()
+             .appendingPathComponent("Valentine-\(UUID().uuidString).\(fileExtension)")
+         try data.write(to: url, options: .atomic)
+         return url
+@@ -406,6 +517,7 @@ struct CardDetailView: View {
+ 
+     private func fail(_ message: String) {
+         errorMessage = message
+-        showingError = true
++        if showingShare { showingShareError = true }
++        else { showingError = true }
+     }
+ }
+diff --git a/My Funny Valentine/Views/HomeView.swift b/My Funny Valentine/Views/HomeView.swift
+index 13aa634..ace6bad 100644
+--- a/My Funny Valentine/Views/HomeView.swift	
++++ b/My Funny Valentine/Views/HomeView.swift	
+@@ -6,8 +6,8 @@ struct HomeView: View {
+     @State private var collection = "all"
+ 
+     private let collections = [
+-        ("all", "All cards"), ("pizza", "Pizza crush"), ("space", "Cosmic love"),
+-        ("birds", "Lovebirds"), ("dino", "Dino-mite"), ("disco", "Disco date"), ("sweets", "Sweet tooth")
++        ("all", "All cards"), ("pizza", "Comic crush"), ("space", "Cosmic love"),
++        ("birds", "Love letters"), ("dino", "Pop-up hearts"), ("disco", "Photo booth"), ("sweets", "Confetti party")
+     ]
+     private var starters: [CardTemplate] {
+         let templates = TemplateManager.shared.getStarterTemplates()
+@@ -94,10 +94,18 @@ private struct StarterCardLink: View {
+         NavigationLink {
+             CardDetailView(card: nil, starter: draft)
+         } label: {
+-            GeometryReader { geometry in
+-                CardTileView(card: draft, size: geometry.size)
++            VStack(alignment: .leading, spacing: 10) {
++                GeometryReader { geometry in
++                    CardTileView(card: draft, size: geometry.size)
++                }
++                .aspectRatio(2.0 / 3.0, contentMode: .fit)
++                if let family = draft.getLayoutData()?.composition?.family {
++                    Label(family.title, systemImage: family.symbol)
++                        .font(.subheadline.bold())
++                        .fixedSize(horizontal: false, vertical: true)
++                        .foregroundStyle(.primary)
++                }
+             }
+-            .aspectRatio(2.0 / 3.0, contentMode: .fit)
+         }
+         .buttonStyle(.plain)
+         .accessibilityLabel(template.textAreas.first?.defaultText ?? template.name)
+diff --git a/My Funny Valentine/Views/ImagePlaygroundSheetModifier.swift b/My Funny Valentine/Views/ImagePlaygroundSheetModifier.swift
+index c07d97e..c5c7cd2 100644
+--- a/My Funny Valentine/Views/ImagePlaygroundSheetModifier.swift	
++++ b/My Funny Valentine/Views/ImagePlaygroundSheetModifier.swift	
+@@ -14,7 +14,7 @@ struct ImagePlaygroundButton: View {
+ 
+     var body: some View {
+         #if canImport(ImagePlayground)
+-        if #available(iOS 18.1, macOS 15.1, visionOS 2.4, *) {
++        if !MFVRuntime.isPrivate, #available(iOS 18.1, macOS 15.1, visionOS 2.4, *) {
+             ImagePlaygroundButtonContent(
+                 generatedImageURL: $generatedImageURL,
+                 concept: concept,
+@@ -39,7 +39,18 @@ private struct ImagePlaygroundButtonContent: View {
+ 
+     var body: some View {
+         if supportsImagePlayground {
+-            Button {
++            if #available(iOS 26.0, macOS 26.0, visionOS 26.0, *) {
++                playgroundAction.imagePlaygroundGenerationStyle(.illustration, in: [.illustration, .animation, .sketch, .externalProvider])
++            } else if #available(iOS 18.4, macOS 15.4, visionOS 2.4, *) {
++                playgroundAction.imagePlaygroundGenerationStyle(.illustration, in: [.illustration, .animation, .sketch])
++            } else {
++                playgroundAction
++            }
++        }
++    }
++
++    private var playgroundAction: some View {
++        Button {
+                 showImagePlayground = true
+             } label: {
+                 Label("Image Playground", systemImage: "sparkles")
+@@ -66,7 +77,6 @@ private struct ImagePlaygroundButtonContent: View {
+             } message: {
+                 Text("Try Image Playground again, or choose a photo.")
+             }
+-        }
+     }
+ }
+ #endif
+diff --git a/My Funny Valentine/Views/SettingsView.swift b/My Funny Valentine/Views/SettingsView.swift
+index 27d4987..f12e0b6 100644
+--- a/My Funny Valentine/Views/SettingsView.swift	
++++ b/My Funny Valentine/Views/SettingsView.swift	
+@@ -64,7 +64,7 @@ struct SettingsView: View {
+     /// macOS borrows the app's existing sidebar; the Settings tab owns navigation elsewhere.
+     var section: SettingsSection? = nil
+     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+-    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
++    @AppStorage("hasCompletedOnboarding", store: MFVRuntime.preferences) private var hasCompletedOnboarding = false
+ 
+     @State private var selectedSection: SettingsSection? = .generation
+     @State private var preferredCompactColumn: NavigationSplitViewColumn = .sidebar
+@@ -117,10 +117,10 @@ struct SettingsView: View {
+                 }
+ 
+                 Section {
+-                    generationStatus("Sayings", symbol: "sparkles", value: OnDeviceSayingsGenerator.isAvailable ? "On device" : "Built-in")
++                    generationStatus("Sayings", symbol: "sparkles", value: MFVRuntime.isPrivate ? "Private QA" : (OnDeviceSayingsGenerator.isAvailable ? "On device" : "Built-in"))
+                     generationStatus("Artwork", symbol: "photo.artframe", value: "Samples and Photos")
+ 
+-                    if let reason = OnDeviceSayingsGenerator.unavailableReason {
++                    if !MFVRuntime.isPrivate, let reason = OnDeviceSayingsGenerator.unavailableReason {
+                         Text(reason)
+                             .font(.footnote)
+                             .foregroundStyle(.secondary)
+diff --git a/My Funny ValentineTests/TestUtilities.swift b/My Funny ValentineTests/TestUtilities.swift
+index 6355d8c..dbd9b24 100644
+--- a/My Funny ValentineTests/TestUtilities.swift	
++++ b/My Funny ValentineTests/TestUtilities.swift	
+@@ -27,7 +27,8 @@ extension ModelContainer {
+         
+         let configuration = ModelConfiguration(
+             schema: schema,
+-            isStoredInMemoryOnly: true
++            isStoredInMemoryOnly: true,
++            cloudKitDatabase: .none
+         )
+         
+         return try ModelContainer(for: schema, configurations: [configuration])
+diff --git a/README.md b/README.md
+index 67b673e..46d5af6 100644
+--- a/README.md
++++ b/README.md
+@@ -278,3 +278,10 @@ See LICENSE file for details.
+ ## Contributing
+ 
+ This is a personal project. For questions or issues, please open an issue on GitHub.
++
++
++### Creative-card work prepared October 4, 2026
++
++A local candidate adds six visual families to the thirty starters, tap/drag opening, complete-card GIFs, readable PDF/print output, transparent PNG chat images and self-contained browser cards. Original card IDs and saved classic layouts remain compatible. The new code and seven export/render tests are prepared for native verification; they are not the bytes currently waiting for Apple review. See [DESIGN.md](DESIGN.md) and [the candidate handoff](app-store-audit/2026-10-04-creative-cards/README.md).
++
++The prepared DEBUG test bootstrap has separate UUID preferences and Store/Media directories, with blank unit and invalid-session hosts. Six isolation tests and three local native UI methods are added. No compiler or runtime has been invoked for this candidate; [the exact QA plan](app-store-audit/2026-10-04-creative-cards/qa-plan.prepared.md) records the remaining checks.
+diff --git a/My Funny Valentine/Components/CardStageView.swift b/My Funny Valentine/Components/CardStageView.swift
+new file mode 100644
+index 0000000..48dc259
+--- /dev/null
++++ b/My Funny Valentine/Components/CardStageView.swift	
+@@ -0,0 +1,64 @@
++import SwiftUI
++
++/// The clock stays inside the preview instead of invalidating the text editor.
++struct CardStageView: View {
++    @Environment(\.accessibilityReduceMotion) private var reduceMotion
++    let snapshot: CardRenderSnapshot
++    var size = CGSize(width: 280, height: 420)
++    @Binding var opening: Double
++    var motionEnabled: Bool
++    @State private var startedAt = Date()
++    @State private var dragStart: Double?
++    @State private var openingTask: Task<Void, Never>?
++
++    var body: some View {
++        VStack(spacing: 14) {
++            TimelineView(.animation(minimumInterval: 1.0 / 10, paused: reduceMotion || !motionEnabled)) { timeline in
++                let phase = reduceMotion || !motionEnabled ? nil : CardMotion.phase(elapsed: timeline.date.timeIntervalSince(startedAt))
++                if let image = CardRenderer.shared.render(snapshot, size: CGSize(width: size.width * 2, height: size.height * 2),
++                                                           phase: phase, opening: opening) {
++                    Button(action: toggleOpening) {
++                        PlatformImageUtils.swiftUIImage(from: image)
++                        .resizable().scaledToFit()
++                        .frame(width: size.width, height: size.height)
++                        .clipShape(RoundedRectangle(cornerRadius: 8))
++                        .shadow(color: .black.opacity(0.18), radius: 16, x: 0, y: 10)
++                        .contentShape(Rectangle())
++                    }
++                        .buttonStyle(.plain)
++                        .highPriorityGesture(DragGesture(minimumDistance: 12).onChanged { value in
++                            openingTask?.cancel()
++                            if dragStart == nil { dragStart = opening }
++                            opening = min(max((dragStart ?? opening) - Double(value.translation.width / max(1, size.width)), 0), 1)
++                        }.onEnded { _ in dragStart = nil })
++                        .accessibilityElement(children: .ignore)
++                        .accessibilityLabel("Card preview. " + (opening > 0.5 && !snapshot.note.isEmpty ? snapshot.note : snapshot.saying))
++                        .accessibilityValue(opening > 0.5 ? "Inside" : "Front")
++                        .accessibilityAction(named: opening > 0.5 ? "Close card" : "Open card") { toggleOpening() }
++                }
++            }
++            Button(action: toggleOpening) {
++                Label(opening > 0.5 ? "Close card" : "Open card", systemImage: opening > 0.5 ? "envelope" : "envelope.open.fill")
++                    .font(.headline).frame(minHeight: 44)
++            }
++            .buttonStyle(.bordered)
++            .accessibilityIdentifier("cardDetail.openCard")
++        }
++        .onDisappear { openingTask?.cancel() }
++    }
++
++    private func toggleOpening() {
++        openingTask?.cancel()
++        let target = opening > 0.5 ? 0.0 : 1.0
++        if reduceMotion || !motionEnabled { opening = target; return }
++        let start = opening
++        openingTask = Task { @MainActor in
++            for step in 1...12 {
++                guard !Task.isCancelled else { return }
++                let p = Double(step) / 12
++                opening = start + (target - start) * (1 - pow(1 - p, 3))
++                try? await Task.sleep(for: .milliseconds(45))
++            }
++        }
++    }
++}
+diff --git a/My Funny Valentine/Models/CardComposition.swift b/My Funny Valentine/Models/CardComposition.swift
+new file mode 100644
+index 0000000..7965599
+--- /dev/null
++++ b/My Funny Valentine/Models/CardComposition.swift	
+@@ -0,0 +1,124 @@
++import Foundation
++import CoreGraphics
++
++/// Optional JSON in CardLayoutData: older saved cards keep their original layout.
++nonisolated struct CardComposition: Codable, Equatable {
++    var version = 1
++    var family: CardVisualFamily
++    var variant: Int
++    var motionEnabled: Bool
++
++    init(family: CardVisualFamily = .loveLetter, variant: Int = 0, motionEnabled: Bool = true) {
++        self.family = family
++        self.variant = min(max(variant, 0), 4)
++        self.motionEnabled = motionEnabled
++    }
++
++    static func starter(templateID: String) -> CardComposition? {
++        let parts = templateID.split(separator: "_")
++        guard parts.count == 3, parts[0] == "starter", let number = Int(parts[2]), (1...5).contains(number) else { return nil }
++        let families: [String: CardVisualFamily] = [
++            "pizza": .comic, "space": .cosmic, "birds": .loveLetter,
++            "dino": .popUp, "disco": .photoBooth, "sweets": .confetti
++        ]
++        guard let family = families[String(parts[1])] else { return nil }
++        return CardComposition(family: family, variant: number - 1)
++    }
++
++    var isSupported: Bool { version == 1 && (0...4).contains(variant) }
++}
++
++nonisolated enum CardVisualFamily: String, CaseIterable, Codable, Identifiable, Hashable {
++    case comic, cosmic, loveLetter, photoBooth, confetti, popUp
++    var id: String { rawValue }
++    var title: String {
++        switch self {
++        case .comic: "Comic crush"
++        case .cosmic: "Cosmic love"
++        case .loveLetter: "Love letter"
++        case .photoBooth: "Photo booth"
++        case .confetti: "Confetti party"
++        case .popUp: "Pop-up heart"
++        }
++    }
++    var symbol: String {
++        switch self {
++        case .comic: "bolt.fill"
++        case .cosmic: "sparkles"
++        case .loveLetter: "envelope.open.fill"
++        case .photoBooth: "photo.stack.fill"
++        case .confetti: "party.popper.fill"
++        case .popUp: "heart.fill"
++        }
++    }
++    var backgroundHex: String {
++        switch self {
++        case .comic: "#FFE95C"
++        case .cosmic: "#161B55"
++        case .loveLetter: "#F8C9D2"
++        case .photoBooth: "#242033"
++        case .confetti: "#BCEEE9"
++        case .popUp: "#294CD3"
++        }
++    }
++    var inkHex: String {
++        switch self {
++        case .comic: "#231F20"
++        case .cosmic, .photoBooth, .popUp: "#FFFFFF"
++        case .loveLetter: "#741B37"
++        case .confetti: "#143E4C"
++        }
++    }
++    var accentHex: String {
++        switch self {
++        case .comic: "#E52E63"
++        case .cosmic: "#F2B4D4"
++        case .loveLetter: "#B52C50"
++        case .photoBooth: "#EBA0C4"
++        case .confetti: "#D33364"
++        case .popUp: "#FFC4D9"
++        }
++    }
++    var fontName: String {
++        switch self {
++        case .comic: "AvenirNext-Heavy"
++        case .cosmic: "AvenirNext-DemiBold"
++        case .loveLetter: "Georgia-Bold"
++        case .photoBooth: "AvenirNextCondensed-Bold"
++        case .confetti: "AvenirNext-Heavy"
++        case .popUp: "Georgia-Bold"
++        }
++    }
++}
++
++/// Time is an explicit input, so preview, export and offline browser frames agree.
++nonisolated enum CardMotion {
++    static func phase(elapsed: TimeInterval, duration: TimeInterval = 3) -> Double {
++        guard elapsed.isFinite, duration.isFinite, duration > 0 else { return 0 }
++        return max(0, elapsed).truncatingRemainder(dividingBy: duration) / duration
++    }
++    static func opening(phase: Double) -> Double {
++        guard phase.isFinite else { return 0 }
++        let p = min(max(phase, 0), 1)
++        let triangle = p < 0.5 ? p * 2 : (1 - p) * 2
++        return triangle * triangle * (3 - 2 * triangle)
++    }
++}
++
++/// Frozen value graph. Never reads a SwiftData model or file during an export.
++nonisolated struct CardRenderSnapshot {
++    struct ImageLayer {
++        let data: Data
++        let rect: CGRect
++        let rotation: Double
++    }
++    let saying: String
++    let note: String
++    let template: CardTemplate?
++    let templateArtwork: Data?
++    let layout: CardLayoutData?
++    let images: [ImageLayer]
++    let faces: [ImageLayer]
++    let stickers: [ImageLayer]
++    var composition: CardComposition? { layout?.composition.flatMap { $0.isSupported ? $0 : nil } }
++}
+diff --git a/My Funny Valentine/Services/CardExportService.swift b/My Funny Valentine/Services/CardExportService.swift
+new file mode 100644
+index 0000000..284f765
+--- /dev/null
++++ b/My Funny Valentine/Services/CardExportService.swift	
+@@ -0,0 +1,136 @@
++import Foundation
++import CoreGraphics
++import CoreText
++#if canImport(UIKit)
++import UIKit
++#elseif canImport(AppKit)
++import AppKit
++#endif
++
++/// Local export only. Every format consumes the same immutable card snapshot.
++enum CardExportService {
++    enum ExportError: LocalizedError {
++        case render, tooLarge, stickerTooLarge
++        var errorDescription: String? {
++            switch self {
++            case .render: "The card couldn't be exported. Your draft is still here."
++            case .tooLarge: "This file would be too large. Try a shorter note or a smaller photo."
++            case .stickerTooLarge: "This sticker is too detailed for a small chat image. Try a shorter message or remove the photo."
++            }
++        }
++    }
++
++    static func png(_ card: CardRenderSnapshot, inside: Bool = false) throws -> Data {
++        guard let image = CardRenderer.shared.render(card, opening: inside ? 1 : 0),
++              let data = PlatformImageUtils.pngData(from: image) else { throw ExportError.render }
++        return data
++    }
++
++    /// Transparent PNG for sharing as a chat image. This does not claim to
++    /// register a Messages/WhatsApp sticker pack or extension.
++    static func stickerPNG(_ card: CardRenderSnapshot) throws -> Data {
++        for edge: CGFloat in [618, 408, 300] {
++            guard let image = CardRenderer.shared.render(card, size: CGSize(width: edge, height: edge), sticker: true),
++                  let data = PlatformImageUtils.pngData(from: image) else { throw ExportError.render }
++            if data.count < 500_000 { return data }
++        }
++        throw ExportError.stickerTooLarge
++    }
++
++    /// A 4 × 6 inch front plus readable inside pages. Long saved notes continue
++    /// onto additional pages rather than being clipped or reduced to tiny type.
++    static func pdf(_ card: CardRenderSnapshot) throws -> Data {
++        let data = NSMutableData()
++        guard let consumer = CGDataConsumer(data: data as CFMutableData) else { throw ExportError.render }
++        var box = CGRect(x: 0, y: 0, width: 288, height: 432)
++        guard let context = CGContext(consumer: consumer, mediaBox: &box, nil) else { throw ExportError.render }
++        context.beginPDFPage(nil)
++        context.saveGState()
++        context.translateBy(x: 0, y: box.height); context.scaleBy(x: 0.72, y: -0.72)
++        CardRenderer.shared.draw(card, context: context)
++        context.restoreGState(); context.endPDFPage()
++
++        let content = [card.saying, card.note].filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
++            .joined(separator: "\n\n")
++        let paragraph = NSMutableParagraphStyle()
++        paragraph.alignment = .center
++        paragraph.lineBreakMode = .byWordWrapping
++        let text = NSAttributedString(string: content.isEmpty ? "Made with love." : content, attributes: [
++            .font: PlatformFont(name: "Georgia", size: 18) ?? PlatformFont.systemFont(ofSize: 18),
++            .foregroundColor: PlatformColor.fromHex("#4E2036") ?? .black,
++            .paragraphStyle: paragraph
++        ])
++        guard text.length <= 100_000 else { throw ExportError.tooLarge }
++        let setter = CTFramesetterCreateWithAttributedString(text as CFAttributedString)
++        var location = 0
++        while location < text.length {
++            try Task.checkCancellation()
++            context.beginPDFPage(nil)
++            context.setFillColor((PlatformColor.fromHex("#FFF7FA") ?? .white).cgColor)
++            context.fill(box)
++            let path = CGPath(rect: CGRect(x: 28, y: 36, width: 232, height: 360), transform: nil)
++            let frame = CTFramesetterCreateFrame(setter, CFRange(location: location, length: 0), path, nil)
++            let visible = CTFrameGetVisibleStringRange(frame)
++            guard visible.length > 0 else { throw ExportError.render }
++            CTFrameDraw(frame, context)
++            context.endPDFPage()
++            location += visible.length
++        }
++        context.closePDF()
++        return data as Data
++    }
++
++    /// No scripts from user input, remote fonts, trackers or CDN dependencies.
++    /// The baked frame sequence is generated by the native renderer; CSS adds
++    /// a small perspective interaction around those identical pixels.
++    static func interactiveHTML(_ card: CardRenderSnapshot) throws -> Data {
++        var frames: [String] = []
++        let count = 16
++        for index in 0..<count {
++            try Task.checkCancellation()
++            // The 16 frames are the opening half of the same 30-frame/3-second
++            // clock used by the full GIF, including its eased paper fold.
++            let phase = Double(index) / Double((count - 1) * 2)
++            let opening = CardMotion.opening(phase: phase)
++            let frame = try autoreleasepool { () throws -> String in
++                guard let image = CardRenderer.shared.render(card, size: CGSize(width: 400, height: 600),
++                                                             phase: phase, opening: opening),
++                      let data = PlatformImageUtils.pngData(from: image) else { throw ExportError.render }
++                return "data:image/png;base64," + data.base64EncodedString()
++            }
++            frames.append(frame)
++        }
++        let json = try JSONSerialization.data(withJSONObject: frames, options: [.fragmentsAllowed])
++        guard let frameJSON = String(data: json, encoding: .utf8) else { throw ExportError.render }
++        let words = htmlEscape(card.saying)
++        let alt = words.replacingOccurrences(of: "<br>", with: " ")
++        let note = htmlEscape(card.note)
++        let html = """
++        <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
++        <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
++        <meta name="color-scheme" content="light dark"><title>My Funny Valentine</title>
++        <style>
++        *{box-sizing:border-box}body{margin:0;min-height:100svh;background:#39192d;color:#fff1f7;font:18px/1.5 Georgia,serif;display:grid;justify-items:center;align-content:center;gap:20px;padding:24px}
++        main{width:min(100%,440px);text-align:center}button{font:600 17px/1.4 system-ui;color:#39192d;background:#f4b5d0;border:0;border-radius:14px;min-height:48px;padding:12px 24px;cursor:pointer}button:focus-visible{outline:3px solid white;outline-offset:5px}
++        #card{display:block;width:100%;aspect-ratio:2/3;object-fit:contain;touch-action:pan-y;user-select:none;filter:drop-shadow(0 16px 20px #13000b88);transform:perspective(1000px) rotateY(var(--tilt,0deg));transform-origin:center}
++        p{overflow-wrap:anywhere}summary{cursor:pointer;padding:12px}::selection{background:#f4b5d0;color:#39192d}@media(prefers-reduced-motion:reduce){#card{transform:none}}
++        </style></head><body><main><img id="card" alt="\(alt)" src="\(frames[0])" draggable="false"><p><button id="open" type="button">Open card</button></p>
++        <details><summary>Read the message</summary><p>\(words)</p><p>\(note)</p></details></main>
++        <script>
++        const frames=\(frameJSON),image=document.getElementById('card'),button=document.getElementById('open');
++        let value=0,startX=null,startValue=0,animation=null;const calm=matchMedia('(prefers-reduced-motion:reduce)').matches||\(card.composition?.motionEnabled == false ? "true" : "false");
++        function show(v){value=Math.max(0,Math.min(1,v));image.src=frames[Math.round(value*(frames.length-1))];image.style.setProperty('--tilt',calm?'0deg':(-4*(1-value))+'deg');button.textContent=value>.5?'Close card':'Open card';button.setAttribute('aria-expanded',String(value>.5))}
++        function toggle(){cancelAnimationFrame(animation);const from=value,to=value>.5?0:1;if(calm){show(to);return}const started=performance.now();function tick(now){const p=Math.min(1,(now-started)/600);show(from+(to-from)*(1-Math.pow(1-p,3)));if(p<1)animation=requestAnimationFrame(tick)}animation=requestAnimationFrame(tick)}
++        button.addEventListener('click',toggle);image.addEventListener('pointerdown',e=>{cancelAnimationFrame(animation);startX=e.clientX;startValue=value;image.setPointerCapture(e.pointerId)});image.addEventListener('pointermove',e=>{if(startX!==null)show(startValue+(startX-e.clientX)/Math.max(1,image.clientWidth))});image.addEventListener('pointerup',e=>{const small=Math.abs(e.clientX-startX)<8;startX=null;if(small)toggle()});image.addEventListener('pointercancel',()=>startX=null);show(0);
++        </script></body></html>
++        """
++        guard let data = html.data(using: .utf8), data.count <= 12 * 1024 * 1024 else { throw ExportError.tooLarge }
++        return data
++    }
++
++    static func htmlEscape(_ text: String) -> String {
++        text.replacingOccurrences(of: "&", with: "&amp;").replacingOccurrences(of: "<", with: "&lt;")
++            .replacingOccurrences(of: ">", with: "&gt;").replacingOccurrences(of: "\"", with: "&quot;")
++            .replacingOccurrences(of: "'", with: "&#39;").replacingOccurrences(of: "\n", with: "<br>")
++    }
++}
+diff --git a/My Funny Valentine/Utilities/CardRenderer+Composition.swift b/My Funny Valentine/Utilities/CardRenderer+Composition.swift
+new file mode 100644
+index 0000000..8c1589d
+--- /dev/null
++++ b/My Funny Valentine/Utilities/CardRenderer+Composition.swift	
+@@ -0,0 +1,212 @@
++import Foundation
++import CoreGraphics
++
++extension CardRenderer {
++    func drawComposition(_ card: CardRenderSnapshot, context: CGContext, phase: Double?, opening: Double) {
++        guard let design = card.composition else { return }
++        let family = design.family
++        let background = color(family.backgroundHex)
++        let ink = color(family.inkHex)
++        let accent = color(family.accentHex)
++        let motion = design.motionEnabled ? (phase ?? 0) : 0
++        let wave = CGFloat(sin(motion * .pi * 2))
++        let variant = CGFloat(design.variant)
++
++        // The inside is real card content, revealed by the same affine fold in
++        // native previews, GIF frames and the standalone browser's baked frames.
++        if opening > 0 {
++            context.setFillColor(color("#FFF7FA").cgColor)
++            context.fill(CGRect(x: 0, y: 0, width: 400, height: 600))
++            heart(in: CGRect(x: 174, y: 34, width: 52, height: 48), color: accent, context: context)
++            let insideText = card.note.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? card.saying : card.note
++            drawText(insideText, in: CGRect(x: 40, y: 104, width: 320, height: 390),
++                     fontName: "Georgia", fontSize: 30, color: color("#4E2036"), context: context)
++            context.setStrokeColor(accent.withAlphaComponent(0.25).cgColor)
++            context.setLineWidth(1)
++            context.stroke(CGRect(x: 20, y: 20, width: 360, height: 560))
++        }
++        guard opening < 0.995 else { return }
++        context.saveGState()
++        defer { context.restoreGState() }
++        context.scaleBy(x: max(0.005, 1 - opening), y: 1)
++        context.setFillColor(background.cgColor)
++        context.fill(CGRect(x: 0, y: 0, width: 400, height: 600))
++
++        var artRect = CGRect(x: 42, y: 42, width: 316, height: 310)
++        var wordsRect = CGRect(x: 32, y: 398, width: 336, height: 155)
++        var fontSize: CGFloat = 38
++        var textColor = ink
++        switch family {
++        case .comic:
++            let center = CGPoint(x: 200 + (variant - 2) * 12, y: 200)
++            context.setFillColor(accent.cgColor)
++            for index in 0..<18 {
++                let angle = CGFloat(index) * .pi / 9 + wave * 0.025
++                context.beginPath()
++                context.move(to: center)
++                context.addLine(to: CGPoint(x: center.x + cos(angle) * 430, y: center.y + sin(angle) * 430))
++                context.addLine(to: CGPoint(x: center.x + cos(angle + 0.065) * 430, y: center.y + sin(angle + 0.065) * 430))
++                context.closePath()
++                context.fillPath()
++            }
++            artRect = CGRect(x: 34 + variant * 3, y: 46, width: 324 - variant * 6, height: 300)
++            panel(artRect.insetBy(dx: -7, dy: -7), fill: .white, stroke: ink, width: 5, radius: 4, context: context)
++            panel(CGRect(x: 20, y: 380, width: 360, height: 190), fill: .white, stroke: ink, width: 5, radius: 22, context: context)
++            wordsRect = CGRect(x: 36, y: 398, width: 328, height: 150)
++            fontSize = 42 + variant * 2
++        case .cosmic:
++            for index in 0..<58 {
++                let x = CGFloat((index * 97 + design.variant * 31) % 380 + 10)
++                let y = CGFloat((index * 71) % 570 + 15)
++                let radius: CGFloat = index % 7 == 0 ? 2.8 : 1
++                context.setFillColor(ink.withAlphaComponent(index % 3 == 0 ? 0.5 : 0.85).cgColor)
++                context.fillEllipse(in: CGRect(x: x, y: y, width: radius * 2, height: radius * 2))
++            }
++            artRect = CGRect(x: 58 - variant * 4, y: 66, width: 284 + variant * 8, height: 284 + variant * 8)
++            context.setStrokeColor(accent.cgColor)
++            context.setLineWidth(3)
++            context.strokeEllipse(in: artRect.insetBy(dx: -18, dy: 20))
++            let angle = motion * .pi * 2 + Double(design.variant)
++            heart(in: CGRect(x: 190 + CGFloat(cos(angle)) * 167, y: 190 + CGFloat(sin(angle)) * 100,
++                             width: 24, height: 22), color: accent, context: context)
++        case .loveLetter:
++            artRect = CGRect(x: 54, y: 55 + variant * 5, width: 292, height: 250)
++            panel(CGRect(x: 30, y: 30, width: 340, height: 536), fill: color("#FFEDF2"), stroke: nil,
++                  radius: 6, context: context)
++            context.setFillColor(accent.withAlphaComponent(0.14).cgColor)
++            context.beginPath()
++            context.move(to: CGPoint(x: 30, y: 566)); context.addLine(to: CGPoint(x: 200, y: 420))
++            context.addLine(to: CGPoint(x: 370, y: 566)); context.closePath(); context.fillPath()
++            heart(in: CGRect(x: 177, y: 320, width: 46, height: 42), color: accent, context: context)
++            wordsRect = CGRect(x: 48, y: 376, width: 304, height: 140)
++            fontSize = 32 + variant * 2
++        case .photoBooth:
++            artRect = CGRect(x: 52, y: 38, width: 296, height: 345)
++            for side in [CGFloat(54), 334] {
++                for row in 0..<10 {
++                    panel(CGRect(x: side, y: CGFloat(row) * 37 + 32, width: 12, height: 19),
++                          fill: accent, stroke: nil, radius: 2, context: context)
++                }
++            }
++            wordsRect = CGRect(x: 34, y: 424, width: 332, height: 128)
++            fontSize = 42 + variant * 2
++        case .confetti:
++            for index in 0..<42 {
++                let x = CGFloat((index * 53 + design.variant * 29) % 370 + 8)
++                let y = CGFloat((index * 113) % 570 + 8) + wave * CGFloat(index % 3 + 1) * 3
++                context.saveGState()
++                context.translateBy(x: x, y: y)
++                context.rotate(by: CGFloat(index) * 0.43 + wave * 0.08)
++                context.setFillColor(color(["#D33364", "#274ECB", "#F6AE33"][index % 3]).cgColor)
++                if index % 2 == 0 { context.fill(CGRect(x: 0, y: 0, width: 9, height: 19)) }
++                else { context.fillEllipse(in: CGRect(x: 0, y: 0, width: 9, height: 9)) }
++                context.restoreGState()
++            }
++            artRect = CGRect(x: 70, y: 56 + variant * 6, width: 260, height: 260)
++            wordsRect = CGRect(x: 30, y: 360, width: 340, height: 170)
++            fontSize = 46 + variant * 2
++        case .popUp:
++            for index in (0..<4).reversed() {
++                let inset = CGFloat(index) * (16 + variant * 2)
++                heart(in: CGRect(x: 45 + inset, y: 36 + inset + variant * 4, width: 310 - inset * 2, height: 290 - inset),
++                      color: accent.withAlphaComponent(0.2 + CGFloat(4 - index) * 0.18), context: context)
++            }
++            artRect = CGRect(x: 100 - variant * 6, y: 110 + wave * 5 + variant * 4, width: 200 + variant * 12, height: 190)
++            wordsRect = CGRect(x: 30, y: 380, width: 340, height: 170)
++            fontSize = 36 + variant * 2
++        }
++
++        // Artwork is clipped as a deliberate print/photo window, never used as
++        // an invented foreground matte for the person.
++        let data = card.images.first?.data ?? card.templateArtwork
++        if let data, let image = PlatformImageUtils.image(from: data) {
++            if family == .photoBooth {
++                let frames: [(CGRect, Double)]
++                switch design.variant {
++                case 0:
++                    frames = (0..<3).map { (CGRect(x: 90, y: 32 + CGFloat($0) * 117, width: 220, height: 106), 0) }
++                case 1:
++                    frames = [(CGRect(x: 48, y: 38, width: 230, height: 180), -8),
++                              (CGRect(x: 125, y: 214, width: 230, height: 170), 7)]
++                case 2:
++                    frames = (0..<4).map { (CGRect(x: 48 + CGFloat($0 % 2) * 157, y: 40 + CGFloat($0 / 2) * 175,
++                                                  width: 147, height: 155), 0) }
++                case 3:
++                    frames = [(CGRect(x: 45, y: 44, width: 310, height: 310), 0)]
++                default:
++                    frames = [(CGRect(x: 58, y: 42, width: 240, height: 165), 5),
++                              (CGRect(x: 90, y: 218, width: 240, height: 165), -5)]
++                }
++                for (rect, rotation) in frames {
++                    context.saveGState()
++                    context.translateBy(x: rect.midX, y: rect.midY)
++                    context.rotate(by: CGFloat(rotation * .pi / 180))
++                    context.translateBy(x: -rect.midX, y: -rect.midY)
++                    panel(rect.insetBy(dx: -7, dy: -7), fill: .white, stroke: nil, radius: 2, context: context)
++                    clippedImage(image, rect: rect, ellipse: false, context: context)
++                    context.restoreGState()
++                }
++            } else {
++                clippedImage(image, rect: artRect, ellipse: family == .cosmic || family == .confetti, context: context)
++            }
++        } else {
++            heart(in: artRect.insetBy(dx: 32, dy: 40), color: accent, context: context)
++        }
++        for face in card.faces {
++            guard let image = PlatformImageUtils.image(from: face.data) else { continue }
++            let rect = CGRect(x: artRect.midX - 54, y: artRect.midY - 60, width: 108, height: 120)
++            draw(image, in: rect, rotation: phase == nil ? 0 : Double(wave * 6), context: context)
++        }
++        for layer in card.stickers {
++            guard let image = PlatformImageUtils.image(from: layer.data) else { continue }
++            draw(image, in: layer.rect, rotation: layer.rotation, context: context)
++        }
++        if family == .loveLetter { textColor = color("#741B37") }
++        drawText(card.saying, in: wordsRect, fontName: family.fontName, fontSize: fontSize,
++                 color: textColor, context: context)
++        if !card.note.isEmpty {
++            drawText(card.note.count <= 40 ? card.note : "A note waits inside", in: CGRect(x: 38, y: 556, width: 324, height: 28),
++                     fontName: "Georgia", fontSize: 14, color: textColor, context: context)
++        }
++        if opening > 0 {
++            context.setFillColor(ink.withAlphaComponent(CGFloat(opening * 0.25)).cgColor)
++            context.fill(CGRect(x: 390, y: 0, width: 10, height: 600))
++        }
++    }
++
++    func drawSticker(_ card: CardRenderSnapshot, context: CGContext) {
++        let family = card.composition?.family ?? .loveLetter
++        heart(in: CGRect(x: 35, y: 52, width: 330, height: 310), color: color(family.accentHex), context: context)
++        if let face = card.faces.first, let image = PlatformImageUtils.image(from: face.data) {
++            draw(image, in: CGRect(x: 110, y: 116, width: 180, height: 190), context: context)
++        }
++        panel(CGRect(x: 20, y: 345, width: 360, height: 172), fill: .white, stroke: nil, radius: 28, context: context)
++        drawText(card.saying, in: CGRect(x: 38, y: 362, width: 324, height: 134),
++                 fontName: family.fontName, fontSize: 34, color: color("#4E2036"), context: context)
++    }
++
++    private func color(_ hex: String) -> PlatformColor { PlatformColor.fromHex(hex) ?? .black }
++    private func panel(_ rect: CGRect, fill: PlatformColor, stroke: PlatformColor?, width: CGFloat = 1,
++                       radius: CGFloat, context: CGContext) {
++        let path = CGPath(roundedRect: rect, cornerWidth: radius, cornerHeight: radius, transform: nil)
++        context.addPath(path); context.setFillColor(fill.cgColor); context.fillPath()
++        if let stroke { context.addPath(path); context.setStrokeColor(stroke.cgColor); context.setLineWidth(width); context.strokePath() }
++    }
++    private func clippedImage(_ image: PlatformImage, rect: CGRect, ellipse: Bool, context: CGContext) {
++        context.saveGState()
++        if ellipse { context.addEllipse(in: rect) }
++        else { context.addPath(CGPath(roundedRect: rect, cornerWidth: 5, cornerHeight: 5, transform: nil)) }
++        context.clip()
++        draw(image, in: rect, context: context, fill: true)
++        context.restoreGState()
++    }
++    private func heart(in rect: CGRect, color: PlatformColor, context: CGContext) {
++        let x = rect.minX, y = rect.minY, w = rect.width, h = rect.height
++        context.beginPath(); context.move(to: CGPoint(x: x + w / 2, y: y + h))
++        context.addCurve(to: CGPoint(x: x, y: y + h * 0.32), control1: CGPoint(x: x + w * 0.3, y: y + h * 0.8), control2: CGPoint(x: x, y: y + h * 0.6))
++        context.addCurve(to: CGPoint(x: x + w / 2, y: y + h * 0.17), control1: CGPoint(x: x, y: y - h * 0.07), control2: CGPoint(x: x + w * 0.4, y: y - h * 0.13))
++        context.addCurve(to: CGPoint(x: x + w, y: y + h * 0.32), control1: CGPoint(x: x + w * 0.6, y: y - h * 0.13), control2: CGPoint(x: x + w, y: y - h * 0.07))
++        context.addCurve(to: CGPoint(x: x + w / 2, y: y + h), control1: CGPoint(x: x + w, y: y + h * 0.6), control2: CGPoint(x: x + w * 0.7, y: y + h * 0.8))
++        context.closePath(); context.setFillColor(color.cgColor); context.fillPath()
++    }
++}
+diff --git a/My Funny Valentine/Utilities/MFVRuntime.swift b/My Funny Valentine/Utilities/MFVRuntime.swift
+new file mode 100644
+index 0000000..57ebac4
+--- /dev/null
++++ b/My Funny Valentine/Utilities/MFVRuntime.swift	
+@@ -0,0 +1,110 @@
++import Foundation
++
++/// Release resolves the original app paths. DEBUG QA cannot fall back to them.
++nonisolated enum MFVRuntime {
++    enum Mode: String, Sendable { case normal, unit, ui, invalid }
++    struct Configuration: Sendable {
++        let mode: Mode
++        let session: UUID?
++        var isPrivate: Bool { mode != .normal }
++        var usesBlankHost: Bool { mode == .unit || mode == .invalid }
++    }
++    enum IsolationError: LocalizedError {
++        case invalidSession
++        var errorDescription: String? { "Private QA needs a valid session UUID." }
++    }
++
++    static let configuration: Configuration = {
++        #if DEBUG
++        let process = ProcessInfo.processInfo
++        let isXCTest = process.environment["XCTestConfigurationFilePath"] != nil
++            || process.environment["XCTestBundlePath"] != nil || NSClassFromString("XCTestCase") != nil
++        #if MFV_QA_STORE
++        let forcedPrivate = true
++        #else
++        let forcedPrivate = false
++        #endif
++        return parse(arguments: process.arguments, environment: process.environment,
++                     isXCTest: isXCTest, forcedPrivate: forcedPrivate)
++        #else
++        return Configuration(mode: .normal, session: nil)
++        #endif
++    }()
++
++    static var isPrivate: Bool { configuration.isPrivate }
++    static var usesBlankHost: Bool { configuration.usesBlankHost }
++
++    @MainActor private static let privatePreferences: UserDefaults = {
++        let identifier = configuration.session ?? UUID()
++        guard let preferences = UserDefaults(suiteName: "MFVPrivateQA." + identifier.uuidString) else {
++            // Creating a private domain may fail, but ordinary preferences are
++            // never an acceptable fallback for a private process.
++            fatalError("Private QA preferences could not open")
++        }
++        return preferences
++    }()
++
++    @MainActor static var preferences: UserDefaults {
++        isPrivate ? privatePreferences : .standard
++    }
++
++    static func privateRoot() throws -> URL {
++        guard isPrivate, let session = configuration.session, configuration.mode != .invalid else {
++            throw IsolationError.invalidSession
++        }
++        return FileManager.default.temporaryDirectory
++            .appendingPathComponent("MFVPrivateQA-" + session.uuidString, isDirectory: true)
++    }
++
++    static func storeDirectory() throws -> URL {
++        let path = try privateRoot().appendingPathComponent("Store", isDirectory: true)
++        try FileManager.default.createDirectory(at: path, withIntermediateDirectories: true)
++        return path
++    }
++
++    static func mediaDirectory() throws -> URL {
++        if !isPrivate { return FileManager.default.temporaryDirectory }
++        let path = try privateRoot().appendingPathComponent("Media", isDirectory: true)
++        try FileManager.default.createDirectory(at: path, withIntermediateDirectories: true)
++        return path
++    }
++
++    /// Pure parsing is also tested without opening a preference domain or store.
++    static func parse(arguments: [String], environment: [String: String], isXCTest: Bool,
++                      forcedPrivate: Bool = false, generatedUnitSession: UUID = UUID()) -> Configuration {
++        let unit = arguments.contains("--mfv-unit-tests")
++        let ui = arguments.contains("--mfv-ui-tests") || arguments.contains("--uitesting") || forcedPrivate
++        let indices = arguments.indices.filter { arguments[$0] == "--mfv-test-session" }
++        let hasArgument = !indices.isEmpty
++        let argumentSession = indices.first.flatMap { index in
++            arguments.indices.contains(index + 1) ? arguments[index + 1] : nil
++        }
++        let environmentSession = environment["MFV_TEST_SESSION"]
++        let legacyPrivate = arguments.contains("-qaStore") || arguments.contains("-qaStoreName")
++        let requested = unit || ui || hasArgument || environmentSession != nil || legacyPrivate || isXCTest
++        guard requested else { return Configuration(mode: .normal, session: nil) }
++        guard !(unit && ui), indices.count <= 1 else { return Configuration(mode: .invalid, session: nil) }
++
++        func validUUID(_ value: String?) -> UUID? {
++            guard let value, value.range(of: "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$", options: .regularExpression) != nil else { return nil }
++            return UUID(uuidString: value)
++        }
++        if hasArgument && validUUID(argumentSession) == nil { return Configuration(mode: .invalid, session: nil) }
++        if environmentSession != nil && validUUID(environmentSession) == nil { return Configuration(mode: .invalid, session: nil) }
++        if let argument = validUUID(argumentSession), let value = validUUID(environmentSession), argument != value {
++            return Configuration(mode: .invalid, session: nil)
++        }
++        let explicitSession = validUUID(argumentSession) ?? validUUID(environmentSession)
++        if ui {
++            guard let explicitSession else { return Configuration(mode: .invalid, session: nil) }
++            return Configuration(mode: .ui, session: explicitSession)
++        }
++        if unit || isXCTest {
++            // An explicitly requested unit session must supply its UUID. An
++            // automatic test host may use a fresh, stable process-local UUID.
++            if unit && explicitSession == nil { return Configuration(mode: .invalid, session: nil) }
++            return Configuration(mode: .unit, session: explicitSession ?? generatedUnitSession)
++        }
++        return Configuration(mode: .invalid, session: nil)
++    }
++}
+diff --git a/My Funny Valentine/Views/CardPrintView.swift b/My Funny Valentine/Views/CardPrintView.swift
+new file mode 100644
+index 0000000..446b029
+--- /dev/null
++++ b/My Funny Valentine/Views/CardPrintView.swift	
+@@ -0,0 +1,69 @@
++import SwiftUI
++#if os(iOS)
++import UIKit
++
++struct CardPrintView: UIViewControllerRepresentable {
++    let data: Data
++    let finished: () -> Void
++    func makeUIViewController(context: Context) -> PrintController { PrintController(data: data, finished: finished) }
++    func updateUIViewController(_ controller: PrintController, context: Context) { }
++
++    final class PrintController: UIViewController {
++        let data: Data
++        let finished: () -> Void
++        private var presented = false
++        init(data: Data, finished: @escaping () -> Void) {
++            self.data = data; self.finished = finished
++            super.init(nibName: nil, bundle: nil)
++        }
++        required init?(coder: NSCoder) { return nil }
++        override func viewDidAppear(_ animated: Bool) {
++            super.viewDidAppear(animated)
++            guard !presented else { return }
++            presented = true
++            let printer = UIPrintInteractionController.shared
++            let info = UIPrintInfo(dictionary: nil)
++            info.jobName = "My Funny Valentine"
++            info.outputType = .general
++            printer.printInfo = info
++            printer.printingItem = data
++            printer.present(from: view.bounds, in: view, animated: true) { _, _, _ in self.finished() }
++        }
++    }
++}
++#elseif os(macOS)
++import AppKit
++import PDFKit
++
++struct CardPrintView: NSViewRepresentable {
++    let data: Data
++    let finished: () -> Void
++    func makeNSView(context: Context) -> PrintAnchor { PrintAnchor(data: data, finished: finished) }
++    func updateNSView(_ view: PrintAnchor, context: Context) { }
++
++    final class PrintAnchor: NSView {
++        let data: Data
++        let finished: () -> Void
++        private var presented = false
++        init(data: Data, finished: @escaping () -> Void) {
++            self.data = data; self.finished = finished
++            super.init(frame: .zero)
++        }
++        required init?(coder: NSCoder) { return nil }
++        override func viewDidMoveToWindow() {
++            super.viewDidMoveToWindow()
++            guard window != nil, !presented else { return }
++            presented = true
++            DispatchQueue.main.async { [weak self] in
++                guard let self,
++                      let document = PDFDocument(data: self.data),
++                      let info = NSPrintInfo.shared.copy() as? NSPrintInfo,
++                      let operation = document.printOperation(for: info, scalingMode: .pageScaleDownToFit, autoRotate: true)
++                else { self?.finished(); return }
++                operation.run()
++                self.finished()
++            }
++        }
++    }
++}
++#endif
+diff --git a/My Funny ValentineTests/Services/CreativeCardExportTests.swift b/My Funny ValentineTests/Services/CreativeCardExportTests.swift
+new file mode 100644
+index 0000000..0ab541c
+--- /dev/null
++++ b/My Funny ValentineTests/Services/CreativeCardExportTests.swift	
+@@ -0,0 +1,160 @@
++import Foundation
++import CoreGraphics
++import ImageIO
++import Testing
++@testable import My_Funny_Valentine
++
++@MainActor
++struct CreativeCardExportTests {
++    @Test("Old layout JSON remains classic and all thirty starters receive six distinct new families")
++    func backwardCompatibleLayoutsAndStarters() throws {
++        let old = Data(#"{"backgroundColor":"#FFFFFF","textPositions":[],"imagePositions":[],"stickerPositions":[]}"#.utf8)
++        let decoded = try JSONDecoder().decode(CardLayoutData.self, from: old)
++        #expect(decoded.composition == nil)
++        let future = Data(#"{"backgroundColor":"#123456","textPositions":[],"imagePositions":[],"stickerPositions":[],"composition":{"version":2,"family":"futureFamily","variant":0,"motionEnabled":true}}"#.utf8)
++        let futureLayout = try JSONDecoder().decode(CardLayoutData.self, from: future)
++        #expect(futureLayout.backgroundColor == "#123456")
++        #expect(futureLayout.composition == nil)
++        var families: Set<CardVisualFamily> = []
++        var designs: Set<String> = []
++        for template in TemplateManager.shared.getStarterTemplates() {
++            let draft = TemplateManager.shared.makeDraft(from: template)
++            let design = try #require(draft.getLayoutData()?.composition)
++            families.insert(design.family)
++            designs.insert(design.family.rawValue + String(design.variant))
++            #expect(design.motionEnabled)
++            let image = CardRenderer.shared.renderCard(draft, size: CGSize(width: 200, height: 300))
++            #expect(image != nil)
++        }
++        #expect(families == Set(CardVisualFamily.allCases))
++        #expect(designs.count == 30)
++        var unsupported = CardLayoutData(composition: CardComposition())
++        unsupported.composition?.version = 99
++        let card = Card(saying: "Keep my saved words", layoutData: unsupported)
++        #expect(CardRenderer.shared.snapshot(of: card).composition == nil)
++        #expect(CardRenderer.shared.renderCard(card) != nil)
++    }
++
++    @Test("Frozen export pixels survive later text, artwork and layout edits")
++    func snapshotDoesNotReadLiveDraft() throws {
++        let template = try #require(TemplateManager.shared.getTemplate(id: "starter_space_1"))
++        let card = TemplateManager.shared.makeDraft(from: template)
++        card.customText = "A message just for you."
++        let image = try #require(PlatformGraphics.image(size: CGSize(width: 20, height: 20), scale: 1) { context in
++            context.setFillColor(PlatformColor.red.cgColor)
++            context.fill(CGRect(x: 0, y: 0, width: 20, height: 20))
++        })
++        let bytes = try #require(PlatformImageUtils.pngData(from: image))
++        let layer = CardImage(cardId: card.id, source: .photoImport, imageData: bytes)
++        card.images = [layer]
++        let snapshot = CardRenderer.shared.snapshot(of: card)
++        let frozenArtwork = try #require(snapshot.templateArtwork)
++        #expect(!frozenArtwork.isEmpty)
++        #expect(snapshot.template?.id == "starter_space_1")
++        let original = try CardExportService.png(snapshot)
++        // Change only the live template first. The frozen bytes must retain the
++        // original cosmic artwork, while a fresh snapshot uses the pizza art.
++        card.templateId = "starter_pizza_1"
++        let changedTemplate = CardRenderer.shared.snapshot(of: card)
++        #expect(changedTemplate.template?.id == "starter_pizza_1")
++        #expect(changedTemplate.templateArtwork != frozenArtwork)
++        #expect(snapshot.templateArtwork == frozenArtwork)
++        #expect(try CardExportService.png(snapshot) == original)
++        #expect(try CardExportService.png(changedTemplate) != original)
++        card.saying = "Replaced after sharing"
++        card.customText = "Different note"
++        card.setLayoutData(CardLayoutData(composition: CardComposition(family: .comic)))
++        layer.imageData = Data([0])
++        card.images = []
++        #expect(try CardExportService.png(snapshot) == original)
++        #expect(try CardExportService.png(CardRenderer.shared.snapshot(of: card)) != original)
++    }
++
++    @Test("Full card GIF opens real inside content without a face and keeps finite frame timing")
++    func fullCardAnimation() throws {
++        let card = Card(saying: "Stay wonderful", customText: "A little note inside",
++                        layoutData: CardLayoutData(composition: CardComposition(family: .confetti)))
++        let snapshot = CardRenderer.shared.snapshot(of: card)
++        let data = try #require(GIFExporter.shared.createCardAnimation(from: snapshot))
++        let source = try #require(CGImageSourceCreateWithData(data as CFData, nil))
++        #expect(CGImageSourceGetCount(source) == 30)
++        let front = try #require(CGImageSourceCreateImageAtIndex(source, 0, nil))
++        let inside = try #require(CGImageSourceCreateImageAtIndex(source, 15, nil))
++        #expect(front.width == 400 && front.height == 600)
++        let frontBytes = try #require(front.dataProvider?.data) as Data
++        let insideBytes = try #require(inside.dataProvider?.data) as Data
++        #expect(frontBytes != insideBytes)
++        let properties = try #require(CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [String: Any])
++        let gif = try #require(properties[kCGImagePropertyGIFDictionary as String] as? [String: Any])
++        #expect((gif[kCGImagePropertyGIFUnclampedDelayTime as String] as? Double) == 0.1)
++        #expect(GIFExporter.shared.createAnimatedGIF(from: card,
++            options: GIFExportOptions(frameRate: 0, animationType: .cardOpening)) == nil)
++        #expect(CardMotion.opening(phase: 0) == 0)
++        #expect(CardMotion.opening(phase: 0.5) == 1)
++        #expect(CardMotion.opening(phase: 1) == 0)
++        #expect(CardMotion.phase(elapsed: .infinity) == 0)
++    }
++
++    @Test("Motion-off frames stay still and manual inside selection remains usable")
++    func calmMotionAndOpening() throws {
++        let card = Card(saying: "My favorite person", customText: "Keep this little note",
++                        layoutData: CardLayoutData(composition: CardComposition(family: .cosmic, motionEnabled: false)))
++        let snapshot = CardRenderer.shared.snapshot(of: card)
++        let first = try #require(CardRenderer.shared.render(snapshot, phase: 0))
++        let later = try #require(CardRenderer.shared.render(snapshot, phase: 0.4))
++        #expect(PlatformImageUtils.pngData(from: first) == PlatformImageUtils.pngData(from: later))
++        #expect(try CardExportService.png(snapshot, inside: true) != CardExportService.png(snapshot))
++        #expect(CardRenderer.shared.render(snapshot, opening: .nan) == nil)
++    }
++
++    @Test("PDF preserves 4 by 6 inch pages and continues long Unicode notes")
++    func printablePDF() throws {
++        let note = String(repeating: "A long, readable note with café and love.\n", count: 100)
++        let card = Card(saying: "With love", customText: note,
++                        layoutData: CardLayoutData(composition: CardComposition(family: .loveLetter)))
++        let data = try CardExportService.pdf(CardRenderer.shared.snapshot(of: card))
++        let provider = try #require(CGDataProvider(data: data as CFData))
++        let document = try #require(CGPDFDocument(provider))
++        #expect(document.numberOfPages > 2)
++        for number in 1...document.numberOfPages {
++            let page = try #require(document.page(at: number))
++            #expect(page.getBoxRect(.mediaBox) == CGRect(x: 0, y: 0, width: 288, height: 432))
++        }
++    }
++
++    @Test("Sticker has real transparency, bounded bytes and a square output")
++    func transparentSticker() throws {
++        let card = Card(saying: "You make life sweeter", layoutData: CardLayoutData(composition: CardComposition(family: .confetti)))
++        let data = try CardExportService.stickerPNG(CardRenderer.shared.snapshot(of: card))
++        #expect(data.count < 500_000)
++        let source = try #require(CGImageSourceCreateWithData(data as CFData, nil))
++        let image = try #require(CGImageSourceCreateImageAtIndex(source, 0, nil))
++        #expect(image.width == image.height)
++        #expect([618, 408, 300].contains(image.width))
++        let cropped = try #require(image.cropping(to: CGRect(x: 0, y: 0, width: 1, height: 1)))
++        var pixel = [UInt8](repeating: 0, count: 4)
++        try pixel.withUnsafeMutableBytes { buffer in
++            let context = try #require(CGContext(data: buffer.baseAddress, width: 1, height: 1,
++                                                 bitsPerComponent: 8, bytesPerRow: 4, space: CGColorSpaceCreateDeviceRGB(),
++                                                 bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
++            context.draw(cropped, in: CGRect(x: 0, y: 0, width: 1, height: 1))
++        }
++        #expect(pixel[3] == 0)
++    }
++
++    @Test("Browser export embeds its native frames and escapes executable user text")
++    func safeOfflineBrowserCard() throws {
++        let payload = #"</script><img src=x onerror="alert(1)"> & ' café"#
++        let card = Card(saying: payload, customText: "A\nB",
++                        layoutData: CardLayoutData(composition: CardComposition(family: .popUp)))
++        let data = try CardExportService.interactiveHTML(CardRenderer.shared.snapshot(of: card))
++        let html = try #require(String(data: data, encoding: .utf8))
++        #expect(!html.contains(payload))
++        #expect(html.contains("&lt;/script&gt;"))
++        #expect(html.contains("data:image/png;base64,"))
++        #expect(!html.contains("https://"))
++        #expect(!html.contains("<script src="))
++        #expect(html.contains("prefers-reduced-motion"))
++        #expect(html.contains("Read the message"))
++    }
++}
+diff --git a/My Funny ValentineTests/Services/MFVRuntimeIsolationTests.swift b/My Funny ValentineTests/Services/MFVRuntimeIsolationTests.swift
+new file mode 100644
+index 0000000..622017a
+--- /dev/null
++++ b/My Funny ValentineTests/Services/MFVRuntimeIsolationTests.swift	
+@@ -0,0 +1,92 @@
++import Foundation
++import Testing
++@testable import My_Funny_Valentine
++
++@MainActor
++struct MFVRuntimeIsolationTests {
++    @Test("A valid explicit UI UUID selects only its private session")
++    func validUISession() {
++        let session = UUID()
++        let configuration = MFVRuntime.parse(arguments: ["app", "--mfv-ui-tests", "--mfv-test-session", session.uuidString.lowercased()],
++                                             environment: [:], isXCTest: false)
++        #expect(configuration.mode == .ui)
++        #expect(configuration.session == session)
++        #expect(configuration.isPrivate && !configuration.usesBlankHost)
++    }
++
++    @Test("Missing and malformed explicit private requests remain blank")
++    func malformedPrivateRequests() {
++        let requests: [[String]] = [
++            ["--mfv-ui-tests"], ["--uitesting"], ["-qaStore", "YES"], ["-qaStoreName", "old-gallery"],
++            ["--mfv-test-session"], ["--mfv-ui-tests", "--mfv-test-session", "../ordinary"],
++            ["--mfv-unit-tests"], ["--mfv-unit-tests", "--mfv-test-session", "not-a-uuid"]
++        ]
++        for request in requests {
++            let configuration = MFVRuntime.parse(arguments: ["app"] + request, environment: [:], isXCTest: false)
++            #expect(configuration.mode == .invalid)
++            #expect(configuration.isPrivate && configuration.usesBlankHost)
++            #expect(configuration.session == nil)
++        }
++        let invalidEnvironment = MFVRuntime.parse(arguments: ["app"], environment: ["MFV_TEST_SESSION": ""], isXCTest: true)
++        #expect(invalidEnvironment.mode == .invalid && invalidEnvironment.usesBlankHost)
++    }
++
++    @Test("Conflicting private modes or UUIDs cannot silently choose a store")
++    func conflictingRequests() {
++        let first = UUID().uuidString
++        let second = UUID().uuidString
++        let requests: [([String], [String: String])] = [
++            (["--mfv-ui-tests", "--mfv-unit-tests", "--mfv-test-session", first], [:]),
++            (["--mfv-ui-tests", "--mfv-test-session", first, "--mfv-test-session", second], [:]),
++            (["--mfv-ui-tests", "--mfv-test-session", first], ["MFV_TEST_SESSION": second])
++        ]
++        for (arguments, environment) in requests {
++            let configuration = MFVRuntime.parse(arguments: ["app"] + arguments, environment: environment, isXCTest: true)
++            #expect(configuration.mode == .invalid && configuration.usesBlankHost && configuration.isPrivate)
++        }
++    }
++
++    @Test("Automatic and explicitly valid unit hosts are blank before model creation")
++    func unitHostsAreBlank() {
++        let generated = UUID()
++        let automatic = MFVRuntime.parse(arguments: ["app"], environment: [:], isXCTest: true, generatedUnitSession: generated)
++        #expect(automatic.mode == .unit && automatic.session == generated && automatic.usesBlankHost)
++        let explicit = UUID()
++        let requested = MFVRuntime.parse(arguments: ["app", "--mfv-unit-tests", "--mfv-test-session", explicit.uuidString],
++                                         environment: [:], isXCTest: true, generatedUnitSession: generated)
++        #expect(requested.mode == .unit && requested.session == explicit && requested.usesBlankHost)
++        let rejected = MFVRuntime.parse(arguments: ["app", "--mfv-test-session", "bad"], environment: [:], isXCTest: true,
++                                        generatedUnitSession: generated)
++        #expect(rejected.mode == .invalid && rejected.session == nil)
++    }
++
++    @Test("Ordinary launch remains ordinary, while a forced QA build still needs a UUID")
++    func ordinaryAndForcedModes() {
++        let normal = MFVRuntime.parse(arguments: ["app"], environment: [:], isXCTest: false)
++        #expect(normal.mode == .normal && normal.session == nil && !normal.isPrivate)
++        let forced = MFVRuntime.parse(arguments: ["app"], environment: [:], isXCTest: false, forcedPrivate: true)
++        #expect(forced.mode == .invalid && forced.isPrivate && forced.usesBlankHost)
++    }
++
++    @Test("The actual unit process writes preferences and media only inside its private session")
++    func actualPrivateUnitPaths() throws {
++        try #require(MFVRuntime.configuration.mode == .unit)
++        let session = try #require(MFVRuntime.configuration.session)
++        let root = try MFVRuntime.privateRoot()
++        #expect(root.lastPathComponent == "MFVPrivateQA-" + session.uuidString)
++        let media = try MFVRuntime.mediaDirectory()
++        #expect(media.deletingLastPathComponent().standardizedFileURL == root.standardizedFileURL)
++        let store = try MFVRuntime.storeDirectory()
++        #expect(store.deletingLastPathComponent().standardizedFileURL == root.standardizedFileURL)
++        let file = media.appendingPathComponent("isolation-" + UUID().uuidString + ".txt")
++        defer { try? FileManager.default.removeItem(at: file) }
++        let payload = Data("Private unit media".utf8)
++        try payload.write(to: file, options: .atomic)
++        #expect(try Data(contentsOf: file) == payload)
++        let key = "isolation-" + UUID().uuidString
++        let preferences = MFVRuntime.preferences
++        defer { preferences.removeObject(forKey: key) }
++        preferences.set(session.uuidString, forKey: key)
++        #expect(preferences.string(forKey: key) == session.uuidString)
++    }
++}
+diff --git a/My Funny ValentineUITests/CreativeCardsUITests.swift b/My Funny ValentineUITests/CreativeCardsUITests.swift
+new file mode 100644
+index 0000000..a01a30e
+--- /dev/null
++++ b/My Funny ValentineUITests/CreativeCardsUITests.swift	
+@@ -0,0 +1,202 @@
++import XCTest
++
++#if os(iOS)
++/// Prepared only. The release owner must allocate an isolated device and run
++/// these exact methods. No provider, Photos, print job or share destination is used.
++@MainActor
++final class CreativeCardsUITests: XCTestCase {
++    private var app: XCUIApplication!
++    private var session = UUID()
++    private var captureIndex = 0
++    private enum DriverError: Error { case missing(String), ambiguous(String) }
++
++    override func setUpWithError() throws {
++        continueAfterFailure = false
++        session = UUID()
++        captureIndex = 0
++        app = XCUIApplication()
++        app.launchArguments = ["--mfv-ui-tests", "--mfv-test-session", session.uuidString]
++    }
++
++    override func tearDownWithError() throws { app?.terminate() }
++
++    func testSixStarterFamiliesOpenAndClose() throws {
++        try launchPrivate()
++        let families = [
++            ("Comic crush", "pizza", "comic"), ("Cosmic love", "space", "cosmic"),
++            ("Love letters", "birds", "loveLetter"), ("Pop-up hearts", "dino", "popUp"),
++            ("Photo booth", "disco", "photoBooth"), ("Confetti party", "sweets", "confetti")
++        ]
++        for (title, world, family) in families {
++            try tap(app.buttons["starter.starter_" + world + "_1"], "Open " + title)
++            try require(app.buttons["cardDetail.save"], "Editable starter")
++            XCTAssertTrue(app.buttons["cardDetail.save"].isEnabled)
++            XCTAssertFalse(app.staticTexts["Card unavailable"].exists)
++            let preview = try previewButton()
++            XCTAssertEqual(preview.value as? String, "Front")
++            capture(title + " front")
++            try tap(app.buttons["cardDetail.openCard"], "Open actual " + title + " inside")
++            try waitForValue(preview, "Inside")
++            capture(title + " inside")
++            try tap(app.buttons["cardDetail.openCard"], "Close " + title)
++            try waitForValue(preview, "Front")
++            let selected = app.buttons["cardDetail.style." + family]
++            try reveal(selected)
++            XCTAssertTrue(selected.isSelected, "The starter must use its genuine family")
++            XCTAssertFalse(app.buttons["cardDetail.generateWithAI"].isEnabled)
++            XCTAssertFalse(app.buttons["cardDetail.photo"].isEnabled)
++            try tap(app.buttons["cardDetail.cancel"], "Leave detached starter")
++            try waitForAbsence(app.buttons["cardDetail.save"])
++        }
++    }
++
++    func testSavedMotionChoiceAndLocalExportSheet() throws {
++        try launchPrivate()
++        try tap(app.buttons["starter.starter_birds_1"], "Personalize a love letter")
++        let message = "A little card for my favorite person"
++        let note = "You make ordinary days wonderful. Love, Sam."
++        try replaceText(identifier: "cardDetail.message", placeholder: "You're my favorite person.", with: message)
++        try replaceText(identifier: "cardDetail.note", placeholder: "Love, me", with: note)
++        let motion = app.switches["cardDetail.motion"].firstMatch
++        try reveal(motion)
++        try require(motion, "Saved motion preference")
++        XCTAssertEqual(motion.value as? String, "1")
++        let nested = motion.descendants(matching: .switch).allElementsBoundByIndex.filter { $0.isHittable }
++        guard nested.count <= 1 else { capture("Ambiguous motion switch"); throw DriverError.ambiguous("Motion switch") }
++        try tap(nested.first ?? motion, "Disable only card motion")
++        try waitForValue(motion, "0")
++        try tap(app.buttons["cardDetail.save"], "Save personal card")
++        try waitForAbsence(app.buttons["cardDetail.save"])
++        app.terminate()
++        try launchPrivate()
++        let saved = app.buttons.matching(NSPredicate(format: "label == %@", message + ". " + note)).firstMatch
++        try tap(saved, "Reopen actual saved personal card")
++        let reopenedNote = try textInput(identifier: "cardDetail.note", placeholder: "Love, me")
++        XCTAssertEqual(reopenedNote.value as? String, note)
++        try reveal(motion)
++        XCTAssertEqual(motion.value as? String, "0", "Motion choice survives the same private session relaunch")
++        try tap(app.buttons["cardDetail.openCard"], "Open calm saved card")
++        try waitForValue(try previewButton(), "Inside")
++        capture("Saved inside with motion off")
++
++        try tap(app.buttons["cardDetail.share"], "Prepare actual front PNG")
++        try require(app.buttons["cardDetail.sharePNG"], "Actual front export", timeout: 30)
++        capture("Native local export sheet")
++        try tap(app.buttons["cardDetail.animateCard"], "Render a full-card GIF without a face")
++        try require(app.buttons["cardDetail.shareGIF"], "Actual full-card GIF finished", timeout: 45)
++        for kind in ["inside", "pdf", "sticker", "html"] {
++            try tap(app.buttons["cardDetail.export." + kind], "Render " + kind)
++            let share = app.buttons["cardDetail.share." + kind]
++            try require(share, "Actual " + kind + " file finished", timeout: 45)
++            XCTAssertTrue(share.isEnabled)
++            capture(kind + " file ready")
++        }
++        XCTAssertFalse(app.alerts.firstMatch.exists)
++        XCTAssertFalse(app.buttons["cardDetail.print"].isEnabled, "Private QA must not create a print job")
++        try tap(app.buttons["Done"].firstMatch, "Dismiss local export options")
++        try require(app.buttons["cardDetail.save"], "Same saved draft after export")
++        try tap(app.buttons["cardDetail.cancel"], "Leave the saved card intact")
++    }
++
++    func testInvalidPrivateSessionRemainsBlank() throws {
++        app.launchArguments = ["--mfv-ui-tests", "--mfv-test-session", "not-a-valid-uuid"]
++        app.launch()
++        capture("Rejected private request before interaction")
++        try require(app.staticTexts["mfv.private.invalid"], "Invalid explicit request stays blank")
++        XCTAssertFalse(app.buttons["home.createCard"].exists)
++        XCTAssertFalse(app.buttons["home.collection"].exists)
++        XCTAssertFalse(app.tabBars.firstMatch.exists)
++    }
++
++    private func launchPrivate() throws {
++        app.launch()
++        capture("Private bootstrap before interaction")
++        let marker = app.descendants(matching: .any)["mfv.private.ui." + session.uuidString].firstMatch
++        try require(marker, "Valid private UI marker")
++        XCTAssertFalse(app.staticTexts["mfv.private.unit"].exists)
++        XCTAssertFalse(app.staticTexts["mfv.private.invalid"].exists)
++        try require(app.buttons["home.createCard"], "Actual card library")
++    }
++
++    private func previewButton() throws -> XCUIElement {
++        let button = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Card preview. ")).firstMatch
++        try require(button, "Genuine rendered preview")
++        return button
++    }
++
++    private func textInput(identifier: String, placeholder: String) throws -> XCUIElement {
++        let group = app.descendants(matching: .any)[identifier].firstMatch
++        let candidates = [app.textFields[identifier], app.textViews[identifier],
++                          group.textFields.firstMatch, group.textViews.firstMatch,
++                          app.textFields[placeholder], app.textViews[placeholder]]
++        guard let input = candidates.first(where: { $0.exists }) else {
++            capture("Missing text field " + identifier); throw DriverError.missing(identifier)
++        }
++        return input
++    }
++
++    private func replaceText(identifier: String, placeholder: String, with text: String) throws {
++        let input = try textInput(identifier: identifier, placeholder: placeholder)
++        try tap(input, "Edit " + identifier)
++        let old = input.value as? String ?? ""
++        input.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: old.count))
++        input.typeText(text)
++        XCTAssertEqual(input.value as? String, text)
++        let done = app.buttons["editor.dismissKeyboard"].firstMatch
++        try tap(done, "Dismiss only editor keyboard")
++        let keyboard = app.keyboards.firstMatch
++        try waitForAbsence(keyboard)
++    }
++
++    private func reveal(_ element: XCUIElement) throws {
++        for _ in 0..<8 {
++            if element.exists && element.isHittable && app.frame.contains(element.frame) { return }
++            let preferred = [app.scrollViews["cardShare.scroll"], app.scrollViews["cardDetail.scroll"]]
++            guard let scroll = (preferred + app.scrollViews.allElementsBoundByIndex).first(where: { $0.exists && $0.isHittable }) else {
++                capture("No scroll for " + element.identifier); throw DriverError.missing("Visible scroll")
++            }
++            if element.exists && element.frame.minY < scroll.frame.minY { scroll.swipeDown() }
++            else { scroll.swipeUp() }
++        }
++        capture("Unreachable " + element.identifier)
++        throw DriverError.missing(element.identifier)
++    }
++
++    private func tap(_ element: XCUIElement, _ name: String) throws {
++        try require(element, name)
++        try reveal(element)
++        capture("Before " + name)
++        guard element.isEnabled else { throw DriverError.missing("Disabled " + name) }
++        element.tap()
++    }
++
++    private func require(_ element: XCUIElement, _ reason: String, timeout: TimeInterval = 10) throws {
++        guard element.waitForExistence(timeout: timeout) else {
++            capture("Missing " + reason); XCTFail(reason); throw DriverError.missing(reason)
++        }
++    }
++
++    private func waitForValue(_ element: XCUIElement, _ value: String) throws {
++        let expectation = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", value), object: element)
++        guard XCTWaiter.wait(for: [expectation], timeout: 8) == .completed else {
++            capture("Value did not reach " + value); XCTFail("Expected " + value); throw DriverError.missing("Value " + value)
++        }
++    }
++
++    private func waitForAbsence(_ element: XCUIElement) throws {
++        let expectation = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"), object: element)
++        guard XCTWaiter.wait(for: [expectation], timeout: 10) == .completed else {
++            capture("Modal or keyboard still present"); XCTFail("Expected dismissal"); throw DriverError.missing("Dismissal")
++        }
++    }
++
++    private func capture(_ name: String) {
++        captureIndex += 1
++        let prefix = String(format: "%02d-", captureIndex) + name
++        let image = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
++        image.name = prefix; image.lifetime = .keepAlways; add(image)
++        let accessibility = XCTAttachment(string: app.debugDescription)
++        accessibility.name = prefix + "-AX"; accessibility.lifetime = .keepAlways; add(accessibility)
++    }
++}
++#endif

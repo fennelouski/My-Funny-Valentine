@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Valentine-0A9F3987-1BD0-4730-9405-C8D7AA47E4A2.png",
+    "sha256": "a48b2d32ea421e291a6450586f568d84f3b392b11f8ddef5f62ed990b4253a76",
+    "hashMatches": true,
+    "byteCount": 811037,
+    "bytesMatch": true,
+    "dimensions": [
+      800,
+      1200
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ]
+  },
+  {
+    "name": "Valentine-70BCF893-147B-4D4D-AFFE-B4BF38C2D610.gif",
+    "sha256": "68a463770afacdeaac0eeb617c5a4200f6163694e70b487d6bade1360f705e20",
+    "hashMatches": true,
+    "byteCount": 999315,
+    "bytesMatch": true
+  },
+  {
+    "name": "Valentine-F02ECDB1-8E7B-45C3-A136-75EEB7575C3C.png",
+    "sha256": "e56354025485a0b5c6253c88711e10f6f6b2f980c2a1ce534ba7fc66905d2f9d",
+    "hashMatches": true,
+    "byteCount": 56209,
+    "bytesMatch": true,
+    "dimensions": [
+      800,
+      1200
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      255,
+      255
+    ]
+  },
+  {
+    "name": "Valentine-498AB1AF-1390-4DC3-8634-8442523D28FC.pdf",
+    "sha256": "b055043e42077d422b27b7b1af61ac54f531a98f4b2e6b257e9e1d7e4c29296b",
+    "hashMatches": true,
+    "byteCount": 2830820,
+    "bytesMatch": true,
+    "pages": [
+      {
+        "number": 1,
+        "mediaBox": [
+          0,
+          0,
+          288,
+          432
+        ],
+        "text": "A little card for \nmy favorite \nperson\nA note waits inside"
+      },
+      {
+        "number": 2,
+        "mediaBox": [
+          0,
+          0,
+          288,
+          432
+        ],
+        "text": "A little card for my favorite \nperson \n \nYou make ordinary days \nwonderful. Love, Sam."
+      }
+    ]
+  },
+  {
+    "name": "Valentine-B583BE85-AE0E-4055-8E72-DAA1F85A367F.png",
+    "sha256": "f2999b25690d011e7eab038333fd436fd13cdcfe8ad48ceccae7bddbd61ba1d8",
+    "hashMatches": true,
+    "byteCount": 27319,
+    "bytesMatch": true,
+    "dimensions": [
+      618,
+      618
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "Valentine-1D70FCB6-DBEE-4965-8DF3-EE5ECE0F3813.html",
+    "sha256": "a611748e039f4df009ae9d2d4d510dbdff95f01d760fe4fa6841e86b2361f460",
+    "hashMatches": true,
+    "byteCount": 3009486,
+    "bytesMatch": true
+  }
+]

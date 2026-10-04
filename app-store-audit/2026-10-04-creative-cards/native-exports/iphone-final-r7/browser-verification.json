@@ -1,0 +1,27 @@
+{
+  "status": "Actual exported HTML browser behavior verified",
+  "sourcePath": "Valentine-DEF9808C-41E3-4BB2-A8B6-0270B9C2CE8F.html",
+  "sourceSHA256": "4e2a07f39c588a98d665f4148f6c128d24e78368a2a61372395ecf1bd838c5ce",
+  "sourceFreeze": "source-freeze.root-r7.json",
+  "version": "1.0",
+  "build": "3",
+  "browser": "Existing Chrome, isolated localhost export, no account or recipient",
+  "verifiedAtUTC": "2026-10-04T22:49:16.779916+00:00",
+  "observedActions": [
+    "Open card click shows expanded Close card",
+    "Read the message click reveals full saying and fictional Sam note",
+    "Close card keyboard Enter returns Open card while full note remains present"
+  ],
+  "screenshots": [
+    {
+      "path": "browser-open-card.png",
+      "sha256": "91eb0a1454d88bdced59e1d3554a0a8596a6dffc8af16145f92266c0c6bb3745"
+    },
+    {
+      "path": "browser-closed-keyboard.png",
+      "sha256": "e0e086639648b05d9a73de7872eec0411df0d14cad946cfc7c07254b340627d2"
+    }
+  ],
+  "pointerDragBrowserTested": false,
+  "externalSendingPerformed": false
+}

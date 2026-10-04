@@ -1,0 +1,1533 @@
+{
+  "schemaVersion": 1,
+  "app": "My Funny Valentine",
+  "preparationState": "native-capture-inputs-approved",
+  "version": "1.0",
+  "build": "3",
+  "locale": "en-US",
+  "intendedCountry": "US",
+  "localeStatus": "Root fresh Apple metadata verification required before upload",
+  "platforms": {
+    "iphone": {
+      "width": 1320,
+      "height": 2868,
+      "gallery": "6.9-inch"
+    },
+    "ipad": {
+      "width": 2752,
+      "height": 2064,
+      "gallery": "13-inch"
+    },
+    "mac": {
+      "width": 2560,
+      "height": 1600,
+      "gallery": "Mac"
+    }
+  },
+  "sourceFreeze": {
+    "path": "proof/source-freeze.root-r8.json",
+    "sha256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca"
+  },
+  "font": {
+    "family": "Fraunces",
+    "file": "assets/FrauncesVariable.ttf",
+    "sha256": "177ff6c0f14e5550a3c624247cd1189611d4eb65d000b14944c63d967958abbb",
+    "byteCount": 360440,
+    "sourceURL": "https://raw.githubusercontent.com/google/fonts/main/ofl/fraunces/Fraunces%5BSOFT%2CWONK%2Copsz%2Cwght%5D.ttf",
+    "license": "SIL Open Font License 1.1",
+    "licensePath": "assets/OFL.txt",
+    "licenseSHA256": "bdf4c22802eaf804f998195871c6b8938aac2ac14b2d78a8bd66a6f1eced833b",
+    "licenseURL": "https://raw.githubusercontent.com/google/fonts/main/ofl/fraunces/OFL.txt",
+    "downloadedAtUTC": "2026-10-04T21:17:54.130085+00:00",
+    "variation": {
+      "weight": 800,
+      "opticalSize": 64,
+      "softness": 30,
+      "wonk": 1
+    }
+  },
+  "captures": {
+    "iphone-comic-front": {
+      "platform": "iphone",
+      "path": "native/iphone/comic-front.png",
+      "sha256": "2393d3b621b237dcc5ad31f70f89bd3d2d462cba702c87d31f0da55b43684a05",
+      "width": 1206,
+      "height": 2622,
+      "displayedWidth": 1206,
+      "displayedHeight": 2622,
+      "orientation": 1,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+        "deviceName": "Mouse Character QA Phone 20261004",
+        "exportedFileName": "8FCA93D6-0647-423B-80DB-106613B9B88F.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "03-Comic crush front_0_3755F333-75CE-425C-91AE-42BB83856964.png",
+        "timestamp": 1791154085.077
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "iphone-cosmic-front": {
+      "platform": "iphone",
+      "path": "native/iphone/cosmic-front.png",
+      "sha256": "a46beed0ed8ad5ab0d5186a186e0f4d44991cdff2eb3833df367da2300caa624",
+      "width": 1206,
+      "height": 2622,
+      "displayedWidth": 1206,
+      "displayedHeight": 2622,
+      "orientation": 1,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+        "deviceName": "Mouse Character QA Phone 20261004",
+        "exportedFileName": "87D51057-41D8-4A3A-9A58-ABCC05041DA4.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "11-Cosmic love front_0_1F144A1E-66CE-42EB-AFC0-2FE71689B4CA.png",
+        "timestamp": 1791154107.584
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "iphone-loveLetter-front": {
+      "platform": "iphone",
+      "path": "native/iphone/loveLetter-front.png",
+      "sha256": "7ada7148171b156b2cadcb8a97d163840cc2393a97d44d963e26f8fa90cf9038",
+      "width": 1206,
+      "height": 2622,
+      "displayedWidth": 1206,
+      "displayedHeight": 2622,
+      "orientation": 1,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+        "deviceName": "Mouse Character QA Phone 20261004",
+        "exportedFileName": "D3FC3B90-EE13-4EDF-B482-C5BE9BD2304B.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "17-Love letters front_0_A6EA268F-0059-49EF-81F4-635EC91EC980.png",
+        "timestamp": 1791154125.428
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "iphone-popUp-front": {
+      "platform": "iphone",
+      "path": "native/iphone/popUp-front.png",
+      "sha256": "eecea97e6b9c3defb0ce926bb47563fd34bd0d2488be832fcd4420dc6152b9b9",
+      "width": 1206,
+      "height": 2622,
+      "displayedWidth": 1206,
+      "displayedHeight": 2622,
+      "orientation": 1,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+        "deviceName": "Mouse Character QA Phone 20261004",
+        "exportedFileName": "821F5DB7-4351-43FB-B39D-613823A75548.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "23-Pop-up hearts front_0_7FCA3CDE-9A3C-4A1E-A6B2-E7B5EAACA546.png",
+        "timestamp": 1791154143.194
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "iphone-photoBooth-front": {
+      "platform": "iphone",
+      "path": "native/iphone/photoBooth-front.png",
+      "sha256": "133851486419f92885585e6365e7af2504bfd157e1ef72af1760a2c0995257c0",
+      "width": 1206,
+      "height": 2622,
+      "displayedWidth": 1206,
+      "displayedHeight": 2622,
+      "orientation": 1,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+        "deviceName": "Mouse Character QA Phone 20261004",
+        "exportedFileName": "186A6BEC-47DA-49F1-B0D1-D0392C902F83.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "29-Photo booth front_0_C66D022A-2292-4763-9473-82EA35403911.png",
+        "timestamp": 1791154163.959
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "iphone-confetti-front": {
+      "platform": "iphone",
+      "path": "native/iphone/confetti-front.png",
+      "sha256": "4deaea0fe1eed84e2f5129b09fad4119102ce92aa13a73d1c2a2eef69a1fafbc",
+      "width": 1206,
+      "height": 2622,
+      "displayedWidth": 1206,
+      "displayedHeight": 2622,
+      "orientation": 1,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+        "deviceName": "Mouse Character QA Phone 20261004",
+        "exportedFileName": "906C12C6-3DCD-455C-B26D-E1AB4FC83F79.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "35-Confetti party front_0_58953910-A338-4F31-A6EE-65A50E76983A.png",
+        "timestamp": 1791154182.074
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "iphone-inside": {
+      "platform": "iphone",
+      "path": "native/iphone/inside.png",
+      "sha256": "cc39f7ccd32ed6e0314148811b5b61dff769dbf7525506803d2fee6261b8fc75",
+      "width": 1206,
+      "height": 2622,
+      "displayedWidth": 1206,
+      "displayedHeight": 2622,
+      "orientation": 1,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+        "deviceName": "Mouse Character QA Phone 20261004",
+        "exportedFileName": "22181B04-147B-4D61-9695-2E17BB34487B.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "09-Personalized full inside for marketing_0_90A900A5-A4E4-46D9-8D45-E8E6561B35FD.png",
+        "timestamp": 1791153970.6
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "iphone-personalized": {
+      "platform": "iphone",
+      "path": "native/iphone/personalized.png",
+      "sha256": "5c3c181ddab468020c6db0de7e6f7497847da5eb96dc263521138ef82c53c550",
+      "width": 1206,
+      "height": 2622,
+      "displayedWidth": 1206,
+      "displayedHeight": 2622,
+      "orientation": 1,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+        "deviceName": "Mouse Character QA Phone 20261004",
+        "exportedFileName": "39B7181E-493C-424B-93B9-C653A5A7BE33.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "07-Personalized full front for marketing_0_C843935E-44AA-4DB5-AF8A-E6A98698417D.png",
+        "timestamp": 1791153967.326
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "iphone-library": {
+      "platform": "iphone",
+      "path": "native/iphone/library.png",
+      "sha256": "481981e7fc3d0ce31bb84b09923c3cd3399f82fcba81ca89469cb2790d44ee31",
+      "width": 1206,
+      "height": 2622,
+      "displayedWidth": 1206,
+      "displayedHeight": 2622,
+      "orientation": 1,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+        "deviceName": "Mouse Character QA Phone 20261004",
+        "exportedFileName": "D3DE2307-12CA-4D38-B787-E77D71382196.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "01-Private bootstrap before interaction_0_15C4F70E-F160-4829-8939-D8B98512E4A8.png",
+        "timestamp": 1791154077.841
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "iphone-exports": {
+      "platform": "iphone",
+      "path": "native/iphone/exports.png",
+      "sha256": "477fb52477bb0ff9144e79929a3e0d53d447f61d457ce46e79e313b4d7c7ab4d",
+      "width": 1206,
+      "height": 2622,
+      "displayedWidth": 1206,
+      "displayedHeight": 2622,
+      "orientation": 1,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/phone-ui-r7.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "1714F243-FD25-4B57-9B1D-10393B13A057",
+        "deviceName": "Mouse Character QA Phone 20261004",
+        "exportedFileName": "6C4F77F2-D4B6-4265-A286-3C258B02D22E.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "24-Before Present actual system sharing options_0_5E7DF22F-0653-4E72-9DA4-4CE154411DF2.png",
+        "timestamp": 1791154062.825
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "ipad-comic-front": {
+      "platform": "ipad",
+      "path": "native/ipad/comic-front.png",
+      "sha256": "53bdea930f8401d571d99d3eccc419e368703680d365feab17ce3d07eac927e7",
+      "width": 2064,
+      "height": 2752,
+      "displayedWidth": 2752,
+      "displayedHeight": 2064,
+      "orientation": 8,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "F69EE4E7-DFEE-41C7-A753-41F27FB5AB7D",
+        "deviceName": "Mouse Character QA iPad 20261004",
+        "exportedFileName": "BDFF7962-F987-4A7A-BAEC-27F9D37258B0.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "03-Comic crush front_0_7DD9D4F8-85E5-40A1-9D73-4770C52FECD7.png",
+        "timestamp": 1791154477.409
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "ipad-cosmic-front": {
+      "platform": "ipad",
+      "path": "native/ipad/cosmic-front.png",
+      "sha256": "df588b1d6a93518261cda77022ae68b2005fd13106b57971262fa6196dcd9ba2",
+      "width": 2064,
+      "height": 2752,
+      "displayedWidth": 2752,
+      "displayedHeight": 2064,
+      "orientation": 8,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "F69EE4E7-DFEE-41C7-A753-41F27FB5AB7D",
+        "deviceName": "Mouse Character QA iPad 20261004",
+        "exportedFileName": "A387A2E6-6EB2-4452-A70F-288D8E2D4151.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "11-Cosmic love front_0_AD613AFF-3E3E-4D50-A93A-D299EC85C40D.png",
+        "timestamp": 1791154497.636
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "ipad-loveLetter-front": {
+      "platform": "ipad",
+      "path": "native/ipad/loveLetter-front.png",
+      "sha256": "15aa0c60c0ddde09e9ec0fc04c57f4f9cff48278a42e42eeb5e2156120dae762",
+      "width": 2064,
+      "height": 2752,
+      "displayedWidth": 2752,
+      "displayedHeight": 2064,
+      "orientation": 8,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "F69EE4E7-DFEE-41C7-A753-41F27FB5AB7D",
+        "deviceName": "Mouse Character QA iPad 20261004",
+        "exportedFileName": "F5A81603-C1FF-4BEF-B746-FF31F0E0ED7F.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "17-Love letters front_0_889B5616-8295-40F5-8DC1-0869ADF5B4AB.png",
+        "timestamp": 1791154512.894
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "ipad-popUp-front": {
+      "platform": "ipad",
+      "path": "native/ipad/popUp-front.png",
+      "sha256": "c4772d743505d76f06d46e4bdd9004b73b0cb91bbe8dc512bb511d538258a474",
+      "width": 2064,
+      "height": 2752,
+      "displayedWidth": 2752,
+      "displayedHeight": 2064,
+      "orientation": 8,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "F69EE4E7-DFEE-41C7-A753-41F27FB5AB7D",
+        "deviceName": "Mouse Character QA iPad 20261004",
+        "exportedFileName": "45F219D5-AA30-49A2-BE34-DA728CDDAC2C.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "23-Pop-up hearts front_0_9C004120-5CA3-48CF-B1AD-09C8BE23B92F.png",
+        "timestamp": 1791154528.113
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "ipad-photoBooth-front": {
+      "platform": "ipad",
+      "path": "native/ipad/photoBooth-front.png",
+      "sha256": "70bc243bf6973d5b0557e46621cfc59e887e30eec94fcd4f2674d43613029fa2",
+      "width": 2064,
+      "height": 2752,
+      "displayedWidth": 2752,
+      "displayedHeight": 2064,
+      "orientation": 8,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "F69EE4E7-DFEE-41C7-A753-41F27FB5AB7D",
+        "deviceName": "Mouse Character QA iPad 20261004",
+        "exportedFileName": "57764A8B-38A3-48D1-8618-A87FEFFD97D2.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "29-Photo booth front_0_4EAB2410-33F0-4FCB-B308-32CBBCDA8EC7.png",
+        "timestamp": 1791154543.301
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "ipad-confetti-front": {
+      "platform": "ipad",
+      "path": "native/ipad/confetti-front.png",
+      "sha256": "6feb5b9c3b9f9d09138a431349c13ff6925d1e779b3fc548baa9a8cdf8d75891",
+      "width": 2064,
+      "height": 2752,
+      "displayedWidth": 2752,
+      "displayedHeight": 2064,
+      "orientation": 8,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "F69EE4E7-DFEE-41C7-A753-41F27FB5AB7D",
+        "deviceName": "Mouse Character QA iPad 20261004",
+        "exportedFileName": "C5772F0B-0638-4FC7-862F-D951AA28709A.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "35-Confetti party front_0_D1F28FCE-2224-4C34-8711-C44EE6A022C7.png",
+        "timestamp": 1791154558.633
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "ipad-inside": {
+      "platform": "ipad",
+      "path": "native/ipad/inside.png",
+      "sha256": "b1e02c8b8f535688bd4749445e1dd7c7d9234553fc11f6ac6ea463b763b621b0",
+      "width": 2064,
+      "height": 2752,
+      "displayedWidth": 2752,
+      "displayedHeight": 2064,
+      "orientation": 8,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "F69EE4E7-DFEE-41C7-A753-41F27FB5AB7D",
+        "deviceName": "Mouse Character QA iPad 20261004",
+        "exportedFileName": "A3373048-8134-460D-BFB6-C2D3E3ADC6EA.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "09-Personalized full inside for marketing_0_13363E7A-88E8-4B36-AA7E-F37AD685F0F6.png",
+        "timestamp": 1791154366.377
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "ipad-personalized": {
+      "platform": "ipad",
+      "path": "native/ipad/personalized.png",
+      "sha256": "71b2471e4c4cc4eaf53b4e769fffb4914346ddaf5905d21a1137af99088d6630",
+      "width": 2064,
+      "height": 2752,
+      "displayedWidth": 2752,
+      "displayedHeight": 2064,
+      "orientation": 8,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "F69EE4E7-DFEE-41C7-A753-41F27FB5AB7D",
+        "deviceName": "Mouse Character QA iPad 20261004",
+        "exportedFileName": "EDA5C7A1-BDF0-4141-9DD3-1DE635376E10.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "07-Personalized full front for marketing_0_32D1788B-5F89-4647-BB60-11EFCDB4CFAF.png",
+        "timestamp": 1791154362.986
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "ipad-library": {
+      "platform": "ipad",
+      "path": "native/ipad/library.png",
+      "sha256": "c3d18cfdd14a262a16981e21a0fa3be051b71f0fc42b7b75abc10bf49f14b862",
+      "width": 2064,
+      "height": 2752,
+      "displayedWidth": 2752,
+      "displayedHeight": 2064,
+      "orientation": 8,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "F69EE4E7-DFEE-41C7-A753-41F27FB5AB7D",
+        "deviceName": "Mouse Character QA iPad 20261004",
+        "exportedFileName": "5C8AC9A6-F4FB-439F-9E77-C2581AC9FC2A.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "01-Private bootstrap before interaction_0_1478285D-8323-4331-96A0-870D202F84A3.png",
+        "timestamp": 1791154469.314
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "ipad-exports": {
+      "platform": "ipad",
+      "path": "native/ipad/exports.png",
+      "sha256": "9c14ecd6162338a2ba40c1ef045a47814158c5d283994240b1227c21c788c50c",
+      "width": 2064,
+      "height": 2752,
+      "displayedWidth": 2752,
+      "displayedHeight": 2064,
+      "orientation": 8,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "xcresult": "/tmp/mfv-creative-qa-20261004/pad-ui-r2.xcresult",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "F69EE4E7-DFEE-41C7-A753-41F27FB5AB7D",
+        "deviceName": "Mouse Character QA iPad 20261004",
+        "exportedFileName": "000D91D2-725D-4CC1-B36E-D96E86E6C3EE.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "24-Before Present actual system sharing options_0_13A80AF1-C8A5-4CDD-87CB-8612B51DDDAE.png",
+        "timestamp": 1791154453.306
+      },
+      "method": "XCTest XCUIApplication screenshot of real private native flow",
+      "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualNotes": "Complete card fronts, visible illustration subjects, readable messages, actual personalized inside, scrollable home/export routes; no imported photo/provider claims.",
+      "mediaType": "image/png"
+    },
+    "mac-comic-front": {
+      "platform": "mac",
+      "path": "native/mac/comic-front.jpg",
+      "sha256": "ea22e0b6cf19975517f455a4421e99d1373ba94b19697e09056e6aacc5c39a57",
+      "width": 2560,
+      "height": 1600,
+      "displayedWidth": 2560,
+      "displayedHeight": 1600,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "componentProvenance": {
+        "kind": "actual-full-native-app-window",
+        "captureAPI": "CUA App.getScreenshot",
+        "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+        "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+        "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+        "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+        "actualObservedActions": null,
+        "originalPixels": true,
+        "windowChromeRedrawn": false,
+        "runtimeReceipt": "mac-runtime-current.json"
+      },
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+      "mediaType": "image/jpeg"
+    },
+    "mac-cosmic-front": {
+      "platform": "mac",
+      "path": "native/mac/cosmic-front.jpg",
+      "sha256": "eb598c6d2919232c0580661db4926780cbcaaddba011161566b1abb9b9c0e966",
+      "width": 2560,
+      "height": 1600,
+      "displayedWidth": 2560,
+      "displayedHeight": 1600,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "componentProvenance": {
+        "kind": "actual-full-native-app-window",
+        "captureAPI": "CUA App.getScreenshot",
+        "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+        "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+        "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+        "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+        "actualObservedActions": {
+          "state": "cosmic-front",
+          "capturedAtUTC": "2026-10-04T23:08:24.341Z",
+          "identifier": "starter.starter_space_1",
+          "method": "CUA App.getScreenshot original full native window pixels"
+        },
+        "originalPixels": true,
+        "windowChromeRedrawn": false,
+        "runtimeReceipt": "mac-runtime-current.json"
+      },
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+      "mediaType": "image/jpeg"
+    },
+    "mac-loveLetter-front": {
+      "platform": "mac",
+      "path": "native/mac/loveLetter-front.jpg",
+      "sha256": "e0471e0f84361eba96bee325b4af1105c9ff2f9086d0c577974dfcbe779ea73d",
+      "width": 2560,
+      "height": 1600,
+      "displayedWidth": 2560,
+      "displayedHeight": 1600,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "componentProvenance": {
+        "kind": "actual-full-native-app-window",
+        "captureAPI": "CUA App.getScreenshot",
+        "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+        "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+        "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+        "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+        "actualObservedActions": {
+          "state": "loveLetter-front",
+          "capturedAtUTC": "2026-10-04T23:09:05.890Z",
+          "identifier": "starter.starter_birds_1",
+          "method": "CUA App.getScreenshot original full native window pixels"
+        },
+        "originalPixels": true,
+        "windowChromeRedrawn": false,
+        "runtimeReceipt": "mac-runtime-current.json"
+      },
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+      "mediaType": "image/jpeg"
+    },
+    "mac-popUp-front": {
+      "platform": "mac",
+      "path": "native/mac/popUp-front.jpg",
+      "sha256": "d56303a6fe2c3a007c034d42f95ee38d07408cf25ce5a5576cbda51d10b3bf5a",
+      "width": 2560,
+      "height": 1600,
+      "displayedWidth": 2560,
+      "displayedHeight": 1600,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "componentProvenance": {
+        "kind": "actual-full-native-app-window",
+        "captureAPI": "CUA App.getScreenshot",
+        "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+        "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+        "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+        "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+        "actualObservedActions": {
+          "state": "popUp-front",
+          "capturedAtUTC": "2026-10-04T23:08:31.612Z",
+          "identifier": "starter.starter_dino_1",
+          "method": "CUA App.getScreenshot original full native window pixels"
+        },
+        "originalPixels": true,
+        "windowChromeRedrawn": false,
+        "runtimeReceipt": "mac-runtime-current.json"
+      },
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+      "mediaType": "image/jpeg"
+    },
+    "mac-photoBooth-front": {
+      "platform": "mac",
+      "path": "native/mac/photoBooth-front.jpg",
+      "sha256": "11d93185711c0255d19e6514197ed5c8c7140fca2aa3d2c997485b06f582a02b",
+      "width": 2560,
+      "height": 1600,
+      "displayedWidth": 2560,
+      "displayedHeight": 1600,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "componentProvenance": {
+        "kind": "actual-full-native-app-window",
+        "captureAPI": "CUA App.getScreenshot",
+        "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+        "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+        "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+        "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+        "actualObservedActions": {
+          "state": "photoBooth-front",
+          "capturedAtUTC": "2026-10-04T23:08:35.083Z",
+          "identifier": "starter.starter_disco_1",
+          "method": "CUA App.getScreenshot original full native window pixels"
+        },
+        "originalPixels": true,
+        "windowChromeRedrawn": false,
+        "runtimeReceipt": "mac-runtime-current.json"
+      },
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+      "mediaType": "image/jpeg"
+    },
+    "mac-confetti-front": {
+      "platform": "mac",
+      "path": "native/mac/confetti-front.jpg",
+      "sha256": "26a50bd70e8afab54fa03b0a3fda35513718f5e28bdb9ccdc63631e258b013b7",
+      "width": 2560,
+      "height": 1600,
+      "displayedWidth": 2560,
+      "displayedHeight": 1600,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "componentProvenance": {
+        "kind": "actual-full-native-app-window",
+        "captureAPI": "CUA App.getScreenshot",
+        "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+        "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+        "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+        "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+        "actualObservedActions": {
+          "state": "confetti-front",
+          "capturedAtUTC": "2026-10-04T23:08:38.914Z",
+          "identifier": "starter.starter_sweets_1",
+          "method": "CUA App.getScreenshot original full native window pixels"
+        },
+        "originalPixels": true,
+        "windowChromeRedrawn": false,
+        "runtimeReceipt": "mac-runtime-current.json"
+      },
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+      "mediaType": "image/jpeg"
+    },
+    "mac-inside": {
+      "platform": "mac",
+      "path": "native/mac/inside.jpg",
+      "sha256": "2e09632159839145951fc8b30184bc6360da793d7abccdc510fcea101568068c",
+      "width": 2560,
+      "height": 1600,
+      "displayedWidth": 2560,
+      "displayedHeight": 1600,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "componentProvenance": {
+        "kind": "actual-full-native-app-window",
+        "captureAPI": "CUA App.getScreenshot",
+        "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+        "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+        "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+        "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+        "actualObservedActions": {
+          "state": "inside",
+          "capturedAtUTC": "2026-10-04T23:09:39.548Z",
+          "method": "CUA full native editor screenshot after actual Open card"
+        },
+        "originalPixels": true,
+        "windowChromeRedrawn": false,
+        "runtimeReceipt": "mac-runtime-current.json"
+      },
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+      "mediaType": "image/jpeg"
+    },
+    "mac-library": {
+      "platform": "mac",
+      "path": "native/mac/library.jpg",
+      "sha256": "13ace4cef4721d5334c59326b80e66cfa756bf401c38cb2819ab0cea2fdbe95d",
+      "width": 2560,
+      "height": 1600,
+      "displayedWidth": 2560,
+      "displayedHeight": 1600,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "componentProvenance": {
+        "kind": "actual-full-native-app-window",
+        "captureAPI": "CUA App.getScreenshot",
+        "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+        "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+        "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+        "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+        "actualObservedActions": null,
+        "originalPixels": true,
+        "windowChromeRedrawn": false,
+        "runtimeReceipt": "mac-runtime-current.json"
+      },
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+      "mediaType": "image/jpeg"
+    },
+    "mac-personalized": {
+      "platform": "mac",
+      "path": "native/mac/personalized.jpg",
+      "sha256": "ebbf3eff0f1a205d1de14b193e433ab1b59d745175eaa9c8fce23cdcd52f9841",
+      "width": 2560,
+      "height": 1600,
+      "displayedWidth": 2560,
+      "displayedHeight": 1600,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "componentProvenance": {
+        "kind": "actual-full-native-app-window",
+        "captureAPI": "CUA App.getScreenshot",
+        "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+        "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+        "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+        "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+        "actualObservedActions": {
+          "state": "personalized",
+          "capturedAtUTC": "2026-10-04T23:09:36.510Z",
+          "method": "CUA full native editor screenshot after actual native text field edits"
+        },
+        "originalPixels": true,
+        "windowChromeRedrawn": false,
+        "runtimeReceipt": "mac-runtime-current.json"
+      },
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+      "mediaType": "image/jpeg"
+    },
+    "mac-exports": {
+      "platform": "mac",
+      "path": "native/mac/exports.jpg",
+      "sha256": "c6016a2ae7232a1d1c3031819fb9fe30e715fd3423a82ddae9e1f53e4d60c5c6",
+      "width": 940,
+      "height": 1520,
+      "displayedWidth": 940,
+      "displayedHeight": 1520,
+      "nativeVersion": "1.0",
+      "nativeBuild": "3",
+      "componentProvenance": {
+        "kind": "actual-native-sheet-window",
+        "captureAPI": "CUA App.getScreenshot",
+        "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+        "executableSHA256": "5dee9f1ae9402dbe60f45f5f0fe9396e7b997d9389dde2eb9bdbf8014f7289d2",
+        "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+        "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+        "actualObservedActions": {
+          "state": "exports",
+          "capturedAtUTC": "2026-10-04T23:12:32.041Z",
+          "method": "CUA screenshot actual Mac Ready to send sheet after all six exports generated"
+        },
+        "originalPixels": true,
+        "windowChromeRedrawn": false,
+        "runtimeReceipt": "mac-runtime-current.json"
+      },
+      "visualApproval": "root-individually-viewed-original-native-pixels-pass",
+      "visualReviewScope": "All ten native original captures individually viewed by root; genuine full app window for nine states, actual native sheet window for exports. No redraw or cross-platform substitution.",
+      "mediaType": "image/jpeg"
+    }
+  },
+  "scenes": [
+    {
+      "ordinal": 1,
+      "id": "make-their-day",
+      "headline": "Make their day.",
+      "background": "coralBurgundy",
+      "captureCount": 3,
+      "captureRoles": {
+        "hero": "comic-front",
+        "left": "library",
+        "right": "inside"
+      },
+      "placements": {
+        "iphone": {
+          "hero": {
+            "centerX": 50,
+            "top": 24,
+            "width": 62,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 20,
+            "top": 35,
+            "width": 47,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 80,
+            "top": 35,
+            "width": 47,
+            "angle": 11
+          }
+        },
+        "ipad": {
+          "hero": {
+            "centerX": 50,
+            "top": 35,
+            "width": 76,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 22,
+            "top": 46,
+            "width": 56,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 78,
+            "top": 46,
+            "width": 56,
+            "angle": 11
+          }
+        },
+        "mac": {
+          "hero": {
+            "centerX": 50,
+            "top": 27,
+            "width": 67,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 24,
+            "top": 38,
+            "width": 50,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 76,
+            "top": 38,
+            "width": 50,
+            "angle": 11
+          }
+        }
+      },
+      "panoramaPartner": null,
+      "claims": "six native card families"
+    },
+    {
+      "ordinal": 2,
+      "id": "cosmic-love",
+      "headline": "Love, across\nthe universe.",
+      "background": "midnightStars",
+      "captureCount": 2,
+      "captureRoles": {
+        "hero": "cosmic-front",
+        "left": "personalized"
+      },
+      "placements": {
+        "iphone": {
+          "hero": {
+            "centerX": 50,
+            "top": 24,
+            "width": 62,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 20,
+            "top": 35,
+            "width": 47,
+            "angle": -11
+          }
+        },
+        "ipad": {
+          "hero": {
+            "centerX": 50,
+            "top": 35,
+            "width": 76,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 22,
+            "top": 46,
+            "width": 56,
+            "angle": -11
+          }
+        },
+        "mac": {
+          "hero": {
+            "centerX": 50,
+            "top": 27,
+            "width": 67,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 24,
+            "top": 38,
+            "width": 50,
+            "angle": -11
+          }
+        }
+      },
+      "panoramaPartner": null,
+      "claims": "six native card families"
+    },
+    {
+      "ordinal": 3,
+      "id": "more-than-a-message",
+      "headline": "More than\na message.",
+      "background": "mintConfetti",
+      "captureCount": 3,
+      "captureRoles": {
+        "hero": "loveLetter-front",
+        "left": "inside",
+        "right": "library"
+      },
+      "placements": {
+        "iphone": {
+          "hero": {
+            "centerX": 50,
+            "top": 24,
+            "width": 62,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 20,
+            "top": 35,
+            "width": 47,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 80,
+            "top": 35,
+            "width": 47,
+            "angle": 11
+          }
+        },
+        "ipad": {
+          "hero": {
+            "centerX": 50,
+            "top": 35,
+            "width": 76,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 22,
+            "top": 46,
+            "width": 56,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 78,
+            "top": 46,
+            "width": 56,
+            "angle": 11
+          }
+        },
+        "mac": {
+          "hero": {
+            "centerX": 50,
+            "top": 27,
+            "width": 67,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 24,
+            "top": 38,
+            "width": 50,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 76,
+            "top": 38,
+            "width": 50,
+            "angle": 11
+          }
+        }
+      },
+      "panoramaPartner": null,
+      "claims": "six native card families"
+    },
+    {
+      "ordinal": 4,
+      "id": "little-surprise",
+      "headline": "Open a little\nsurprise.",
+      "background": "plumLetter",
+      "captureCount": 1,
+      "captureRoles": {
+        "hero": "popUp-front"
+      },
+      "placements": {
+        "iphone": {
+          "hero": {
+            "centerX": 50,
+            "top": 24,
+            "width": 70,
+            "angle": 0
+          }
+        },
+        "ipad": {
+          "hero": {
+            "centerX": 50,
+            "top": 35,
+            "width": 82,
+            "angle": 0
+          }
+        },
+        "mac": {
+          "hero": {
+            "centerX": 50,
+            "top": 27,
+            "width": 74,
+            "angle": 0
+          }
+        }
+      },
+      "panoramaPartner": null,
+      "claims": "manual interactive opening"
+    },
+    {
+      "ordinal": 5,
+      "id": "good-times",
+      "headline": "Keep the\ngood times.",
+      "background": "coralBurgundy",
+      "captureCount": 2,
+      "captureRoles": {
+        "hero": "photoBooth-front",
+        "left": "comic-front"
+      },
+      "placements": {
+        "iphone": {
+          "hero": {
+            "centerX": 50,
+            "top": 24,
+            "width": 62,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 20,
+            "top": 35,
+            "width": 47,
+            "angle": -11
+          }
+        },
+        "ipad": {
+          "hero": {
+            "centerX": 50,
+            "top": 35,
+            "width": 76,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 22,
+            "top": 46,
+            "width": 56,
+            "angle": -11
+          }
+        },
+        "mac": {
+          "hero": {
+            "centerX": 50,
+            "top": 27,
+            "width": 67,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 24,
+            "top": 38,
+            "width": 50,
+            "angle": -11
+          }
+        }
+      },
+      "panoramaPartner": null,
+      "claims": "native print-style family, no imported user photo claim"
+    },
+    {
+      "ordinal": 6,
+      "id": "little-celebration",
+      "headline": "Send a little\ncelebration.",
+      "background": "midnightStars",
+      "captureCount": 3,
+      "captureRoles": {
+        "hero": "confetti-front",
+        "left": "exports",
+        "right": "inside"
+      },
+      "placements": {
+        "iphone": {
+          "hero": {
+            "centerX": 50,
+            "top": 24,
+            "width": 62,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 20,
+            "top": 35,
+            "width": 47,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 80,
+            "top": 35,
+            "width": 47,
+            "angle": 11
+          }
+        },
+        "ipad": {
+          "hero": {
+            "centerX": 50,
+            "top": 35,
+            "width": 76,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 22,
+            "top": 46,
+            "width": 56,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 78,
+            "top": 46,
+            "width": 56,
+            "angle": 11
+          }
+        },
+        "mac": {
+          "hero": {
+            "centerX": 50,
+            "top": 27,
+            "width": 67,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 24,
+            "top": 38,
+            "width": 50,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 76,
+            "top": 38,
+            "width": 50,
+            "angle": 11
+          }
+        }
+      },
+      "panoramaPartner": null,
+      "claims": "native print geometry and ornament animation"
+    },
+    {
+      "ordinal": 7,
+      "id": "note-inside",
+      "headline": "There's a note\ninside.",
+      "background": "mintConfetti",
+      "captureCount": 1,
+      "captureRoles": {
+        "hero": "inside"
+      },
+      "placements": {
+        "iphone": {
+          "hero": {
+            "centerX": 50,
+            "top": 24,
+            "width": 70,
+            "angle": 0
+          }
+        },
+        "ipad": {
+          "hero": {
+            "centerX": 50,
+            "top": 35,
+            "width": 82,
+            "angle": 0
+          }
+        },
+        "mac": {
+          "hero": {
+            "centerX": 50,
+            "top": 27,
+            "width": 74,
+            "angle": 0
+          }
+        }
+      },
+      "panoramaPartner": null,
+      "claims": "personal note inside"
+    },
+    {
+      "ordinal": 8,
+      "id": "pick-personalize-smile",
+      "headline": "Pick. Personalize.\nSmile.",
+      "background": "plumLetter",
+      "captureCount": 3,
+      "captureRoles": {
+        "hero": "library",
+        "left": "cosmic-front",
+        "right": "comic-front"
+      },
+      "placements": {
+        "iphone": {
+          "hero": {
+            "centerX": 50,
+            "top": 24,
+            "width": 62,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 20,
+            "top": 35,
+            "width": 47,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 80,
+            "top": 35,
+            "width": 47,
+            "angle": 11
+          }
+        },
+        "ipad": {
+          "hero": {
+            "centerX": 50,
+            "top": 35,
+            "width": 76,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 22,
+            "top": 46,
+            "width": 56,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 78,
+            "top": 46,
+            "width": 56,
+            "angle": 11
+          }
+        },
+        "mac": {
+          "hero": {
+            "centerX": 50,
+            "top": 27,
+            "width": 67,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 24,
+            "top": 38,
+            "width": 50,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 76,
+            "top": 38,
+            "width": 50,
+            "angle": 11
+          }
+        }
+      },
+      "panoramaPartner": null,
+      "claims": "thirty starters using six original illustrations"
+    },
+    {
+      "ordinal": 9,
+      "id": "make-it-yours",
+      "headline": "Make it yours.",
+      "background": "coralBurgundy",
+      "captureCount": 1,
+      "captureRoles": {
+        "hero": "personalized"
+      },
+      "placements": {
+        "iphone": {
+          "hero": {
+            "centerX": 50,
+            "top": 24,
+            "width": 70,
+            "angle": 0
+          }
+        },
+        "ipad": {
+          "hero": {
+            "centerX": 50,
+            "top": 35,
+            "width": 82,
+            "angle": 0
+          }
+        },
+        "mac": {
+          "hero": {
+            "centerX": 50,
+            "top": 27,
+            "width": 74,
+            "angle": 0
+          }
+        }
+      },
+      "panoramaPartner": null,
+      "claims": "editable local text and saved composition"
+    },
+    {
+      "ordinal": 10,
+      "id": "many-ways",
+      "headline": "One card.\nSo many ways.",
+      "background": "midnightStars",
+      "captureCount": 3,
+      "captureRoles": {
+        "hero": "exports",
+        "left": "inside",
+        "right": "personalized"
+      },
+      "placements": {
+        "iphone": {
+          "hero": {
+            "centerX": 50,
+            "top": 24,
+            "width": 62,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 20,
+            "top": 35,
+            "width": 47,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 80,
+            "top": 35,
+            "width": 47,
+            "angle": 11
+          }
+        },
+        "ipad": {
+          "hero": {
+            "centerX": 50,
+            "top": 35,
+            "width": 76,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 22,
+            "top": 46,
+            "width": 56,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 78,
+            "top": 46,
+            "width": 56,
+            "angle": 11
+          }
+        },
+        "mac": {
+          "hero": {
+            "centerX": 50,
+            "top": 27,
+            "width": 67,
+            "angle": 0
+          },
+          "left": {
+            "centerX": 24,
+            "top": 38,
+            "width": 50,
+            "angle": -11
+          },
+          "right": {
+            "centerX": 76,
+            "top": 38,
+            "width": 50,
+            "angle": 11
+          }
+        }
+      },
+      "panoramaPartner": null,
+      "claims": "local front/inside PNG, full-card GIF, PDF, sticker PNG and offline HTML"
+    }
+  ],
+  "requiredStates": [
+    "comic-front",
+    "cosmic-front",
+    "loveLetter-front",
+    "popUp-front",
+    "photoBooth-front",
+    "confetti-front",
+    "inside",
+    "library",
+    "personalized",
+    "exports"
+  ],
+  "captureApproval": {
+    "iphone": "root-matching-native-handoff",
+    "ipad": "root-matching-native-handoff",
+    "mac": "root-matching-native-handoff"
+  },
+  "contract": {
+    "perPlatform": 10,
+    "multiCapture": 7,
+    "singleCapture": 3,
+    "backgroundCount": 4,
+    "adjacentBackgroundsDifferent": true,
+    "heroCentered": true,
+    "leftNegativeRightPositive": true,
+    "nativePixelsOnly": true
+  },
+  "limits": [
+    "No image rendered yet",
+    "No old-release native screenshot substitution",
+    "No provider/Image Playground/hinge/online/cloud-sync claim",
+    "Full-card GIF requires actual native export plus decoded unit evidence",
+    "Print runtime and native ShareLink chooser remain separate checks",
+    "Mac requires actual Mac captures with explicit full-scene or component provenance"
+  ]
+}

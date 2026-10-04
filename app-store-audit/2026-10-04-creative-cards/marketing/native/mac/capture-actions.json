@@ -1,0 +1,53 @@
+[
+  {
+    "state": "cosmic-front",
+    "capturedAtUTC": "2026-10-04T23:08:24.341Z",
+    "identifier": "starter.starter_space_1",
+    "method": "CUA App.getScreenshot original full native window pixels"
+  },
+  {
+    "state": "loveLetter-front",
+    "capturedAtUTC": "2026-10-04T23:08:28.112Z",
+    "identifier": "starter.starter_birds_1",
+    "method": "CUA App.getScreenshot original full native window pixels"
+  },
+  {
+    "state": "popUp-front",
+    "capturedAtUTC": "2026-10-04T23:08:31.612Z",
+    "identifier": "starter.starter_dino_1",
+    "method": "CUA App.getScreenshot original full native window pixels"
+  },
+  {
+    "state": "photoBooth-front",
+    "capturedAtUTC": "2026-10-04T23:08:35.083Z",
+    "identifier": "starter.starter_disco_1",
+    "method": "CUA App.getScreenshot original full native window pixels"
+  },
+  {
+    "state": "confetti-front",
+    "capturedAtUTC": "2026-10-04T23:08:38.914Z",
+    "identifier": "starter.starter_sweets_1",
+    "method": "CUA App.getScreenshot original full native window pixels"
+  },
+  {
+    "state": "loveLetter-front",
+    "capturedAtUTC": "2026-10-04T23:09:05.890Z",
+    "identifier": "starter.starter_birds_1",
+    "method": "CUA App.getScreenshot original full native window pixels"
+  },
+  {
+    "state": "personalized",
+    "capturedAtUTC": "2026-10-04T23:09:36.510Z",
+    "method": "CUA full native editor screenshot after actual native text field edits"
+  },
+  {
+    "state": "inside",
+    "capturedAtUTC": "2026-10-04T23:09:39.548Z",
+    "method": "CUA full native editor screenshot after actual Open card"
+  },
+  {
+    "state": "exports",
+    "capturedAtUTC": "2026-10-04T23:12:32.041Z",
+    "method": "CUA screenshot actual Mac Ready to send sheet after all six exports generated"
+  }
+]

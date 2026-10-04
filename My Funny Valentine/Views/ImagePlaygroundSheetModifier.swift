@@ -14,7 +14,7 @@ struct ImagePlaygroundButton: View {
 
     var body: some View {
         #if canImport(ImagePlayground)
-        if #available(iOS 18.1, macOS 15.1, visionOS 2.4, *) {
+        if !MFVRuntime.isPrivate, #available(iOS 18.1, macOS 15.1, visionOS 2.4, *) {
             ImagePlaygroundButtonContent(
                 generatedImageURL: $generatedImageURL,
                 concept: concept,
@@ -39,7 +39,18 @@ private struct ImagePlaygroundButtonContent: View {
 
     var body: some View {
         if supportsImagePlayground {
-            Button {
+            if #available(iOS 26.0, macOS 26.0, visionOS 26.0, *) {
+                playgroundAction.imagePlaygroundGenerationStyle(.illustration, in: [.illustration, .animation, .sketch, .externalProvider])
+            } else if #available(iOS 18.4, macOS 15.4, visionOS 2.4, *) {
+                playgroundAction.imagePlaygroundGenerationStyle(.illustration, in: [.illustration, .animation, .sketch])
+            } else {
+                playgroundAction
+            }
+        }
+    }
+
+    private var playgroundAction: some View {
+        Button {
                 showImagePlayground = true
             } label: {
                 Label("Image Playground", systemImage: "sparkles")
@@ -66,7 +77,6 @@ private struct ImagePlaygroundButtonContent: View {
             } message: {
                 Text("Try Image Playground again, or choose a photo.")
             }
-        }
     }
 }
 #endif

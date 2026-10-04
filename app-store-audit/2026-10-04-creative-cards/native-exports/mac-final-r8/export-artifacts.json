@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "nativeVersion": "1.0",
+  "nativeBuild": "3",
+  "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+  "privateSession": "12916CA4-9BC7-4F0B-846C-C6BA592E63A2",
+  "compiledProduct": "/tmp/mfv-creative-mac-build3-20261005/Build/Products/Debug/My Funny Valentine.app",
+  "nativeChooserShown": true,
+  "recipientSelected": false,
+  "files": [
+    {
+      "file": "Valentine-01F933D8-28CF-49ED-B2F5-5531CFF2736A.png",
+      "sourcePath": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/tmp/MFVPrivateQA-12916CA4-9BC7-4F0B-846C-C6BA592E63A2/Media/Valentine-01F933D8-28CF-49ED-B2F5-5531CFF2736A.png",
+      "sha256": "c4209c9d833ec781db7a18daf83c10a6a77b58f8f6e3de036e9154447f313b90",
+      "byteCount": 53677
+    },
+    {
+      "file": "Valentine-18B8B929-B2EF-421E-A791-B5ADB49C7E9A.pdf",
+      "sourcePath": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/tmp/MFVPrivateQA-12916CA4-9BC7-4F0B-846C-C6BA592E63A2/Media/Valentine-18B8B929-B2EF-421E-A791-B5ADB49C7E9A.pdf",
+      "sha256": "2783b2b7d26e24307424bc23803362c056e9ca50d881482647b7e898d50dbda9",
+      "byteCount": 2828041
+    },
+    {
+      "file": "Valentine-27B62082-DDA1-413F-958B-91FA519730FC.png",
+      "sourcePath": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/tmp/MFVPrivateQA-12916CA4-9BC7-4F0B-846C-C6BA592E63A2/Media/Valentine-27B62082-DDA1-413F-958B-91FA519730FC.png",
+      "sha256": "70d4b525e67d26572ac3f2366ef9760d65682e062300794a9b358a4c0f7ada2c",
+      "byteCount": 33370
+    },
+    {
+      "file": "Valentine-7E782F8A-D630-4773-A6B7-29F0916CAB37.png",
+      "sourcePath": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/tmp/MFVPrivateQA-12916CA4-9BC7-4F0B-846C-C6BA592E63A2/Media/Valentine-7E782F8A-D630-4773-A6B7-29F0916CAB37.png",
+      "sha256": "994abac47b21ec87a5ff31fd24e9b5816ad2f141f64473eb143d246329eb18e4",
+      "byteCount": 586094
+    },
+    {
+      "file": "Valentine-BF95E742-C438-4BAF-B3CF-C440396FB97A.gif",
+      "sourcePath": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/tmp/MFVPrivateQA-12916CA4-9BC7-4F0B-846C-C6BA592E63A2/Media/Valentine-BF95E742-C438-4BAF-B3CF-C440396FB97A.gif",
+      "sha256": "78088c73a5c35d63cc1dd7e5557b7d8873c51a3115dee8c1a4d0e259e61fa910",
+      "byteCount": 1006028
+    },
+    {
+      "file": "Valentine-E1EBB123-99F1-4AF0-8AED-223ECDF0F0ED.html",
+      "sourcePath": "/Users/nathan/Library/Containers/com.nathanfennel.My-Funny-Valentine/Data/tmp/MFVPrivateQA-12916CA4-9BC7-4F0B-846C-C6BA592E63A2/Media/Valentine-E1EBB123-99F1-4AF0-8AED-223ECDF0F0ED.html",
+      "sha256": "3e99e0000421fd8c4d3f33dd24dc7233f6e82d9173a951f5e03286ca71a65e6b",
+      "byteCount": 2487265
+    }
+  ],
+  "decodeVisualApproval": "all-six-files-pass",
+  "decodeVisualReceipt": {
+    "path": "qa/verification.json",
+    "sha256": "346d216089f42605b1a6af3bfcfa7ee3df636981efee60efca0d373ef18e6a12"
+  }
+}

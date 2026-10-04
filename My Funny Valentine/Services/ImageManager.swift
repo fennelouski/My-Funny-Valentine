@@ -33,7 +33,15 @@ actor ImageManager {
     // MARK: - Storage Paths
 
     private var documentsDirectory: URL {
-        fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        if MFVRuntime.isPrivate {
+            // Unit/media helpers share the valid private session. A rejected
+            // request must not read or write the ordinary Documents directory.
+            guard let path = try? MFVRuntime.mediaDirectory() else {
+                preconditionFailure("Rejected private media session")
+            }
+            return path
+        }
+        return fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
 
     private var imagesDirectory: URL {

@@ -8,6 +8,7 @@ struct CardDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     let card: Card?
     @State private var draft: Card
@@ -24,17 +25,32 @@ struct CardDetailView: View {
     @State private var importTask: Task<Void, Never>?
     @State private var errorMessage: String?
     @State private var showingError = false
+    @State private var showingShareError = false
     @State private var shareURL: URL?
+    @State private var insideURL: URL?
     @State private var animatedURL: URL?
     @State private var showingShare = false
-    @State private var exporting = false
-    @State private var playing = false
+    @State private var exportSession = CardExportSession()
+    @State private var opening = 0.0
+    @State private var pdfURL: URL?
+    @State private var stickerURL: URL?
+    @State private var htmlURL: URL?
+    @State private var printData: Data?
+    @State private var showingPrint = false
+    @State private var exportSnapshot: CardRenderSnapshot?
+    @State private var exportTask: Task<Void, Never>?
+    private var exporting: Bool { exportSession.isExporting }
 
     init(card: Card?, starter: Card? = nil) {
         self.card = card
         let initial = CardDraft.copy(of: card ?? starter ?? Card())
         if card == nil {
             initial.id = UUID()
+            if starter == nil {
+                var layout = initial.getLayoutData() ?? CardLayoutData()
+                layout.composition = CardComposition()
+                initial.setLayoutData(layout)
+            }
             for face in initial.faces ?? [] { face.id = UUID(); face.cardId = initial.id }
             for image in initial.images ?? [] { image.id = UUID(); image.cardId = initial.id }
             for sticker in initial.stickers ?? [] { sticker.id = UUID(); sticker.cardId = initial.id }
@@ -87,8 +103,12 @@ struct CardDetailView: View {
         .accessibilityIdentifier("cardDetail.scroll")
         .scrollDismissesKeyboard(.interactively)
         .background(Color.appGroupedBackground)
-        .navigationTitle(card == nil ? "Make it yours" : "Edit card")
+        .navigationTitle("Your card")
         .appInlineNavigationTitle()
+        #if os(iOS)
+        .navigationBarBackButtonHidden(true)
+        .toolbar(.hidden, for: .tabBar)
+        #endif
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") { dismiss() }
@@ -110,12 +130,14 @@ struct CardDetailView: View {
             }
         }
         .sheet(isPresented: $showingSayings) {
-            SayingsGenerationView(userId: UserPreferencesService.deviceUserId()) { message.wrappedValue = $0 }
+            if !MFVRuntime.isPrivate {
+                SayingsGenerationView(userId: UserPreferencesService.deviceUserId()) { message.wrappedValue = $0 }
+            }
         }
         .sheet(isPresented: $showingFaces) {
             FaceSelectionView(faces: detectedFaces) { addFace($0) }
         }
-        .sheet(isPresented: $showingShare) { sharePreview }
+        .sheet(isPresented: $showingShare, onDismiss: shareDismissed) { sharePreview }
         .alert("Couldn't finish", isPresented: $showingError) {
             Button("OK", role: .cancel) { }
         } message: { Text(errorMessage ?? "Please try again.") }
@@ -137,19 +159,69 @@ struct CardDetailView: View {
         }
         .onChange(of: artworkItem) { _, item in importPhoto(item, face: false) }
         .onChange(of: faceItem) { _, item in importPhoto(item, face: true) }
-        .onDisappear { importTask?.cancel() }
+        .onDisappear { importTask?.cancel(); shareDismissed() }
     }
 
     private var preview: some View {
-        TimelineView(.animation(minimumInterval: 1.0 / 12, paused: !playing || reduceMotion)) { timeline in
-            CardTileView(
-                card: draft, size: CGSize(width: 280, height: 420),
-                faceAnimationPhase: playing && !reduceMotion
-                    ? timeline.date.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 2) / 2 : nil
-            )
+        CardStageView(snapshot: CardRenderer.shared.snapshot(of: draft), opening: $opening,
+                      motionEnabled: draft.getLayoutData()?.composition?.motionEnabled ?? false)
+    }
+
+    private var composition: CardComposition? { draft.getLayoutData()?.composition }
+    private var artworkSource: Image? {
+        guard let data = draft.images?.first?.imageData, let image = PlatformImageUtils.image(from: data) else { return nil }
+        return PlatformImageUtils.swiftUIImage(from: image)
+    }
+
+    private var stylePicker: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Set the scene").font(.title2.bold())
+            LazyVGrid(columns: dynamicTypeSize.isAccessibilitySize
+                      ? [GridItem(.flexible())]
+                      : [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
+                ForEach(CardVisualFamily.allCases) { family in
+                    Button {
+                        var layout = draft.getLayoutData() ?? CardLayoutData()
+                        layout.composition = CardComposition(family: family, variant: composition?.variant ?? 0,
+                                                             motionEnabled: composition?.motionEnabled ?? true)
+                        draft.setLayoutData(layout)
+                        opening = 0
+                        changed()
+                    } label: {
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack {
+                                Image(systemName: family.symbol).font(.title2.bold())
+                                Spacer(minLength: 4)
+                                if composition?.family == family { Image(systemName: "checkmark.circle.fill") }
+                            }
+                            Text(family.title).font(.subheadline.bold()).fixedSize(horizontal: false, vertical: true)
+                        }
+                        .padding(12).frame(maxWidth: .infinity, minHeight: 88, alignment: .leading)
+                        .foregroundStyle(Color(PlatformColor.fromHex(family.inkHex) ?? .black))
+                        .background(Color(PlatformColor.fromHex(family.backgroundHex) ?? .white), in: RoundedRectangle(cornerRadius: 12))
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityIdentifier("cardDetail.style." + family.rawValue)
+                    .accessibilityAddTraits(composition?.family == family ? .isSelected : [])
+                }
+            }
+            if let composition {
+                Picker("Composition", selection: Binding(get: { composition.variant }, set: { value in
+                    var layout = draft.getLayoutData() ?? CardLayoutData()
+                    layout.composition?.variant = value
+                    draft.setLayoutData(layout); opening = 0; changed()
+                })) {
+                    ForEach(0..<5, id: \.self) { index in Text("Layout \(index + 1)").tag(index) }
+                }
+                .accessibilityIdentifier("cardDetail.variant")
+                Toggle(isOn: Binding(get: { draft.getLayoutData()?.composition?.motionEnabled ?? true }, set: { value in
+                    var layout = draft.getLayoutData() ?? CardLayoutData()
+                    layout.composition?.motionEnabled = value
+                    draft.setLayoutData(layout); changed()
+                })) { Label("Bring it to life", systemImage: "play.circle.fill") }
+                    .accessibilityIdentifier("cardDetail.motion")
+            }
         }
-        .shadow(color: .black.opacity(0.12), radius: 12, y: 6)
-        .accessibilityIdentifier("cardDetail.preview")
     }
 
     private var editor: some View {
@@ -175,6 +247,7 @@ struct CardDetailView: View {
                     .frame(minHeight: 44)
             }
             .accessibilityIdentifier("cardDetail.generateWithAI")
+            .disabled(MFVRuntime.isPrivate)
 
             Divider()
             Text("Make it personal").font(.title2.bold())
@@ -182,7 +255,8 @@ struct CardDetailView: View {
                 HStack(spacing: 12) { photoButton; faceButton }
                 VStack(alignment: .leading, spacing: 8) { photoButton; faceButton }
             }
-            ImagePlaygroundButton(generatedImageURL: $playgroundURL, concept: draft.saying ?? "") { image in
+            .disabled(MFVRuntime.isPrivate)
+            ImagePlaygroundButton(generatedImageURL: $playgroundURL, concept: draft.saying ?? "", sourceImage: artworkSource) { image in
                 guard let data = PlatformImageUtils.pngData(from: image) else {
                     fail("That artwork couldn't be read. Please try again.")
                     return
@@ -193,17 +267,10 @@ struct CardDetailView: View {
 
             if importing { ProgressView("Adding photo…").accessibilityIdentifier("cardDetail.importing") }
             if !(draft.faces ?? []).isEmpty {
-                if !reduceMotion {
-                    Button { playing.toggle() } label: {
-                        Label(playing ? "Pause face" : "Play face", systemImage: playing ? "pause.fill" : "play.fill")
-                            .frame(minHeight: 44)
-                    }
-                    .accessibilityIdentifier("cardDetail.playFace")
-                }
                 HStack {
                     Label("Face added", systemImage: "person.crop.circle.badge.checkmark")
                     Spacer()
-                    Button("Remove", role: .destructive) { draft.faces = []; playing = false; changed() }
+                    Button("Remove", role: .destructive) { draft.faces = []; changed() }
                 }
                 .font(.subheadline)
             }
@@ -215,9 +282,10 @@ struct CardDetailView: View {
                 }
                 .font(.subheadline)
             }
+            Divider().padding(.vertical, 4)
+            stylePicker
         }
-        .padding(20)
-        .background(Color.appSecondaryGroupedBackground, in: RoundedRectangle(cornerRadius: 20))
+        .padding(.vertical, 8)
         .buttonStyle(.bordered)
         .tint(colorScheme == .dark
             ? Color(red: 0.98, green: 0.55, blue: 0.68)
@@ -257,10 +325,13 @@ struct CardDetailView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
-                    preview
+                    if let exportSnapshot {
+                        CardStageView(snapshot: exportSnapshot, opening: $opening,
+                                      motionEnabled: exportSnapshot.composition?.motionEnabled ?? false)
+                    }
                     if let shareURL {
                         ShareLink(item: shareURL, preview: SharePreview("My Funny Valentine")) {
-                            Label("Share card", systemImage: "square.and.arrow.up")
+                            Label("Share card front", systemImage: "square.and.arrow.up")
                                 .frame(minHeight: 44)
                         }
                         .buttonStyle(.borderedProminent)
@@ -273,28 +344,29 @@ struct CardDetailView: View {
                         }
                         .buttonStyle(.bordered)
                         .accessibilityIdentifier("cardDetail.shareGIF")
-                    } else if !(draft.faces ?? []).isEmpty {
-                        Button {
-                            exporting = true
-                            Task {
-                                await Task.yield()
-                                defer { exporting = false }
-                                guard let data = GIFExporter.shared.createAnimatedGIF(from: draft) else {
-                                    fail("The animation couldn't be exported. Your card is still ready to share.")
-                                    return
-                                }
-                                do { animatedURL = try export(data, extension: "gif") }
-                                catch { fail(error.localizedDescription) }
-                            }
-                        } label: {
-                            Label("Animate face", systemImage: "person.crop.rectangle.badge.sparkles")
-                                .frame(minHeight: 44)
+                    } else {
+                        Button { makeExport(.animation) } label: {
+                            Label("Animate the card", systemImage: "play.rectangle.fill").frame(minHeight: 44)
                         }
-                        .buttonStyle(.bordered)
-                        .disabled(exporting)
-                        .accessibilityIdentifier("cardDetail.animateFace")
+                        .buttonStyle(.bordered).disabled(exporting)
+                        .accessibilityIdentifier("cardDetail.animateCard")
                     }
-                    if exporting { ProgressView("Making animation…") }
+                    if let exportSnapshot, !exportSnapshot.note.isEmpty {
+                        exportRow(title: "Inside message PNG", symbol: "envelope.open", url: insideURL, kind: .inside)
+                    }
+                    exportRow(title: "Printable PDF", symbol: "doc.richtext", url: pdfURL, kind: .pdf)
+                    exportRow(title: "Chat sticker PNG", symbol: "face.smiling", url: stickerURL, kind: .sticker)
+                    exportRow(title: "Interactive browser card", symbol: "globe", url: htmlURL, kind: .html)
+                    if let printData {
+                        Button { self.printData = printData; showingPrint = true } label: {
+                            Label("Print card", systemImage: "printer.fill").frame(minHeight: 44)
+                        }
+                        .buttonStyle(.bordered).accessibilityIdentifier("cardDetail.print")
+                        .disabled(MFVRuntime.isPrivate)
+                    }
+                    Text("Mail and chat apps appear in your device's share menu.")
+                        .font(.footnote).foregroundStyle(.secondary).multilineTextAlignment(.center)
+                    if exporting { ProgressView("Making your file…").accessibilityIdentifier("cardDetail.exporting") }
                 }
                 .padding(20)
             }
@@ -304,16 +376,45 @@ struct CardDetailView: View {
             .appInlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Done") { showingShare = false }
+                    Button("Done") { shareDismissed(); showingShare = false }
                 }
             }
+            .sheet(isPresented: $showingPrint) {
+                if let printData {
+                    CardPrintView(data: printData) { showingPrint = false }
+                        .frame(minWidth: 280, minHeight: 240)
+                }
+            }
+            .alert("Couldn't export", isPresented: $showingShareError) {
+                Button("OK", role: .cancel) { }
+            } message: { Text(errorMessage ?? "Your draft is still here. Try again.") }
         }
     }
 
     private func changed() {
         draft.updateModifiedDate()
+        resetExportContent()
+    }
+
+    private func resetExportContent() {
+        cancelExport()
+        exportSession.invalidate()
         shareURL = nil
+        insideURL = nil
         animatedURL = nil
+        pdfURL = nil; stickerURL = nil; htmlURL = nil; printData = nil
+        exportSnapshot = nil
+    }
+
+    private func cancelExport() {
+        exportTask?.cancel()
+        exportTask = nil
+        exportSession.cancelJob()
+    }
+
+    private func shareDismissed() {
+        cancelExport()
+        exportSession.invalidate()
     }
 
     private func addArtwork(_ data: Data, source: ImageSource) {
@@ -385,20 +486,78 @@ struct CardDetailView: View {
     }
 
     private func prepareShare() {
-        playing = false
-        guard let image = CardRenderer.shared.renderCard(draft),
-              let data = PlatformImageUtils.pngData(from: image) else {
-            fail("The card couldn't be exported. Your changes are still here.")
-            return
-        }
+        resetExportContent()
+        opening = 0
+        let snapshot = CardRenderer.shared.snapshot(of: draft)
         do {
-            shareURL = try export(data, extension: "png")
+            shareURL = try export(CardExportService.png(snapshot), extension: "png")
+            exportSnapshot = snapshot
+            exportSession.replaceSnapshot()
             showingShare = true
         } catch { fail(error.localizedDescription) }
     }
 
+    private enum ExportKind: String {
+        case animation, inside, pdf, sticker, html
+        var fileExtension: String {
+            switch self {
+            case .animation: "gif"
+            case .inside, .sticker: "png"
+            case .pdf: "pdf"
+            case .html: "html"
+            }
+        }
+    }
+
+    @ViewBuilder private func exportRow(title: String, symbol: String, url: URL?, kind: ExportKind) -> some View {
+        if let url {
+            ShareLink(item: url) { Label("Share " + title, systemImage: "square.and.arrow.up").frame(minHeight: 44) }
+                .buttonStyle(.bordered).accessibilityIdentifier("cardDetail.share." + kind.rawValue)
+        } else {
+            Button { makeExport(kind) } label: { Label(title, systemImage: symbol).frame(minHeight: 44) }
+                .buttonStyle(.bordered).disabled(exporting).accessibilityIdentifier("cardDetail.export." + kind.rawValue)
+        }
+    }
+
+    private func makeExport(_ kind: ExportKind) {
+        guard showingShare, let snapshot = exportSnapshot, let job = exportSession.begin() else { return }
+        exportTask = Task { @MainActor in
+            defer { if exportSession.finish(job) { exportTask = nil } }
+            do {
+                let data: Data
+                switch kind {
+                case .animation:
+                    guard let animation = try await GIFExporter.shared.createCardAnimationCancellable(from: snapshot) else {
+                        throw CardExportService.ExportError.render
+                    }
+                    data = animation
+                case .inside: data = try await CardExportService.pngCancellable(snapshot, inside: true)
+                case .pdf: data = try await CardExportService.pdfCancellable(snapshot)
+                case .sticker: data = try await CardExportService.stickerPNGCancellable(snapshot)
+                case .html: data = try await CardExportService.interactiveHTMLCancellable(snapshot)
+                }
+                try Task.checkCancellation()
+                guard showingShare, exportSnapshot != nil, exportSession.canCommit(job) else { return }
+                // No suspension between the ownership check, file write and URL
+                // commit: an edit/dismiss cannot publish an obsolete snapshot.
+                let url = try export(data, extension: kind.fileExtension)
+                switch kind {
+                case .animation: animatedURL = url
+                case .inside: insideURL = url
+                case .pdf: pdfURL = url; printData = data
+                case .sticker: stickerURL = url
+                case .html: htmlURL = url
+                }
+            } catch is CancellationError {
+                // Dismissal/editing is an expected cancellation, not an alert.
+            } catch {
+                if !Task.isCancelled, showingShare, exportSession.canCommit(job) { fail(error.localizedDescription) }
+            }
+        }
+    }
+
     private func export(_ data: Data, extension fileExtension: String) throws -> URL {
-        let url = FileManager.default.temporaryDirectory
+        let url = try MFVRuntime.mediaDirectory()
             .appendingPathComponent("Valentine-\(UUID().uuidString).\(fileExtension)")
         try data.write(to: url, options: .atomic)
         return url
@@ -406,6 +565,38 @@ struct CardDetailView: View {
 
     private func fail(_ message: String) {
         errorMessage = message
-        showingError = true
+        if showingShare { showingShareError = true }
+        else { showingError = true }
     }
+}
+
+/// A snapshot and its current export own the result together. Cancellation,
+/// reopening Share or editing a draft invalidates old completion callbacks.
+nonisolated struct CardExportSession {
+    struct Job: Equatable {
+        let snapshotID: UUID
+        let id: UUID
+    }
+    private var snapshotID: UUID?
+    private var activeJob: Job?
+    var isExporting: Bool { activeJob != nil }
+
+    mutating func replaceSnapshot() {
+        snapshotID = UUID()
+        activeJob = nil
+    }
+    mutating func begin() -> Job? {
+        guard let snapshotID, activeJob == nil else { return nil }
+        let job = Job(snapshotID: snapshotID, id: UUID())
+        activeJob = job
+        return job
+    }
+    func canCommit(_ job: Job) -> Bool { snapshotID == job.snapshotID && activeJob == job }
+    @discardableResult mutating func finish(_ job: Job) -> Bool {
+        guard canCommit(job) else { return false }
+        activeJob = nil
+        return true
+    }
+    mutating func cancelJob() { activeJob = nil }
+    mutating func invalidate() { snapshotID = nil; activeJob = nil }
 }

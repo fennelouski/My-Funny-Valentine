@@ -1,0 +1,23 @@
+{
+  "atUTC": "2026-10-04T23:27:28.007871+00:00",
+  "status": "actual-browser-open-read-message-keyboard-close-pass",
+  "file": "Valentine-151897C3-C738-4A84-88BC-4359DA028B47.html",
+  "sha256": "4e2a07f39c588a98d665f4148f6c128d24e78368a2a61372395ecf1bd838c5ce",
+  "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+  "nativeVersion": "1.0",
+  "nativeBuild": "3",
+  "localURL": "http://127.0.0.1:56095/iphone-final-r8/Valentine-151897C3-C738-4A84-88BC-4359DA028B47.html",
+  "observations": [
+    "Open card button becomes expanded Close card",
+    "Read the message reveals complete front and personal note",
+    "Enter on Close card becomes Open card while complete message remains readable"
+  ],
+  "message": "A little card for my favorite person",
+  "note": "You make ordinary days wonderful. Love, Sam.",
+  "screenshots": [
+    "browser-open-card.png",
+    "browser-closed-keyboard.png"
+  ],
+  "recipientSelected": false,
+  "browserPointerDrag": "not tested; native horizontal drag separately passed"
+}

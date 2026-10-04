@@ -1,0 +1,90 @@
+--- a/My Funny Valentine/Utilities/CardRenderer+Composition.swift
++++ b/My Funny Valentine/Utilities/CardRenderer+Composition.swift
+@@ -125,14 +125,13 @@
+         // an invented foreground matte for the person.
+         let data = card.images.first?.data ?? card.templateArtwork
+         if let data, let image = PlatformImageUtils.image(from: data) {
+-            // These two bundled originals contain their complete illustration
+-            // above a blank note area. Fit that subject inside the print window
+-            // so a wide strip does not crop away the dinosaur's eyes or disco
+-            // ball. Imported photos keep their existing centered aspect-fill.
+-            let fitBundledSubject = card.images.isEmpty && (
+-                (family == .popUp && card.template?.imageName == "starter_dino") ||
+-                (family == .photoBooth && card.template?.imageName == "starter_disco")
+-            )
++            // These six checked-in originals have their complete illustrated
++            // subject above a blank note area. Fit that subject inside the
++            // print window; imported photos retain centered aspect-fill.
++            let bundledOriginals = ["starter_pizza", "starter_space", "starter_birds",
++                                    "starter_dino", "starter_disco", "starter_sweets"]
++            let fitBundledSubject = card.images.isEmpty &&
++                bundledOriginals.contains(card.template?.imageName ?? "")
+             if family == .photoBooth {
+                 let frames: [(CGRect, Double)]
+                 switch design.variant {
+@@ -237,10 +236,10 @@
+         else { context.addPath(CGPath(roundedRect: rect, cornerWidth: 5, cornerHeight: 5, transform: nil)) }
+         context.clip()
+         if fitBundledSubject, image.size.width > 0, image.size.height > 0 {
+-            // The source-verified 1024 × 1536 originals end their illustrated
+-            // subject before y1088. The remaining lower area is blank stationery.
+-            // Scale uniformly and center this top 17:16 subject, without changing
+-            // the immutable source bytes or redrawing any part of the artwork.
++            // Each inspected 1024 × 1536 original places its meaningful subject
++            // within y0...1088; the lower stationery area is not the subject.
++            // Uniformly fit that top 17:16 region without changing source bytes.
++            // The existing circular/rounded print mask remains intentional.
+             let subjectHeight = min(image.size.height, image.size.width * 17 / 16)
+             let scale = min(rect.width / image.size.width, rect.height / subjectHeight)
+             let fitted = CGRect(x: rect.midX - image.size.width * scale / 2,
+--- a/My Funny ValentineTests/Services/CreativeCardExportTests.swift
++++ b/My Funny ValentineTests/Services/CreativeCardExportTests.swift
+@@ -293,7 +293,7 @@
+         #expect(html.contains("Read the message"))
+     }
+ 
+-    @Test("Bundled dinosaur and disco subjects keep top and bottom features; imported photos retain centered cropping")
++    @Test("All thirty bundled layouts retain upper and lower subject features while imported photos keep centered cropping")
+     func bundledSubjectFeaturesRemainVisible() throws {
+         let fixture = try #require(PlatformGraphics.image(size: CGSize(width: 1024, height: 1536), scale: 1) { context in
+             context.setFillColor(PlatformColor.white.cgColor)
+@@ -304,23 +304,22 @@
+             context.fill(CGRect(x: 0, y: 976, width: 1024, height: 96))
+         })
+         let bytes = try #require(PlatformImageUtils.pngData(from: fixture))
+-        for (world, family) in [("dino", CardVisualFamily.popUp), ("disco", CardVisualFamily.photoBooth)] {
+-            for variant in 0..<5 {
+-                let template = try #require(TemplateManager.shared.getTemplate(id: "starter_\(world)_\(variant + 1)"))
+-                let layout = CardLayoutData(composition: CardComposition(family: family, variant: variant, motionEnabled: false))
+-                let bundled = CardRenderSnapshot(saying: "With love", note: "", template: template,
+-                    templateArtwork: bytes, layout: layout, images: [], faces: [], stickers: [])
+-                let visible = try faceColorCounts(CardExportService.png(bundled))
+-                #expect(visible.green > 500, "Upper subject feature must remain visible in \(world), layout \(variant + 1)")
+-                #expect(visible.purple > 500, "Lower subject feature must remain visible in \(world), layout \(variant + 1)")
+-                // A real imported photo has no known subject bounds. It keeps
+-                // the previous centered crop rather than inheriting template art.
+-                let imported = CardRenderSnapshot(saying: "With love", note: "", template: template,
+-                    templateArtwork: bytes, layout: layout,
+-                    images: [.init(data: bytes, rect: .zero, rotation: 0)], faces: [], stickers: [])
+-                let cropped = try faceColorCounts(CardExportService.png(imported))
+-                #expect(cropped.green == 0, "Imported photo crop remains unchanged in \(world), layout \(variant + 1)")
+-            }
++        for template in TemplateManager.shared.getStarterTemplates() {
++            let design = try #require(CardComposition.starter(templateID: template.id))
++            let layout = CardLayoutData(composition: CardComposition(
++                family: design.family, variant: design.variant, motionEnabled: false))
++            let bundled = CardRenderSnapshot(saying: "With love", note: "", template: template,
++                templateArtwork: bytes, layout: layout, images: [], faces: [], stickers: [])
++            let visible = try faceColorCounts(CardExportService.png(bundled))
++            #expect(visible.green > 500, "Upper subject feature must remain visible in \(template.id)")
++            #expect(visible.purple > 500, "Lower subject feature must remain visible in \(template.id)")
++            // A personal photo has no verified illustration bounds. It keeps
++            // the old centered crop instead of inheriting bundled-art geometry.
++            let imported = CardRenderSnapshot(saying: "With love", note: "", template: template,
++                templateArtwork: bytes, layout: layout,
++                images: [.init(data: bytes, rect: .zero, rotation: 0)], faces: [], stickers: [])
++            let cropped = try faceColorCounts(CardExportService.png(imported))
++            #expect(cropped.green == 0, "Imported photo crop remains unchanged in \(template.id)")
+         }
+     }
+ 
