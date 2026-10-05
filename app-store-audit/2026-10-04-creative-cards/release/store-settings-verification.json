@@ -1,0 +1,20 @@
+{
+  "appId": "6818700756",
+  "verifiedAt": "2026-10-04T23:48:02.041672+00:00",
+  "method": "Authenticated App Store Connect visible UI",
+  "privacy": {
+    "published": true,
+    "dataTypes": "Data Not Collected",
+    "privacyPolicyURL": "https://nathanfennel.com/my-funny-valentine/privacy.html"
+  },
+  "pricing": {
+    "countryCount": 175,
+    "displayedPriceRowCount": 175,
+    "allDisplayedPricesZero": true
+  },
+  "availability": {
+    "availableCountryCount": 175,
+    "futureCountriesAutomaticallyAvailable": true
+  },
+  "mutation": false
+}

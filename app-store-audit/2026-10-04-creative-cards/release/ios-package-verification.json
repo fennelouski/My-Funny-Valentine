@@ -1,0 +1,43 @@
+{
+  "platform": "iOS",
+  "version": "1.0",
+  "build": "3",
+  "bundleID": "com.nathanfennel.My-Funny-Valentine",
+  "sdk": "iphoneos26.5",
+  "ipa": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-3-20261005/Revision-1351adb/iOS/Export/My Funny Valentine.ipa",
+  "sha256": "e0ce986f6d9738b34892b604e16939e00d05366bc4c9fad75bc0e2b400a56f1c",
+  "byteCount": 13599205,
+  "signatureStrictVerify": "passed",
+  "distributionProfile": {
+    "uuid": "9a5374dd-888d-4d78-9454-7c399dd37c77",
+    "name": "iOS Team Store Provisioning Profile: com.nathanfennel.My-Funny-Valentine",
+    "expires": "2027-06-10T13:08:25",
+    "get-task-allow": false,
+    "provisionedDevices": false
+  },
+  "iconInfo": {
+    "CFBundlePrimaryIcon": {
+      "CFBundleIconFiles": [
+        "AppIcon60x60"
+      ],
+      "CFBundleIconName": "AppIcon"
+    }
+  },
+  "privacyManifest": {
+    "NSPrivacyTracking": false,
+    "NSPrivacyTrackingDomains": [],
+    "NSPrivacyCollectedDataTypes": [],
+    "NSPrivacyAccessedAPITypes": [
+      {
+        "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults",
+        "NSPrivacyAccessedAPITypeReasons": [
+          "CA92.1"
+        ]
+      }
+    ]
+  },
+  "sourceRevision": "1351adb9edf8b0f76670487f203daca6647324eb",
+  "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+  "compiledIcon1024x1024Present": true,
+  "compiledIconRenditionCount": 8
+}

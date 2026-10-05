@@ -1,0 +1,116 @@
+{
+  "platform": "macOS",
+  "version": "1.0",
+  "build": "3",
+  "bundleID": "com.nathanfennel.My-Funny-Valentine",
+  "sdk": "macosx26.5",
+  "pkg": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-3-20261005/Revision-1351adb/macOS/Export/My Funny Valentine.pkg",
+  "sha256": "2b39efab2561335cdc31171b60b4a72d6cd9f4487bc36e5d8a7d2ad9d6ba612d",
+  "byteCount": 13353870,
+  "signatureStrictVerify": "passed",
+  "appAuthority": "Apple Distribution: Nathan Fennel (EJLR2RPSV2)",
+  "packageAuthority": "3rd Party Mac Developer Installer: Nathan Fennel (EJLR2RPSV2)",
+  "distributionProfile": {
+    "uuid": "912f9710-62f4-4760-ae2f-841d14eb1c0b",
+    "name": "Mac Team Store Provisioning Profile: com.nathanfennel.My-Funny-Valentine",
+    "expires": "2027-06-10T13:08:25",
+    "get-task-allow": false,
+    "provisionedDevices": false
+  },
+  "iconICNSPresent": true,
+  "architectures": [
+    "x86_64",
+    "arm64"
+  ],
+  "privacyManifest": {
+    "NSPrivacyTracking": false,
+    "NSPrivacyTrackingDomains": [],
+    "NSPrivacyCollectedDataTypes": [],
+    "NSPrivacyAccessedAPITypes": [
+      {
+        "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults",
+        "NSPrivacyAccessedAPITypeReasons": [
+          "CA92.1"
+        ]
+      }
+    ]
+  },
+  "sourceRevision": "1351adb9edf8b0f76670487f203daca6647324eb",
+  "sourceFreezeSHA256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca",
+  "inspectionCorrection": "Initial assertion expected historical Apple Mac OS Application Signing wording; exported modern automatic signature is actual Apple Distribution. Package unchanged; verified exact distribution authority/profile and strict signature.",
+  "compiledIcon1024": true,
+  "compiledIconEvidence": {
+    "file": "Contents/Resources/Assets.car",
+    "sha256": "e2558ae7010d3f5e42dbbaf58433e4768b8058fe43f31624f01b2e95f69ff38c",
+    "method": "xcrun assetutil --info",
+    "renditions": [
+      {
+        "name": "icon-mac-16x16@1x.png",
+        "width": 16,
+        "height": 16,
+        "scale": 1
+      },
+      {
+        "name": "icon-mac-16x16@2x.png",
+        "width": 32,
+        "height": 32,
+        "scale": 2
+      },
+      {
+        "name": "icon-mac-32x32@1x.png",
+        "width": 32,
+        "height": 32,
+        "scale": 1
+      },
+      {
+        "name": "icon-mac-32x32@2x.png",
+        "width": 64,
+        "height": 64,
+        "scale": 2
+      },
+      {
+        "name": "icon-mac-128x128@1x.png",
+        "width": 128,
+        "height": 128,
+        "scale": 1
+      },
+      {
+        "name": "icon-mac-128x128@2x.png",
+        "width": 256,
+        "height": 256,
+        "scale": 2
+      },
+      {
+        "name": "icon-mac-256x256@1x.png",
+        "width": 256,
+        "height": 256,
+        "scale": 1
+      },
+      {
+        "name": "icon-mac-256x256@2x.png",
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      {
+        "name": "icon-mac-512x512@1x.png",
+        "width": 512,
+        "height": 512,
+        "scale": 1
+      },
+      {
+        "name": "icon-mac-512x512@2x.png",
+        "width": 1024,
+        "height": 1024,
+        "scale": 2
+      },
+      {
+        "name": null,
+        "width": null,
+        "height": null,
+        "scale": 1
+      }
+    ],
+    "icnsNote": "ICNS has ic13, ic11, ic04 and ic07 blocks; 1024 rendition is confirmed in compiled Assets.car."
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "appId": "6818700756",
+  "bundleIdentifier": "com.nathanfennel.My-Funny-Valentine",
+  "sourceRevision": "1351adb9edf8b0f76670487f203daca6647324eb",
+  "version": "1.0",
+  "build": "3",
+  "verifiedAt": "2026-10-05T00:12:59.817103+00:00",
+  "method": "Authenticated App Store Connect visible final submission details",
+  "status": "both-waiting-for-review",
+  "platforms": [
+    {
+      "platform": "ios",
+      "buildId": "db922707-b634-4b47-8679-834d9e38e183",
+      "submissionId": "47549909-fb61-4389-8e52-a60ea5054adc",
+      "submittedLocal": "2026-10-05 02:09 Europe/Amsterdam",
+      "status": "Waiting for Review",
+      "url": "https://appstoreconnect.apple.com/apps/6818700756/distribution/reviewsubmissions/details/47549909-fb61-4389-8e52-a60ea5054adc",
+      "proof": "ios-waiting-for-review.png",
+      "proofSHA256": "6f983106b943fae2be1a59135d4be3e991d01701936472e51b5595cda4b506ef"
+    },
+    {
+      "platform": "macos",
+      "buildId": "881371bf-4a2c-41a7-b864-e90a5f4f8e86",
+      "submissionId": "96b81211-1e5d-4a1e-8523-4d5056c8f548",
+      "submittedLocal": "2026-10-05 02:06 Europe/Amsterdam",
+      "status": "Waiting for Review",
+      "url": "https://appstoreconnect.apple.com/apps/6818700756/distribution/reviewsubmissions/details/96b81211-1e5d-4a1e-8523-4d5056c8f548",
+      "proof": "mac-waiting-for-review.png",
+      "proofSHA256": "1399fd5da5b56698c1e7c3be74d498b89bca75d72eb7cbc62b223de23111c98f"
+    }
+  ],
+  "replacedEarlierSubmissions": {
+    "ios": "e3fdcd1c-03d0-4409-9e22-caef58fd1f59",
+    "macos": "737cc012-414f-46ee-8dfc-e5eee602f6af"
+  },
+  "storeSettings": {
+    "path": "store-settings-verification.json",
+    "sha256": "73e24e00a30d4b6251eaf92388195777daff09bf6ee463b2d500a6665f2c29aa"
+  },
+  "marketing": {
+    "path": "marketing-upload-verification.json",
+    "sha256": "b8b19de2e31ee13f7c7d95e08f39fd660f70ebe82baadf7e8b1a324a03827129",
+    "totalImages": 30
+  },
+  "nativeVerification": {
+    "path": "../native-verification.json",
+    "sha256": "f8ee1958043ee3cac35801c33e7d7453c46b296dc15598b5a92b11eb0d739922"
+  },
+  "sourceFreeze": {
+    "path": "../source-freeze.root-r8.json",
+    "sha256": "7b7535d15d7c78c641068594a9c317562a153b4124ce689e65632a3822dc87ca"
+  },
+  "releaseMode": "automatic after Apple approval",
+  "privacy": "Published Data Not Collected",
+  "pricing": "Free in all175 available countries; future countries enabled",
+  "scopeLimitations": [
+    "Approval and public availability are pending Apple review.",
+    "No direct ChatGPT OAuth client or image generation service was enabled.",
+    "No physical iPhone Duo hinge, visionOS, automatic cross-device sync or installed Messages sticker extension was claimed.",
+    "No recipient was selected and no print job sent during verification."
+  ]
+}

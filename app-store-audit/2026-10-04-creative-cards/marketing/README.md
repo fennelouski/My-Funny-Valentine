@@ -1,6 +1,6 @@
 # Creative-card marketing framework
 
-Thirty final images have been rendered and individually approved by root for native version 1.0 build 3, source-freeze.root-r8.json. See render-proof.json for exact inputs, output dimensions, hashes and review. Upload remains pending; the older submitted gallery is still untouched.
+Thirty final images have been rendered and individually approved by root for native version 1.0 build 3, source-freeze.root-r8.json. See render-proof.json for exact inputs, output dimensions, hashes and review. All thirty images were uploaded to the iPhone 6.9-inch, iPad 13-inch landscape and Mac galleries in English (U.S.). Batch upload order was corrected through Apple’s keyboard drag controls, then verified in exact 01–10 order after full reloads. Both native 1.0(3) versions are Waiting for Review. See [the upload receipt](../release/marketing-upload-verification.json).
 
 The manifest has ten slots per platform, with seven multi-capture and three single-capture compositions. Four deliberate backgrounds alternate: coral/burgundy heart prints, cosmic indigo stars, mint confetti, and plum envelope geometry. The card's existing pink/burgundy identity remains the anchor. Fraunces provides a rounded, expressive serif headline; its unmodified variable font and SIL Open Font License are bundled in this audit folder. [The primary font license](https://raw.githubusercontent.com/google/fonts/main/ofl/fraunces/OFL.txt) permits embedding and distribution with the retained notice.
 
@@ -8,7 +8,7 @@ The six family fronts lead the gallery. An inside card, library, personalized ca
 
 Every composition uses a centered upright hero and zero, one or two distinct genuine supporting captures. Left support rotates counterclockwise and right support clockwise. Images preserve their full aspect ratio; browser decode must match documented EXIF display dimensions. The hero is reduced if needed to keep its complete native interface within the canvas. Supporting images may extend past the canvas edges. No app text, control, frame or artwork is redrawn inside a capture. Native Mac screenshots require their own explicit full-scene or component provenance. CUA returned JPEG originals on Mac; the native .jpg files retain their original bytes. Phone and iPad originals are PNG.
 
-The output targets are 1320×2868 Phone, 2752×2064 landscape iPad and 2560×1600 Mac. The iPad canvas matches the genuine landscape capture display ratio; retain its original encoded PNG and EXIF orientation. Root freshly verified 2752×2064 as an accepted 13-inch size in Apple’s [screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications/). Selected build and locale still require root verification before upload. English U.S. and U.S. are provisional metadata values, not a localization claim.
+The output targets are 1320×2868 Phone, 2752×2064 landscape iPad and 2560×1600 Mac. The iPad canvas matches the genuine landscape capture display ratio; retain its original encoded PNG and EXIF orientation. Root freshly verified 2752×2064 as an accepted 13-inch size in Apple’s [screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications/). Root verified native build 3 and English (U.S.) in each editable version before submitting. The prepared manifest retains its earlier preparation wording as a historical rendering input; the separate final upload receipt records completed store work.
 
 ## Matching capture handoff
 
@@ -18,7 +18,7 @@ Copy byte-identical native files under `native/<platform>/` and the final root f
 
 The renderer stops before loading a browser dependency while the manifest is pending. Once approved, it verifies all listed shipping input hashes before and after rendering, original PNG/JPEG hashes, orientation, distinct support pixels, centered hero, fan directions, headline margins/separation and exact opaque output dimensions. It uses an existing headless Chromium for artifact generation, blocks external requests and never controls a native app or user browser. Root's later native source changes require a new actual derivative freeze, not rewriting the earlier prepared snapshot.
 
-After a real handoff, render in one platform batch, inspect each export once and record any concrete defects. Correct those together and confirm at most one more batch. Root retains separate visual approval and upload responsibility. The renderer's successful output is still `rendered-awaiting-individual-review-and-root-approval`; neither rendering nor a filename proves submission.
+For future revisions, after a real handoff, render in one platform batch, inspect each export once and record any concrete defects. Correct those together and confirm at most one more batch. Root retains separate visual approval and upload responsibility. The renderer initially returns `rendered-awaiting-individual-review-and-root-approval`; root subsequently recorded individual approval and authenticated store uploads separately. Neither rendering nor a filename alone proves submission.
 
 ```sh
 node render-marketing.cjs

@@ -1,0 +1,188 @@
+{
+  "appId": "6818700756",
+  "version": "1.0",
+  "build": "3",
+  "locale": "English (U.S.)",
+  "verifiedAt": "2026-10-05T00:12:59.817103+00:00",
+  "sourceRevision": "1351adb9edf8b0f76670487f203daca6647324eb",
+  "platforms": [
+    {
+      "platform": "iphone",
+      "slot": "6.9-inch",
+      "persistedOrderMatchesFiles": true,
+      "imageCount": 10,
+      "files": [
+        {
+          "name": "01-make-their-day.png",
+          "sha256": "738bfa359f3b67ef0c19f908d8240d4469e0f246a579e878c2ad95d451b34195",
+          "bytes": 731581
+        },
+        {
+          "name": "02-cosmic-love.png",
+          "sha256": "c03e4a9935e5b796cd7fc767cd905c942f727a4f675a4a6099045ade253d72ba",
+          "bytes": 565063
+        },
+        {
+          "name": "03-more-than-a-message.png",
+          "sha256": "ed6184e75e7015bcefafbff2a8f855e71b6dd72eb6b39fb8ae7f657d1f9c836e",
+          "bytes": 669448
+        },
+        {
+          "name": "04-little-surprise.png",
+          "sha256": "73983775e7d41b12ef6233dafa65d8cc5744fa6e95465ca2c56ab50c03407709",
+          "bytes": 346297
+        },
+        {
+          "name": "05-good-times.png",
+          "sha256": "9b3d913cd9c16b749bfa4ca2d0bab69d171381af81daf32cdbc38b5c673699c5",
+          "bytes": 507250
+        },
+        {
+          "name": "06-little-celebration.png",
+          "sha256": "62230fd43a8a3ea4d8304e4e2f58d0592ec517df7ecc75e6693d499dda5e86e6",
+          "bytes": 499729
+        },
+        {
+          "name": "07-note-inside.png",
+          "sha256": "87741c4d02795449433781122144eb9398b2c3430634b05e23bdb025204c3f88",
+          "bytes": 201932
+        },
+        {
+          "name": "08-pick-personalize-smile.png",
+          "sha256": "130a7ed54bd149ae3474cfa34c4e63d81d696114e1eb1fc4961e8d4edc7283a6",
+          "bytes": 942706
+        },
+        {
+          "name": "09-make-it-yours.png",
+          "sha256": "88c7ef13a65cdbbdb3149ea5b9987464a9ebb9418e74da269418dfef5b0f152f",
+          "bytes": 464371
+        },
+        {
+          "name": "10-many-ways.png",
+          "sha256": "14d3799ed77e648a11db44472df1a1fbeddc226a412d1b4c25449851d6ea7773",
+          "bytes": 451250
+        }
+      ],
+      "screenshot": "iphone-gallery-final.png"
+    },
+    {
+      "platform": "ipad",
+      "slot": "13-inch landscape",
+      "persistedOrderMatchesFiles": true,
+      "imageCount": 10,
+      "files": [
+        {
+          "name": "01-make-their-day.png",
+          "sha256": "a1ff0f0d7ee6e31964ce5d1c7a125ca61d275dc0ea4b7c04207ec7482647dfdd",
+          "bytes": 805462
+        },
+        {
+          "name": "02-cosmic-love.png",
+          "sha256": "40292e85022c73b13ef513ee674a5bb62347b13bfa82d8efe7c65d88ac991089",
+          "bytes": 443881
+        },
+        {
+          "name": "03-more-than-a-message.png",
+          "sha256": "003ddc83698f310d5b39ac2caeeeb34a2db488de7d293a3d43455881129edf44",
+          "bytes": 689325
+        },
+        {
+          "name": "04-little-surprise.png",
+          "sha256": "ec5d32a8fba136e0e81744c49d03eb9ac20ec132d9966b473b1e1c51a79fd3d2",
+          "bytes": 291526
+        },
+        {
+          "name": "05-good-times.png",
+          "sha256": "e8369773018554ae781969dbfa1916a2145bbe9292719e4d3d0ca06d338620c6",
+          "bytes": 440592
+        },
+        {
+          "name": "06-little-celebration.png",
+          "sha256": "d25309bff0cb6a8638116713eb6687a890bdf713f31d899db0b1a38dd3baa7f9",
+          "bytes": 464164
+        },
+        {
+          "name": "07-note-inside.png",
+          "sha256": "bea5aa8d235de78d753b04066a719cbba2729fecdb9f46b1996fd34a8ede5b74",
+          "bytes": 198237
+        },
+        {
+          "name": "08-pick-personalize-smile.png",
+          "sha256": "57ef43e99cc73fde34add9e85feb0b25265d5b59db655817893659df842622a7",
+          "bytes": 1191586
+        },
+        {
+          "name": "09-make-it-yours.png",
+          "sha256": "0ef393ba5888b5d4cc091dadcc6e54ea9dab7255d6322d91bc9f79c3a3963951",
+          "bytes": 301120
+        },
+        {
+          "name": "10-many-ways.png",
+          "sha256": "207113790cbeee2fc2c910bc425621bf30f8292946e2ee8866792837c124a358",
+          "bytes": 388338
+        }
+      ],
+      "screenshot": "ipad-gallery-final.png"
+    },
+    {
+      "platform": "mac",
+      "slot": "Mac 2560x1600",
+      "persistedOrderMatchesFiles": true,
+      "imageCount": 10,
+      "files": [
+        {
+          "name": "01-make-their-day.png",
+          "sha256": "1e5571963730cb60adf9d4910221a6290fec4bbfdaad815407fdfa46ec5f33f0",
+          "bytes": 767363
+        },
+        {
+          "name": "02-cosmic-love.png",
+          "sha256": "df6da8089e902f4fceca00ef46ee10287fa9b7cc307ba263736e43d063b2d01f",
+          "bytes": 447563
+        },
+        {
+          "name": "03-more-than-a-message.png",
+          "sha256": "29266c19cde9b40043259d1cb3686d6e4de71ec908835dc018f22509ffbefc88",
+          "bytes": 747263
+        },
+        {
+          "name": "04-little-surprise.png",
+          "sha256": "af0601e89815cbe95211f5bcee04b00c44fb0286836a18fe29a8e7e45c9e5d15",
+          "bytes": 394517
+        },
+        {
+          "name": "05-good-times.png",
+          "sha256": "623ee61b2671c66daa032681f1b0cd0803b3dad3f82ab592f357c9276ab77723",
+          "bytes": 414541
+        },
+        {
+          "name": "06-little-celebration.png",
+          "sha256": "d03591576543848df6d2d1ca618fa941bd9d6e280c9401def7038bab508ae0dd",
+          "bytes": 554666
+        },
+        {
+          "name": "07-note-inside.png",
+          "sha256": "d4592071cb10e97846a471bd070f2193772381562fc6453164e60175ac957e2d",
+          "bytes": 289805
+        },
+        {
+          "name": "08-pick-personalize-smile.png",
+          "sha256": "aa7c3835f519a2b0b56f6eecd0dc92574126aed7453473cab24d105ab4f6fe0f",
+          "bytes": 1219356
+        },
+        {
+          "name": "09-make-it-yours.png",
+          "sha256": "f44ec6482b542fd8c1723fbf48521550660e15b08fe078d38d45eca7eea67cdf",
+          "bytes": 427590
+        },
+        {
+          "name": "10-many-ways.png",
+          "sha256": "233f03ddc0326f6235823a7dec272b8a4b695481d973edb323bb2ae57f4c4ac4",
+          "bytes": 626170
+        }
+      ],
+      "screenshot": "mac-gallery-final.png"
+    }
+  ],
+  "scope": "All thirty matching platform images accepted and visibly persisted in intended 01-10 order after authenticated full reloads. English (U.S.), native 1.0(3)."
+}

@@ -1,0 +1,65 @@
+{
+  "verifiedAt": "2026-10-04T23:46:10.964271+00:00",
+  "appId": "6818700756",
+  "bundleIdentifier": "com.nathanfennel.My-Funny-Valentine",
+  "sourceRevision": "1351adb9edf8b0f76670487f203daca6647324eb",
+  "version": "1.0",
+  "build": "3",
+  "status": "both-processed-ready-to-submit",
+  "platforms": [
+    {
+      "platform": "iOS",
+      "logs": {
+        "archive": {
+          "path": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-3-20261005/Revision-1351adb/iOS/archive.log",
+          "sha256": "d8c5afe26d0f527645f386e58f84992902bbef6ff8eea6369082816626552a6d",
+          "successMarker": "ARCHIVE SUCCEEDED"
+        },
+        "export": {
+          "path": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-3-20261005/Revision-1351adb/iOS/export.log",
+          "sha256": "5f7bff2e74ff1b7323fe85b75fe29e981a50d5bf5084638aa43769c442c83b47",
+          "successMarker": "EXPORT SUCCEEDED"
+        },
+        "upload": {
+          "path": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-3-20261005/Revision-1351adb/iOS/upload.log",
+          "sha256": "883e40e76953b52ff3d474939132443705b1d0551d141dae09d8b21f52538b89",
+          "successMarker": "Upload succeeded"
+        }
+      },
+      "packageVerification": {
+        "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/release/ios-package-verification.json",
+        "sha256": "78a5da2c1e5d95e9556f22c590a086a4e1131afa12d0bf25df34da4f71e598ef"
+      },
+      "appleBuildId": "db922707-b634-4b47-8679-834d9e38e183",
+      "appleVisibleStatus": "Ready to Submit"
+    },
+    {
+      "platform": "macOS",
+      "logs": {
+        "archive": {
+          "path": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-3-20261005/Revision-1351adb/macOS/archive.log",
+          "sha256": "c80daf284603af02d0c744219e200a5b6a0de62a9e56f10729e8fe74665595e5",
+          "successMarker": "ARCHIVE SUCCEEDED"
+        },
+        "export": {
+          "path": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-3-20261005/Revision-1351adb/macOS/export.log",
+          "sha256": "a69d60df66e0ab92ebb478ea6a573b0212c4e4587766eacc261b2e22e42943e0",
+          "successMarker": "EXPORT SUCCEEDED"
+        },
+        "upload": {
+          "path": "/Users/nathan/Library/Application Support/CodexReleaseArtifacts/MyFunnyValentine/1.0-3-20261005/Revision-1351adb/macOS/upload.log",
+          "sha256": "53df4b8aa7038018a4cc67a56dcffbeefa614b07e993adbfe36898a9f976f238",
+          "successMarker": "Upload succeeded"
+        }
+      },
+      "packageVerification": {
+        "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-creative-cards/release/mac-package-verification.json",
+        "sha256": "c2540ce32f7b66562ea2f8c9cc7f604eff4bf9b5d99b301d23f981d0cb5f4e0b"
+      },
+      "appleBuildId": "881371bf-4a2c-41a7-b864-e90a5f4f8e86",
+      "appleVisibleStatus": "Ready to Submit"
+    }
+  ],
+  "scope": "Xcode distribution upload completed; Apple processing and replacement review submission require separate UI verification.",
+  "processingVerification": "Authenticated TestFlight visible UI confirms both Build3 ready; replacement submission not yet sent."
+}
