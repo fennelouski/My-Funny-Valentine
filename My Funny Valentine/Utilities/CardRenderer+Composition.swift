@@ -121,6 +121,14 @@ extension CardRenderer {
             fontSize = 36 + variant * 2
         }
 
+        let noteRect: CGRect
+        if !card.note.isEmpty && (family == .comic || family == .loveLetter) {
+            noteRect = CGRect(x: 38, y: 532, width: 324, height: 22)
+            wordsRect.size.height = min(wordsRect.height, noteRect.minY - 12 - wordsRect.minY)
+        } else {
+            noteRect = CGRect(x: 38, y: 556, width: 324, height: 28)
+        }
+
         // Artwork is clipped as a deliberate print/photo window, never used as
         // an invented foreground matte for the person.
         let data = card.images.first?.data ?? card.templateArtwork
@@ -179,7 +187,7 @@ extension CardRenderer {
         drawText(card.saying, in: wordsRect, fontName: family.fontName, fontSize: fontSize,
                  color: textColor, context: context)
         if !card.note.isEmpty {
-            drawText(card.note.count <= 40 ? card.note : "A note waits inside", in: CGRect(x: 38, y: 556, width: 324, height: 28),
+            drawText(card.note.count <= 40 ? card.note : "A note waits inside", in: noteRect,
                      fontName: "Georgia", fontSize: 14, color: textColor, context: context)
         }
         if opening > 0 {

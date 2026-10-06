@@ -333,6 +333,58 @@ struct CreativeCardExportTests {
         #expect(try CardExportService.png(CardRenderer.shared.snapshot(of: card), inside: true) != blankNote)
     }
 
+    @Test("Short front notes leave visible paper below their rendered glyphs")
+    func shortFrontNotesStayInsidePaper() throws {
+        try #require(MFVRuntime.configuration.mode == .unit, "Render only in the isolated DEBUG unit host")
+        func pixels(_ png: Data) throws -> (width: Int, height: Int, bytes: [UInt8]) {
+            let source = try #require(CGImageSourceCreateWithData(png as CFData, nil))
+            let image = try #require(CGImageSourceCreateImageAtIndex(source, 0, nil))
+            var bytes = [UInt8](repeating: 0, count: image.width * image.height * 4)
+            try bytes.withUnsafeMutableBytes { buffer in
+                let context = try #require(CGContext(data: buffer.baseAddress, width: image.width, height: image.height,
+                    bitsPerComponent: 8, bytesPerRow: image.width * 4, space: CGColorSpaceCreateDeviceRGB(),
+                    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue))
+                context.draw(image, in: CGRect(x: 0, y: 0, width: image.width, height: image.height))
+            }
+            return (image.width, image.height, bytes)
+        }
+        for family in [CardVisualFamily.comic, .loveLetter] {
+            for variant in 0..<5 {
+                let card = Card(saying: "", layoutData: CardLayoutData(composition:
+                    CardComposition(family: family, variant: variant, motionEnabled: false)))
+                let blank = try pixels(CardExportService.png(CardRenderer.shared.snapshot(of: card)))
+                card.customText = "For you 2A33BDE8"
+                let noted = try pixels(CardExportService.png(CardRenderer.shared.snapshot(of: card)))
+                try #require(blank.width == noted.width && blank.height == noted.height)
+                var firstGlyphRow = blank.height, lastGlyphRow = -1, changedPixels = 0
+                for y in 0..<blank.height {
+                    for x in 0..<blank.width {
+                        let index = (y * blank.width + x) * 4
+                        if (0..<3).contains(where: { abs(Int(blank.bytes[index + $0]) - Int(noted.bytes[index + $0])) > 16 }) {
+                            firstGlyphRow = min(firstGlyphRow, y)
+                            lastGlyphRow = max(lastGlyphRow, y)
+                            changedPixels += 1
+                        }
+                    }
+                }
+                try #require(changedPixels > 20, "The short note must actually render")
+                // Empty greetings make the difference exclusively the note. Read
+                // the lower paper edge from the blank raster, not renderer CGRects.
+                let centerX = blank.width / 2
+                let paperRow = blank.height * 4 / 5
+                let paperIndex = (paperRow * blank.width + centerX) * 4
+                let paperBottom = try #require((paperRow..<blank.height).first { y in
+                    let index = (y * blank.width + centerX) * 4
+                    return (0..<3).contains { abs(Int(blank.bytes[index + $0]) - Int(blank.bytes[paperIndex + $0])) > 4 }
+                }, "The rendered paper must have a visible lower edge")
+                let glyphHeight = lastGlyphRow - firstGlyphRow + 1
+                let clearance = paperBottom - lastGlyphRow - 1
+                #expect(clearance >= (glyphHeight + 1) / 2,
+                        "\(family.rawValue) layout \(variant): note rows \(firstGlyphRow)...\(lastGlyphRow), paper edge \(paperBottom), clearance \(clearance) must be at least half the \(glyphHeight)-pixel glyph height")
+            }
+        }
+    }
+
     private func facePixels(hex: String) throws -> Data {
         let color = try #require(PlatformColor.fromHex(hex))
         let image = try #require(PlatformGraphics.image(size: CGSize(width: 20, height: 20), scale: 1) { context in
