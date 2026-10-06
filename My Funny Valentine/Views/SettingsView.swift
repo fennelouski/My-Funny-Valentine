@@ -64,6 +64,7 @@ struct SettingsView: View {
     /// macOS borrows the app's existing sidebar; the Settings tab owns navigation elsewhere.
     var section: SettingsSection? = nil
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.savedCardCloudSync) private var cloudSync
     @AppStorage("hasCompletedOnboarding", store: MFVRuntime.preferences) private var hasCompletedOnboarding = false
 
     @State private var selectedSection: SettingsSection? = .generation
@@ -131,12 +132,13 @@ struct SettingsView: View {
                     Text("Face detection stays on your device. Image Playground is optional; Apple manages its availability and limits.")
                 }
             case .iCloud:
-                Section {
-                    Label("Saved on this device", systemImage: "externaldrive.badge.checkmark")
-                } header: {
-                    Text("Storage")
-                } footer: {
-                    Text("Sharing exports a copy of your card.")
+                if let cloudSync {
+                    SavedCardCloudSettings(syncService: cloudSync)
+                } else {
+                    Section("Storage") {
+                        Label("Saved on this device", systemImage: "externaldrive.badge.checkmark")
+                        if !MFVRuntime.isPrivate { Text("iCloud will be checked when your card library opens.").foregroundStyle(.secondary) }
+                    }
                 }
             case .about:
                 Section("About") {
@@ -185,6 +187,32 @@ struct SettingsView: View {
                 Spacer()
                 Text(value).foregroundStyle(.secondary)
             }
+        }
+    }
+}
+
+private struct SavedCardCloudSettings: View {
+    @ObservedObject var syncService: SavedCardCloudSync
+    @AppStorage(SavedCardCloudSync.enabledKey, store: MFVRuntime.preferences) private var enabled = true
+
+    var body: some View {
+        Section {
+            Label("Saved on this device", systemImage: "externaldrive.badge.checkmark")
+            Toggle("Continue saved cards with iCloud", isOn: $enabled)
+                .onChange(of: enabled) { _, _ in syncService.sync() }
+            Text(syncService.status).foregroundStyle(.secondary)
+            if syncService.isSyncing { ProgressView("Syncing saved cards…") }
+            Button("Sync now", systemImage: "arrow.triangle.2.circlepath") { syncService.sync() }
+                .disabled(!enabled || syncService.isSyncing || syncService.accountChanged)
+            if syncService.accountChanged {
+                Button("Use the current iCloud account") { syncService.useCurrentAccount() }
+                Text("This copies your saved cards to the current account's private iCloud library. It keeps local cards and leaves the previous account's library alone.")
+                    .font(.footnote).foregroundStyle(.secondary)
+            }
+        } header: {
+            Text("Saved cards")
+        } footer: {
+            Text("Saved wording, designs and original photos sync to your private iCloud account. Save and close the editor before continuing on another device. Parallel edits keep separate copies. Deleted cards disappear from your libraries; a concurrent edit remains as a copy. Older revisions remain in private iCloud storage. Sharing exports a separate file.")
         }
     }
 }

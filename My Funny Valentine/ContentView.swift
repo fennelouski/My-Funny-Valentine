@@ -10,6 +10,7 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     @AppStorage("hasCompletedOnboarding", store: MFVRuntime.preferences) private var hasCompletedOnboarding = true
     @State private var selectedTab = ScreenshotSupport.initialTab
 
@@ -18,6 +19,7 @@ struct ContentView: View {
     @State private var dismissedOnboarding = false
     @State private var replayWelcome = false
     @State private var showingNewCard = false
+    @State private var cloudSync: SavedCardCloudSync?
 
     private var showOnboarding: Bool {
         if dismissedOnboarding { return false }
@@ -42,12 +44,18 @@ struct ContentView: View {
         .sheet(isPresented: $showingNewCard) {
             NavigationStack { CardDetailView(card: nil) }
         }
+        .environment(\.savedCardCloudSync, cloudSync)
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("NewCard"))) { _ in
             showingNewCard = true
         }
         .task {
             ScreenshotSupport.seedSampleCardsIfRequested(in: modelContext)
             if !showOnboarding { hasCompletedOnboarding = true }
+        }
+        .task(id: scenePhase) {
+            guard scenePhase == .active, !MFVRuntime.isPrivate else { return }
+            if cloudSync == nil { cloudSync = SavedCardCloudSync.service(for: modelContext) }
+            await cloudSync?.runWhileActive()
         }
         .onChange(of: hasCompletedOnboarding) { _, completed in
             // "Show Welcome Again" in Settings replays the flow mid-session.
@@ -64,8 +72,8 @@ struct ContentView: View {
 
     @ViewBuilder
     private var content: some View {
-        #if os(macOS)
-        // macOS: Use NavigationSplitView for better macOS UX
+        #if os(macOS) || os(visionOS)
+        // A library and editor workspace beside separately placed card windows.
         NavigationSplitView {
             List(selection: $selectedTab) {
                 Label("Home", systemImage: "heart.fill")
@@ -101,7 +109,7 @@ struct ContentView: View {
         }
         .frame(minWidth: 720, idealWidth: 1280, minHeight: 560, idealHeight: 800)
         #else
-        // iOS/visionOS: Use TabView
+        // iOS: Use TabView
         TabView(selection: $selectedTab) {
             HomeView()
                 .tabItem {

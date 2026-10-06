@@ -35,7 +35,7 @@ struct My_Funny_ValentineApp: App {
     }
 
     var body: some Scene {
-        WindowGroup {
+        WindowGroup("My Funny Valentine", id: "workspace") {
             switch storage {
             case .some(.success(let container)):
                 if MFVRuntime.isPrivate {
@@ -61,9 +61,15 @@ struct My_Funny_ValentineApp: App {
                 }
             }
         }
+        #if os(visionOS)
+        .defaultSize(width: 1000, height: 760)
+        .windowResizability(.contentMinSize)
+        #endif
         #if os(macOS)
         // Matches an App Store Mac screenshot size (2560x1600 at 2x).
         .defaultSize(width: 1280, height: 800)
+        #endif
+        #if os(macOS) || os(visionOS)
         .commands {
             CommandGroup(replacing: .newItem) {
                 Button("New Card") {
@@ -79,6 +85,29 @@ struct My_Funny_ValentineApp: App {
                 }
                 .keyboardShortcut(",", modifiers: .command)
             }
+        }
+        #endif
+        #if os(visionOS)
+        WindowGroup("Saved card", id: "card-preview", for: UUID.self) { cardID in
+            switch storage {
+            case .some(.success(let container)):
+                CardVisionWindow(cardID: cardID.wrappedValue)
+                    .modelContainer(container)
+                    .defaultAppStorage(MFVRuntime.preferences)
+            case .none:
+                Text(MFVRuntime.configuration.mode == .invalid ? "Private QA session rejected" : "Private unit test host")
+            case .some(.failure):
+                ContentUnavailableView("Cards couldn't open", systemImage: "externaldrive.badge.exclamationmark")
+            }
+        }
+        .windowStyle(.plain)
+        .defaultSize(width: 520, height: 780)
+        .windowResizability(.contentMinSize)
+        .defaultWindowPlacement { _, context in
+            if let workspace = context.windows.first(where: { $0.id == "workspace" }) {
+                return WindowPlacement(.trailing(workspace))
+            }
+            return WindowPlacement(nil)
         }
         #endif
     }

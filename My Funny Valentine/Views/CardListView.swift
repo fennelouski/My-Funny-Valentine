@@ -3,7 +3,11 @@ import SwiftData
 
 struct CardListView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.savedCardCloudSync) private var cloudSync
     @Query(sort: \Card.modifiedAt, order: .reverse) private var cards: [Card]
+    #if os(visionOS)
+    @Environment(\.openWindow) private var openWindow
+    #endif
     @State private var pendingDelete: Card?
     @State private var showingDelete = false
     @State private var errorMessage: String?
@@ -25,6 +29,7 @@ struct CardListView: View {
                     ScrollView {
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 144, maximum: 220), spacing: 16)], spacing: 20) {
                             ForEach(cards) { card in
+                                VStack(spacing: 8) {
                                 NavigationLink {
                                     CardDetailView(card: card)
                                 } label: {
@@ -35,10 +40,25 @@ struct CardListView: View {
                                 }
                                 .buttonStyle(.plain)
                                 .contextMenu {
+                                    #if os(visionOS)
+                                    Button("Open card window", systemImage: "rectangle.on.rectangle") {
+                                        openWindow(id: "card-preview", value: card.id)
+                                    }
+                                    #endif
                                     Button(role: .destructive) {
                                         pendingDelete = card
                                         showingDelete = true
                                     } label: { Label("Delete", systemImage: "trash") }
+                                }
+                                if let cloudSync {
+                                    SavedCardConflictBadge(syncService: cloudSync, cardID: card.id)
+                                }
+                                #if os(visionOS)
+                                Button("Display card", systemImage: "rectangle.on.rectangle") {
+                                    openWindow(id: "card-preview", value: card.id)
+                                }
+                                .buttonStyle(.bordered)
+                                #endif
                                 }
                             }
                         }
@@ -68,6 +88,17 @@ struct CardListView: View {
             .alert("Couldn't delete card", isPresented: $showingError) {
                 Button("OK", role: .cancel) { }
             } message: { Text(errorMessage ?? "Please try again.") }
+        }
+    }
+}
+
+private struct SavedCardConflictBadge: View {
+    @ObservedObject var syncService: SavedCardCloudSync
+    let cardID: UUID
+    var body: some View {
+        if syncService.conflictCardIDs.contains(cardID) {
+            Label("iCloud copy", systemImage: "rectangle.on.rectangle")
+                .font(.caption).foregroundStyle(.secondary)
         }
     }
 }

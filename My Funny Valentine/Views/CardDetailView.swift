@@ -11,7 +11,12 @@ struct CardDetailView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     let card: Card?
+    private let savedCardID: UUID?
     @State private var draft: Card
+    @State private var openedCardBytes: Data?
+    @State private var openedModifiedAt: Date?
+    @State private var editingSync: SavedCardCloudSync?
+    @State private var needsSeparateCopy = false
     @State private var showingSayings = false
     @State private var artworkItem: PhotosPickerItem?
     @State private var faceItem: PhotosPickerItem?
@@ -43,6 +48,7 @@ struct CardDetailView: View {
 
     init(card: Card?, starter: Card? = nil) {
         self.card = card
+        savedCardID = card?.id
         let initial = CardDraft.copy(of: card ?? starter ?? Card())
         if card == nil {
             initial.id = UUID()
@@ -56,6 +62,8 @@ struct CardDetailView: View {
             for sticker in initial.stickers ?? [] { sticker.id = UUID(); sticker.cardId = initial.id }
         }
         _draft = State(initialValue: initial)
+        _openedCardBytes = State(initialValue: card.flatMap { try? CardCloudArchive($0).encoded() })
+        _openedModifiedAt = State(initialValue: card?.modifiedAt)
     }
 
     private var message: Binding<String> {
@@ -139,6 +147,9 @@ struct CardDetailView: View {
         }
         .sheet(isPresented: $showingShare, onDismiss: shareDismissed) { sharePreview }
         .alert("Couldn't finish", isPresented: $showingError) {
+            if needsSeparateCopy {
+                Button("Save as a separate card") { saveSeparateCard() }
+            }
             Button("OK", role: .cancel) { }
         } message: { Text(errorMessage ?? "Please try again.") }
         .fileImporter(isPresented: $showingFileImporter, allowedContentTypes: [.image]) { result in
@@ -159,7 +170,17 @@ struct CardDetailView: View {
         }
         .onChange(of: artworkItem) { _, item in importPhoto(item, face: false) }
         .onChange(of: faceItem) { _, item in importPhoto(item, face: true) }
-        .onDisappear { importTask?.cancel(); shareDismissed() }
+        .onAppear {
+            guard let savedCardID, editingSync == nil, !MFVRuntime.isPrivate else { return }
+            let sync = SavedCardCloudSync.service(for: modelContext)
+            sync.beginEditing(savedCardID)
+            editingSync = sync
+        }
+        .onDisappear {
+            importTask?.cancel(); shareDismissed()
+            if let savedCardID { editingSync?.endEditing(savedCardID) }
+            editingSync = nil
+        }
     }
 
     private var preview: some View {
@@ -478,11 +499,32 @@ struct CardDetailView: View {
     }
 
     private func save() {
-        draft.updateModifiedDate()
         do {
-            _ = try CardDraft.save(draft, replacing: card, in: modelContext)
+            var original: Card?
+            if let savedCardID {
+                original = try modelContext.fetch(FetchDescriptor<Card>()).first { $0.id == savedCardID }
+                let current = original.flatMap { try? CardCloudArchive($0).encoded() }
+                let changed = original == nil || (openedCardBytes.map { current != $0 } ?? (original?.modifiedAt != openedModifiedAt))
+                if changed {
+                    needsSeparateCopy = true
+                    fail("This saved card changed or was deleted while you were editing. Your draft is still here. Save it as a separate card to keep your version.")
+                    return
+                }
+            }
+            draft.updateModifiedDate()
+            _ = try CardDraft.save(draft, replacing: original, in: modelContext)
             dismiss()
         } catch { fail("Your changes are still here. \(error.localizedDescription)") }
+    }
+
+    private func saveSeparateCard() {
+        do {
+            draft.updateModifiedDate()
+            let copy = try CardCloudArchive(draft).card(copyID: UUID())
+            copy.createdAt = Date()
+            _ = try CardDraft.save(copy, replacing: nil, in: modelContext)
+            dismiss()
+        } catch { fail("Your draft is still here. \(error.localizedDescription)") }
     }
 
     private func prepareShare() {
