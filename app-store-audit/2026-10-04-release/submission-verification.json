@@ -1,0 +1,117 @@
+{
+  "at": "2026-10-04T11:02:07.800720+00:00",
+  "apple_id": "6818700756",
+  "app": "My Funny Valentine",
+  "platforms": {
+    "ios": {
+      "version": "1.0",
+      "build": "1",
+      "source_revision": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+      "apple_build_id": "08c3bb68-d2d8-4a51-979c-0fb6ccd3df5b",
+      "submission_id": "e3fdcd1c-03d0-4409-9e22-caef58fd1f59",
+      "apple_submitted_local": "Oct 4, 2026 at 1:00 PM",
+      "proof": [
+        {
+          "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-release/ios-submission-details.txt",
+          "sha256": "b51a13ba86faafcc5dbc5f7517f9f371b45dee962fbe8c1c6b21698f4a4cdcb8"
+        },
+        {
+          "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-release/ios-submission-details.png",
+          "sha256": "14f314174d219dd33b83cd7611483f4bd7c24196a055380b710600fb81a8c782"
+        }
+      ],
+      "status": "Waiting for Review",
+      "submitted_by": "Nathan Fennel",
+      "review_url": "https://appstoreconnect.apple.com/apps/6818700756/distribution/reviewsubmissions/details/e3fdcd1c-03d0-4409-9e22-caef58fd1f59"
+    },
+    "macos": {
+      "version": "1.0",
+      "build": "2",
+      "source_revision": "c8312d107cfd1040db30b07036d81896d1fdf7e3",
+      "apple_build_id": "996496be-4011-4ca7-b7fa-28b90a9e92e9",
+      "submission_id": "737cc012-414f-46ee-8dfc-e5eee602f6af",
+      "apple_submitted_local": "Oct 4, 2026 at 12:57 PM",
+      "proof": [
+        {
+          "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-release/macos-submission-details.txt",
+          "sha256": "fa3a54f751cf40c8387d776698ba759b5ca5ef93e920e0a5732c8f1259f3f5ff"
+        },
+        {
+          "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-release/macos-submission-details.png",
+          "sha256": "953a0f8f807c622f70b152779d4447e21a99643aebd39dbc713943f156f03574"
+        }
+      ],
+      "status": "Waiting for Review",
+      "submitted_by": "Nathan Fennel",
+      "review_url": "https://appstoreconnect.apple.com/apps/6818700756/distribution/reviewsubmissions/details/737cc012-414f-46ee-8dfc-e5eee602f6af"
+    }
+  },
+  "privacy": {
+    "at": "2026-10-04T11:02:07.800720+00:00",
+    "apple_id": "6818700756",
+    "published": true,
+    "label": "Data Not Collected",
+    "authorization": "User answered the pending publication approval and explicitly authorized publishing app privacy responses and the steps needed for Apple review. The unchanged saved draft was published.",
+    "source_ios": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+    "source_macos": "c8312d107cfd1040db30b07036d81896d1fdf7e3",
+    "proof": [
+      {
+        "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-release/privacy-publication-dialog.txt",
+        "sha256": "da5e284977be71efa982670c06916a3be89a082a63ce7b54362d7eda3dfa6ebc"
+      },
+      {
+        "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-release/published-privacy-label.txt",
+        "sha256": "4d5e1eff68ee33f7ebd9dc3503dcc4a54d9fb4562d8f2b078750f9dcc9081e6f"
+      },
+      {
+        "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-release/published-privacy-label.png",
+        "sha256": "e9c4a8065a18bb0c1c4831574bf54a7f9c7942b4992beafd782625354ee17747"
+      }
+    ]
+  },
+  "commercial": {
+    "price_regions": 175,
+    "nonzero_price_rows": 0,
+    "available_regions": 175,
+    "future_regions": true,
+    "release": "Automatically release after App Review"
+  },
+  "commercial_proof": [
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-release/final-price-regions.txt",
+      "sha256": "f20142287d519c1e1a3569b23df163672973506117a6363dc44f7374d1dc8bcd"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-release/final-availability-regions.txt",
+      "sha256": "cdb20c9803931c6fbf7fa19be8e2e150279beb15ff8c67c7c158c11738b2dded"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-release/final-future-availability.txt",
+      "sha256": "470319cc0acd54ceea55057251cbf41b90aef06eda24222d985cf53c7d672ad8"
+    }
+  ],
+  "gallery": {
+    "iphone": 10,
+    "ipad": 10,
+    "mac": 10,
+    "order": "01..10",
+    "actual_Apple_CDN_visual_review": "Previously approved all30 Oct3; outputs and source capture hashes rechecked unchanged by release reconciliation agent Oct4",
+    "manifest_sha256": "87b060f82f988490727a9ec6abed4eac5742d3e5a9ea5f070f2ef5ab67191ccf"
+  },
+  "review_contact": "Owner-provided phone and email filled into native ASC fields. Mac Save completed. On iOS the same values left Save disabled, so no redundant save was needed. Masked DOM comparison is not treated as actual contact mismatch.",
+  "website": {
+    "committed_revision": "9e2058d195bf3c8ef1e6630267e815a1346349d3",
+    "deployment_receipt": "/Users/nathan/Documents/GitHub/restaurantreminder/app-store-audit/2026-10-03-restaurant-reminder/website-release/app-privacy-deployment-9e2058d.json",
+    "fresh_read_only_agent_check_utc": "2026-10-04T10:43:56-10:43:58Z",
+    "privacy_both_hosts_sha256": "440ce9b8bb0da71d8e6660155b865fc820999abe258f56d516c42774e5b2e84a",
+    "support_both_hosts_sha256": "a436417d51ed9a87736702684042242ad264b2847805cfc33fd841860f6dedd8",
+    "status": "Canonical Vercel and AWS both200, identical approved bodies; no new website deployment",
+    "scope": "76 static app pages; full dynamic AWS website migration remains pending."
+  },
+  "limits": [
+    "Apple approval and public availability remain pending.",
+    "Minimum-runtime and broad accessibility checks were not newly performed.",
+    "Mac automated UI runner failed to initialize and executed0tests; actual native manual checks and source-equivalence records supply current Mac UI evidence.",
+    "No visionOS build, simulator, upload or submission."
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-04T11:02:07.800720+00:00",
+  "apple_id": "6818700756",
+  "published": true,
+  "label": "Data Not Collected",
+  "authorization": "User answered the pending publication approval and explicitly authorized publishing app privacy responses and the steps needed for Apple review. The unchanged saved draft was published.",
+  "source_ios": "bff4771b52f9b13eb7a44af88be8311496bd412b",
+  "source_macos": "c8312d107cfd1040db30b07036d81896d1fdf7e3",
+  "proof": [
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-release/privacy-publication-dialog.txt",
+      "sha256": "da5e284977be71efa982670c06916a3be89a082a63ce7b54362d7eda3dfa6ebc"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-release/published-privacy-label.txt",
+      "sha256": "4d5e1eff68ee33f7ebd9dc3503dcc4a54d9fb4562d8f2b078750f9dcc9081e6f"
+    },
+    {
+      "path": "/Users/nathan/Documents/GitHub/My-Funny-Valentine/app-store-audit/2026-10-04-release/published-privacy-label.png",
+      "sha256": "e9c4a8065a18bb0c1c4831574bf54a7f9c7942b4992beafd782625354ee17747"
+    }
+  ]
+}
