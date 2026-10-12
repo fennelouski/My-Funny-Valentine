@@ -90,7 +90,7 @@ struct HomeView: View {
                 .frame(maxWidth: .infinity)
             }
             .background(Color.appGroupedBackground)
-            .navigationTitle("My Funny Valentine")
+            .navigationTitle("Valentines")
             .appInlineNavigationTitle()
         }
     }
